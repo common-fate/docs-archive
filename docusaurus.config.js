@@ -13,7 +13,7 @@ const config = {
   tagline: "Identity-first cloud security for innovative teams",
   url: "https://docs.commonfate.io",
   baseUrl: "/",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn", // TODO: change to throw when launching
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "common-fate", // Usually your GitHub org/user name.
