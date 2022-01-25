@@ -1,0 +1,70 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --ifm-color-primary: #1f72fe;
+  --ifm-color-primary-dark: #0859e5;
+  --ifm-color-primary-darker: #0045b3;
+  --ifm-color-primary-darkest: #003181;
+  --ifm-color-primary-light: #4d91ff;
+  --ifm-color-primary-lighter: #7fb1ff;
+  --ifm-color-primary-lightest: #b0d0ff;
+  --ifm-code-font-size: 95%;
+  /* --ifm-footer-background-color: #619eff; */
+  --ifm-footer-background-color: #26223a;
+  --ifm-footer-title-color: #eeedf4;
+  --ifm-footer-link-color: #9691b4;
+  --ifm-footer-color: #787492;
+  --ifm-font-family-base: "Rubik";
+  --ifm-heading-font-weight: 500;
+  --ifm-heading-font-family: "Bitter";
+  --ifm-font-weight-bold: 500;
+}
+
+body {
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bitter";
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.chakra-button:hover {
+  color: white;
+  text-decoration: none;
+}
+
+nav.navbar {
+  background-color: white;
+  box-shadow: none;
+  border-bottom: 1px solid rgb(218 221 225);
+}
+
+.navbar__logo {
+  height: 30px;
+}
+
+b.navbar__title {
+  display: none;
+}
+
+html[data-theme="dark"] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
