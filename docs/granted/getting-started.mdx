@@ -1,0 +1,168 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Getting Started
+
+This guide will get you started using Granted to assume roles in AWS. It will take around 5 minutes to complete.
+
+## Requirements
+
+Although Granted doesn't depend on the AWS CLI, we recommend [installing it](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) in order to run a test command to verify Granted is working properly.
+
+You will also need to set up at least one role in your [AWS config file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). On MacOS and Linux, this is stored in `~/.aws/config`. On Windows, this is stored in the `%UserProfile%` directory. Some example configurations are included below.
+
+**If you're already set up roles for the AWS CLI to access AWS you probably don't need to configure anything: Granted uses the same configuration files as the AWS CLI.**
+
+<details>
+<summary>Example configuration for AWS SSO (recommended)</summary>
+<div>
+
+```
+# ~/.aws/config
+# Change the values below to match your AWS SSO configuration
+# Granted uses the profile name: in this case 'my-profile' to choose the role.
+
+[profile my-profile]
+sso_start_url=https://mycompany.awsapps.com/start
+sso_region=us-east-1
+sso_account_id=123456789012
+sso_role_name=DeveloperRole
+region=us-east-1
+```
+
+</div>
+</details>
+
+<details>
+<summary>Example configuration for AWS IAM user and roles</summary>
+
+More information on using IAM users and roles can be found [here](https://blog.coinbase.com/you-need-more-than-one-aws-account-aws-bastions-and-assume-role-23946c6dfde3).
+
+<div>
+
+```
+# ~/.aws/credentials
+[base]
+aws_access_key_id=<ACCESS_KEY>
+aws_secret_access_key=<SECRET_KEY>
+```
+
+```
+# ~/.aws/config
+# Change the values below to match your AWS role configuration
+# Granted uses the profile name: in this case 'my-profile' to choose the role.
+
+[profile base]
+region=us-east-1
+
+[profile my-profile]
+region=us-east-1
+source_profile=base
+role_arn=arn:aws:iam::123456789012:role/my-role
+```
+
+</div>
+</details>
+
+## Installing the CLI
+
+In order to use Granted you'll need to install it on your system. Common Fate provides binaries for Granted.
+
+<Tabs
+  groupId="operating-systems"
+  defaultValue="macos"
+  values={[
+	  { label: "Homebrew on MacOS", value: "macos" },
+	  { label: "Linux", value: "linux" },
+	  { label: "Windows", value: "windows" },
+	  ]}
+>
+<TabItem value="macos">
+
+[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for Granted. To install Granted with Homebrew, run the commands below in your terminal.
+
+```
+brew tap common-fate/granted
+brew install granted
+```
+
+</TabItem>
+<TabItem value="linux">
+
+Select the steps which match your system architecture. You can find your architecture by running `uname -m` from a terminal window.
+
+<Tabs
+groupId="linux-arch"
+defaultValue="x86_64"
+values={[
+{ label: "x86_64", value: "x86_64" },
+{ label: "arm64", value: "arm64" },
+{ label: "i386", value: "i386" },
+]}
+>
+
+<TabItem value="x86_64">
+
+```
+curl -OL releases.commonfate.io/granted/v0.0.9/granted_0.0.9_linux_x86_64.tar.gz
+sudo tar -zxvf ./granted_0.0.9_linux_x86_64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="arm64">
+
+```
+curl -OL releases.commonfate.io/granted/v0.0.9/granted_0.0.9_linux_arm64.tar.gz
+sudo tar -zxvf ./granted_0.0.9_linux_arm64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="i386">
+
+```
+curl -OL releases.commonfate.io/granted/v0.0.9/granted_0.0.9_linux_i386.tar.gz
+sudo tar -zxvf ./granted_0.0.9_linux_i386.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
+<TabItem value="windows">
+
+First, download the zip archive of Granted which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
+
+[Granted for Windows x86_64](releases.commonfate.io/granted/v0.0.9/granted_0.0.9_windows_x86_64.zip)
+
+[Granted for Windows arm64](releases.commonfate.io/granted/v0.0.9/granted_0.0.9_windows_arm64.zip)
+
+[Granted for Windows i386](releases.commonfate.io/granted/v0.0.9/granted_0.0.9_windows_i386.zip)
+
+After downloading Granted, unzip the package. Granted runs as two binaries, `assume` and `granted`. Any other files in the package can be removed and Granted will still function.
+
+You'll need to move Granted to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+
+</TabItem>
+
+</Tabs>
+
+## Verify the installation
+
+To verify that the installation has succeeded, print the version of Granted by running `granted -v`. You should see an output similar to below.
+
+```
+➜ granted -v
+
+Granted v0.0.9
+```
+
+If you have any issues installing don't hesitate to [ask for help on our Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
+
+## Next steps
+
+Now that you've installed Granted, it's time to [assume your first role](/granted/usage/assuming-roles).
