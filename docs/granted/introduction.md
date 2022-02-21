@@ -8,7 +8,7 @@ Granted is a command line interface (CLI) application which simplifies access to
 
 - Provide a fast experience around finding and assuming roles
 - Leverage native browser functionality to allow multiple accounts to be accessed at once
-- Encrypt cached credentials to avoid plaintext credentials being saved on disk
+- Encrypt cached credentials to avoid plaintext SSO tokens being saved on disk
 
 ## Supported cloud providers
 
