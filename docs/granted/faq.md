@@ -16,7 +16,7 @@ Granted is created and maintained by [Common Fate](https://commonfate.io/).
 
 Yes! Granted is released as open source with an MIT licence. You are free to remix Granted and use it as part of your own internal CLI tools. You can find the source code to Granted on GitHub [here](https://github.com/common-fate/granted). Issues and Pull Requests are most welcome.
 
-Common Fate is building tooling on top of Granted for identity workflows such as breakglass access and user access review evidence generation. This tooling is available as [Common Fate Cloud](https://granted.dev/cfcloud) under a commercial licence. The Granted core will always remain free and open source though.
+Common Fate is building tooling on top of Granted for identity workflows such as breakglass access and user access review evidence generation. This tooling is available as [Common Fate Cloud](https://granted.dev/cfcloud) under a commercial licence. The Granted core CLI will always remain free and open source.
 
 ## What cloud providers does Granted work with?
 
