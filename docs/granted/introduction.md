@@ -10,6 +10,8 @@ Granted is a command line interface (CLI) application which simplifies access to
 - Leverage native browser functionality to allow multiple accounts to be accessed at once
 - Encrypt cached credentials to avoid plaintext SSO tokens being saved on disk
 
+![A screenshot of the AWS Console on Firefox with two tabs: the first tab is blue and is the 'role-a' profile, and the second tab is orange and is the 'role-b' profile](/img/tab-containers.png)
+
 ## Supported cloud providers
 
 Granted currently supports AWS. If you'd like to see support for another cloud provider please let us know by [opening an issue on GitHub](https://github.com/common-fate/granted/issues)!
