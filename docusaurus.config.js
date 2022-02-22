@@ -63,7 +63,7 @@ const config = {
       navbar: {
         title: "Docs",
         logo: {
-          alt: "My Site Logo",
+          alt: "Common Fate",
           src: "img/logo.svg",
         },
         items: [
@@ -74,12 +74,17 @@ const config = {
             label: "Granted",
           },
           {
+            href: "https://granted.dev/cfcloud",
+            label: "Common Fate Cloud",
+            position: "left",
+          },
+          {
             href: "https://commonfate.io/blog",
             label: "Blog",
             position: "right",
           },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/common-fate",
             label: "GitHub",
             position: "right",
           },
@@ -124,7 +129,7 @@ const config = {
               },
               {
                 label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                href: "https://github.com/common-fate",
               },
             ],
           },

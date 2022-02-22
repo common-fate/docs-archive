@@ -14,7 +14,7 @@ Granted is a command line interface (CLI) application which simplifies access to
 
 Granted currently supports AWS. If you'd like to see support for another cloud provider please let us know by [opening an issue on GitHub](https://github.com/common-fate/granted/issues)!
 
-On AWS, Granted works with IAM roles and with AWS SSO. We highly recommend using Granted with AWS SSO as it avoids having long-lived IAM credentials on your device.
+On AWS, Granted works with both IAM roles and with AWS SSO. We highly recommend using Granted with AWS SSO as it avoids having long-lived IAM credentials on your device.
 
 ## Supported browsers
 

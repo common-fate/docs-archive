@@ -12,11 +12,64 @@ Granted utilises the [AWS Go SDK v2](https://github.com/aws/aws-sdk-go-v2) for a
 
 ## Release Verification
 
-TODO
+Common Fate signs Granted binaries with our [GPG key](#pgp-public-key). You can verify the integrity and authenticity of a Granted binary by following the process below.
+
+:::note
+The process below will use `v0.0.9` as the version of Granted. Ensure that you change references to `v0.0.9` to the version of Granted you wish to verify when following this process.
+:::
+
+Prior to verifying a release you must import our [GPG key](#pgp-public-key)
+
+```
+# get the key from Keybase, GitHub, or https://docs.commonfate.io/granted/security, and save it as commonfate.asc.
+gpg import commonfate.asc
+```
+
+1. Download the Granted release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
+
+   ```
+   curl -OL releases.commonfate.io/granted/v0.0.9/granted_0.0.9_linux_x86_64.tar.gz
+   ```
+
+2. Download the checksums for the release:
+   ```bash
+   curl -OL releases.commonfate.io/granted/v0.0.9/checksums.txt
+   ```
+3. Download the signature file:
+   ```bash
+   curl -OL releases.commonfate.io/granted/v0.0.9/checksums.txt.sig
+   ```
+4. Verify the integrity of the release artifact:
+
+   ```bash
+   shasum -a 256 -c checksums.txt --ignore-missing
+   ```
+
+   You should see an output similar to the below:
+
+   ```
+   granted_0.0.9_linux_x86_64.tar.gz: OK
+   ```
+
+5. Verify the integrity and authenticity of the checksums:
+   ```
+   gpg --verify ./checksums.txt.sig
+   ```
 
 ## Firefox addon security
 
-TODO
+The [Granted Firefox addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/) operates with the minimum possible permissions and does not have the ability to read information from any web pages. By design, the extension does not have permission to read any information from the DOM when you are accessing cloud provider consoles. The extension uses a [Background Script](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Anatomy_of_a_WebExtension#background_scripts) which can't directly access web page content.
+
+The permissions that this extension requires are:
+
+| Permission           | Reason                                                                                                                                                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| contextualIdentities | used to manage tab containers via the [contextualIdentity API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/contextualIdentities)                                 |
+| cookies              | required to access [container tab stores](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Work_with_the_Cookies_API#cookie_stores) in order to list available identities |
+| tabs                 | required to open a new tab in a container                                                                                                                                                       |
+| storage              | required to store information on the list of available containers                                                                                                                               |
+
+Additionally, the source code for the addon is [available on GitHub under the MIT licence](https://github.com/common-fate/granted-containers). Security-conscious users may opt to build the extension from source and install it locally: instructions on how to do so are available in the GitHub repository.
 
 ## Vulnerability Reporting
 
