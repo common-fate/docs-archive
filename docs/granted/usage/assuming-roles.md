@@ -16,7 +16,7 @@ Granted works best with Firefox but also supports Chrome, Brave, and Edge (https
   No
 ```
 
-Follow the steps in the wizard and then rerun `assume`.
+If you select Firefox, you'll be prompted to install the [Granted Firefox addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/). Follow the steps in the wizard and then rerun `assume`.
 
 :::info
 To update the web browser that Granted uses you can run `granted browser`.
