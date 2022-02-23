@@ -39,6 +39,34 @@ You can also use the profile selector with the `-c` flag to find a role, by runn
   role-c
 ```
 
+## Opening the console with a specific region
+You can open up the console for a role in a specific region by adding the `--region` or `-r` flag.
+For Example: 
+```
+assume -c -r ap-southeast-1
+``` 
+or
+
+```
+assume role-a -c -r ap-southeast-1
+``` 
+- Will open a console in the *ap-southeast-1* region with the role: role-a
+## Opening the console to a specific service
+You can open up the console for a role in a service region by adding the `--service` or `-s` flag.
+For Example: 
+```
+assume -c -s iam
+```
+- Will open up the console in IAM with the profile selected
+
+## Opening the console with an active role
+If you have already assumed a role using `assume`, you can open the console using this assumed role by adding the `--active-role` or `-ar` flags.
+For Example: 
+```
+assume -ar
+```
+
+
 ## Firefox: cleaning up containers
 
 The Granted Firefox extension includes a menu where you can view and clear your tab containers. The menu should appear next to the settings icon as shown below.
