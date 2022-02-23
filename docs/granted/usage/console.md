@@ -73,7 +73,7 @@ If you have already assumed a role using `assume`, you can open the console usin
 # Assume the 'role-a' profile in this terminal window
 assume role-a
 
-#
+# 'role-a' is now the active profile. Open a web console for it:
 assume -ar
 ```
 
