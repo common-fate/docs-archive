@@ -40,32 +40,42 @@ You can also use the profile selector with the `-c` flag to find a role, by runn
 ```
 
 ## Opening the console with a specific region
-You can open up the console for a role in a specific region by adding the `--region` or `-r` flag.
-For Example: 
+
+You can open a console for a profile in a specific region by adding the `--region` or `-r` flag. For example:
+
 ```
 assume -c -r ap-southeast-1
-``` 
+```
+
 or
 
 ```
-assume role-a -c -r ap-southeast-1
-``` 
-- Will open a console in the *ap-southeast-1* region with the role: role-a
+assume -c -r ap-southeast-1 role-a
+```
+
+Will open a console in the _ap-southeast-1_ region for the selected profile.
+
 ## Opening the console to a specific service
-You can open up the console for a role in a service region by adding the `--service` or `-s` flag.
-For Example: 
+
+You can open a console and go directly to a specific service by adding the `--service` or `-s` flag. For example:
+
 ```
 assume -c -s iam
 ```
-- Will open up the console in IAM with the profile selected
+
+Will open a console and take you directly to the IAM service (https://console.aws.amazon.com/iamv2). Granted supports using shortcuts such as `l` for the Lambda service. You can see the full list of shortcuts [here](https://github.com/common-fate/granted/blob/main/pkg/browsers/console.go). PRs which add additional shortcuts or services are very welcome.
 
 ## Opening the console with an active role
-If you have already assumed a role using `assume`, you can open the console using this assumed role by adding the `--active-role` or `-ar` flags.
-For Example: 
-```
+
+If you have already assumed a role using `assume`, you can open the console using this assumed role by adding the `--active-role` or `-ar` flags. For example:
+
+```bash
+# Assume the 'role-a' profile in this terminal window
+assume role-a
+
+#
 assume -ar
 ```
-
 
 ## Firefox: cleaning up containers
 
