@@ -32,7 +32,7 @@ To see which browser Granted will use to open cloud consoles with, run `granted 
 
 To change the web browser, run the command:
 
-```bash
+```
 granted browser set
 ```
 
