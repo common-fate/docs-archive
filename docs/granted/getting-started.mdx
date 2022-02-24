@@ -19,7 +19,7 @@ Although Granted doesn't depend on the AWS CLI, we recommend [installing it](htt
 
 You will also need to set up at least one role in your [AWS config file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). On MacOS and Linux, this is stored in `~/.aws/config`. On Windows, this is stored in the `%UserProfile%` directory. Some example configurations are included below.
 
-If you use AWS SSO but you haven't yet configured any profiles, you can run `aws sso configure` which will walk you through the process of setting up your profile file.
+If you use AWS SSO but you haven't yet configured any profiles, you can run `aws configure sso` which will walk you through the process of setting up your profile file.
 
 **If you're already set up roles for the AWS CLI to access AWS you probably don't need to configure anything: Granted uses the same configuration files as the AWS CLI.**
 
