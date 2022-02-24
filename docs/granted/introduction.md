@@ -34,7 +34,7 @@ On Chromium-based browsers Granted uses [Profiles](https://support.google.com/ch
 
 ## Why create Granted?
 
-As cloud practioners we follow best practices and use [multi-account environments](https://aws.amazon.com/organizations/getting-started/best-practices/). This frequently led to situations where we were cross-referencing resources or viewing logs across multiple accounts. When using the AWS console this becomes quite painful as only one account and region is accessible at a time per browser.
+As cloud practitioners we follow best practices and use [multi-account environments](https://aws.amazon.com/organizations/getting-started/best-practices/). This frequently led to situations where we were cross-referencing resources or viewing logs across multiple accounts. When using the AWS console this becomes quite painful as only one account and region is accessible at a time per browser.
 
 Yes, one way to solve this is to simply stop using the console and develop your own abstractions and visualisation layer on top of AWS's APIs. However, we believe the native console can be a useful tool for viewing your cloud resources; namely because you don't need to build anything yourself in order to use it.
 
