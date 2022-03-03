@@ -74,7 +74,7 @@ const config = {
             label: "Granted",
           },
           {
-            href: "https://granted.dev/cfcloud",
+            href: "https://granted.dev/cfcloud?ref=docs",
             label: "Common Fate Cloud",
             position: "left",
           },
