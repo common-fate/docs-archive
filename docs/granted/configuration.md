@@ -44,6 +44,7 @@ You will get a response like this:
   Brave
   Edge
   Firefox
+  Chromium
 ```
 
 Select which browser you would like to use and press Enter.
