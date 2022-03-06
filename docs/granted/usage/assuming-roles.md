@@ -87,6 +87,16 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
+## List of configured SSO Credential Providers
+Granted works with your chosen SSO credential provider! (sort of)
+Here is the current list of providers that work with Granted:
+- AWS SSO
+- IAM
+- aws-azure-login
+- aws-google-auth
+- Specifying a credential-process
+We are looking to add more to this list in the future and are calling on anyone to expand on this by interfacing their credential providers in Granted!
+
 ## Keychain prompt
 
 When using Granted on MacOS you will receive a keychain access prompt similar to the one below when Granted uses cached AWS SSO credentials to assume roles.
