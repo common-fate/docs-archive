@@ -28,7 +28,7 @@ gpg import commonfate.asc
 1. Download the Granted release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
 
    ```
-   curl -OL releases.commonfate.io/granted/v0.1.7/granted_0.0.9_linux_x86_64.tar.gz
+   curl -OL releases.commonfate.io/granted/v0.1.7/granted_0.1.7_linux_x86_64.tar.gz
    ```
 
 2. Download the checksums for the release:
@@ -48,7 +48,7 @@ gpg import commonfate.asc
    You should see an output similar to the below:
 
    ```
-   granted_0.0.9_linux_x86_64.tar.gz: OK
+   granted_0.1.7_linux_x86_64.tar.gz: OK
    ```
 
 5. Verify the integrity and authenticity of the checksums:
