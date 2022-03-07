@@ -1,47 +1,176 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
-# Introduction
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-Granted is a command line interface (CLI) application which simplifies access to cloud roles and allows multiple cloud accounts to be opened in your web browser simultaneously. The goals of Granted are:
+# Getting Started
 
-- Provide a fast experience around finding and assuming roles
-- Leverage native browser functionality to allow multiple accounts to be accessed at once
-- Encrypt cached credentials to avoid plaintext SSO tokens being saved on disk
+This guide will get you started using Granted to assume roles in AWS. It will take around 5 minutes to complete.
 
-![A screenshot of the AWS Console on Firefox with two tabs: the first tab is blue and is the 'role-a' profile, and the second tab is orange and is the 'role-b' profile](/img/tab-containers.png)
+![A screenshot of Granted CLI showing a selection menu for AWS profiles](/img/cli-screenshot.png)
 
-## Supported cloud providers
+## Requirements
 
-Granted currently supports AWS. If you'd like to see support for another cloud provider please let us know by [opening an issue on GitHub](https://github.com/common-fate/granted/issues)!
+Although Granted doesn't depend on the AWS CLI, we recommend [installing it](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) in order to run a test command to verify Granted is working properly.
 
-On AWS, Granted works with both IAM roles and with AWS SSO. We highly recommend using Granted with AWS SSO as it avoids having long-lived IAM credentials on your device.
+## Set up your AWS profile file
 
-## Supported browsers
+You will also need to set up at least one role in your [AWS config file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html). On MacOS and Linux, this is stored in `~/.aws/config`. On Windows, this is stored in the `%UserProfile%` directory. Some example configurations are included below.
 
-Granted currently supports Firefox and Chromium-based browsers (such as Chrome, Brave, and Edge).
+If you use AWS SSO but you haven't yet configured any profiles, you can run `aws configure sso` which will walk you through the process of setting up your profile file.
 
-:::tip
+**If you're already set up roles for the AWS CLI to access AWS you probably don't need to configure anything: Granted uses the same configuration files as the AWS CLI.**
 
-We recommend using Firefox with Granted as it has the best user experience when accessing multiple cloud consoles, even if it's not your daily driver browser.
+<details open>
+<summary>Example configuration for AWS SSO (recommended)</summary>
+<div>
 
-:::
+```
+# ~/.aws/config
+# Change the values below to match your AWS SSO configuration
+# Granted uses the profile name: in this case 'my-profile' to choose the role.
 
-On Firefox Granted uses [Multi-Account Containers](https://support.mozilla.org/en-US/kb/containers) to view multiple cloud accounts. Multiple cloud accounts can be opened in the same window and they are color-coded for easy reference. In order to use Granted with Firefox you'll need to download [our Firefox addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/). The extension requires minimal permissions and does not have access to web page content. You can read more about security considerations for the extension [here](/granted/security).
+[profile my-profile]
+sso_start_url=https://mycompany.awsapps.com/start
+sso_region=us-east-1
+sso_account_id=123456789012
+sso_role_name=DeveloperRole
+region=us-east-1
+```
 
-On Chromium-based browsers Granted uses [Profiles](https://support.google.com/chrome/answer/v0.0.5[1:]24). Each cloud account is opened in a separate window.
+</div>
+</details>
 
-## Why create Granted?
+<details>
+<summary>Example configuration for AWS IAM user and roles</summary>
 
-As cloud practitioners we follow best practices and use [multi-account environments](https://aws.amazon.com/organizations/getting-started/best-practices/). This frequently led to situations where we were cross-referencing resources or viewing logs across multiple accounts. When using the AWS console this becomes quite painful as only one account and region is accessible at a time per browser.
+More information on using IAM users and roles can be found [here](https://blog.coinbase.com/you-need-more-than-one-aws-account-aws-bastions-and-assume-role-23946c6dfde3).
 
-Yes, one way to solve this is to simply stop using the console and develop your own abstractions and visualisation layer on top of AWS's APIs. However, we believe the native console can be a useful tool for viewing your cloud resources; namely because you don't need to build anything yourself in order to use it.
+<div>
 
-An additional motivation on developing Granted is the way that the AWS CLI handles session credentials when using AWS SSO. We're big fans of AWS SSO as it removes the need for long-lived IAM credentials; however the AWS CLI stores [the SSO access token in plaintext](https://aws.amazon.com/premiumsupport/knowledge-center/sso-temporary-credentials/). If this token is compromised it can be [painful](https://stackoverflow.com/questions/v0.0.5[1:]394/how-to-revoke-a-user-session-when-using-aws-sso) [to revoke](https://blog.christophetd.fr/phishing-for-aws-credentials-via-aws-sso-device-code-authentication/#Containment_8211_revoking_AWS_SSO_access_tokens). Granted offers an improvement over the AWS CLI in this regard, as the SSO access token is stored in the system's keychain rather than on disk.
+```
+# ~/.aws/credentials
+[base]
+aws_access_key_id=<ACCESS_KEY>
+aws_secret_access_key=<SECRET_KEY>
+```
 
-We've been using Granted internally for all our cloud access at Common Fate for the past few months and we've found it's greatly increased our productivity when working in the cloud.
+```
+# ~/.aws/config
+# Change the values below to match your AWS role configuration
+# Granted uses the profile name: in this case 'my-profile' to choose the role.
 
-## Get started
+[profile base]
+region=us-east-1
 
-Follow the [Getting Started guide](/granted/getting-started) to start using Granted for your cloud access.
+[profile my-profile]
+region=us-east-1
+source_profile=base
+role_arn=arn:aws:iam::123456789012:role/my-role
+```
+
+</div>
+</details>
+
+## Installing the CLI
+
+In order to use Granted you'll need to install it on your system. Common Fate provides binaries for Granted.
+
+<Tabs
+  groupId="operating-systems"
+  defaultValue="macos"
+  values={[
+	  { label: "Homebrew on MacOS", value: "macos" },
+	  { label: "Linux", value: "linux" },
+	  { label: "Windows", value: "windows" },
+	  ]}
+>
+<TabItem value="macos">
+
+[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for Granted. To install Granted with Homebrew, run the commands below in your terminal.
+
+```
+brew tap common-fate/granted
+brew install granted
+```
+
+</TabItem>
+<TabItem value="linux">
+
+Select the steps which match your system architecture. You can find your architecture by running `uname -m` from a terminal window.
+
+<Tabs
+groupId="linux-arch"
+defaultValue="x86_64"
+values={[
+{ label: "x86_64", value: "x86_64" },
+{ label: "arm64", value: "arm64" },
+{ label: "i386", value: "i386" },
+]}
+>
+
+<TabItem value="x86_64">
+
+```
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_x86_64.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_x86_64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="arm64">
+
+```
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_arm64.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_arm64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="i386">
+
+```
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_i386.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_i386.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
+<TabItem value="windows">
+
+First, download the zip archive of Granted which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
+
+[Granted for Windows x86_64](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_x86_64.zip)
+
+[Granted for Windows arm64](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_arm64.zip)
+
+[Granted for Windows i386](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_i386.zip)
+
+After downloading Granted, unzip the package. Granted runs as two binaries, `assume` and `granted`. Any other files in the package can be removed and Granted will still function.
+
+You'll need to move Granted to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+
+</TabItem>
+
+</Tabs>
+
+## Verify the installation
+
+You can verify the integrity and authenticity of the Granted binary you have downloaded by running through the [verification process here](/granted/security#release-verification).
+
+To verify that the installation has succeeded, print the version of Granted by running `granted -v`. You should see an output similar to below.
+
+```
+➜ granted -v
+
+Granted v0.1.3
+```
+
+If you have any issues installing don't hesitate to [ask for help on our Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
+
+## Next steps
+
+Now that you've installed Granted, it's time to [assume your first role](/granted/usage/assuming-roles).

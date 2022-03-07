@@ -15,7 +15,7 @@ Granted utilises the [AWS Go SDK v2](https://github.com/aws/aws-sdk-go-v2) for a
 Common Fate signs Granted binaries with our [GPG key](#pgp-public-key). You can verify the integrity and authenticity of a Granted binary by following the process below.
 
 :::note
-The process below will use `vv0.0.5[1:]` as the version of Granted. Ensure that you change references to `vv0.0.5[1:]` to the version of Granted you wish to verify when following this process.
+The process below will use `v0.0.9` as the version of Granted. Ensure that you change references to `v0.0.9` to the version of Granted you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](#pgp-public-key)
@@ -28,16 +28,16 @@ gpg import commonfate.asc
 1. Download the Granted release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
 
    ```
-   curl -OL releases.commonfate.io/granted/vv0.0.5[1:]/granted_v0.0.5[1:]_linux_x86_64.tar.gz
+   curl -OL releases.commonfate.io/granted/v0.0.9/granted_0.0.9_linux_x86_64.tar.gz
    ```
 
 2. Download the checksums for the release:
    ```bash
-   curl -OL releases.commonfate.io/granted/vv0.0.5[1:]/checksums.txt
+   curl -OL releases.commonfate.io/granted/v0.0.9/checksums.txt
    ```
 3. Download the signature file:
    ```bash
-   curl -OL releases.commonfate.io/granted/vv0.0.5[1:]/checksums.txt.sig
+   curl -OL releases.commonfate.io/granted/v0.0.9/checksums.txt.sig
    ```
 4. Verify the integrity of the release artifact:
 
@@ -48,7 +48,7 @@ gpg import commonfate.asc
    You should see an output similar to the below:
 
    ```
-   granted_v0.0.5[1:]_linux_x86_64.tar.gz: OK
+   granted_0.0.9_linux_x86_64.tar.gz: OK
    ```
 
 5. Verify the integrity and authenticity of the checksums:
@@ -79,22 +79,22 @@ If you would like to report a vulnerability in Granted, please email security@co
 
 ## PGP Public Key
 
-Our PGP public key can be fetched from [Keybase](https://keybase.io/commonfate) with fingerprint `65AB 725B 0v0.0.5[1:]C8v0.0.5[1:]F 9FDv0.0.5[1:]4 78AB E3D8 ED71`. A copy of the public key is included below.
+Our PGP public key can be fetched from [Keybase](https://keybase.io/commonfate) with fingerprint `65AB 725B 01E6 5C85 051F 9FD5 5024 78AB E3D8 ED71`. A copy of the public key is included below.
 
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
-mQINBGCb9UABEADcK6S4PPSDZRcgR4ToKvljghmLv0.0.5[1:]A32CvHOTBpWumhfmHoi
-9zDq/fB/vzhMcxGKrD4D64Rnav0.0.5[1:]NGVEYTxwm4iwTNBNxKb1VFRlXKZtqXsYk6
+mQINBGCb9UABEADcK6S4PPSDZRcgR4ToKvljghmL3m8v9A32CvHOTBpWumhfmHoi
+9zDq/fB/vzhMcxGKrD4D64Rna3T2L2NGVEYTxwm4iwTNBNxKb1VFRlXKZtqXsYk6
 JCplGLinkSROoZhhGFbJjUE5GGbnuhWgAZbJRd937rumHgA9RNXy2lV0APQo9qvR
 TkOfqS8LgKNQDY7ljYcGsNgj1uWTqshsYzqm7D/QLy9L+9zR9nD7oO7yoJAmbeyO
 RayAXcZZafw/SXHHZDeiuQgJwsuAP+Xgg63TGyAZgB/k73tAvw+CfNKejlan0r2u
-I7JvP9RZI+q+UXVKtiWYCadvmMD6TnXpwlDguR1wFv0.0.5[1:]0UjSm9Uv8I4IHVlaO4
+I7JvP9RZI+q+UXVKtiWYCadvmMD6TnXpwlDguR1wF9O8I00UjSm9Uv8I4IHVlaO4
 cX1NOfA4LaHEgH+43Zefkcl0kq1gkHOq34JjHf1DNAaxT4BDx8GZPIw14dXw3PLu
 CF1xAjqTA5KuAH6A91ZeIkaYAWmZJeZo7HyLXhrN9oMeFY0EyAXBcnHLapHcqwlq
 32eECjN1k6wgeiygNjOLvGx5n3UG5lTg3EJ3CIAwxnWROGQDnZ3u3ibxJi80saVv
 IBpheTr+hIUQMal/3QKX4JRl/+CYbtypazIOc9UNRxEkRENqJTaD24ww//iyITXY
-L5yXlhl5Z8nIJuiv0.0.5[1:]nBvmTBkF1H0BVacBPeI2abEXZjMp2L2FT7cZJQARAQAB
+L5yXlhl5Z8nIJui4q3z1nBvmTBkF1H0BVacBPeI2abEXZjMp2L2FT7cZJQARAQAB
 tCRDb21tb24gRmF0ZSA8c2VjdXJpdHlAY29tbW9uZmF0ZS5pbz6JAk4EEwEIADgC
 GwECF4AWIQRlq3JbAeZchQUfn9VQJHir49jtcQUCYJv2rgULCQgHAwUVCgkICwUW
 AgMBAAIeBQAKCRBQJHir49jtcXdeEACpc9jNKsZWKD6ozToKIK3/RBHNwfEIoaAb
@@ -102,20 +102,20 @@ AgMBAAIeBQAKCRBQJHir49jtcXdeEACpc9jNKsZWKD6ozToKIK3/RBHNwfEIoaAb
 P+MRUUvXC5QNSIfH+eD/PxNih2pxLzUGGaqMuPzHAP4aovx/0GMzFWpOR6AIgVHo
 +zmygfpiWmYbBntDcMsRssTGkfnisuL/QJ7cWTl+mStg5wJybTXGdm6A6bGlqp3n
 +UDjq1s9vQRfq1kFZJdu36LbG5OZMGVzQswtZtj5DOMSQWgwnJdSPjJrnFbe4ieu
-3rFysdE3gu+ZFKdNN+v1FUOtwov0.0.5[1:]m2W4axJc3wpcQXbYZGw2RsAgWpKHSN8uV
-zT9CYxl7MoANDvxwmQVLRFUao3qtSZVJtNov0.0.5[1:]5/dS88Auawf0PpV1yEFPf9Fk
+3rFysdE3gu+ZFKdNN+v1FUOtwo0I3W7m2W4axJc3wpcQXbYZGw2RsAgWpKHSN8uV
+zT9CYxl7MoANDvxwmQVLRFUao3qtSZVJtNo829145/dS88Auawf0PpV1yEFPf9Fk
 WJQOVjSQnq8vwsoNivMOcBh+kpsYHVi9IEbMEBwK/FS79NFAl63tb4Z5JKHXLYEV
 U5D/PmCFCd326QDAWzELvEAW45SH6G6TCSW2yy/Q2wf+VXfenm1THzCsIhaS0TDl
 QCPM60uqzVy0Cg7TCbrIp4AKrZoAypd4fIzvsnVHZg6iqPHHT74ZKC4tyljWE0VJ
 ZTqLrakjXyrNX03IHJ/qGplreOnK4sAm19kISVI3Np9XEllAhrDv8478nmM0Q66e
 j14VQKjTlLkCDQRgm/vrARAAuqUKr/Gb2Il235ramYnjDzJH8zErpO90Cd7SXKMd
-Btw5ArBGv0.0.5[1:]QeorB/6Z21A3Xf0QphiUkfNeWXlkcewuFwDBJiIv4Y2XC/EzmxR
+Btw5ArBG1k9d6QeorB/6Z21A3Xf0QphiUkfNeWXlkcewuFwDBJiIv4Y2XC/EzmxR
 A9B0OX5A44TityUKWQbdNpxhNqiOEnqGqV2DVwxkOdeuaBc4cXbEKL+DRnZVMNdw
 Bilakl3ZX5b8uyGXnZm4ExACi4Cs63r4vd3s0sQoT4YxiCusaVnJSsvt+Tk6qMcF
 yqlWca9DBTsFXCkDCsBiXMDDkU+03rJvBsh1r+9ZqOGgrecB8hMCPrJ6omr4MLmt
 wLFOFyYcsuar5IPUenws3g1NIK31kDX/I4ARN560LKovj8rSJOEFhAQ2JRPV0hJ8
 iFqkq0+pJtlXMsq57SDgpaECJ+R+tkUuqal1W+cqiwW6yRP7GrqxPogJsThucES8
-RiE3IT0IRBv70OYvP268Y/v0.0.5[1:]VrBDifsy+BWfRrX6kLDSYKyCBrbeQ8dA4uk7Y
+RiE3IT0IRBv70OYvP268Y/392p8VrBDifsy+BWfRrX6kLDSYKyCBrbeQ8dA4uk7Y
 ZJg1p5uevCiCOQ+MbFucRHxHaLv7xf+3Gvac8R2F///T4NjxdcNWorz158ZuOb1G
 3uN/4auwNFcDKv2+ASeTgTLZP1VBuOB9fieyY/9YI1d5wcxKQ+z69NQjYJNkxs7P
 HZWEakuztIWna72KqEYVMs4+tVyli+2dkcJD8KpHlvoVKH6Vl7KCiic5lx6FPf+K
@@ -129,7 +129,7 @@ L1Fn74waRGqaKRUx6BZA03DPPkbOuHAKGfCmsBqLMSWuVtx9JReL5DHZlSnK4guM
 d3EBinYfF/gOU+OsujFhLPeDwh6D4cfYEyMQsmL6VNWlX4p75cHrtjDPIPwsDu1s
 5gf37WwalrX68cbovoDJvO11VSLFy6cqDWfc25k1TYjDClb2pVwyL+kyoreBeSVD
 SLI5aEgK22q5BxznLzbWnCgXi0+VdrbmRXi8LRepns5mfgWD/kOJgTAZRfQNb1G5
-vLx+gxOvv0.0.5[1:]aIXSPHlk1NQRBumpd4CgEsWaod5q7LhYOeP0hys8k//hWU2XWsy
+vLx+gxOv0h8m1aIXSPHlk1NQRBumpd4CgEsWaod5q7LhYOeP0hys8k//hWU2XWsy
 v45jBAcDO6XR37uys5CE7w9e+q0cQDSx7xmuy+DW9oI65+RKcK3muGesBnoAf9BE
 YsQkg6/cijiPwda3IDhptHm5R3pfqZPDlziTeEKx/TBoQHNWmwI3AYH1v1aFsWeU
 +f82Cw/9HWMFl3zo3KbWI4tdHTIOgD6UpeInXs45gXMDs/iw4mNQWnCcLDngwI82
@@ -140,8 +140,8 @@ h8PQfjcBoH6o/c5Ti5iBmUKWIlGcnTceaT4quOVy7dYOueO89phVfh12EX1fOifn
 zZtx5pHGGT9atgCcXY0CAgmzR1oFfge6+wZX9DAOYPicl8gnWSBnwYzOLEu7+5df
 OmbADgOWDYwSxtaWdoXnQzizUYHcRerwVGsuqhb7CcQ5FiZgOX6EIpCitlz9gznG
 PPsVpxOVETwcARmwLAo+yfL4Ci5ArNaauisxGO4ioDZvTuUgzFfMDVDINizwa8tG
-0BSfD7EHeCs6pRA6HbHfSsBQ+gdCI0LnT0b+Sv0.0.5[1:]YCaGIGhvnHG8sCYan44ZNo
-47Ez4Z1hPjgVwo2I+grqvRStnRsv0.0.5[1:]8z5xLwxv0.0.5[1:]FUjXm3ez/MylV/UoL3zB
+0BSfD7EHeCs6pRA6HbHfSsBQ+gdCI0LnT0b+S8G5C4YCaGIGhvnHG8sCYan44ZNo
+47Ez4Z1hPjgVwo2I+grqvRStnRs8i8O18z5xLwx9g5o6FUjXm3ez/MylV/UoL3zB
 arzOaipAdOuTFwxC95aansKixfjvulqFbbJWRzx96Ipr3NoSP+g=
 =DqSH
 -----END PGP PUBLIC KEY BLOCK-----

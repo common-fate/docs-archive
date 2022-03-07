@@ -59,7 +59,7 @@ You can search for a role by name by typing on your keyboard. Select a role usin
 You should then see an output similar to below:
 
 ```
-[role-a] session credentials will expire 2v0.0.5[1:]2-21 16:36:20 +0000 GMT
+[role-a] session credentials will expire 2022-02-21 16:36:20 +0000 GMT
 ```
 
 You can use the [AWS STS Get Caller Identity API](https://docs.aws.amazon.com/cli/latest/reference/sts/get-caller-identity.html) to verify that you have assumed the role. Run the below command from the same terminal window that you called `assume` from. You should see an output similar to below, with the `UserId`, `Account`, and `ARN` fields matching your role's configuration.
@@ -68,8 +68,8 @@ You can use the [AWS STS Get Caller Identity API](https://docs.aws.amazon.com/cl
 ➜ aws sts get-caller-identity
 {
     "UserId": "ABCDEFGHIJKLM:me@company.com",
-    "Account": "v0.0.5[1:]v0.0.5[1:]12",
-    "Arn": "arn:aws:sts::v0.0.5[1:]v0.0.5[1:]12:assumed-role/my-role/session-name"
+    "Account": "123456789012",
+    "Arn": "arn:aws:sts::123456789012:assumed-role/my-role/session-name"
 }
 ```
 
@@ -84,7 +84,7 @@ To avoid needing to open the role selector, you can specify the name of the prof
 ```
 ➜ assume role-a
 
-[role-a] session credentials will expire 2v0.0.5[1:]2-21 16:47:33 +0000 GMT
+[role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
 ## Keychain prompt
