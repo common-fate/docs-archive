@@ -35,7 +35,7 @@ If you use AWS SSO but you haven't yet configured any profiles, you can run `aws
 [profile my-profile]
 sso_start_url=https://mycompany.awsapps.com/start
 sso_region=us-east-1
-sso_account_id=v0.0.5[1:]v0.0.5[1:]12
+sso_account_id=123456789012
 sso_role_name=DeveloperRole
 region=us-east-1
 ```
@@ -46,7 +46,7 @@ region=us-east-1
 <details>
 <summary>Example configuration for AWS IAM user and roles</summary>
 
-More information on using IAM users and roles can be found [here](https://blog.coinbase.com/you-need-more-than-one-aws-account-aws-bastions-and-assume-role-v0.0.5[1:]c6dfde3).
+More information on using IAM users and roles can be found [here](https://blog.coinbase.com/you-need-more-than-one-aws-account-aws-bastions-and-assume-role-23946c6dfde3).
 
 <div>
 
@@ -68,7 +68,7 @@ region=us-east-1
 [profile my-profile]
 region=us-east-1
 source_profile=base
-role_arn=arn:aws:iam::v0.0.5[1:]v0.0.5[1:]12:role/my-role
+role_arn=arn:aws:iam::123456789012:role/my-role
 ```
 
 </div>
@@ -114,24 +114,24 @@ values={[
 <TabItem value="x86_64">
 
 ```
-curl -OL releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_linux_x86_64.tar.gz
-sudo tar -zxvf ./granted_v0.1.7[1:][1:]_linux_x86_64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_x86_64.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_x86_64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
 <TabItem value="arm64">
 
 ```
-curl -OL releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_linux_arm64.tar.gz
-sudo tar -zxvf ./granted_v0.1.7[1:][1:]_linux_arm64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_arm64.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_arm64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
 <TabItem value="i386">
 
 ```
-curl -OL releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_linux_i386.tar.gz
-sudo tar -zxvf ./granted_v0.1.7[1:][1:]_linux_i386.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/granted/v0.1.3/granted_0.1.3_linux_i386.tar.gz
+sudo tar -zxvf ./granted_0.1.3_linux_i386.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
@@ -143,15 +143,15 @@ sudo tar -zxvf ./granted_v0.1.7[1:][1:]_linux_i386.tar.gz -C /usr/local/bin/
 
 First, download the zip archive of Granted which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
 
-[Granted for Windows x86_64](https://releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_windows_x86_64.zip)
+[Granted for Windows x86_64](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_x86_64.zip)
 
-[Granted for Windows arm64](https://releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_windows_arm64.zip)
+[Granted for Windows arm64](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_arm64.zip)
 
-[Granted for Windows i386](https://releases.commonfate.io/granted/v0.1.7[1:]/granted_v0.1.7[1:][1:]_windows_i386.zip)
+[Granted for Windows i386](https://releases.commonfate.io/granted/v0.1.3/granted_0.1.3_windows_i386.zip)
 
 After downloading Granted, unzip the package. Granted runs as two binaries, `assume` and `granted`. Any other files in the package can be removed and Granted will still function.
 
-You'll need to move Granted to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/v0.0.5[1:]80/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+You'll need to move Granted to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
 
 </TabItem>
 
@@ -166,7 +166,7 @@ To verify that the installation has succeeded, print the version of Granted by r
 ```
 ➜ granted -v
 
-Granted v0.1.7[1:]
+Granted v0.1.3
 ```
 
 If you have any issues installing don't hesitate to [ask for help on our Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
