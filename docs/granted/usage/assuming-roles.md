@@ -5,7 +5,7 @@ Run the `assume` command to assume a role with Granted.
 ## First time setup
 
 The first time you run `assume`, you'll be prompted to select a web browser for Granted to use when opening web consoles for your roles. You should see a prompt similar to the one below.
-
+- Granted searches your PATH and checks common install locations to determine your current default browser. If thats not the browser you want to use ou can still specify another at a later stage in the first time setup.
 ```
 ➜ assume
 Granted works best with Firefox but also supports Chrome, Brave, and Edge (https://granted.dev/browsers).
@@ -94,7 +94,7 @@ Here is the current list of providers that work with Granted:
 - IAM
 - aws-azure-login
 - aws-google-auth
-- Specifying a credential-process
+- Specifying a credential-process in your config
 We are looking to add more to this list in the future and are calling on anyone to expand on this by interfacing their credential providers in Granted!
 
 ## Keychain prompt
