@@ -55,3 +55,40 @@ We currently do not collect error reports in Granted but this is something we ar
 The Granted binary will periodically check to see if new versions are available by calling https://update.api.granted.dev.
 
 To disable update checking you can set the environment variable `GRANTED_DISABLE_UPDATE_CHECK=true`.
+
+
+## Granted Configuation Editing
+Granted gives you tools to be able to interact with the config that is set under the hood.
+
+- Use the `-unset` flag to remove any exported environment variables that Granted has provisioned
+eg.
+```
+granted -unset
+```
+
+- Use the `uninstall` command to reset the granted configuration to a factory default
+```
+granted uninstall
+```
+
+### SSO Configuration
+- To list all SSO tokens saved in the Granted keychain use the `token` command
+```
+granted token
+```
+```
+granted token list
+```
+
+- To remove a token from the local store use `token remove`
+```
+granted token remove
+```
+```
+granted token remove profile_name
+```
+- To remove all tokens from the store use the `--all` flag
+```
+granted token remove --all
+```
+
