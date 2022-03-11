@@ -63,7 +63,7 @@ Granted gives you tools to be able to interact with the config that is set under
 - Use the `-unset` flag to remove any exported environment variables that Granted has provisioned
 eg.
 ```
-granted -unset
+assume -unset
 ```
 
 - Use the `uninstall` command to reset the granted configuration to a factory default
