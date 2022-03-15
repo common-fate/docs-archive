@@ -87,15 +87,17 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
-## List of configured SSO Credential Providers
-Granted works with your chosen SSO credential provider! (sort of)
+## Using a third party credential provider
+Granted supports using third party CLIs to obtain AWS credentials.
+
 Here is the current list of providers that work with Granted:
 - AWS SSO
 - IAM
-- aws-azure-login
-- aws-google-auth
+- [aws-azure-login](https://github.com/sportradar/aws-azure-login)
+- [aws-google-auth](https://github.com/cevoaustralia/aws-google-auth)
 - Specifying a credential-process in your config
-We are looking to add more to this list in the future and are calling on anyone to expand on this by interfacing their credential providers in Granted!
+
+We are looking to add more to this list in the future. Contributions for additional credential providers are most welcome. [assumer_aws_azure_login.go](https://github.com/common-fate/granted/blob/eb7221d4e69472bf1c8a7171d930ff0cab37290d/pkg/cfaws/assumer_aws_azure_login.go) in our source code is a good example to use as a starting point.
 
 ## Keychain prompt
 
