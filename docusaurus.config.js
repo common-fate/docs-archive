@@ -10,6 +10,7 @@ const SLACK_URL =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Common Fate Documentation",
+  staticDirectories: ['static'],
   tagline: "Identity-first cloud security for innovative teams",
   url: "https://docs.commonfate.io",
   baseUrl: "/",
