@@ -8,3 +8,5 @@ approval_rules:
     requires:
       count: 1
       organizations: ["common-fate"]
+    options:
+      allow_contributor: true
