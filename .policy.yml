@@ -1,0 +1,12 @@
+policy:
+  approval:
+    - and:
+        - peer review is required
+
+approval_rules:
+  - name: peer review is required
+    requires:
+      count: 1
+      organizations: ["common-fate"]
+    options:
+      allow_contributor: true

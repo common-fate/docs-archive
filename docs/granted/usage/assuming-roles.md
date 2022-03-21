@@ -87,6 +87,7 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
+
 ## Using a third party credential provider
 Granted supports using third party CLIs to obtain AWS credentials.
 
@@ -99,6 +100,19 @@ Here is the current list of providers that work with Granted:
 
 We are looking to add more to this list in the future. Contributions for additional credential providers are most welcome. [assumer_aws_azure_login.go](https://github.com/common-fate/granted/blob/eb7221d4e69472bf1c8a7171d930ff0cab37290d/pkg/cfaws/assumer_aws_azure_login.go) in our source code is a good example to use as a starting point.
 
+
+## Pass through flags
+If you are using a custom SSO credential provider like aws-azure-login or aws-google-auth Granted allows you to pass through flags to run custom procedures using those providers
+- Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command. 
+eg.
+```
+assume role-a -pt --no-prompt
+```
+under the hood will run :
+```
+aws-azure-login —profile role-a —no-prompt
+```
+
 ## Keychain prompt
 
 When using Granted on MacOS you will receive a keychain access prompt similar to the one below when Granted uses cached AWS SSO credentials to assume roles.
@@ -106,6 +120,8 @@ When using Granted on MacOS you will receive a keychain access prompt similar to
 ![A MacOS keychain prompt which states 'assumego would like to use confidential information stored in your keychain'](/img/keychain-prompt.png)
 
 This is expected as Granted stores the AWS SSO credentials in your keychain. The binary name which you see in this prompt should always be `assumego`.
+
+
 
 ## Next steps
 

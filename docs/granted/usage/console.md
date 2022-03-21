@@ -27,6 +27,10 @@ assume -c role-b
 
 Granted will open this role in your same browser and you will be able to access both roles simultaneously.
 
+:::info
+If Granted is unable to open the console in your browser it will fallback to returning a URL for you to paste into your browser
+:::
+
 ## Using the profile selector
 
 You can also use the profile selector with the `-c` flag to find a role, by running `assume -c` without a profile name. When run without a role name, Granted will prompt you to select a profile and will then open the browser.
@@ -76,6 +80,17 @@ assume role-a
 
 # 'role-a' is now the active profile. Open a web console for it:
 assume -ar
+```
+
+## Assuming a role and returning the console URL
+If you don't want the browser to automatically open the browser or are using Granted from a headless node Granted has the option to only return the console URL with all the session credentials included. 
+This can be acheived by running: 
+```
+assume -u
+``` 
+or 
+```
+assume role-a -u
 ```
 
 ## Firefox: cleaning up containers
