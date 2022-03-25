@@ -20,6 +20,6 @@ jobs:
         uses: aws-actions/configure-aws-credentials@master
         with:
           aws-region: ${{ secrets.AWS_REGION }}
-          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/docs-releaser
+          role-to-assume: arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/cf-githubactions-docs
       - name: Deploy
         run: aws s3 sync ./build s3://cf-release-docs-origin
