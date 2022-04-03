@@ -66,6 +66,7 @@ const config = {
         logo: {
           alt: "Common Fate",
           src: "img/logo.svg",
+          href: "/granted/introduction"
         },
         items: [
           {
