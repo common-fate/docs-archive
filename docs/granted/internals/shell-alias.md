@@ -6,18 +6,19 @@ In order to minimise the number of commands that Granted users need to run, Gran
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_SESSION_TOKEN`
-- `GRANTED_AWS_ROLE_PROFILE`
+- `AWS_PROFILE`
+- `AWS_SESSION_EXPIRATION`
 
 :::note
 
-When opening a web console for your active role by running `assume -c -ar`, Granted reads the `GRANTED_AWS_ROLE_PROFILE` to determine the active role.
+When opening a web console for your active role by running `assume -c -ar`, Granted reads the `AWS_PROFILE` to determine the active role.
 
 :::
 
 Shells such as Bash generally do not permit executables to export environment variables into the shell which called them. To overcome this limitation, Granted includes an `assume` [shell script](https://github.com/common-fate/granted/blob/main/scripts/assume) which wraps our binary (called `assumego`) and reads the `stdout` output of the binary. After assuming a role, our binary prints the following line to `stdout`:
 
 ```
-GrantedAssume <AWS_ACCESS_KEY_ID> <AWS_SECRET_ACCESS_KEY> <AWS_SESSION_TOKEN> <GRANTED_AWS_ROLE_PROFILE>
+GrantedAssume <AWS_ACCESS_KEY_ID> <AWS_SECRET_ACCESS_KEY> <AWS_SESSION_TOKEN> <AWS_PROFILE>
 ```
 
 The shell script reads this line and exports the environment variables accordingly.
