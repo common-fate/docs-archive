@@ -16,6 +16,19 @@ Granted stores configuration in the `$HOME/.granted` folder on Unix systems, and
 
 Granted uses a [Frecency](https://en.wikipedia.org/wiki/Frecency) algorithm to show the most frequent and recent profiles at the top of the list when running `assume`. The algorithm can be found [here](https://github.com/common-fate/granted/blob/main/pkg/frecency/frecency.go). The algorithm caches frecency data locally in the `aws_profiles_frecency` file in the Granted configuration folder.
 
+## Changing the profile ordering
+
+There are settings options in Granted which allow you to change the way that profiles are listed in use. Default being by Frecency. Alternatively it can be configured to list profiles alphabetically. To set the profile ordering type just run:
+```
+granted settings profile-order set
+```
+From here you will be able to select your preferred method of choice
+```
+? Select filter type  [Use arrows to move, type to filter]
+> Frecency
+  Alphabetical
+```
+
 ## Autocompletion
 
 Granted has support for shell auto complete. We currently support fish, with plans to support [bash, powershell, and zsh](https://github.com/urfave/cli/tree/master/autocomplete) in the future. Please let us know of your interest by [opening an issue on GitHub](https://github.com/common-fate/granted/issues).
