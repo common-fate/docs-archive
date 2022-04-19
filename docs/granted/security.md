@@ -38,6 +38,7 @@ gpg import commonfate.asc
 3. Download the signature file:
    ```bash
    curl -OL releases.commonfate.io/granted/v0.1.14/checksums.txt.sig
+
    ```
 4. Verify the integrity of the release artifact:
 
