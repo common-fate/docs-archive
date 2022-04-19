@@ -5,6 +5,7 @@ Granted allows you to access multiple cloud accounts in your web browser simulta
 ![A screenshot of the AWS Console on Firefox with two tabs: the first tab is blue and is the 'role-a' profile, and the second tab is orange and is the 'role-b' profile](/img/tab-containers.png)
 
 If you have credentials already assumed locally you can run `assume role-a -c ` to open up a console window using that role.
+
 ## For a specific profile
 
 To open the web console for a role, add the `--console` or `-c` flag to your `assume` call, for example:
@@ -83,12 +84,16 @@ assume -ar
 ```
 
 ## Assuming a role and returning the console URL
-If you don't want the browser to automatically open the browser or are using Granted from a headless node Granted has the option to only return the console URL with all the session credentials included. 
-This can be acheived by running: 
+
+If you don't want the browser to automatically open the browser or are using Granted from a headless node Granted has the option to only return the console URL with all the session credentials included.
+This can be acheived by running:
+
 ```
 assume -u
-``` 
-or 
+```
+
+or
+
 ```
 assume role-a -u
 ```
@@ -102,3 +107,8 @@ The Granted Firefox extension includes a menu where you can view and clear your 
 Clicking on the icon shows a menu where you can clear your Granted tab containers, as shown below. This is useful if you have roles which you are no longer accessing and you'd like to declutter your tab container list.
 
 ![A screenshot of Firefox showing the Granted menu, with a button at the bottom to clear all containers](/img/granted-firefox-menu.png)
+
+## Next steps
+
+In addition to assuming roles for use in the terminal, Granted supports some headless workflows.
+[Next, you'll learn how to use Granted in headless environments](/granted/usage/headless).
