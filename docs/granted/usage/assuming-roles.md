@@ -87,7 +87,7 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
-## Override duration
+## Overriding Duration
 
 With Granted you can specify the `--duration` or `-d` flag to set the temporary credentials duration. Note that this will have to be within the default maximum duration set on the role when the role was created.
 
@@ -131,6 +131,13 @@ eg.
 ```
 assume role-a --env
 ```
+This will insert the following into your .env file!
+```
+AWS_ACCESS_KEY_ID=<access key>
+AWS_REGION=<region>
+AWS_SECRET_ACCESS_KEY=<secret>
+AWS_SESSION_TOKEN=<token>
+```
 
 ## Exporting credentials to your ~/.aws/credentials file
 If you need to export your new temporary credentials to your `~/.aws/credentials` file you can use Granted's `--export` flag!
@@ -140,7 +147,13 @@ eg.
 assume role-a --export
 ```
 - Will add the role into your aws credentials file under the profile name you have assumed.
-
+```
+[<profile_name>]
+AWS_ACCESS_KEY_ID=<access key>
+AWS_REGION=<region>
+AWS_SECRET_ACCESS_KEY=<secret>
+AWS_SESSION_TOKEN=<token>
+```
 ## Keychain prompt
 
 When using Granted on MacOS you will receive a keychain access prompt similar to the one below when Granted uses cached AWS SSO credentials to assume roles.
