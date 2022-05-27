@@ -87,6 +87,17 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
+## Override duration
+
+With Granted you can specify the `--duration` or `-d` flag to set the temperary credentials duration. Note that this will have to be within the default maximum duration set on the role when the role was created.
+
+
+```
+➜ assume role-a -d 3h
+
+[role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
+```
+
 
 ## Using a third party credential provider
 Granted supports using third party CLIs to obtain AWS credentials.
@@ -112,6 +123,17 @@ under the hood will run :
 ```
 aws-azure-login —profile role-a —no-prompt
 ```
+
+## Exporting credentials to your .env files
+If you are using roles within a dev application and need to update temperary credentials you can use Granted's `--env` flag!
+- Using the `-e` or `--env` flag will allow you to inject the aws creds into your environment variables. 
+eg.
+```
+assume role-a --env
+```
+
+
+
 
 ## Keychain prompt
 
