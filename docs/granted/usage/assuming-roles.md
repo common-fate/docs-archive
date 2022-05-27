@@ -89,7 +89,7 @@ To avoid needing to open the role selector, you can specify the name of the prof
 
 ## Override duration
 
-With Granted you can specify the `--duration` or `-d` flag to set the temperary credentials duration. Note that this will have to be within the default maximum duration set on the role when the role was created.
+With Granted you can specify the `--duration` or `-d` flag to set the temporary credentials duration. Note that this will have to be within the default maximum duration set on the role when the role was created.
 
 
 ```
@@ -125,15 +125,21 @@ aws-azure-login —profile role-a —no-prompt
 ```
 
 ## Exporting credentials to your .env files
-If you are using roles within a dev application and need to update temperary credentials you can use Granted's `--env` flag!
+If you are using roles within a dev application and need to update temporary credentials you can use Granted's `--env` flag!
 - Using the `-e` or `--env` flag will allow you to inject the aws creds into your environment variables. 
 eg.
 ```
 assume role-a --env
 ```
 
-
-
+## Exporting credentials to your ~/.aws/credentials file
+If you need to export your new temporary credentials to your `~/.aws/credentials` file you can use Granted's `--export` flag!
+- Using the `-ex` or `--export` flag will allow you to inject the aws creds into your environment variables. 
+eg.
+```
+assume role-a --export
+```
+- Will add the role into your aws credentials file under the profile name you have assumed.
 
 ## Keychain prompt
 
