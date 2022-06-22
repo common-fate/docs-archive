@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Assuming roles
 
 Run the `assume` command to assume a role with Granted.
@@ -5,7 +9,9 @@ Run the `assume` command to assume a role with Granted.
 ## First time setup
 
 The first time you run `assume`, you'll be prompted to select a web browser for Granted to use when opening web consoles for your roles. You should see a prompt similar to the one below.
+
 - Granted searches your PATH and checks common install locations to determine your current default browser. If thats not the browser you want to use ou can still specify another at a later stage in the first time setup.
+
 ```
 ➜ assume
 Granted works best with Firefox but also supports Chrome, Brave, and Edge (https://granted.dev/browsers).
@@ -87,10 +93,9 @@ To avoid needing to open the role selector, you can specify the name of the prof
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
-## Overriding Duration
+## Overriding duration
 
 With Granted you can specify the `--duration` or `-d` flag to set the temporary credentials duration. Note that this will have to be within the default maximum duration set on the role when the role was created.
-
 
 ```
 ➜ assume role-a -d 3h
@@ -98,11 +103,12 @@ With Granted you can specify the `--duration` or `-d` flag to set the temporary 
 [role-a] session credentials will expire 2022-02-21 16:47:33 +0000 GMT
 ```
 
-
 ## Using a third party credential provider
+
 Granted supports using third party CLIs to obtain AWS credentials.
 
 Here is the current list of providers that work with Granted:
+
 - AWS SSO
 - IAM
 - [aws-azure-login](https://github.com/sportradar/aws-azure-login)
@@ -111,49 +117,23 @@ Here is the current list of providers that work with Granted:
 
 We are looking to add more to this list in the future. Contributions for additional credential providers are most welcome. [assumer_aws_azure_login.go](https://github.com/common-fate/granted/blob/eb7221d4e69472bf1c8a7171d930ff0cab37290d/pkg/cfaws/assumer_aws_azure_login.go) in our source code is a good example to use as a starting point.
 
+## Pass-through flags
 
-## Pass through flags
-If you are using a custom SSO credential provider like aws-azure-login or aws-google-auth Granted allows you to pass through flags to run custom procedures using those providers
-- Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command. 
-eg.
+If you are using a custom SSO credential provider like aws-azure-login or aws-google-auth, Granted allows you to pass through flags to run custom procedures using those providers.
+
+- Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command.
+  eg.
+
 ```
 assume role-a -pt --no-prompt
 ```
+
 under the hood will run :
+
 ```
 aws-azure-login —profile role-a —no-prompt
 ```
 
-## Exporting credentials to your .env files
-If you are using roles within a dev application and need to update temporary credentials you can use Granted's `--env` flag!
-- Using the `-e` or `--env` flag will allow you to inject the aws creds into your environment variables. 
-eg.
-```
-assume role-a --env
-```
-This will insert the following into your .env file!
-```
-AWS_ACCESS_KEY_ID=<access key>
-AWS_REGION=<region>
-AWS_SECRET_ACCESS_KEY=<secret>
-AWS_SESSION_TOKEN=<token>
-```
-
-## Exporting credentials to your ~/.aws/credentials file
-If you need to export your new temporary credentials to your `~/.aws/credentials` file you can use Granted's `--export` flag!
-- Using the `-ex` or `--export` flag will allow you to inject the aws creds into your environment variables. 
-eg.
-```
-assume role-a --export
-```
-- Will add the role into your aws credentials file under the profile name you have assumed.
-```
-[<profile_name>]
-AWS_ACCESS_KEY_ID=<access key>
-AWS_REGION=<region>
-AWS_SECRET_ACCESS_KEY=<secret>
-AWS_SESSION_TOKEN=<token>
-```
 ## Keychain prompt
 
 When using Granted on MacOS you will receive a keychain access prompt similar to the one below when Granted uses cached AWS SSO credentials to assume roles.
@@ -161,8 +141,6 @@ When using Granted on MacOS you will receive a keychain access prompt similar to
 ![A MacOS keychain prompt which states 'assumego would like to use confidential information stored in your keychain'](/img/keychain-prompt.png)
 
 This is expected as Granted stores the AWS SSO credentials in your keychain. The binary name which you see in this prompt should always be `assumego`.
-
-
 
 ## Next steps
 

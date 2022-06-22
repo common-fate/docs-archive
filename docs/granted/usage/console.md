@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Opening the console
 
 Granted allows you to access multiple cloud accounts in your web browser simultaneously. In the screenshot below, two different accounts are open in the two tabs.
