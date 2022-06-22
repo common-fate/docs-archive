@@ -121,8 +121,9 @@ We are looking to add more to this list in the future. Contributions for additio
 
 If you are using a custom SSO credential provider like aws-azure-login or aws-google-auth, Granted allows you to pass through flags to run custom procedures using those providers.
 
-- Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command.
-  eg.
+Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command.
+
+For example:
 
 ```
 assume role-a -pt --no-prompt

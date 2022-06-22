@@ -19,10 +19,13 @@ Granted uses a [Frecency](https://en.wikipedia.org/wiki/Frecency) algorithm to s
 ## Changing the profile ordering
 
 There are settings options in Granted which allow you to change the way that profiles are listed in use. Default being by Frecency. Alternatively it can be configured to list profiles alphabetically. To set the profile ordering type just run:
+
 ```
 granted settings profile-order set
 ```
+
 From here you will be able to select your preferred method of choice
+
 ```
 ? Select filter type  [Use arrows to move, type to filter]
 > Frecency
@@ -62,6 +65,24 @@ You will get a response like this:
 
 Select which browser you would like to use and press Enter.
 
+## Custom browser for running SSO flows
+
+You can specify a custom browser path for your SSO login flows with Granted.
+
+```
+granted browser set-sso
+```
+
+You will get a response like this:
+
+```
+ℹ️  Select your SSO default browser
+
+? Select your default browser Chrome
+
+✅  Granted will default to using /Applications/Google Chrome.app/Contents/MacOS/Google Chrome for SSO flows.
+```
+
 ## Error reporting and update checking
 
 We currently do not collect error reports in Granted but this is something we are considering in future in order to ensure Granted works reliably on all platforms. Any error reporting telemetry, including instructions on how to opt out, will be communicated through GitHub and this documentation page.
@@ -70,39 +91,47 @@ The Granted binary will periodically check to see if new versions are available 
 
 To disable update checking you can set the environment variable `GRANTED_DISABLE_UPDATE_CHECK=true`.
 
-
 ## Granted Configuation Editing
+
 Granted gives you tools to be able to interact with the config that is set under the hood.
 
 - Use the `-unset` flag to remove any exported environment variables that Granted has provisioned
-eg.
+  eg.
+
 ```
 assume -unset
 ```
 
 - Use the `uninstall` command to reset the granted configuration to a factory default
+
 ```
 granted uninstall
 ```
 
-### SSO Configuration
+## SSO Configuration
+
 - To list all SSO tokens saved in the Granted keychain use the `token` command
+
 ```
 granted token
 ```
+
 ```
 granted token list
 ```
 
 - To remove a token from the local store use `token remove`
+
 ```
 granted token remove
 ```
+
 ```
 granted token remove profile_name
 ```
+
 - To remove all tokens from the store use the `--all` flag
+
 ```
 granted token remove --all
 ```
-
