@@ -1,3 +1,0 @@
-# Automated Least Privilege
-
-TBD
