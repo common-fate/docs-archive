@@ -10,7 +10,7 @@ const SLACK_URL =
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Common Fate Documentation",
-  staticDirectories: ['static'],
+  staticDirectories: ["static"],
   tagline: "Identity-first cloud security for innovative teams",
   url: "https://docs.commonfate.io",
   baseUrl: "/",
@@ -50,10 +50,10 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "iamzero",
-        path: "docs/iamzero",
-        routeBasePath: "iamzero",
-        sidebarPath: "./sidebars.iamzero.js",
+        id: "granted-approvals",
+        path: "docs/approvals",
+        routeBasePath: "granted-approvals",
+        sidebarPath: "./sidebars.approvals.js",
       },
     ],
   ],
@@ -66,14 +66,21 @@ const config = {
         logo: {
           alt: "Common Fate",
           src: "img/logo.svg",
-          href: "/granted/introduction"
+          href: "/granted/introduction",
         },
         items: [
           {
             type: "doc",
             docId: "introduction",
             position: "left",
-            label: "Granted",
+            label: "Granted CLI",
+          },
+          {
+            docsPluginId: "granted-approvals",
+            type: "doc",
+            docId: "introduction",
+            position: "left",
+            label: "Granted Approvals",
           },
           {
             href: "https://granted.dev/cfcloud?ref=docs",
