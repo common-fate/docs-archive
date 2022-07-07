@@ -34,12 +34,42 @@ From here you will be able to select your preferred method of choice
 
 ## Autocompletion
 
-Granted has support for shell auto complete. We currently support fish, with plans to support [bash, powershell, and zsh](https://github.com/urfave/cli/tree/master/autocomplete) in the future. Please let us know of your interest by [opening an issue on GitHub](https://github.com/common-fate/granted/issues).
+Granted has support for shell auto complete. We currently support zsh and fish, with plans to support [bash, and powershell](https://github.com/urfave/cli/tree/master/autocomplete) in the future. Please let us know of your interest by [opening an issue on GitHub](https://github.com/common-fate/granted/issues).
 
-Fish autocompletions can be created by running the following command, then following the prompts
+### Fish
+
+Fish autocompletions can be created by running the following command, then following the prompts.
+
+Note, This currently only provides command and flag autocompletion, it does not automatically list aws profiles with the assume command.
+Let us know if you are using Fish and would like to see this added.
 
 ```
 granted completion -s fish
+```
+
+### ZSH
+
+ZSH autocompletion can be enabled by running the following command.
+
+```
+granted completion -s zsh
+```
+
+Type `assume` and press **tab** to see a list of your aws profiles.
+
+```
+assume
+profile-1 profile-2 profile-3
+```
+
+Type `assume -` and press **tab** to see flag completions.
+
+```
+assume -
+--active-role                      --duration                         --export                           --pt                               --unset                            --version                          -h                                 -v
+--ar                               --env                              --granted-active-aws-role-profile  --region                           --update-checker-api-url           -c                                 -r
+--auto-configure-shell             --ex                               --help                             --service                          --url                              -d                                 -s
+--console                          --exec                             --pass-through                     --un                               --verbose                          -e                                 -u
 ```
 
 ## Changing the web browser
