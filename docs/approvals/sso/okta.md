@@ -115,10 +115,14 @@ Next we can grab the SAML metadata by clicking the **Identity Provider metadata*
 ![](/img/sso/okta/06.png)
 
 Finally we can head into the **sign in** tab on the application settings. Where we will find some SAML 2.0 instructions.
+- There will be a section dedicated to **SAML setup** on the sign on tab, click **View SAML setup instructions**.
 
-There will be a link **Identity Provider Metadata**, right click on the link and copy the url, this is the value we will be using for the final step of the gdeploy setup.
+![](/img/sso/okta/07.png)
 
-Head back over to gdeploy where the step will be asking for a `SAML Metadata URL` paste in the url we just copied and press enter. You will see the following success message
+
+There will be a subheading **Optional** which includes the SAML metadata. Copy this metadata.
+
+Head back over to gdeploy where the step will be asking for a `SAML Metadata String` paste in the metadata we just copied and press enter. You will see the following success message
 
 ```bash
 [i] You will need to re-deploy using gdeploy deploy Granted Approvals to see any changes
