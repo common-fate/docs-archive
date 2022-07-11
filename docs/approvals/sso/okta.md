@@ -55,8 +55,6 @@ At this point in the gdeploy flow you will be asked for SAML metadata. Leave thi
 ? SAML Metadata URL:
 ```
 
-To finish off the SSO SAML setup, go to the **[Configuring SSO SAML](https://www.notion.so/Setting-up-SSO-6b95f6e7bdb84402af6065c27ba718b2)** block.
-
 ## Setting up SAML SSO
 
 To get started navigate to the **Applications** tab of the admin console in okta.
