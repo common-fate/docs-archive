@@ -110,19 +110,18 @@ Choose **Assign** next to the user that you want to assign.**Note:** If this 
 
 Choose **Save and Go Back,** followed by **Done.**
 
-Next we can grab the SAML metadata by clicking the **Identity Provider metadata** link and download the Okta metadata.
+Next we can grab the SAML metadata heading back to the **Sign On** tab for your Okta app.
+
+Head down the the heading **SAML Signing Certificates** where there will be a list of signing certificates. Find the most recent active certificate and click the **Actions** drop down in the right hand column.
 
 ![](/img/sso/okta/06.png)
 
-Finally we can head into the **sign in** tab on the application settings. Where we will find some SAML 2.0 instructions.
-- There will be a section dedicated to **SAML setup** on the sign on tab, click **View SAML setup instructions**.
+From the drop down click **View IdP metadata**, you will be redirected to your metadata, copy the URL address of the redirected site. It should look like this:
 
 ![](/img/sso/okta/07.png)
+- Copy the URL. eg. `https://dev-78876384.okta.com/app/exk5bw55gcTlGAcdE5d7/sso/saml/metadata` in this case
 
-
-There will be a subheading **Optional** which includes the SAML metadata. Copy this metadata.
-
-Head back over to gdeploy where the step will be asking for a `SAML Metadata String` paste in the metadata we just copied and press enter. You will see the following success message
+Head back over to gdeploy where the step will be asking for a `SAML Metadata Url` paste in the metadata URL we just copied and press enter. You will see the following success message
 
 ```bash
 [i] You will need to re-deploy using gdeploy deploy Granted Approvals to see any changes
