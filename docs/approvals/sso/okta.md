@@ -40,22 +40,45 @@ You will be prompted to select you identity provider, select Okta.
 > Okta
 ```
 
-1. For the `API Token` param, copy and paste the token value from the previous steps.
-2. For the `Okta Org URL` set the value to the domain that your Okta is linked to into eg. `cf-df-dev.okta.com`
+1. For the `API Token`, copy and paste the token value from the previous steps.
+
+```json
+? API Token: ****
+```
+
+2. For the `Okta Org URL` set the value to the your okta domain e.g. `https://yourcompany.okta.com`
+
+```
+? Okta Org URL: https://yourcompany.okta.com
+```
 
 You should see an output similar to the below.
 
-```bash
-[✔] SSM Parameters Set Successfully
+```
+[✔] SSM Parameters set successfully
+[i] The following parameters are required to setup a SAML app in your identity provider
++------------------+-------------------------------------------+
+| OUTPUT PARAMETER |                   VALUE                   |
++------------------+-------------------------------------------+
+| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
+| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
++------------------+-------------------------------------------+
 ```
 
-At this point in the gdeploy flow you will be asked for SAML metadata. Leave this for now, we will come back to complete this at a later step
+Next you will need to setup a SAML app, you will see the below prompt, Okta supports both a URL and XML so choose what suits you.
 
-```bash
-? SAML Metadata URL:
+```
+? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
+> URL
+  String
+  File
 ```
 
-To finish off the SSO SAML setup, go to the **[Configuring SSO SAML](https://www.notion.so/Setting-up-SSO-6b95f6e7bdb84402af6065c27ba718b2)** block.
+You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
+
+```
+? Metadata URL
+```
 
 ## Setting up SAML SSO
 
@@ -69,23 +92,24 @@ Click create a new App Integration in Okta, then select the SAML 2.0 option. Giv
 
 ![](/img/sso/okta/04.png)
 
-On the **Configure SAML** page we will first need to head back to our gdeploy setup instance and grab some output values.
+On the **Configure SAML** page you will need some of the outputs from the previous step in the CLI workflow.
 
-Once you had finished the parameters setup in the previous steps, gdeploy will output some values which we will now use to complete the SAML configuration.
+Look back in your terminal for an output that looks like the below.
 
-The outputs will look like this:
-
-```bash
-[!] SAML outputs:
-+------------------+-----------------------------------------------------------------+
-| OUTPUT PARAMETER |                              VALUE                              |
-+------------------+-----------------------------------------------------------------+
-| CognitoDomain    | granted-login-cf-dev-jack.auth.ap-southeast-2.amazoncognito.com |
-| AudienceURI      | urn:amazon:cognito:sp:ap-southeast-2_1K06zSOhJ                  |
-+------------------+-----------------------------------------------------------------+
+```
+[i] The following parameters are required to setup a SAML app in your identity provider
++------------------+-------------------------------------------+
+| OUTPUT PARAMETER |                   VALUE                   |
++------------------+-------------------------------------------+
+| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
+| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
++------------------+-------------------------------------------+
 ```
 
-For the **Single sign on URL** use the `CognitoDomain` from the output. For the **Audience URI** copy the `AudienceURI` from the output.
+On the **Configure SAML** page
+
+- For the **Single sign on URL** use the `CognitoDomain` from the output.
+- For the **Audience URI** copy the `AudienceURI` from the output.
 
 ![](/img/sso/okta/05.png)
 
@@ -100,7 +124,7 @@ Click **Next** and then **Finish** on the Feedback page to create the applicatio
 You'll need to assign yourself to the application so that you can test the SAML SSO connection.
 :::
 
-To assign a user to the application follow the following:
+Follow these steps to assign a user to the application:
 
 On the **Assignments** tab for your Okta app, for **Assign**, choose **Assign to People**.
 
@@ -110,19 +134,27 @@ Choose **Assign** next to the user that you want to assign.**Note:** If this 
 
 Choose **Save and Go Back,** followed by **Done.**
 
-Next we can grab the SAML metadata by clicking the **Identity Provider metadata** link and download the Okta metadata.
+Next navigate to the **Sign On** tab for your Okta app.
 
+Find the **SAML Signing Certificates** section where you should see a list of signing certificates. Find the most recent active certificate and click the **Actions** drop down in the right hand column.
 ![](/img/sso/okta/06.png)
 
-Finally we can head into the **sign in** tab on the application settings. Where we will find some SAML 2.0 instructions.
+From the drop down click **View IdP metadata**, you will be redirected to your metadata, copy the URL address of the redirected site. It should look like this, alternatively, you can copy or download the XML depending on what option you chose in the CLI:
 
-There will be a link **Identity Provider Metadata**, right click on the link and copy the url, this is the value we will be using for the final step of the gdeploy setup.
+![](/img/sso/okta/07.png)
 
-Head back over to gdeploy where the step will be asking for a `SAML Metadata URL` paste in the url we just copied and press enter. You will see the following success message
+Copy the URL. eg. `https://demo.okta.com/app/abcd1234/sso/saml/metadata` and paste it into the CLI prompt.
 
-```bash
-[i] You will need to re-deploy using gdeploy deploy Granted Approvals to see any changes
-[✔] completed SSO setup
+```
+? Metadata URL: https://demo.okta.com/app/abcd1234/sso/saml/metadata
 ```
 
-You will need to redeploy using `gdeploy deploy` to update the indentity provider changes.
+If all goes well, you will see the following confirmation.
+
+```
+[i] Updating your deployment config
+[✔] Successfully completed SSO configuration
+[!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+```
+
+You will need to redeploy using `gdeploy update` to update the indentity provider changes.
