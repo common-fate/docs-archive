@@ -24,7 +24,7 @@ By default Granted will set the identity provider to an AWS Cognito user pool, s
 
 - Google Workspaces
 - Okta
-- Azure AD (coming soon)
+- Azure AD
 
 ## Setting up SSO
 
@@ -35,9 +35,11 @@ To start setup for our SSO provider we will use `gdeploy` to configure all the p
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
 > Google
   Okta
+  Azure
 ```
 
 As part of setting up SSO and user directory sync, you'll be prompted for parameters to connect to your identity provider. Follow the guides below based on the corporate identity provider that you use:
 
 - [Google Workspace](/granted-approvals/sso/google)
 - [Okta](/granted-approvals/sso/okta)
+- [Azure](/granted-approvals/sso/azure)
