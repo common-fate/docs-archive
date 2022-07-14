@@ -2,9 +2,9 @@
 sidebar_position: 3
 ---
 
-# Azure
+# Azure AD
 
-## Azure setup
+## Azure AD setup
 
 To set up Azure to sync users and groups with Granted we will need to create an access token to communicate with Azure's Graph API.
 
