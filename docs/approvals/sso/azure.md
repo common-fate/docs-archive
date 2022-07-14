@@ -10,7 +10,7 @@ To set up Azure to sync users and groups with Granted we will need to create an 
 
 Sign in to your Azure portal as a user with [administrator privileges (opens new window)](https://portal.azure.com).
 
-In the Console, search or select **App Registrations** from the list of resources on azure and then select the **New registration** to make a new App.
+In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 
 Name your registration, select single tenant for **Supported account types** and then click **Register**.
 
@@ -31,7 +31,7 @@ This is where we can start up the `gdeploy sso configure` command. Run the follo
 > gdeploy sso configure
 ```
 
-You will be prompted to select you identity provider, select Azure.
+Select 'Azure' when prompted for the identity provider.
 
 ```json
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
@@ -40,10 +40,10 @@ You will be prompted to select you identity provider, select Azure.
 > Azure
 ```
 
-Head back to the **Overview** tab in the Azure portal, and get the first two Id's from the Essentials section.
+Head back to the **Overview** tab in the Azure portal, and get the first two IDs from the Essentials section.
 ![](/img/sso/azure/new.png)
 
-gdeploy will ask for some ID's first. A `Tenant ID` and a `Client ID`
+`gdeploy` will prompt you for IDs relating to your Azure AD tenancy.
 
 1. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
 2. For the `Client ID` param, copy and paste the **Application (client) ID**.
@@ -67,7 +67,7 @@ You should see an output similar to the below.
 +------------------+-------------------------------------------+
 ```
 
-Next you will need to setup a SAML app, you will see the below prompt, Azure supports using a URL so we suggest setting up SAML SSO with URL.
+Next you will need to setup a SAML app. When`gdeploy` prompts you for SAML metadata, select the "URL" option.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -76,7 +76,7 @@ Next you will need to setup a SAML app, you will see the below prompt, Azure sup
   File
 ```
 
-You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
+You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML metadata required for this step.
 
 ```
 ? Metadata URL
@@ -95,7 +95,7 @@ In the newly created enterprise application select **Single sign-on** from the l
 ![](/img/sso/azure/SAML.png)
 
 
-Edit the **Identifier (Entity ID)** and **Reply URL (Assertion Consumer Service URL)** with the values found from gdeploys outputs
+Edit the **Identifier (Entity ID)** and **Reply URL (Assertion Consumer Service URL)** with the values found from the `gdeploy` outputs
 
 The outputs will look like this:
 
@@ -123,9 +123,9 @@ If all goes well, you will see the following confirmation.
 [!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
 ```
 
-lastly we will set up some users and groups that can access Granted Approvals with Azure as SSO.
+Lastly, we will set up some users and groups that can access Granted Approvals with Azure as SSO.
 
-In the left hand Nav again, select the **Users and Groups** tab, then Add user/group
+Select the **Users and Groups** tab in the sidebar, then **Add user/group**.
 - From here you will be able to select which users and/or groups you want to provision access to the approvals application.
 
-You will need to redeploy using `gdeploy deploy` to update the indentity provider changes.
+You will need to redeploy using `gdeploy update` to update the indentity provider changes.
