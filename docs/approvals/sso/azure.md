@@ -47,7 +47,7 @@ gdeploy will ask for some ID's first. A `Tenant ID` and a `Client ID`
 1. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
 2. For the `Client ID` param, copy and paste the **Application (client) ID**.
 
-Next we will create a token, for this head into the **Certificates & secrets** tab in the left hand Nav, Under Client secrets. Creat a new secret.
+Next we will create a token, for this head into the **Certificates & secrets** tab in the left hand Nav, Under Client secrets. Create a new secret.
 
 Give the secret a descriptive name, like `Granted-token`. It will create a secret and display a table showing the secret value.
 
@@ -55,15 +55,32 @@ Copy the secret value and use it for the **Client Secret** input in the `gdeploy
 
 You should see an output similar to the below.
 
-```bash
-[✔] SSM Parameters Set Successfully
+```
+[✔] SSM Parameters set successfully
+[i] The following parameters are required to setup a SAML app in your identity provider
++------------------+-------------------------------------------+
+| OUTPUT PARAMETER |                   VALUE                   |
++------------------+-------------------------------------------+
+| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
+| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
++------------------+-------------------------------------------+
 ```
 
-At this point in the gdeploy flow you will be asked for SAML metadata. Leave this for now, we will come back to complete this at a later step
+Next you will need to setup a SAML app, you will see the below prompt, Azure supports using a URL so we suggest setting up SAML SSO with URL.
 
-```bash
-? SAML Metadata URL:
 ```
+? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
+> URL
+  String
+  File
+```
+
+You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
+
+```
+? Metadata URL
+```
+
 
 ## Setting up SAML SSO
 
@@ -96,11 +113,13 @@ Hit save.
 Then from the **SAML Signing Certificate** section, copy the **App Federation metadata Url**
 
 Paste this URL into the gdeploy prompt asking for `SAML Metadata Url`
-You will see the following success message
 
-```bash
-[i] You will need to re-deploy using gdeploy deploy Granted Approvals to see any changes
-[✔] completed SSO setup
+If all goes well, you will see the following confirmation.
+
+```
+[i] Updating your deployment config
+[✔] Successfully completed SSO configuration
+[!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
 ```
 
 lastly we will set up some users and groups that can access Granted Approvals with Azure as SSO.
