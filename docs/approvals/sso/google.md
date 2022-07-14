@@ -54,9 +54,21 @@ You will be prompted to select you identity provider, select Google.
 
 1. For the `API Token` param, copy and paste in the JSON string from the downloaded key file.
 
+```json
+? API Token: ****
+```
+
 2. For the `Google Workspace Domain` set the value to the domain that your Google workspace is linked to into eg. `commonfate.io`
 
+```json
+? Google Workspace Domain: commonfate.io
+```
+
 3. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
+
+```json
+? Google Admin Email: jack@commonfate.io
+```
 
 :::info
 Due to a limitation in the Google Workspace Directory API, the service account must impersonate an administrative user in order to access the directory. Additionally, the user must have logged in at least once and accepted the Google Workspace Terms of Service.
@@ -64,10 +76,19 @@ Due to a limitation in the Google Workspace Directory API, the service account m
 The scopes provided to the service account are read-only.
 :::
 
-Delete the downloaded JSON file from your computer. At this point in the `gdeploy` flow you will be asked for SAML metadata. Leave this for now, we will come back to complete this at a later step.
+Delete the downloaded JSON file from your computer.
 
-```bash
-? SAML Metadata String:
+You should see an output similar to the below.
+
+```
+[✔] SSM Parameters set successfully
+[i] The following parameters are required to setup a SAML app in your identity provider
++------------------+-------------------------------------------+
+| OUTPUT PARAMETER |                   VALUE                   |
++------------------+-------------------------------------------+
+| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
+| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
++------------------+-------------------------------------------+
 ```
 
 To finish off the service account access we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
@@ -89,7 +110,22 @@ https://www.googleapis.com/auth/admin.directory.group.readonly,
 
 Click **Authorize**.
 
-## SAML SSO
+Next you will need to setup a SAML app, you will see the below prompt, Google supplies only XML so choose String or file.
+
+```
+? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
+> URL
+  String
+  File
+```
+
+You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
+
+```
+? Metadata URL
+```
+
+## Setting Up SAML SSO
 
 1. From the Admin console Home page, go to **Apps > Web and mobile apps**.
 
@@ -103,38 +139,30 @@ Click **Authorize**.
 
 ![](/img/sso/google/05.png)
 
-Head back over to gdeploy where the step will be asking for a `SAML Metadata string`. Paste in the text from the file just downloaded to your machine and press enter. You will see the following success message
+Click **Continue.**
 
-```bash
-[i] You will need to re-deploy using gdeploy update Granted Approvals to see any changes
-[✔] completed SSO setup
+On the **Service provider details** page you will need some of the outputs from the previous step in the CLI workflow.
+
+Look back in your terminal for an output that looks like the below.
+
+```
+[i] The following parameters are required to setup a SAML app in your identity provider
++------------------+-------------------------------------------+
+| OUTPUT PARAMETER |                   VALUE                   |
++------------------+-------------------------------------------+
+| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
+| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
++------------------+-------------------------------------------+
 ```
 
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
+On the **Service provider details** page
 
-Head back over to the google admin app setup and click **Continue.**
-
-On the **Service provider details** page we will first need to head back to our gdeploy setup instance and grab some output values.
-
-Once you had finished the parameters setup in the previous docs, gdeploy output some values which we will now use to complete the SAML configuration.
-
-The outputs will look like this:
-
-```bash
-[!] SAML outputs:
-+------------------+-----------------------------------------------------------------+
-| OUTPUT PARAMETER |                              VALUE                              |
-+------------------+-----------------------------------------------------------------+
-| CognitoDomain    | granted-login-cf-dev-jack.auth.ap-southeast-2.amazoncognito.com |
-| AudienceURI      | urn:amazon:cognito:sp:ap-southeast-2_1K06zSOhJ                  |
-+------------------+-----------------------------------------------------------------+
-```
-
-For the **ACS URL** use the cognito domain from the output. For the **Entity ID** copy the Audience URI from the output
+- For the **ACS URL** copy the `CognitoDomain` from the output.
+- For the **Entity ID** copy the `AudienceURI` from the output.
 
 ![](/img/sso/google/06.png)
 
-Click **next**, where we will set up an attribute mapping for emails.
+Click **Next**, where we will set up an attribute mapping for emails.
 
 Under **Attributes** add a mapping with the following information
 
@@ -148,6 +176,22 @@ Under **Group membership (optional)** Create an admin group in Google Workspace 
 3. Only invited users
 
 Click **Finish** to create the application.
+
+Finally, back in the terminal, select either String or File then use the metadata that you downloaded.
+
+```
+? Metadata XML file: google-metatdata.xml
+```
+
+If all goes well, you will see the following confirmation.
+
+```
+[i] Updating your deployment config
+[✔] Successfully completed SSO configuration
+[!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+```
+
+You will need to redeploy using `gdeploy update` to update the indentity provider changes.
 
 ## Common Issues
 
