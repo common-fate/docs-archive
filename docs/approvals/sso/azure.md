@@ -12,7 +12,7 @@ Sign in to your Azure portal as a user with [administrator privileges (opens n
 
 In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 
-Name your registration, select single tenant for **Supported account types** and then click **Register**.
+Name the app 'Granted Directory Sync', select single tenant for **Supported account types** and then click **Register**.
 
 ![](/img/sso/azure/register.png)
 
@@ -21,11 +21,12 @@ Your app will be shown in a table of other owned applications in azure. Click on
 Next, click on **API permissions** in the tabs on the left hand side. Click on **Add a permission**
 
 ![](/img/sso/azure/perms.png)
-- Use Application permissions from **Microsoft Graph** 
+
+- Use Application permissions from **Microsoft Graph**
 - Search for **User** and add: `User.Read.All`
 - Then search for **Group** and add: `Group.Read.All`
 - Finally search for **GroupMember** and add: `GroupMember.Read.All`
-This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
+  This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
 
 ```json
 > gdeploy sso configure
@@ -82,18 +83,15 @@ You will see something like this, follow the [next section](#setting-up-saml-sso
 ? Metadata URL
 ```
 
-
 ## Setting up SAML SSO
 
 To get started navigate to the **Enterprise applications** resource in the Azure console.
 
-
-Click **New application**, then **Create your own application**. Give your app a name, and select the 'Integrate any other application you don't find in the gallery (Non-gallery)' option. Once done click **Create**
+Click **New application**, then **Create your own application**. Call your app 'Granted SSO', and select the 'Integrate any other application you don't find in the gallery (Non-gallery)' option. Once done click **Create**
 
 In the newly created enterprise application select **Single sign-on** from the left navbar
 
 ![](/img/sso/azure/SAML.png)
-
 
 Edit the **Identifier (Entity ID)** and **Reply URL (Assertion Consumer Service URL)** with the values found from the `gdeploy` outputs
 
@@ -109,7 +107,7 @@ The outputs will look like this:
 +------------------+-----------------------------------------------------------------+
 ```
 
-Hit save. 
+Hit save.
 
 Then from the **SAML Signing Certificate** section, copy the **App Federation metadata Url**
 
@@ -126,6 +124,7 @@ If all goes well, you will see the following confirmation.
 Lastly, we will set up some users and groups that can access Granted Approvals with Azure as SSO.
 
 Select the **Users and Groups** tab in the sidebar, then **Add user/group**.
+
 - From here you will be able to select which users and/or groups you want to provision access to the approvals application.
 
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.
