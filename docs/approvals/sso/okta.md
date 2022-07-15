@@ -57,12 +57,12 @@ You should see an output similar to the below.
 ```
 [✔] SSM Parameters set successfully
 [i] The following parameters are required to setup a SAML app in your identity provider
-+------------------+-------------------------------------------+
-| OUTPUT PARAMETER |                   VALUE                   |
-+------------------+-------------------------------------------+
-| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
-| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
-+------------------+-------------------------------------------+
++------------------------+---------------------------------------------------------+
+|    OUTPUT PARAMETER    |                          VALUE                          |
++------------------------+---------------------------------------------------------+
+| SAML SSO URL (ACS URL) | demo.auth.us-west-2.amazoncognito.com/saml2/idpresponse |
+| Audience URI           | urn:amazon:cognito:sp:us-west-2_abcdefghi               |
++------------------------+---------------------------------------------------------+
 ```
 
 Next you will need to setup a SAML app, you will see the below prompt, Okta supports both a URL and XML so choose what suits you.
@@ -98,12 +98,12 @@ Look back in your terminal for an output that looks like the below.
 
 ```
 [i] The following parameters are required to setup a SAML app in your identity provider
-+------------------+-------------------------------------------+
-| OUTPUT PARAMETER |                   VALUE                   |
-+------------------+-------------------------------------------+
-| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
-| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
-+------------------+-------------------------------------------+
++------------------------+---------------------------------------------------------+
+|    OUTPUT PARAMETER    |                          VALUE                          |
++------------------------+---------------------------------------------------------+
+| SAML SSO URL (ACS URL) | demo.auth.us-west-2.amazoncognito.com/saml2/idpresponse |
+| Audience URI           | urn:amazon:cognito:sp:us-west-2_abcdefghi               |
++------------------------+---------------------------------------------------------+
 ```
 
 On the **Configure SAML** page
