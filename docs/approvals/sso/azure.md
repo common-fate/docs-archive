@@ -60,12 +60,12 @@ You should see an output similar to the below.
 ```
 [✔] SSM Parameters set successfully
 [i] The following parameters are required to setup a SAML app in your identity provider
-+------------------+-------------------------------------------+
-| OUTPUT PARAMETER |                   VALUE                   |
-+------------------+-------------------------------------------+
-| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
-| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
-+------------------+-------------------------------------------+
++------------------+-----------------------------------------------------------------------------------+
+| OUTPUT PARAMETER |                                       VALUE                                       |
++------------------+-----------------------------------------------------------------------------------+
+| CognitoDomain    | demo.auth.ap-southeast-2.amazoncognito.com/saml2/idpresponse |
+| AudienceURI      | urn:amazon:cognito:sp:ap-southeast-2_z6RInFcecR                                   |
++------------------+-----------------------------------------------------------------------------------+
 ```
 
 Next you will need to setup a SAML app. When`gdeploy` prompts you for SAML metadata, select the "URL" option.
@@ -102,7 +102,7 @@ The outputs will look like this:
 +------------------+-----------------------------------------------------------------+
 | OUTPUT PARAMETER |                              VALUE                              |
 +------------------+-----------------------------------------------------------------+
-| CognitoDomain    | granted-login-cf-dev-jack.auth.ap-southeast-2.amazoncognito.com |
+| CognitoDomain    | demo.auth.ap-southeast-2.amazoncognito.com/saml2/idpresponse |
 | AudienceURI      |                |
 +------------------+-----------------------------------------------------------------+
 ```
