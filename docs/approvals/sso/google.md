@@ -83,12 +83,12 @@ You should see an output similar to the below.
 ```
 [✔] SSM Parameters set successfully
 [i] The following parameters are required to setup a SAML app in your identity provider
-+------------------+-------------------------------------------+
-| OUTPUT PARAMETER |                   VALUE                   |
-+------------------+-------------------------------------------+
-| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
-| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
-+------------------+-------------------------------------------+
++------------------------+---------------------------------------------------------+
+|    OUTPUT PARAMETER    |                          VALUE                          |
++------------------------+---------------------------------------------------------+
+| SAML SSO URL (ACS URL) | demo.auth.us-west-2.amazoncognito.com/saml2/idpresponse |
+| Audience URI           | urn:amazon:cognito:sp:us-west-2_abcdefghi               |
++------------------------+---------------------------------------------------------+
 ```
 
 To finish off the service account access we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
@@ -147,12 +147,12 @@ Look back in your terminal for an output that looks like the below.
 
 ```
 [i] The following parameters are required to setup a SAML app in your identity provider
-+------------------+-------------------------------------------+
-| OUTPUT PARAMETER |                   VALUE                   |
-+------------------+-------------------------------------------+
-| CognitoDomain    | demo.auth.us-west-2.amazoncognito.com     |
-| AudienceURI      | urn:amazon:cognito:sp:us-west-2_abcdefg   |
-+------------------+-------------------------------------------+
++------------------------+---------------------------------------------------------+
+|    OUTPUT PARAMETER    |                          VALUE                          |
++------------------------+---------------------------------------------------------+
+| SAML SSO URL (ACS URL) | demo.auth.us-west-2.amazoncognito.com/saml2/idpresponse |
+| Audience URI           | urn:amazon:cognito:sp:us-west-2_abcdefghi               |
++------------------------+---------------------------------------------------------+
 ```
 
 On the **Service provider details** page
