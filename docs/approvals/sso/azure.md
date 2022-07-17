@@ -93,7 +93,9 @@ In the newly created enterprise application select **Single sign-on** from the l
 
 ![](/img/sso/azure/SAML.png)
 
-Edit the **Identifier (Entity ID)** and **Reply URL (Assertion Consumer Service URL)** with the values found from the `gdeploy` outputs
+Set the **Reply URL (Assertion Consumer Service URL)** value in Azure AD to be the **SAML SSO URL (ACS URL)** from the gdeploy outputs
+
+Set the **Identifier (Entity ID)** value in Azure AD to be the **Audience URI (Entity ID)** from `gdeploy`
 
 The outputs will look like this:
 
