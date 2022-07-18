@@ -26,7 +26,9 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
 - Search for **User** and add: `User.Read.All`
 - Then search for **Group** and add: `Group.Read.All`
 - Finally search for **GroupMember** and add: `GroupMember.Read.All`
-  This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
+- Once you have selected the permissions click **Add permissions** to add them to your application.
+
+This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
 
 ```json
 gdeploy sso configure
