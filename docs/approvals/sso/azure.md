@@ -12,7 +12,7 @@ Sign in to your Azure portal as a user with [administrator privileges (opens n
 
 In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 
-Name the app 'Granted Directory Sync', select single tenant for **Supported account types** and then click **Register**.
+Name the app 'Granted Directory Sync', Accounts in this organizational directory only (single tenant) for **Supported account types** and then click **Register**.
 
 ![](/img/sso/azure/register.png)
 
@@ -29,7 +29,7 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
   This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
 
 ```json
-> gdeploy sso configure
+gdeploy sso configure
 ```
 
 Select 'Azure' when prompted for the identity provider.
@@ -92,6 +92,9 @@ Click **New application**, then **Create your own application**. Call your app '
 In the newly created enterprise application select **Single sign-on** from the left navbar
 
 ![](/img/sso/azure/SAML.png)
+
+Then click the **SAML** sign on method from the options.
+![](/img/sso/azure/options.png)
 
 Set the **Reply URL (Assertion Consumer Service URL)** value in Azure AD to be the **SAML SSO URL (ACS URL)** from the gdeploy outputs
 

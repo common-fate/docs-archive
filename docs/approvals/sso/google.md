@@ -41,7 +41,7 @@ This is where we can start up the `gdeploy sso configure` command.
 Run the following to begin the SSO setup
 
 ```json
-> gdeploy sso configure
+gdeploy sso configure
 ```
 
 You will be prompted to select you identity provider, select Google.
