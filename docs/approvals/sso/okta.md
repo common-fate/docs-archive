@@ -149,12 +149,30 @@ Copy the URL. eg. `https://demo.okta.com/app/abcd1234/sso/saml/metadata` and pas
 ? Metadata URL: https://demo.okta.com/app/abcd1234/sso/saml/metadata
 ```
 
-If all goes well, you will see the following confirmation.
+Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
+- By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
+You should see the following prompts
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
 [!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+
+Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
+ 1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+ 2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
+
+Once you have set your administrators group name, we will need to create that corresponding group in Okta
+In the Okta admin portal, to to *Directory>Groups*
+
+![](/img/sso/okta/08.png)
+
+Click the **Add Group** button
+
+![](/img/sso/okta/09.png)
+- Name the group the same name as you set in the `gdeploy` config setup.
+
+Add yourself and any others you want to make granted admins to the group in Okta.
 
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.

@@ -115,18 +115,39 @@ Then from the **SAML Signing Certificate** section, copy the **App Federation me
 
 Paste this URL into the gdeploy prompt asking for `SAML Metadata Url`
 
-If all goes well, you will see the following confirmation.
+Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
+- By default granted will set this to `granted_administrators`, press enter to continue with this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
+You should see the following prompts
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
 [!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+
+Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
+ 1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+ 2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
 
-Lastly, we will set up some users and groups that can access Granted Approvals with Azure as SSO.
+Once you have set your administrators group name, we will need to create that corresponding group in Azure.
+In the Microsoft admin portal, to to *Teams & Groups* in the side nav.
 
-Select the **Users and Groups** tab in the sidebar, then **Add user/group**.
+![](/img/sso/azure/groups.png)
 
-- From here you will be able to select which users and/or groups you want to provision access to the approvals application.
+Click the **Add a group** button
+- Make it a **Microsoft 365 group**
+
+
+![](/img/sso/azure/admins.png)
+- Name the group the same name as you set in the `gdeploy` config setup.
+
+- Add yourself as a owner and any others you want to make granted admins for the members of the group.
+
+![](/img/sso/azure/settings.png)
+- Set the privacy type to private and set the email address
+
+Hit **Create Group** at the end to complete.
+
+You will need to redeploy using `gdeploy update` to update the indentity provider changes.
 
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.
