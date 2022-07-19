@@ -15,7 +15,7 @@ Granted utilises the [AWS Go SDK v2](https://github.com/aws/aws-sdk-go-v2) for a
 Common Fate signs Granted binaries with our [GPG key](#pgp-public-key). You can verify the integrity and authenticity of a Granted binary by following the process below.
 
 :::note
-The process below will use `v0.2.4` as the version of Granted. Ensure that you change references to `v0.2.4` to the version of Granted you wish to verify when following this process.
+The process below will use `v0.2.5` as the version of Granted. Ensure that you change references to `v0.2.5` to the version of Granted you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](#pgp-public-key)
@@ -28,16 +28,16 @@ gpg import commonfate.asc
 1. Download the Granted release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
 
    ```
-   curl -OL releases.commonfate.io/granted/v0.2.4/granted_0.2.4_linux_x86_64.tar.gz
+   curl -OL releases.commonfate.io/granted/v0.2.5/granted_0.2.5_linux_x86_64.tar.gz
    ```
 
 2. Download the checksums for the release:
    ```bash
-   curl -OL releases.commonfate.io/granted/v0.2.4/checksums.txt
+   curl -OL releases.commonfate.io/granted/v0.2.5/checksums.txt
    ```
 3. Download the signature file:
    ```bash
-   curl -OL releases.commonfate.io/granted/v0.2.4/checksums.txt.sig
+   curl -OL releases.commonfate.io/granted/v0.2.5/checksums.txt.sig
 
    ```
 4. Verify the integrity of the release artifact:
@@ -49,7 +49,7 @@ gpg import commonfate.asc
    You should see an output similar to the below:
 
    ```
-   granted_0.2.4_linux_x86_64.tar.gz: OK
+   granted_0.2.5_linux_x86_64.tar.gz: OK
    ```
 
 5. Verify the integrity and authenticity of the checksums:
