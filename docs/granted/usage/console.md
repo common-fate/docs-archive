@@ -65,6 +65,20 @@ assume -c -r ap-southeast-1 role-a
 
 Will open a console in the _ap-southeast-1_ region for the selected profile.
 
+### Shorthand region syntax
+
+Using the -r(egion) flag, granted has support for a shorthand syntax which makes it faster to open console or terminal sessions to the region you want.
+
+For example
+
+```
+ue1 -> us-east-1
+ase2 -> ap-southeast-2
+
+# this will launch the console to us-west-1
+assume -c -r uw1 demo
+```
+
 ## Opening the console to a specific service
 
 You can open a console and go directly to a specific service by adding the `--service` or `-s` flag. For example:
