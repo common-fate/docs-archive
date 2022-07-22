@@ -11,7 +11,7 @@ From time to time you may wish to update your SSO configuration, for example if 
 First, run `gdeploy sso configure`
 
 Your current identity provider type should be selected, if not, select it now.
-Enter 'y' and pres enter.
+Enter 'y' and press enter.
 
 ```
 ? The SSO provider to deploy with Azure
