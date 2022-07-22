@@ -11,10 +11,12 @@ To set up Azure to sync users and groups with Granted we will need to create an 
 Sign in to your Azure portal as a user with [administrator privileges (opens new window)](https://portal.azure.com).
 
 In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
+![](/img/sso/azure/app-registrations.png)
+
 
 Name the app 'Granted Directory Sync', Accounts in this organizational directory only (single tenant) for **Supported account types** and then click **Register**.
 
-![](/img/sso/azure/register.png)
+![](/img/sso/azure/registernew.png)
 
 Your app will be shown in a table of other owned applications in azure. Click on the newly created app and we will now configure some scopes and create an access token.
 
@@ -27,6 +29,8 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
 - Then search for **Group** and add: `Group.Read.All`
 - Finally search for **GroupMember** and add: `GroupMember.Read.All`
 - Once you have selected the permissions click **Add permissions** to add them to your application.
+
+Make sure you click **Grant admin consent** above the permissions table and permit the scopes on the application.
 
 This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
 
@@ -96,7 +100,8 @@ In the newly created enterprise application select **Single sign-on** from the l
 ![](/img/sso/azure/SAML.png)
 
 Then click the **SAML** sign on method from the options.
-![](/img/sso/azure/options.png)
+![](/img/sso/azure/SAML-conf.png)
+
 
 Set the **Reply URL (Assertion Consumer Service URL)** value in Azure AD to be the **SAML SSO URL (ACS URL)** from the gdeploy outputs
 
@@ -127,6 +132,7 @@ Click on the email attribute value and you will be taken to this screen, from he
 ![](/img/sso/azure/edit-claim.png)
 
 Then from the **SAML Signing Certificate** section, copy the **App Federation metadata Url**
+![](/img/sso/azure/saml-url.png)
 
 Paste this URL into the gdeploy prompt asking for `Metadata Url`
 
@@ -141,14 +147,18 @@ In the Azure portal, to to *Groups*.
 
 Click the **New group** button
 
-![](/img/sso/azure/settings.png)
+![](/img/sso/azure/new-group.png)
 - Make it a **Security Group**
 - Name the group the same name as you set in the `gdeploy` config setup.
 
 - Add yourself as a owner and any others you want to make granted admins for the members of the group.
 Hit **Create Group** at the end to complete.
 
-From the **Groups** page each group will have a **Object Id**. Copy this ID and use this for the group Id prompt in gdeploy.
+Click on the newly created Group once it has been created and you will be taken to this screen: 
+![](/img/sso/azure/created-group.png)
+
+
+Copy the **Object Id**. Use this for the group Id prompt in gdeploy.
 Press enter and this should conclude the gdeploy setup for SSO/SAMl sign on in azure.
 
 You should see the following:
