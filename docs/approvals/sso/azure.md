@@ -116,14 +116,42 @@ The outputs will look like this:
 
 Hit save.
 
+From the same page, in the **Attributes & Claims** section we will want to edit the default attributes for *emailaddress*.
+![](/img/sso/azure/attributes.png)
+- By default the emailaddress attribute will be linked to user.mail. We want to change this to user.userprincipalname.
+
+Click edit and it will take you to this screen.
+![](/img/sso/azure/claims.png)
+
+Click on the email attribute value and you will be taken to this screen, from here change the value to user.userprincipalname
+![](/img/sso/azure/edit-claim.png)
+
 Then from the **SAML Signing Certificate** section, copy the **App Federation metadata Url**
 
-Paste this URL into the gdeploy prompt asking for `SAML Metadata Url`
+Paste this URL into the gdeploy prompt asking for `Metadata Url`
 
 Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
-- By default granted will set this to `granted_administrators`, press enter to continue with this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
-You should see the following prompts
+
+To get this group ID we will need to make the administrator group in Azure.
+
+In the Azure portal, to to *Groups*.
+
+![](/img/sso/azure/groups.png)
+
+Click the **New group** button
+
+![](/img/sso/azure/settings.png)
+- Make it a **Security Group**
+- Name the group the same name as you set in the `gdeploy` config setup.
+
+- Add yourself as a owner and any others you want to make granted admins for the members of the group.
+Hit **Create Group** at the end to complete.
+
+From the **Groups** page each group will have a **Object Id**. Copy this ID and use this for the group Id prompt in gdeploy.
+Press enter and this should conclude the gdeploy setup for SSO/SAMl sign on in azure.
+
+You should see the following:
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
@@ -133,26 +161,4 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
  2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
-
-Once you have set your administrators group name, we will need to create that corresponding group in Azure.
-In the Microsoft admin portal, to to *Teams & Groups* in the side nav.
-
-![](/img/sso/azure/groups.png)
-
-Click the **Add a group** button
-- Make it a **Microsoft 365 group**
-
-
-![](/img/sso/azure/admins.png)
-- Name the group the same name as you set in the `gdeploy` config setup.
-
-- Add yourself as a owner and any others you want to make granted admins for the members of the group.
-
-![](/img/sso/azure/settings.png)
-- Set the privacy type to private and set the email address
-
-Hit **Create Group** at the end to complete.
-
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
-
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.
