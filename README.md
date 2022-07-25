@@ -16,7 +16,7 @@ $ yarn start
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-By default, you won't be able to see images while running the docs locally. This is because they're are stored in Github LFS (Large File Storage). To see images locally, you'll need to run:
+By default, you won't be able to see images while running the docs locally. This is because they're stored in Github LFS (Large File Storage). To see images locally, you'll need to run:
 
 ```
 brew install git-lfs
