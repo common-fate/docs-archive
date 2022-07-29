@@ -6,15 +6,17 @@ All audit trail events in Granted Approvals are emitted to an [Amazon EventBridg
 
 The following table summarises the audit trail events emitted by Granted Approvals. Each event contains a data payload with specific details about what happened.
 
-| Event              | Description                                                           |
-| ------------------ | --------------------------------------------------------------------- |
-| `request.created`  | An Access Request was created                                         |
-| `request.approved` | An Access Request was approved                                        |
-| `grant.created`    | A workflow was created to grant access to a resource                  |
-| `grant.activated`  | Access to a resource was activated                                    |
-| `grant.expired`    | Access to a resource was deactivated at the expiry time of a request  |
-| `grant.revoked`    | Access to a resource was revoked before the expiry time               |
-| `grant.failed`     | Granted Approvals had a problem activating or deactivating the access |
+| Event               | Description                                                           |
+| ------------------- | --------------------------------------------------------------------- |
+| `request.created`   | An Access Request was created                                         |
+| `request.approved`  | An Access Request was approved                                        |
+| `request.cancelled` | An Access Request was cancelled                                       |
+| `request.declined`  | An Access Request was declined                                        |
+| `grant.created`     | A workflow was created to grant access to a resource                  |
+| `grant.activated`   | Access to a resource was activated                                    |
+| `grant.expired`     | Access to a resource was deactivated at the expiry time of a request  |
+| `grant.revoked`     | Access to a resource was revoked before the expiry time               |
+| `grant.failed`      | Granted Approvals had a problem activating or deactivating the access |
 
 ## Finding the event bus ARN
 
