@@ -63,6 +63,6 @@ Next we will create a token, for this head into the **Certificates & secrets** t
 
 Give the secret a descriptive name, like `Granted-token`. It will create a secret and display a table showing the secret value.
 
-Copy the secret value and use it for the **Client Secret** input in the `gdeploy` sso setup.
+Copy the secret value and use it for the **Client Secret** input.
 
 Your provider will now be set in your Granted config. Run `gdeploy update` to push the change to your Granted deployment.
