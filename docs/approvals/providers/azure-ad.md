@@ -9,8 +9,7 @@ sidebar_position: 4
 In the Azure AD portal, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 ![](/img/sso/azure/app-registrations.png)
 
-
-Name the app 'Azure Provider', Accounts in this organizational directory only (single tenant) for **Supported account types** and then click **Register**.
+Name the app 'Granted Azure AD Groups Provider', Accounts in this organizational directory only (single tenant) for **Supported account types** and then click **Register**.
 
 ![](/img/sso/azure/registernew.png)
 
@@ -29,6 +28,7 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
 Make sure you click **Grant admin consent** above the permissions table and permit the scopes on the application.
 
 ## Setup instructions
+
 :::info
 Make sure you have AWS credentials before attempting the provider setup.
 :::
@@ -58,7 +58,6 @@ Head back to the **Overview** tab in the Azure portal, and get the first two IDs
 
 1. For the `Client ID` param, copy and paste the **Application (client) ID**.
 2. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
- 
 
 Next we will create a token, for this head into the **Certificates & secrets** tab in the left hand Nav, Under Client secrets. Create a new secret.
 
