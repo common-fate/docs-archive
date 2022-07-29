@@ -17,7 +17,7 @@ On the API page, go to the **Tokens** tab and create a new API token by pressing
 Give the API token a descriptive name, like "granted-provider" and click **Create Token**
 ![](/img/providers/okta/token-name.png)
 
-This is all we will need for the okta prerequisites, head to Setup instructions below to continue.
+This is all we will need for the Okta prerequisites, head to Setup instructions below to continue.
 
 ## Setup instructions
 :::info
