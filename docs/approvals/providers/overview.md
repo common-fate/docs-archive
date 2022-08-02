@@ -10,9 +10,8 @@ Providers are plugins that allow the access management integration between Grant
 The current list of providers integrated are:
 
 - [AWS IAM Identity Center (AWS SSO)](aws-sso.md)
-- [Azure Groups](aws-sso.md)
-- [Okta Groups](aws-sso.md)
-
+- [Azure Groups](azure-ad.md)
+- [Okta Groups](okta.md)
 
 To configure a new provider to your Granted Approvals deployment, run
 

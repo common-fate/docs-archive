@@ -4,12 +4,10 @@ sidebar_position: 3
 
 # Okta
 
-:::info
-Granted user and group sync requires some credentials to be configured in your identity provider account. Granted uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
-:::
 ## Okta setup
 
 ### Creating Access Token
+
 To set up Okta to sync users and groups with Granted we will need to create an access token to communicate with Okta's API.
 
 Sign in to your Okta organization as a user with [administrator privileges (opens new window)](https://help.okta.com/okta_help.htm?id=ext_Security_Administrators).
@@ -159,10 +157,12 @@ Copy the URL. eg. `https://demo.okta.com/app/abcd1234/sso/saml/metadata` and pas
 
 ### Creating Granted Administrator Group
 
-Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
+Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+
 - By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
 You should see the following prompts
+
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
@@ -174,13 +174,14 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
 ```
 
 Once you have set your administrators group name, we will need to create that corresponding group in Okta
-In the Okta admin portal, to to *Directory>Groups*
+In the Okta admin portal, to to _Directory>Groups_
 
 ![](/img/sso/okta/08.png)
 
 Click the **Add Group** button
 
 ![](/img/sso/okta/09.png)
+
 - Name the group the same name as you set in the `gdeploy` config setup.
 
 Add yourself and any others you want to make granted admins to the group in Okta.
