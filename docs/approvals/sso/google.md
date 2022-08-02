@@ -14,7 +14,9 @@ Set up a [Project](https://cloud.google.com/resource-manager/docs/creating-manag
 
 ![](/img/sso/google/01-enable-sdk.png)
 
-**First, we need to create a service account:**
+### Create Service Account
+
+First, we need to create a service account:
 
 Start by opening the [Service accounts page](https://console.developers.google.com/iam-admin/serviceaccounts) and select the project you created in the previous steps.
 
@@ -34,10 +36,13 @@ Click on the service account you have just created and you will be redirected to
 
 ![](/img/sso/google/03-created-service-account.png)
 
+### Create Keys
+
 In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the setup is complete.
 
 This is where we can start up the `gdeploy sso configure` command.
 
+### Running Gdeploy Commands
 Run the following to begin the SSO setup
 
 ```json
@@ -78,6 +83,7 @@ The scopes provided to the service account are read-only.
 
 Delete the downloaded JSON file from your computer.
 
+### Configuring SSO Scopes
 You should see an output similar to the below.
 
 ```
@@ -196,6 +202,8 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
  2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
+
+### Creating Granted Administrator Group
 
 Once you have set your administrators group name, we will need to create that corresponding group in Google.
 In the Google admin portal, to to *Directory>Groups*
