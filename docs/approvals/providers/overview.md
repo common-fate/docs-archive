@@ -4,8 +4,7 @@ sidebar_position: 1
 
 # Overview
 
-Providers are an essential part of Granted approvals.
-Providers are plugins that allow the access management integration between Granted and your choice of cloud/identity service.
+Providers are an essential part of Granted approvals. Providers are plugins that allow the access management integration between Granted and your choice of cloud/identity service.
 
 The current list of providers integrated are:
 

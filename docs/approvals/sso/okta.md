@@ -174,7 +174,7 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
 ```
 
 Once you have set your administrators group name, we will need to create that corresponding group in Okta
-In the Okta admin portal, to to _Directory>Groups_
+In the Okta admin portal, to _Directory>Groups_
 
 ![](/img/sso/okta/08.png)
 
