@@ -4,7 +4,12 @@ sidebar_position: 3
 
 # Azure AD
 
+:::info
+Granted user and group sync requires some credentials to be configured in your identity provider account. Granted uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+:::
 ## Azure AD setup
+
+### Creating Access Tokens in Azure
 
 To set up Azure to sync users and groups with Granted we will need to create an access token to communicate with Azure's Graph API.
 
@@ -20,6 +25,8 @@ Name the app 'Granted Directory Sync', Accounts in this organizational directory
 
 Your app will be shown in a table of other owned applications in azure. Click on the newly created app and we will now configure some scopes and create an access token.
 
+### Adding API Scopes
+
 Next, click on **API permissions** in the tabs on the left hand side. Click on **Add a permission**
 
 ![](/img/sso/azure/perms.png)
@@ -31,6 +38,7 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
 - Once you have selected the permissions click **Add permissions** to add them to your application.
 
 Make sure you click **Grant admin consent** above the permissions table and permit the scopes on the application.
+### Running Gdeploy Commands
 
 This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
 
@@ -140,6 +148,8 @@ Finally you will need to create an adminitrator group with granted. You will be 
 
 
 To get this group ID we will need to make the administrator group in Azure.
+
+### Creating Granted Administrator Group
 
 In the Azure portal, to to *Groups*.
 
