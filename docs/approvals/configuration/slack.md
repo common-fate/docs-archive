@@ -38,6 +38,12 @@ Once you have installed the app to your workspace, you will see a **Bot User OAu
 
 The CLI will prompt you for the access token, **Paste** the token in and press **Enter.** You should see a success message indicating that Slack has been configured.
 
+Finally, run `gdeploy update` to push the change to your Granted deployment:
+
+```
+gdeploy update
+```
+
 You can test the integration by running
 
 ```
