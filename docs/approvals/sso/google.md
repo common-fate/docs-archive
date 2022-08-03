@@ -43,6 +43,7 @@ In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create ne
 This is where we can start up the `gdeploy sso configure` command.
 
 ### Running Gdeploy Commands
+
 Run the following to begin the SSO setup
 
 ```json
@@ -84,6 +85,7 @@ The scopes provided to the service account are read-only.
 Delete the downloaded JSON file from your computer.
 
 ### Configuring SSO Scopes
+
 You should see an output similar to the below.
 
 ```
@@ -163,8 +165,8 @@ Look back in your terminal for an output that looks like the below.
 
 On the **Service provider details** page
 
-- For the **ACS URL** copy the `CognitoDomain` from the output.
-- For the **Entity ID** copy the `AudienceURI` from the output.
+- For the **ACS URL** copy the `SAML SSO URL (ACS URL)` from the output.
+- For the **Entity ID** copy the `Audience URI ` from the output.
 
 ![](/img/sso/google/06.png)
 
@@ -189,10 +191,12 @@ Finally, back in the terminal, select either String or File then use the metadat
 ? Metadata XML file: google-metatdata.xml
 ```
 
-Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
+Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+
 - By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
 You should see the following prompts
+
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
@@ -206,26 +210,27 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
 ### Creating Granted Administrator Group
 
 Once you have set your administrators group name, we will need to create that corresponding group in Google.
-In the Google admin portal, to to *Directory>Groups*
+In the Google admin portal, to to _Directory>Groups_
 
 ![](/img/sso/google/07.png)
 
 Click the **Create Group** button
 
 ![](/img/sso/google/08.png)
+
 - Name the group the same name as you set in the `gdeploy` config setup.
 
 Add yourself and any others you want to make granted admins to the group in Google.
 
 For the group settings make sure:
+
 - Set the **Access type** to Custom
 - Set the join policy of the group to Invite only.
-![](/img/sso/google/09.png)
+  ![](/img/sso/google/09.png)
 
 Then click **Create Group**
 
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.
-
 
 If all goes well, you will see the following confirmation.
 
