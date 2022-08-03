@@ -18,7 +18,7 @@ deployment:
   stackName: Granted
   account: "123456789012"
   region: ap-southeast-2
-  release: v0.1.0
+  release: v0.3.0
   parameters:
     CognitoDomainPrefix: granted-login-cfdemo
 +   FrontendDomain: myfrontenddomain.com
