@@ -112,8 +112,8 @@ Look back in your terminal for an output that looks like the below.
 
 On the **Configure SAML** page
 
-- For the **Single sign on URL** copy the `CognitoDomain` from the output.
-- For the **Audience URI** copy the `AudienceURI` from the output.
+- For the **Single sign on URL** copy the `SAML SSO URL (ACS URL)` from the output.
+- For the **Audience URI** copy the `Audience URI` from the output.
 
 ![](/img/sso/okta/05.png)
 
