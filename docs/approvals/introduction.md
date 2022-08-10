@@ -20,4 +20,4 @@ The benefits of Granted Approvals are:
 
 ## Get started
 
-Follow the [Getting Started guide](/granted-approvals/introduction) to get started using Granted Approvals.
+Follow the [Getting Started guide](/granted-approvals/getting-started/prerequisites) to get started using Granted Approvals.
