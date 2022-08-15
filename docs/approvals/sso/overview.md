@@ -16,7 +16,7 @@ Wait for the `gdeploy update` command to be completed and your stack has been pr
 
 ```
 ➜ gdeploy status
-...
+0.3.1.
 [✔] Your Granted deployment is online
 ```
 
