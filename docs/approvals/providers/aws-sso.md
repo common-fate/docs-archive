@@ -62,3 +62,11 @@ Open the AWS console in the account that your AWS SSO instance is deployed to. I
 Visit the **Settings** tab. The information about your SSO instance will be shown here, including the Instance ARN (as the “ARN” field) and the Identity Store ID.
 
 ![](/img/providers/aws-sso/03.png)
+
+## Creating Permissions Sets for Your Access Rules
+
+Once you have the provider configured, you will need to create some Permission Sets in the delegated administrator account which are accessible by Granted.
+
+The AWS SSO provider is configured to only list Permission Sets which have a resource tag with key:`commonfate.io/managed-by-granted`. This means only tagged permission sets will show in the create access rule form in the Approvals UI.
+
+It is important that these Permission Sets are in the delegated administration account otherwise access requests will fail due to a permissions error.
