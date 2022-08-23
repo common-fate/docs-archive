@@ -67,7 +67,7 @@ const config = {
           },
           {
             from: '/granted-approvals',
-            to: ['/granted-approvals/introduction'],
+            to: '/granted-approvals/introduction',
           },
         ],
       },
