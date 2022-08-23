@@ -18,6 +18,8 @@ jobs:
       # get a branch preview domain
       - name: Docusaurus BuildDeploy Action
         uses: redkubes/docusaurus-deploy-action@v1.2
+        with:
+          source-folder: build
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@master
