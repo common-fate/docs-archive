@@ -1,8 +1,8 @@
-name: Deploy Docs
-on: [push, pull_request]
+name: Deploy Preview
+on: [push]
 jobs:
   deploy-preview:
-    if: github.branch != "main"
+    if: github.branch != 'main'
     runs-on: ubuntu-latest
     permissions:
       contents: read
