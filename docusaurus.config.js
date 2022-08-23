@@ -56,6 +56,22 @@ const config = {
         sidebarPath: "./sidebars.approvals.js",
       },
     ],
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        redirects: [
+          {
+            from: '/granted',
+            to: '/granted/introduction',
+          },
+          {
+            to: '/granted-approvals',
+            from: ['/granted-approvals/introduction'],
+          },
+        ],
+      },
+    ],
   ],
 
   themeConfig:
