@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+slug: sso-setup
 ---
 
-# Overview
+# Single Sign On
 
 In this guide, you'll use the `gdeploy` CLI to enable Single Sign On (SSO) for your Granted Approvals deployment. SSO with Granted Approvals consists of two components:
 

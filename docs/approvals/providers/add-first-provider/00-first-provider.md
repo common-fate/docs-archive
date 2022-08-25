@@ -1,8 +1,8 @@
 ---
-slug: acess-provider
+slug: first-provider
 ---
 
-# Adding an Access Provider
+# Adding Your First Provider
 
 ## Access Provider setup
 

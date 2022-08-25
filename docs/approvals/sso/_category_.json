@@ -1,4 +1,5 @@
 {
   "label": "Single Sign On (SSO)",
-  "position": 4
+  "position": 4,
+  "link": {"type": "doc", "id": "sso-setup"}
 }

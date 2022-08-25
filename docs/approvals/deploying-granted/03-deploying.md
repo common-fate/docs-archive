@@ -87,4 +87,4 @@ The end user dashboard is where team members can request and approve access to r
 
 ![](/img/approvals-getting-started/03-admin.png)
 
-You'll see that we don't have access to anything yet! To set this up, we'll need to add an Access Provider.
+You'll see that we don't have access to anything yet! To set this up, we'll need to add an Access Provider. Click through to the next page to see what the next steps are.

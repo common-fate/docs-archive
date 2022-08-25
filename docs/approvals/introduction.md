@@ -20,4 +20,4 @@ The benefits of Granted Approvals are:
 
 ## Get started
 
-Follow the [Getting Started guide](/granted-approvals/getting-started/prerequisites) to get started using Granted Approvals.
+Follow the [Deployment guide](/granted-approvals/deploying-granted/deploying-granted/) to get your own instance of Granted up and running.
