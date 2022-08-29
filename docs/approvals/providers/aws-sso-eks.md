@@ -91,7 +91,7 @@ gdeploy will prompt for some setup parameters, we will go through each one and t
 1. `ID` for the provider, call this `sso-eks` (default)
 2. `clusterName` the name of the cluster we will be targeting this provider to.
 3. `namespace` the namespace that the cluster is deployed in, if you're unsure then it will be in the "default" namespace
-4. `clusterRegion` the region the cluster is deployed to in aws.
+4. `clusterRegion` the region the cluster is deployed to in AWS.
 
 The next two require looking up some details from AWS.
 
