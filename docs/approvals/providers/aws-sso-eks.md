@@ -180,7 +180,7 @@ Here are some easy **eksctl** commands to create the identity mappings, just rep
 ```
 eksctl create iamidentitymapping \
     --cluster {CLUSTER_NAME} \
-    --region=ap-southeast-2 \
+    --region={CLUSTER_REGION} \
     --arn {access handler granter lambda role ARN} \
 		--username access-handler-k8-manager \
     --no-duplicate-arns
