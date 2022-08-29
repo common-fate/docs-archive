@@ -198,6 +198,6 @@ Unpreferred but you can interact with the aws-auth directly by running
 ```
 kubectl edit -n kube-system configmap/aws-auth
 ```
-Then manually editing the mapRoles directly using vim.
+Then manually editing the mapRoles using your terminal text editor.
 
 With these roles and permissions in place Granted now should have access to start granting and revoking access to our new cluster!
