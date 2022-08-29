@@ -143,6 +143,8 @@ Copy in the following config and save:
   kind: ClusterRole
   metadata:
     name: common-fate-granted
+    labels:
+      app.kubernetes.io/part-of: "commonfate.io/granted"
   rules:
   - apiGroups: ["*"] 
       resources: ["*"]
