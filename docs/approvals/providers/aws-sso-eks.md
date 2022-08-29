@@ -69,7 +69,7 @@ kubectl get roles -A
 Make sure you have AWS credentials before attempting the provider setup.
 :::
 
-This is where we can start up the `gdeploy provider add` command. Run the following to begin the Provider setup:
+Start by running the `gdeploy provider add` command. Run the following to begin the Provider setup:
 
 ```json
 gdeploy provider add
@@ -140,7 +140,7 @@ Copy in the following config and save:
     apiVersion: rbac.authorization.k8s.io/v1
     kind: ClusterRole
     metadata:
-    name: access-handler-k8-manager
+    name: common-fate-granted
     rules:
     - apiGroups: ["*"] 
         resources: ["*"]
