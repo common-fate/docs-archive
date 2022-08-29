@@ -188,7 +188,7 @@ eksctl create iamidentitymapping \
 
 eksctl create iamidentitymapping \
     --cluster {CLUSTER_NAME} \
-    --region=ap-southeast-2 \
+    --region={CLUSTER_REGION} \
     --arn {access handler rest api lambda role ARN} \
 		--username access-handler-k8-manager \
     --no-duplicate-arns
