@@ -172,8 +172,7 @@ Then apply the config again by running
 kubectl apply -f ac-role-binding.yml
 ```
 
-Lastly we will need to update the aws-auth config map in our cluster, by adding this new cluster role which enables our Granted lambda's access to grant and revoke access.
-- The Arn's referenced are the same as the ones from the output of the gdeploy *provider add* command.
+Lastly we will need to update the `aws-auth` config map in our cluster, by adding this new cluster role which enables Granted to grant and revoke access. The ARNs referenced are the same as the ones from the output of the gdeploy *provider add* command.
 
 It is recommended to use third party tooling to make changes to aws-auth and other k8s configs as mistakes in config can cause downtime if done incorrectly.
 Here are some easy **eksctl** commands to create the identity mappings, just replace the values with the correct ones from the outputs:
