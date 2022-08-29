@@ -44,13 +44,15 @@ If you don't have any existing roles, thats fine. For the purpose of this tutori
 ### Creating Kubernetes RBAC Roles
 In a folder, create a new file and call it `test-role.yml`. This is where we will specify our new role
 Copy the following into the file and save:
-```
-apiVersion: rbac.authorization.k8s.io/v1
-kind: Role
-metadata:
-  namespace: default
-  name: pod-reader
-rules:
+```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    namespace: default
+    name: pod-reader
+    labels:
+      app.kubernetes.io/part-of: "commonfate.io/granted"
+  rules:
   - apiGroups: [""] # "" indicates the core API group
     resources: ["pods"]
     verbs: ["get", "watch", "list"]
@@ -136,16 +138,16 @@ At the end of the provider setup you would have noticed some outputs. Two ARNS. 
 
 Create a new config file for the cluster and name it `ac-role.yml`
 Copy in the following config and save:
-    ```
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRole
-    metadata:
+```yaml
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
     name: common-fate-granted
-    rules:
-    - apiGroups: ["*"] 
-        resources: ["*"]
-        verbs: ["*"]
-    ```
+  rules:
+  - apiGroups: ["*"] 
+      resources: ["*"]
+      verbs: ["*"]
+```
 
 Create this new role by running:
 ```
@@ -153,20 +155,20 @@ kubectl apply -f ac-role.yml
 ```
 Next create another file called `ac-role-binding.yml`
 and copy the following config and save:
-    ```
-    apiVersion: rbac.authorization.k8s.io/v1
-    kind: ClusterRoleBinding
-    metadata:
-    name: access-handler-k8-manager
-    subjects:
-    - kind: User
-        name: access-handler-k8-manager
-        apiGroup: rbac.authorization.k8s.io
-    roleRef:
-    kind: ClusterRole
-    name: access-handler-k8-manager
-    apiGroup: rbac.authorization.k8s.io
-    ```
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: access-handler-k8-manager
+subjects:
+- kind: User
+  name: access-handler-k8-manager
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: access-handler-k8-manager
+  apiGroup: rbac.authorization.k8s.io
+```
 Then apply the config again by running 
 ```
 kubectl apply -f ac-role-binding.yml
