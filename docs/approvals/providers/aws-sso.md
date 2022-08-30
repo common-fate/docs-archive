@@ -14,22 +14,22 @@ sidebar_position: 2
 
 ## Prerequisites
 
-In order to use this provider, the AWS account which Granted is deployed in must be a delegated administrator of the AWS SSO instance.
+In order to use this provider, the AWS account which Granted Approvals is deployed in must be a delegated administrator of the AWS SSO instance.
 
 To set this up, open the AWS console visit the **Settings** page in AWS SSO. Navigate to the **Management** tab. Then, click on the **Register account** button in the “Delegated administrator” section.
 
 ![](/img/providers/aws-sso/01.png)
 
-Select the account which Granted is deployed to.
+Select the account which Granted Approvals is deployed to.
 
 ![](/img/providers/aws-sso/02.png)
 
 <aside>
-💡 Enabling this action has security implications: users with administrative access in the account that Granted is deployed in will have the ability to perform AWS SSO administrative tasks. Once Granted is set up, we recommend removing any persistent Permission Sets which grant users administrative access to the account that Granted is running in.
+💡 Enabling this action has security implications: users with administrative access in the account that Granted Approvals is deployed in will have the ability to perform AWS SSO administrative tasks. Once Granted Approvals is set up, we recommend removing any persistent Permission Sets which grant users administrative access to the account that Granted Approvals is running in.
 
 </aside>
 
-A delegated administrator account does not have the ability to remove Permission Sets created in your SSO management account. For example, if you have persistent permissions defined in your management account and only use Granted for elevated administrative access, Granted will be unable to remove any persistent permissions as long as they are defined in the management account.
+A delegated administrator account does not have the ability to remove Permission Sets created in your SSO management account. For example, if you have persistent permissions defined in your management account and only use Granted Approvals for elevated administrative access, Granted Approvals will be unable to remove any persistent permissions as long as they are defined in the management account.
 
 ## Setup instructions
 

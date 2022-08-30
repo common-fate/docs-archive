@@ -79,7 +79,7 @@ You will be redirected to a login screen which looks similar to the below.
 
 ![A screenshot of the login screen](/img/approvals-getting-started/01-login.png)
 
-Enter your email address and temporary password from the previous step. You'll be prompted to set a permanent password. After setting your password, you'll be redirected to the Granted end user dashboard!
+Enter your email address and temporary password from the previous step. You'll be prompted to set a permanent password. After setting your password, you'll be redirected to the Granted Approvals end user dashboard!
 
 ![](/img/approvals-getting-started/02-home.png)
 

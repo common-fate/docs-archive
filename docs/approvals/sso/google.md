@@ -5,7 +5,7 @@ sidebar_position: 2
 # Google Workspace
 
 :::info
-Granted user and group sync requires some credentials to be configured in your identity provider account. Granted uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
 ## Google Setup
@@ -28,7 +28,7 @@ Under **Service account details**, type a name, ID, and description for the ser
 
 **_Optional_**: Under **Grant this service account access to project**, select the IAM roles to grant to the service account.
 
-Then click **Continue,** followed by **Done.** This will now have created a new service account.
+Then click **Continue,** followed by **Done**. This will now have created a new service account.
 
 You will be redirected back to the Service Accounts page where all the service accounts are listed. Find the service account you just created, use the filter search at the top if there are many service accounts in your project.
 
@@ -147,7 +147,7 @@ You will see something like this, follow the [next section](#setting-up-saml-sso
 
 ![](/img/sso/google/05.png)
 
-Click **Continue.**
+Click **Continue**.
 
 On the **Service provider details** page you will need some of the outputs from the previous step in the CLI workflow.
 
@@ -191,7 +191,7 @@ Finally, back in the terminal, select either String or File then use the metadat
 ? Metadata XML file: google-metatdata.xml
 ```
 
-Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+Finally you will need to create an administrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
 
 - By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
@@ -207,7 +207,7 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
 
-### Creating Granted Administrator Group
+### Creating Granted Approvals Administrator Group
 
 Once you have set your administrators group name, we will need to create that corresponding group in Google.
 In the Google admin portal, to to _Directory>Groups_
@@ -230,7 +230,7 @@ For the group settings make sure:
 
 Then click **Create Group**
 
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
+You will need to redeploy using `gdeploy update` to update the identity provider changes.
 
 If all goes well, you will see the following confirmation.
 
@@ -240,7 +240,7 @@ If all goes well, you will see the following confirmation.
 [!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
 ```
 
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
+You will need to redeploy using `gdeploy update` to update the identity provider changes.
 
 ## Common Issues
 

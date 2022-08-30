@@ -30,15 +30,15 @@ You will be prompted with an install link that is pre-populated with the require
 
 Copy and Paste this into the browser and follow the prompts to create the app from manifest in your slack workspace. You will need to be an administrator of the slack workspace to complete this.
 
-Once your app is created, navigate to the OAuth & Permissions section and click **Install to Workspace.**
+Once your app is created, navigate to the OAuth & Permissions section and click **Install to Workspace**.
 
 ![Slack Oauth & Permissions page](/img/slack-permissions.png)
 
-Once you have installed the app to your workspace, you will see a **Bot User OAuth Token.** Have this token ready for the next step.
+Once you have installed the app to your workspace, you will see a **Bot User OAuth Token**. Have this token ready for the next step.
 
-The CLI will prompt you for the access token, **Paste** the token in and press **Enter.** You should see a success message indicating that Slack has been configured.
+The CLI will prompt you for the access token, **Paste** the token in and press **Enter**. You should see a success message indicating that Slack has been configured.
 
-Finally, run `gdeploy update` to push the change to your Granted deployment:
+Finally, run `gdeploy update` to push the change to your Granted Approvals deployment:
 
 ```
 gdeploy update

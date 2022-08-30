@@ -8,16 +8,16 @@ Granted Approvals is an open source privileged access management framework which
 
 ![A screenshot of the Granted Approvals web dashboard, showing a list of available resources to request and some upcoming approved access requests](/img/approvals-home.png)
 
-The benefits of Granted Approvals are:
+Granted Approvals key benefits are:
 
-**Get access:** set up rules defining who can request access to what, and the resource owners who can approve access.
+- **Get access:** set up rules defining who can request access to what, and the resource owners who can approve access.
 
-**Connect with your services:** install Access Providers to provision access to your SaaS services and cloud providers.
+- **Connect with your services:** install Access Providers to provision access to your SaaS services and cloud providers.
 
-**Approve quickly:** connect with your team's communication tools like Slack.
+- **Approve quickly:** connect with your team's communication tools like Slack.
 
 ![A screenshot of the Granted Approvals web dashboard, showing a form for a new access request](/img/approvals-newrequest.png)
 
 ## Get started
 
-Follow the [Deployment guide](/granted-approvals/deploying-granted/deploying-granted/) to get your own instance of Granted up and running.
+Follow the [Deployment guide](/granted-approvals/deploying-granted/deploying-granted/) to get your own instance of Granted Approvals up and running.

@@ -6,7 +6,7 @@ slug: next-steps
 
 ## Getting ready for production
 
-Before using Granted with your team, we recommend completing the following steps:
+Before using Granted Approvals with your team, we recommend completing the following steps:
 
 1. [Configure Access Providers](/granted-approvals/providers/access-providers)
 2. [Enable SSO and user directory sync](/granted-approvals/sso/introduction)

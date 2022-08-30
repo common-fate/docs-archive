@@ -34,7 +34,7 @@ Next you will be able to select from one of the providers which you should have 
 
 An AWS SSO provider requires an account and a permission set. This allows you to define different access levels and easily apply them across any of your accounts. When a user uses this access rule, a temporary assignment of the user to permission set and account is created in AWS SSO.
 
-Select from the options and then press **Next.**
+Select from the options and then press **Next**.
 
 ![](/img/access-rules/2.png)
 
@@ -42,7 +42,7 @@ Select from the options and then press **Next.**
 
 An Okta provider requires you to select a group from Okta. Users will be temporarily assigned as a member of the group when they use this access rule.
 
-Select from the option and then press **Next.**
+Select from the option and then press **Next**.
 
 ## Time
 
