@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+slug: sso-setup
 ---
 
-# Overview
+# Single Sign On
 
 In this guide, you'll use the `gdeploy` CLI to enable Single Sign On (SSO) for your Granted Approvals deployment. SSO with Granted Approvals consists of two components:
 
@@ -20,7 +20,7 @@ Wait for the `gdeploy update` command to be completed and your stack has been pr
 [✔] Your Granted deployment is online
 ```
 
-By default Granted will set the identity provider to an AWS Cognito user pool, so that you can test it out without connecting it to your corporate identity provider. Granted supports the following corporate identity providers:
+By default Granted Approvals will set the identity provider to an AWS Cognito user pool, so that you can test it out without connecting it to your corporate identity provider. Granted Approvals supports the following corporate identity providers:
 
 - Google Workspaces
 - Okta

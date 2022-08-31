@@ -1,4 +1,5 @@
 {
   "label": "Access Providers",
-  "position": 3
+  "position": 3,
+  "link": {"type": "doc", "id": "access-providers"}
 }

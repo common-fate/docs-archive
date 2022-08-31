@@ -57,7 +57,7 @@ After completing the first-time setup, run `assume` again. You should see a list
 ```
 
 :::info
-If you don't see any roles listed when running the command above, ensure that you have configured your AWS roles as described in the [requirements section on the Getting Started page](/granted/getting-started#requirements).
+If you don't see any roles listed when running the command above, ensure that you have configured your AWS roles as described in the [requirements section on the Deployment page](/granted/deploying-granted#requirements).
 :::
 
 You can search for a role by name by typing on your keyboard. Select a role using the arrow keys and press Enter to assume it. If the role uses AWS SSO, you will be prompted to log in through your browser.

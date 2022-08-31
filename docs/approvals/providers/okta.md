@@ -9,7 +9,6 @@ sidebar_position: 2
 In the Okta admin portal, in the side bar. Navigate to **Security -> API**
 ![](/img/providers/okta/app.png)
 
-
 On the API page, go to the **Tokens** tab and create a new API token by pressing **Create Token**
 
 ![](/img/providers/okta/token.png)
@@ -20,6 +19,7 @@ Give the API token a descriptive name, like "granted-provider" and click **Creat
 This is all we will need for the Okta prerequisites, head to Setup instructions below to continue.
 
 ## Setup instructions
+
 :::info
 Make sure you have AWS credentials before attempting the provider setup.
 :::
@@ -43,8 +43,9 @@ Select 'Okta groups (commonfate/okta@v1)' when prompted for the provider.
 gdeploy will prompt for a ID for the provider, call this `okta` (default will be okta)
 
 Then we need to get the okta url, this can be found in the top right dropdown. See more [here](https://developer.okta.com/docs/guides/find-your-domain/main/)
-- **Make sure to add 'https://' to the url you copy from the okta portal as Granted will be expecting a link**
+
+- **Make sure to add 'https://' to the url you copy from the okta portal as Granted Approvals will be expecting a link**
 
 Lastly we paste in the copied API token from the prerequisites for the API token input.
 
-Your provider will now be set in your Granted config. Run gdeploy update to push the change to your Granted deployment.
+Your provider will now be set in your Granted Approvals config. Run gdeploy update to push the change to your Granted Approvals deployment.

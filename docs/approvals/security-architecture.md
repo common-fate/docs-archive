@@ -6,11 +6,11 @@ sidebar_position: 5
 
 Granted Approvals is an identity-based privileged access management system. Employees within a company sometimes require administrative access to internal applications, such as cloud providers and SaaS applications. Granted Approvals provides workflows for employees to attain elevated access based on rules which you configure, such as designating roles as "break-glass" to be used only in an outage, to requiring a reason to be given for the access session.
 
-## Granted assigns roles to your existing users
+## Granted Approvals assigns roles to your existing users
 
 Granted Approvals uses an Access Provider plugin framework to connect to your cloud environment and SaaS services. Access Providers contain the necessary integration logic to assign and revoke access. For example, the `commonfate/aws-sso` Access Provider contains logic to assign users to Permission Sets in [AWS IAM Identity Center](https://aws.amazon.com/iam/identity-center/).
 
-Each Access Provider requires that some permissions are given to Granted Approvals in order to assign and revoke access. These permissions are scoped so that Granted only has the ability to assign roles to existing users, rather than create new roles or users.
+Each Access Provider requires that some permissions are given to Granted Approvals in order to assign and revoke access. These permissions are scoped so that Granted Approvals only has the ability to assign roles to existing users, rather than create new roles or users.
 
 By design, the blast radius of Granted Approvals being compromised is that existing users in your directory could be granted access to roles, rather than external users being created or given access to resources.
 
@@ -52,7 +52,7 @@ Granted Approvals stores data in Amazon DynamoDB and supports data backup and re
 `gdeploy` is a command-line interface (CLI) tool for creating and managing Granted Approvals deployments. Common Fate signs `gdeploy` binaries with our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key). You can verify the integrity and authenticity of a `gdeploy` binary by following the process below.
 
 :::note
-The process below will use `v0.3.2` as the version of `gdeploy`. Ensure that you change references to `v0.3.2` to the version of Granted you wish to verify when following this process.
+The process below will use `v0.3.2` as the version of `gdeploy`. Ensure that you change references to `v0.3.2` to the version of Granted Approvals you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key):
@@ -62,7 +62,7 @@ Prior to verifying a release you must import our [GPG key](https://docs.commonf
 gpg import commonfate.asc
 ```
 
-1. Download the Granted release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
+1. Download the Granted Approvals release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
 
    ```
    curl -OL releases.commonfate.io/gdeploy/v0.3.2/gdeploy_0.3.2_linux_x86_64.tar.gz

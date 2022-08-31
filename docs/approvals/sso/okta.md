@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ### Creating Access Token
 
-To set up Okta to sync users and groups with Granted we will need to create an access token to communicate with Okta's API.
+To set up Okta to sync users and groups with Granted Approvals we will need to create an access token to communicate with Okta's API.
 
 Sign in to your Okta organization as a user with [administrator privileges (opens new window)](https://help.okta.com/okta_help.htm?id=ext_Security_Administrators).
 
@@ -90,7 +90,7 @@ To get started navigate to the **Applications** tab of the admin console in okta
 
 ![](/img/sso/okta/02.png)
 
-Click create a new App Integration in Okta, then select the SAML 2.0 option. Give your integration a name, and upload an app logo. Once done click **next.**
+Click create a new App Integration in Okta, then select the SAML 2.0 option. Give your integration a name, and upload an app logo. Once done click **next**.
 
 ![](/img/sso/okta/03.png)
 
@@ -138,7 +138,7 @@ Choose **Assign** next to the user that you want to assign.**Note:** If this 
 
 (Optional) For **User Name**, enter a user name, or leave it as the user's email address, if you want.
 
-Choose **Save and Go Back,** followed by **Done.**
+Choose **Save and Go Back,** followed by **Done**.
 
 Next navigate to the **Sign On** tab for your Okta app.
 
@@ -155,9 +155,9 @@ Copy the URL. eg. `https://demo.okta.com/app/abcd1234/sso/saml/metadata` and pas
 ? Metadata URL: https://demo.okta.com/app/abcd1234/sso/saml/metadata
 ```
 
-### Creating Granted Administrator Group
+### Creating Granted Approvals Administrator Group
 
-Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+Finally you will need to create an administrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
 
 - By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
 
@@ -186,4 +186,4 @@ Click the **Add Group** button
 
 Add yourself and any others you want to make granted admins to the group in Okta.
 
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
+You will need to redeploy using `gdeploy update` to update the identity provider changes.

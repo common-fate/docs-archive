@@ -5,19 +5,19 @@ sidebar_position: 3
 # Azure AD
 
 :::info
-Granted user and group sync requires some credentials to be configured in your identity provider account. Granted uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
+
 ## Azure AD setup
 
 ### Creating Access Tokens in Azure
 
-To set up Azure to sync users and groups with Granted we will need to create an access token to communicate with Azure's Graph API.
+To set up Azure to sync users and groups with Granted Approvals we will need to create an access token to communicate with Azure's Graph API.
 
 Sign in to your Azure portal as a user with [administrator privileges (opens new window)](https://portal.azure.com).
 
 In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 ![](/img/sso/azure/app-registrations.png)
-
 
 Name the app 'Granted Directory Sync', Accounts in this organizational directory only (single tenant) for **Supported account types** and then click **Register**.
 
@@ -38,6 +38,7 @@ Next, click on **API permissions** in the tabs on the left hand side. Click on *
 - Once you have selected the permissions click **Add permissions** to add them to your application.
 
 Make sure you click **Grant admin consent** above the permissions table and permit the scopes on the application.
+
 ### Running Gdeploy Commands
 
 This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
@@ -110,7 +111,6 @@ In the newly created enterprise application select **Single sign-on** from the l
 Then click the **SAML** sign on method from the options.
 ![](/img/sso/azure/SAML-conf.png)
 
-
 Set the **Reply URL (Assertion Consumer Service URL)** value in Azure AD to be the **SAML SSO URL (ACS URL)** from the gdeploy outputs
 
 Set the **Identifier (Entity ID)** value in Azure AD to be the **Audience URI (Entity ID)** from `gdeploy`
@@ -129,8 +129,9 @@ The outputs will look like this:
 
 Hit save.
 
-From the same page, in the **Attributes & Claims** section we will want to edit the default attributes for *emailaddress*.
+From the same page, in the **Attributes & Claims** section we will want to edit the default attributes for _emailaddress_.
 ![](/img/sso/azure/attributes.png)
+
 - By default the emailaddress attribute will be linked to user.mail. We want to change this to user.userprincipalname.
 
 Click edit and it will take you to this screen.
@@ -144,34 +145,34 @@ Then from the **SAML Signing Certificate** section, copy the **App Federation me
 
 Paste this URL into the gdeploy prompt asking for `Metadata Url`
 
-Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:` 
-
+Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
 
 To get this group ID we will need to make the administrator group in Azure.
 
-### Creating Granted Administrator Group
+### Creating Granted Approvals Administrator Group
 
-In the Azure portal, to to *Groups*.
+In the Azure portal, to to _Groups_.
 
 ![](/img/sso/azure/groups.png)
 
 Click the **New group** button
 
 ![](/img/sso/azure/new-group.png)
+
 - Make it a **Security Group**
 - Name the group the same name as you set in the `gdeploy` config setup.
 
 - Add yourself as a owner and any others you want to make granted admins for the members of the group.
-Hit **Create Group** at the end to complete.
+  Hit **Create Group** at the end to complete.
 
-Click on the newly created Group once it has been created and you will be taken to this screen: 
+Click on the newly created Group once it has been created and you will be taken to this screen:
 ![](/img/sso/azure/created-group.png)
-
 
 Copy the **Object Id**. Use this for the group Id prompt in gdeploy.
 Press enter and this should conclude the gdeploy setup for SSO/SAMl sign on in azure.
 
 You should see the following:
+
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
@@ -181,4 +182,5 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
  2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
 ```
-You will need to redeploy using `gdeploy update` to update the indentity provider changes.
+
+You will need to redeploy using `gdeploy update` to update the identity provider changes.
