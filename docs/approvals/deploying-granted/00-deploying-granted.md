@@ -4,6 +4,8 @@ slug: deploying-granted
 
 # Deploying Granted Approvals
 
+## Quickstart
+
 This page is a quickstart guide for setting up a basic Granted Approvals deployment in 5 minutes. If you've got more than 5 minutes, head over to the [Prerequisites](/granted-approvals/deploying-granted/prerequisites) page to read the full guide.
 
 All you need is an AWS account, an AWS profile that has the ability to create resources and IAM roles, and an internet connection. You'll only need to run a few commands. Note that while Granted Approvals requires AWS to host your deployment, your actual Access Providers can also be Azure or Okta based.
