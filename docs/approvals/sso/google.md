@@ -40,14 +40,14 @@ Click on the service account you have just created and you will be redirected to
 
 In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the setup is complete.
 
-This is where we can start up the `gdeploy sso configure` command.
+This is where we can start up the `gdeploy identity sso enable` command.
 
 ### Running Gdeploy Commands
 
 Run the following to begin the SSO setup
 
 ```json
-gdeploy sso configure
+gdeploy identity sso enable
 ```
 
 You will be prompted to select you identity provider, select Google.
@@ -204,7 +204,7 @@ You should see the following prompts
 
 Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
- 2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
+ 2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
 ```
 
 ### Creating Granted Approvals Administrator Group
