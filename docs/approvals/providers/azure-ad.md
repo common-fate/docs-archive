@@ -65,4 +65,4 @@ Give the secret a descriptive name, like `Granted-token`. It will create a secre
 
 Copy the secret value and use it for the **Client Secret** input.
 
-Your provider will now be set in your Granted config. Run `gdeploy update` to push the change to your Granted deployment.
+Your provider will now be set in your Granted Approvals config. Run `gdeploy update` to push the change to your Granted Approvals deployment.

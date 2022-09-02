@@ -36,7 +36,7 @@ You should see a screen similar to below, with a message like the following:
 
 ![](/img/approvals-getting-started/15-testvaultactive.png)
 
-In Granted Approvals, all Access Requests have a **duration**. Granted is especially designed for “just-in-time” access, where your team can request elevated permissions for periods of time when they need them. After the Access Request has expired, **Granted removes the permissions automatically.** We can see this happen with the TestVault provider. Wait 30 seconds for the Access Request to expire, and then refresh the TestVault page in your browser. You should see an output similar to the below.
+In Granted Approvals, all Access Requests have a **duration**. Granted Approvals is especially designed for “just-in-time” access, where your team can request elevated permissions for periods of time when they need them. After the Access Request has expired, **Granted Approvals removes the permissions automatically**. We can see this happen with the TestVault provider. Wait 30 seconds for the Access Request to expire, and then refresh the TestVault page in your browser. You should see an output similar to the below.
 
 ![](/img/approvals-getting-started/16-testvaultinactive.png)
 
@@ -46,7 +46,7 @@ With the following message:
 {"error":"user is not a member of this vault"}
 ```
 
-What happened here? When the access was due to expire, Granted made an API call to the TestVault service to remove the user from the vault. Granted works the same way with other providers too. For example, if you're using the AWS SSO provider, Granted will provision and de-provision Permission Sets when Access Requests are approved and when they expire.
+What happened here? When the access was due to expire, Granted Approvals made an API call to the TestVault service to remove the user from the vault. Granted Approvals works the same way with other providers too. For example, if you're using the AWS SSO provider, Granted Approvals will provision and de-provision Permission Sets when Access Requests are approved and when they expire.
 
 If you navigate back to the end user dashboard, you'll see there that your access is expired too.
 
