@@ -187,3 +187,24 @@ Click the **Add Group** button
 Add yourself and any others you want to make granted admins to the group in Okta.
 
 You will need to redeploy using `gdeploy update` to update the identity provider changes.
+
+
+## Limitations
+
+Amazon Cognito has a limitation where IDP-initiated SAML flows don’t work.
+
+In the meantime, there is a workaround available to get a shortcut to Granted Approvals on team members’ Okta dashboards.
+
+1. Enable the “Do not display application icon to users” setting in the Granted Approvals SAML application. 
+
+![](/img/sso/okta/10.png)
+
+2. Create a Bookmark App following [Okta’s guide here](https://support.okta.com/help/s/article/How-do-you-create-a-bookmark-app?language=en_US). The URL it points to should be your Granted deployment URL.
+
+![](/img/sso/okta/11.png)
+
+3. Assign the Bookmark App to the same groups that the Granted Approvals SAML app is assigned to.
+
+![](/img/sso/okta/12.png)
+
+Note that you can also add an icon to the Bookmark App so the app is more distinguishable to users.
