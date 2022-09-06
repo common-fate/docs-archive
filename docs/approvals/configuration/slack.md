@@ -14,7 +14,7 @@ Before you can setup the Slack integration you will need to have deployed the Gr
 
 ```
 ➜ gdeploy status
-...
+0.4.2.
 [✔] Your Granted deployment is online
 ```
 
