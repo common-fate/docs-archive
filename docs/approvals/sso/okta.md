@@ -30,10 +30,10 @@ A pop up will appear showing your access token, leave this open and continue wit
 
 ### Running Gdeploy Commands
 
-This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
+This is where we can start up the `gdeploy identity sso enable` command. Run the following to begin the SSO setup:
 
 ```json
-> gdeploy sso configure
+> gdeploy identity sso enable
 ```
 
 You will be prompted to select you identity provider, select Okta.
@@ -170,7 +170,7 @@ You should see the following prompts
 
 Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
- 2) Run 'gdeploy users sync' to trigger an immediate sync of your user directory.
+ 2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
 ```
 
 Once you have set your administrators group name, we will need to create that corresponding group in Okta

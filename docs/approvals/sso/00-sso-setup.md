@@ -28,10 +28,10 @@ By default Granted Approvals will set the identity provider to an AWS Cognito us
 
 ## Setting up SSO
 
-To start setup for our SSO provider we will use `gdeploy` to configure all the parameters for us. Using `gdeploy` run the `gdeploy sso configure` command to get started and follow the steps below for your identity provider
+To start setup for our SSO provider we will use `gdeploy` to configure all the parameters for us. Using `gdeploy` run the `gdeploy identity sso enable` command to get started and follow the steps below for your identity provider
 
 ```json
-❯ gdeploy sso configure
+❯ gdeploy identity sso enable
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
 > Google
   Okta

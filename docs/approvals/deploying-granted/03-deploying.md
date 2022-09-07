@@ -44,7 +44,7 @@ You can check the status of your Granted deployment at any time by running `gdep
 Before you can use Granted Approvals, you'll need to create a user account for yourself. By default, Granted Approvals uses AWS Cognito to store user account information. You can add a user to the Cognito user pool by running the following command:
 
 ```bash
-gdeploy users create --admin -u YOUR_EMAIL_ADDRESS
+gdeploy identity users create --admin -u YOUR_EMAIL_ADDRESS
 ```
 
 where `YOUR_EMAIL_ADDRESS` is your own email address. You should see an output similar to the below:

@@ -33,7 +33,7 @@ gdeploy create
 The deployment should take a few minutes to complete. If it's successful, your Granted Approvals deployment will now be online. But you can't use it without a user. Let's make one.
 
 ```
-gdeploy users create --admin -u YOUR_EMAIL_ADDRESS
+gdeploy identity users create --admin -u YOUR_EMAIL_ADDRESS
 ```
 
 You'll get an email with a temporary password. To get the dashboard URL where you can login with the temporary password we can run:
