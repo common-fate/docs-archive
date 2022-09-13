@@ -52,7 +52,7 @@ Granted Approvals stores data in Amazon DynamoDB and supports data backup and re
 `gdeploy` is a command-line interface (CLI) tool for creating and managing Granted Approvals deployments. Common Fate signs `gdeploy` binaries with our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key). You can verify the integrity and authenticity of a `gdeploy` binary by following the process below.
 
 :::note
-The process below will use `v0.4.2` as the version of `gdeploy`. Ensure that you change references to `v0.4.2` to the version of Granted Approvals you wish to verify when following this process.
+The process below will use `v0.5.0` as the version of `gdeploy`. Ensure that you change references to `v0.5.0` to the version of Granted Approvals you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key):
@@ -65,19 +65,19 @@ gpg import commonfate.asc
 1. Download the Granted Approvals release artifact you wish to verify (we will use the Linux `x86_64` version as an example):
 
    ```
-   curl -OL releases.commonfate.io/gdeploy/v0.4.2/gdeploy_0.4.2_linux_x86_64.tar.gz
+   curl -OL releases.commonfate.io/gdeploy/v0.5.0/gdeploy_0.5.0_linux_x86_64.tar.gz
    ```
 
 2. Download the checksums for the release:
 
    ```
-   curl -OL releases.commonfate.io/gdeploy/v0.4.2/checksums.txt
+   curl -OL releases.commonfate.io/gdeploy/v0.5.0/checksums.txt
    ```
 
 3. Download the signature file:
 
    ```
-   curl -OL releases.commonfate.io/gdeploy/v0.4.2/checksums.txt.sig
+   curl -OL releases.commonfate.io/gdeploy/v0.5.0/checksums.txt.sig
    ```
 
 4. Verify the integrity of the release artifact:
@@ -89,7 +89,7 @@ gpg import commonfate.asc
    You should see an output similar to the below:
 
    ```
-   gdeploy_0.4.2_linux_x86_64.tar.gz: OK
+   gdeploy_0.5.0_linux_x86_64.tar.gz: OK
    ```
 
 5. Verify the integrity and authenticity of the checksums:
