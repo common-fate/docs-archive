@@ -44,4 +44,4 @@ We've been using Granted internally for all our cloud access at Common Fate for 
 
 ## Get started
 
-Follow the [Getting Started guide](/granted/deploying-granted) to start using Granted for your cloud access.
+Follow the [Getting Started guide](/granted/getting-started) to start using Granted for your cloud access.
