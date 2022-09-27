@@ -19,7 +19,7 @@ You will need to update each role you want to request access to with the followi
 + granted_sso_region = <your-sso-region>
 + granted_sso_role_name = <your-role-name>
 + granted_sso_start_url = <https://example.awsapps.com/start>
-+ credential_process = granted credential-process --profile updated-profile --url localhost:8848
++ credential_process = granted credential-process --profile updated-profile --url https://granted.example.com
 ```
 
 Note: If you do not provide `--url` flag in `credential_process` key, you will need to set granted approvals URL by running 

@@ -1,4 +1,4 @@
-# Granted Custom SSO
+# Credential Process Provider
 
 Granted has a custom SSO credentials process that automatically assumes roles. This is useful for the following:
 - You want to use the native AWS CLI (with `--profile` flag) but don't want to be prompted for re-authentication
