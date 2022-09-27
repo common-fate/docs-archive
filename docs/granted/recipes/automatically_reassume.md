@@ -1,4 +1,4 @@
-# Automatically reassume roles 
+# Automatically reassume roles (ZSH)
 
 By default Granted will assume a given role for 1hr. This can be altered by passing the `--duration` flag. This means that after a given hour of activity, you will need to re-run `assume` to get a new set of credentials.
 
