@@ -29,7 +29,7 @@ Note: If you do not provide `--url` flag in `credential_process` key, you will n
 granted settings request-url set <GRANTED_APPROVALS_URL>
 ```
 
-:tada: Now try running aws cli command with profile that doesn't have required access.
+:tada: Now try running an AWS CLI command with a profile that doesn't have required access.
 
 For example:
 
