@@ -1,7 +1,8 @@
-# Using Granted Approvals for requesting access 
+# Using Granted Approvals for requesting access
 
-#### Prerequisite 
-For this recipe, you'll need [Granted Approvals Configured](/approvals/introduction). 
+## Prerequisites
+
+For this recipe, you'll need [Granted Approvals Configured](/approvals/introduction).
 
 You can use Granted to request access to roles through Granted Approvals. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted CLI.
 
@@ -22,13 +23,13 @@ You will need to update each role you want to request access to with the followi
 + credential_process = granted credential-process --profile updated-profile --url https://granted.example.com
 ```
 
-Note: If you do not provide `--url` flag in `credential_process` key, you will need to set granted approvals URL by running 
+Note: If you do not provide `--url` flag in `credential_process` key, you will need to set granted approvals URL by running
 
 ```bash
 granted settings request-url set <GRANTED_APPROVALS_URL>
 ```
 
-:tada: Now try running aws cli command with profile that doesn't have required access. 
+:tada: Now try running aws cli command with profile that doesn't have required access.
 
 For example:
 

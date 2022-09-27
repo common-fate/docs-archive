@@ -1,11 +1,12 @@
 # Credential Process Provider
 
 Granted has a custom SSO credentials process that automatically assumes roles. This is useful for the following:
+
 - You want to use the native AWS CLI (with `--profile` flag) but don't want to be prompted for re-authentication
 - You don't want your SSO credentials stored in plaintext (uses Granted's encrypted credentials store)
 
+## Prerequisites
 
-#### Prerequisite 
 You will need to update each role you want to request access to with the following configuration:
 
 ```diff
@@ -20,7 +21,7 @@ You will need to update each role you want to request access to with the followi
 + granted_sso_region = <your-sso-region>
 + granted_sso_role_name = <your-role-name>
 + granted_sso_start_url = <https://example.awsapps.com/start>
-+ credential_process = granted credential-process --profile my-profile 
++ credential_process = granted credential-process --profile my-profile
 ```
 
 Now when running:
@@ -30,6 +31,7 @@ Now when running:
 ```
 
 You should see something like
+
 ```bash
 {
     "UserId": "<UserId>",
