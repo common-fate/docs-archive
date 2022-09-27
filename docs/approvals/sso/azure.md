@@ -184,3 +184,18 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
 ```
 
 You will need to redeploy using `gdeploy update` to update the identity provider changes.
+
+## Customising the Azure AD email attribute
+
+By default, Granted Approvals uses an Azure user's [UserPrincipalName (UPN)](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/plan-connect-userprincipalname) as the email attribute when syncing an Azure AD directory. This can be overridden to another attribute, such as mail, by setting the azure entry in your `granted-deployment.yml` file as follows:
+
+```diff
+deployment:
+  parameters:
+    IdentityConfiguration:
+      azure:
+        tenantId: 12345-12345-12345-12345
+        clientId: 12345-12345-12345-12345
+        clientSecret: awsssm:///granted/secrets/identity/azure/secret:1
++       emailIdentifier: mail
+```
