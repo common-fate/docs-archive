@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-For this recipe, you'll need [Granted Approvals Configured](/approvals/introduction).
+For this recipe, you'll need [Granted Approvals Configured](/granted-approvals/introduction).
 
 You can use Granted to request access to roles through Granted Approvals. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted CLI.
 
