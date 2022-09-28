@@ -41,5 +41,5 @@ You should see something like
 ```
 
 :::info
-Additionally, if you would like to use Granted Approvals for turn-key access requests, we support a further integration in the recipe, [Connecting to Granted Approvals](/granted/recipes/connecting-to-granted-approvals).
+Additionally, if you would like to use Granted Approvals for turn-key access requests, we support a further integration in the recipe, [Connecting to Granted Approvals](/granted/recipes/access-requests).
 :::
