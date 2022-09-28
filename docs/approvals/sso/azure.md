@@ -41,10 +41,10 @@ Make sure you click **Grant admin consent** above the permissions table and perm
 
 ### Running Gdeploy Commands
 
-This is where we can start up the `gdeploy sso configure` command. Run the following to begin the SSO setup:
+This is where we can start up the `gdeploy identity sso enable` command. Run the following to begin the SSO setup:
 
 ```json
-gdeploy sso configure
+gdeploy identity sso enable
 ```
 
 Select 'Azure' when prompted for the identity provider.
