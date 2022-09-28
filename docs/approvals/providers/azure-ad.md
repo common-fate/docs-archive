@@ -59,6 +59,7 @@ Head back to the **Overview** tab in the Azure portal, and get the first two IDs
 1. For the `Client ID` param, copy and paste the **Application (client) ID**.
 2. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
 
+
 Next we will create a token, for this head into the **Certificates & secrets** tab in the left hand Nav, Under Client secrets. Create a new secret.
 
 Give the secret a descriptive name, like `Granted-token`. It will create a secret and display a table showing the secret value.
