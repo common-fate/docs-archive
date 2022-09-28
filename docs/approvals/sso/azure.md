@@ -64,7 +64,7 @@ Head back to the **Overview** tab in the Azure portal, and get the first two IDs
 1. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
 2. For the `Client ID` param, copy and paste the **Application (client) ID**.
 
-`Email Identifier` is an optional configuration. Used specify which field on a Azure user object corresponds to the user's email address, this changes occasionally in deployments. 
+`Email Identifier` is an optional configuration. Used to specify which field on an Azure user object corresponds to the user's email address, this changes occasionally in deployments. 
 For more infomation about this see the Azure documentation [here](https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties) 
 
 ** - If you don't know which field for your tenancy you can leave this blank. **
