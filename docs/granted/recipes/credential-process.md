@@ -1,4 +1,4 @@
-# Credential Process Provider
+# Credential Process
 
 Granted has a custom SSO credentials process that automatically assumes roles. This is useful for the following:
 
@@ -7,7 +7,7 @@ Granted has a custom SSO credentials process that automatically assumes roles. T
 
 ## Prerequisites
 
-You will need to update each role you want to request access to with the following configuration:
+If a profile contains both `credential_process`and other AWS SSO keys, the AWS CLI skips the credential_process and uses the default `aws sso login` process to fetch the credentials. For this reason, to use Granted to seamlessly authenticate your SSO profiles with the AWS CLI, you will need to update the SSO configuration keys to include the prefix `granted_` as shown below.
 
 ```diff
 - [profile my-profile]
