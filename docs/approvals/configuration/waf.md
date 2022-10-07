@@ -68,6 +68,12 @@ Update your deployment to apply the changes:
 gdeploy update
 ```
 
+You should see an output similar to the below:
+
+```
+[✔] Your Granted deployment has been updated
+```
+
 Now visit the web dashboard with `gdeploy dashboard open`. You should be denied access to the dashboard in your browser and see an empty page.
 
 ![Screenshot of web browser with an empty page](/img/waf/blocked.png)
@@ -93,6 +99,12 @@ Update your deployment to apply the changes:
 
 ```
 gdeploy update
+```
+
+You should see an output similar to the below:
+
+```
+[✔] Your Granted deployment has been updated
 ```
 
 Clean up the Web ACLs using the AWS CLI by running the commands below in the same folder as your `granted-deployment.yml` file.
@@ -136,4 +148,10 @@ Update your deployment to apply the changes:
 
 ```
 gdeploy update
+```
+
+You should see an output similar to the below:
+
+```
+[✔] Your Granted deployment has been updated
 ```
