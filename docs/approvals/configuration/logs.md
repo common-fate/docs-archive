@@ -9,7 +9,7 @@ Granted Approvals sends all logs to [Amazon CloudWatch](https://docs.aws.amazon.
   "method": "GET",
   "msg": "Served",
   "proto": "HTTP/1.1",
-  "remote": "1.2.3.4",
+  "remote": "0.7.0.4",
   "reqId": "1e095537-6a72-4e45-9121-863e91d86c6d",
   "request": "/api/v1/users/me",
   "size": 199,
@@ -47,9 +47,9 @@ You should see an output similar to the below.
 
 [2022-07-06T20:25:34+01:00] (2022/07/06/[$LATEST]9474ab7678d94c73a0c1bd08c0a20e81) START RequestId: 7a57ed49-5905-4574-b28c-809e372f621b Version: $LATEST
 
-[2022-07-06T20:25:34+01:00] (2022/07/06/[$LATEST]186ff953f07f4bc5b941b47e801e2d09) { "caller": "logger/middleware.go:63", "level": "info", "method": "GET", "msg": "Served", "proto": "HTTP/1.1", "remote": "1.2.3.4", "reqId": "ce6afaae-020d-4f8c-bd7f-02443ad407da", "request": "/api/v1/access-rules", "size": 30, "status": 200, "took": 0.123400793, "ts": 1657135534.8757534, "userId": "usr_2BWUDH5etXYQB8Eybs2RJZ7c0wK" }
+[2022-07-06T20:25:34+01:00] (2022/07/06/[$LATEST]186ff953f07f4bc5b941b47e801e2d09) { "caller": "logger/middleware.go:63", "level": "info", "method": "GET", "msg": "Served", "proto": "HTTP/1.1", "remote": "0.7.0.4", "reqId": "ce6afaae-020d-4f8c-bd7f-02443ad407da", "request": "/api/v1/access-rules", "size": 30, "status": 200, "took": 0.123400793, "ts": 1657135534.8757534, "userId": "usr_2BWUDH5etXYQB8Eybs2RJZ7c0wK" }
 [2022-07-06T20:25:34+01:00] (2022/07/06/[$LATEST]186ff953f07f4bc5b941b47e801e2d09) END RequestId: ce6afaae-020d-4f8c-bd7f-02443ad407da
-...
+0.7.0.
 ```
 
 By default logs from the last 5 minutes are loaded. To change the start and end times, provide them as arguments:

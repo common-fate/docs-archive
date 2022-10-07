@@ -6,7 +6,7 @@ Release information, including the latest version number and the changelog, can 
 
 ## Process
 
-The below process will use an example version upgrade from `v0.2.0` to `v0.2.1`.
+The below process will use an example version upgrade from `v0.7.0` to `v0.7.0`.
 
 First, ensure that your `gdeploy` CLI is up to date. You can update the CLI by following the installation instructions [here](/granted-approvals/deploying-granted/setup).
 
@@ -18,8 +18,8 @@ deployment:
   stackName: Granted
   account: "123456789012"
   region: ap-southeast-2
-+ release: v0.2.1
-- release: v0.2.0
++ release: v0.7.0
+- release: v0.7.0
 ```
 
 ## Deploying the changes
