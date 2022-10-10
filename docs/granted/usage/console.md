@@ -87,7 +87,7 @@ You can open a console and go directly to a specific service by adding the `--se
 assume -s iam
 ```
 
-Will open a console and take you directly to the IAM service (https://console.aws.amazon.com/iamv2). Granted supports using shortcuts such as `l` for the Lambda service. You can see the full list of shortcuts [here](https://github.com/common-fate/granted/blob/main/pkg/browsers/console.go). PRs which add additional shortcuts or services are very welcome.
+Will open a console and take you directly to the IAM service (https://console.aws.amazon.com/iamv2). Granted supports using shortcuts such as `l` for the Lambda service. You can see the full list of shortcuts [here](https://github.com/common-fate/granted/blob/main/pkg/console/service_map.go). PRs which add additional shortcuts or services are very welcome.
 
 ## Opening the console with an active role
 
