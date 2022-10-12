@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Storing IAM credentials securely
 
-Granted can securely store IAM credentials traditionally stored in plaintext in the AWS credentials file `~/.aws/credentials`
+Granted can securely store IAM credentials traditionally stored in plaintext in the AWS credentials file `~/.aws/credentials`.
 Granted uses the system keychain to securely store credentials and falls back to an encrypted file on systems where this is not available.
 
 ```bash
@@ -110,7 +110,7 @@ granted credentials list
 This will remove credentials from secure storage and also remove the profile entry in the AWS config file.
 
 :::warning
-The `granted credentials clear <profile-name>` command will remove all configuration for the selected profile
+The `granted credentials clear <profile-name>` command will remove all configuration for the selected profile.
 :::
 
 **Example Usage**
@@ -132,7 +132,7 @@ This will clear all credentials from secure storage.
 This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.
 
 :::warning
-After exporting, your IAM credentials will be stored in plaintext on disk
+After exporting, your IAM credentials will be stored in plaintext on disk.
 :::
 
 **Example Usage**
