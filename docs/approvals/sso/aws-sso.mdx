@@ -1,0 +1,186 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# AWS Single Sign On
+
+## AWS Single Sign On setup
+
+### Creating an IAM Role
+
+To set up AWS SSO to sync users and groups with Granted Approvals we will need to create an IAM role in the management account of your AWS organization that has a trust relationship with the Granted Approvals deployment.
+
+This role has a minimal set of IAM permissions which allow it to read information about your users and groups.
+
+<Tabs
+  groupId="deployment-strategy"
+  defaultValue="cfn"
+  values={[
+	  { label: "Cloudformation", value: "cfn" },
+	  { label: "Policy as JSON", value: "json" },
+	  ]}
+>
+<TabItem value="cfn">
+
+Copy the following YAML and save it as 'granted-identity-sso-role.yml'.
+
+We recommend saving this alongside your granted-deployment.yml file in source control.
+
+For the trust relationship policy, you will need to rum some gdeploy commands to fetch the values for `IDPSyncLambdaExecutionRoleARN` and `RestAPILambdaExecutionRoleARN`.
+
+@TODO add gedeploy commands to fetch values
+
+```yaml
+Resources:
+  GrantedIdentitySSORole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              AWS: "{{ IDPSyncLambdaExecutionRoleARN }}"
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              AWS: "{{ RestAPILambdaExecutionRoleARN }}"
+        Version: "2012-10-17"
+      Description: This role grants management access to AWS SSO for the Granted Access Handler.
+      Policies:
+        - PolicyName: AccessHandlerSSOPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Sid: ReadIdentityStore
+                Action:
+                  - identitystore:DescribeGroup
+                  - identitystore:DescribeUser
+                  - identitystore:ListGroupMembershipsForMember
+                  - identitystore:ListUsers
+                  - identitystore:ListGroups
+                Effect: Allow
+                Resource: "*"
+      Tags:
+        - Key: "CommonFate"
+          Value: "GrantedApprovalsSSOIdentityProvider"
+Outputs:
+  RoleARN:
+    Value:
+      Fn::GetAtt:
+        - GrantedIdentitySSORole
+        - Arn
+```
+
+Follow either the Console or CLI deployment steps.
+
+<Tabs
+groupId="cfn-deployment"
+defaultValue="cli"
+values={[
+  { label: "Via the AWS CLI", value: "cli" },
+{ label: "Via the AWS console", value: "console" },
+]}
+>
+
+<TabItem value="cli">
+If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
+
+```bash
+aws cloudformation deploy --template-file granted-identity-sso-role.yml --stack-name Granted-Identity-SSO-Role --capabilities CAPABILITY_IAM
+```
+
+Once the stack is deployed, you can retrieve the role ARN by running the following command.
+
+```bash
+aws cloudformation describe-stacks --stack-name Granted-Identity-SSO-Role --query "Stacks[0].Outputs[0].OutputValue"
+```
+
+</TabItem>
+<TabItem value="console">
+Open the AWS Console in your organisation's management account and click **Create stack** then select **with new resources (standard)** from the menu.
+
+![](https://static.commonfate.io/providers/aws/sso/create-stack.png)
+
+Upload the template file
+
+![](https://static.commonfate.io/providers/aws/sso/create-stack-with-template.png)
+
+Name the stack 'Granted-Identity-SSO-Role'
+
+![](https://static.commonfate.io/providers/aws/sso/specify-stack-details.png)
+
+Click **Next**
+
+Click **Next**
+
+Acknowledge the IAM role creation check box and click **Create Stack**
+
+![](https://static.commonfate.io/providers/aws/sso/accept-iam-prompt.png)
+
+Keep the **RoleARN** output from the stack handy for the next step.
+
+![](https://static.commonfate.io/providers/aws/sso/role-output.png)
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+<TabItem value="json">
+
+### Permissions Policy
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "identitystore:DescribeGroup",
+        "identitystore:DescribeUser",
+        "identitystore:ListGroupMembershipsForMember",
+        "identitystore:ListUsers",
+        "identitystore:ListGroups"
+      ],
+      "Resource": "*",
+      "Effect": "Allow",
+      "Sid": "ReadIdentityStore"
+    }
+  ]
+}
+```
+
+### Trust Relationship Policy
+
+For the trust relationship policy, you will need to rum some gdeploy commands to fetch the values for `IDPSyncLambdaExecutionRoleARN` and `RestAPILambdaExecutionRoleARN`.
+
+@TODO add gedeploy commands to fetch values
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "{{ IDPSyncLambdaExecutionRoleARN }}"
+      },
+      "Action": "sts:AssumeRole"
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "{{ RestAPILambdaExecutionRoleARN }}"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
+```
+
+</TabItem>
+</Tabs>
