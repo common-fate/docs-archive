@@ -16,15 +16,15 @@ USAGE:
 
 COMMANDS:
    add               Add IAM credentials to secure storage
-   import            Import credentials from ~/.credentials file into secure storage
+   import            Import plaintext IAM user credentials from AWS credentials file into secure storage
    update            Update existing credentials in secure storage
-   list              Lists the profiles in secure storage
-   clear             Remove credentials from secure storage, this also removes the associated profile entry from the AWS config file
+   list              Lists the profile names for credentials in secure storage
+   remove            Remove credentials from secure storage and an associated profile if it exists in the AWS config file
    export-plaintext  Export credentials from the secure storage to ~/.aws/credentials file in plaintext
    help, h           Shows a list of commands or help for one command
 
 OPTIONS:
-   --help, -h  show help (default: false)
+   --help, -h  show help (default: false
 ```
 
 ## `add` command
@@ -49,7 +49,7 @@ This stores the credentials in secure storage and creates a new entry in your lo
 
 ```
 [profile example]
-credential_process = dgranted credential-process --profile=example
+credential_process = granted credential-process --profile=example
 ```
 
 You can now assume the profile by running `assume example`
@@ -68,7 +68,7 @@ This command will write an output similar to the following to `~/.aws/config`:
 
 ```
 [profile example]
-credential_process = dgranted credential-process --profile=example
+credential_process = granted credential-process --profile=example
 ```
 
 :::info
@@ -105,24 +105,45 @@ This will list profile names of the credentials stored in secure storage.
 granted credentials list
 ```
 
-## `clear` command
+## `remove` command
 
-This will remove credentials from secure storage and also remove the profile entry in the AWS config file.
+This will remove credentials from secure storage. If there is a profile configured under the same name, the CLI will check whether it has a credential-process entry.
+For example
+
+```
+[profile example]
+credential_process = granted credential-process --profile=example
+
+```
+
+If this is the case, the profile will also be removed. If it does not have this entry, the profile will not be modified and the credentials will be removed from the secure storage.
 
 :::warning
-The `granted credentials clear <profile-name>` command will remove all configuration for the selected profile.
+If you need to keep the credentials, be sure to first run `granted credentials export-plaintext <profile name>` to save them back to the default AWS credentials file
 :::
 
 **Example Usage**
 
 ```bash
 granted credentials clear example
+Removing credentials from secure storage will cause them to be permanently deleted.
+To avoid losing your credentials you may first want to export them to plaintext using 'granted credentials export-plaintext <profile name>'
+This command will remove a profile with the same name from the AWS config file if it has a 'credential_process = granted credential-process --profile=<profile name>'
+If you have already used 'granted credentials export-plaintext <profile name>' to export the credentials, the profile will not be removed by this command.
+
+? Are you sure you want to remove these credentials and profile from your AWS config? (Y/n)
 ```
 
 **Example Usage --all**
 
 ```bash
 granted credentials clear --all
+Removing credentials from secure storage will cause them to be permanently deleted.
+To avoid losing your credentials you may first want to export them to plaintext using 'granted credentials export-plaintext <profile name>'
+This command will remove a profile with the same name from the AWS config file if it has a 'credential_process = granted credential-process --profile=<profile name>'
+If you have already used 'granted credentials export-plaintext <profile name>' to export the credentials, the profile will not be removed by this command.
+
+? Are you sure you want to remove these credentials and profile from your AWS config? (Y/n)
 ```
 
 This will clear all credentials from secure storage.
@@ -130,6 +151,7 @@ This will clear all credentials from secure storage.
 ## `export-plaintext` command
 
 This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.
+The credentials will not be removed from secure storage, however the profile configuration in the AWS config file will be updated to use the plaintext credentials rather than the credentials in the secure storage.
 
 :::warning
 After exporting, your IAM credentials will be stored in plaintext on disk.
