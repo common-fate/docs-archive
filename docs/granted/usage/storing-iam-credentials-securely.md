@@ -119,7 +119,7 @@ credential_process = granted credential-process --profile=example
 If this is the case, the profile will also be removed. If it does not have this entry, the profile will not be modified and the credentials will be removed from the secure storage.
 
 :::warning
-If you need to keep the credentials, be sure to first run `granted credentials export-plaintext <profile name>` to save them back to the default AWS credentials file
+If you need to keep the credentials, be sure to first run `granted credentials export-plaintext <profile name>` to save them back to the default AWS credentials file.
 :::
 
 **Example Usage**
