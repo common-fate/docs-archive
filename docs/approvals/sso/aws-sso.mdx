@@ -25,15 +25,15 @@ This role has a minimal set of IAM permissions which allow it to read informatio
 >
 <TabItem value="cfn">
 
-Copy the following YAML and save it as 'granted-identity-sso-role.yml'.
+For the trust relationship policy, you will need to run some `gdeploy` commands to fetch the values for `IDPSyncLambdaExecutionRoleARN` and `RestAPILambdaExecutionRoleARN`.
 
-We recommend saving this alongside your granted-deployment.yml file in source control.
+Run the following commands in your terminal to create `granted-identity-sso-role.yml`, a CloudFormation template which will be deployed to your AWS account. We recommend saving this alongside your granted-deployment.yml file in source control.
 
-For the trust relationship policy, you will need to rum some gdeploy commands to fetch the values for `IDPSyncLambdaExecutionRoleARN` and `RestAPILambdaExecutionRoleARN`.
+```bash
+IDP_SYNC_ROLE_ARN=$(gdeploy output IDPSyncLambdaExecutionRoleARN)
+API_ROLE_ARN=$(gdeploy output RestAPILambdaExecutionRoleARN)
 
-@TODO add gedeploy commands to fetch values
-
-```yaml
+cat << EOF > granted-identity-sso-role.yml
 Resources:
   GrantedIdentitySSORole:
     Type: AWS::IAM::Role
@@ -43,11 +43,11 @@ Resources:
           - Action: sts:AssumeRole
             Effect: Allow
             Principal:
-              AWS: "{{ IDPSyncLambdaExecutionRoleARN }}"
+              AWS: "${IDP_SYNC_ROLE_ARN}"
           - Action: sts:AssumeRole
             Effect: Allow
             Principal:
-              AWS: "{{ RestAPILambdaExecutionRoleARN }}"
+              AWS: "${API_ROLE_ARN}"
         Version: "2012-10-17"
       Description: This role grants management access to AWS SSO for the Granted Access Handler.
       Policies:
@@ -65,14 +65,15 @@ Resources:
                 Effect: Allow
                 Resource: "*"
       Tags:
-        - Key: "CommonFate"
-          Value: "GrantedApprovalsSSOIdentityProvider"
+        - Key: "common-fate-abac-role"
+          Value: "aws-sso-identity-provider"
 Outputs:
   RoleARN:
     Value:
       Fn::GetAtt:
         - GrantedIdentitySSORole
         - Arn
+EOF
 ```
 
 Follow either the Console or CLI deployment steps.
