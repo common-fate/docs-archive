@@ -9,11 +9,11 @@ import TabItem from "@theme/TabItem";
 
 ## AWS IAM Identity Center setup
 
-### Creating an IAM Role
-
 To set up AWS IAM Identity Center as your identity provider for Granted Approvals you will need to create an IAM role in the management account of your AWS organization that has a trust relationship with the Granted Approvals deployment.
 
-This role has a minimal set of IAM permissions which allow it to read information about your users and groups.
+This role required has a minimal set of IAM permissions which only allow it to read information about your users and groups.
+
+### Creating an IAM Role
 
 Follow either the Cloudformation process to deploy this role, or you can use the JSON policy template directly if you would prefer to deploy this role using a custom process.
 
@@ -263,10 +263,6 @@ Use the assign user wizard to assign users or groups to the application.
 
 ![](/img/sso/aws-sso/assign-users.png)
 
-### Creating Granted Approvals Administrator Group
-
-Finally you will need to create or use an existing group in AWS IAM Identity Center as an administrator group for Granted Approvals. Members of this group will have access to the admin dashboard of the application.
-
 ### Setup the SAML SSO provider in your deployment
 
 Now that you have configured the SAML application, you can use gdeploy to setup the SSO provider for your deployment.
@@ -360,14 +356,32 @@ Scroll down to the **IAM Identity Center metadata** section.
 ? Metadata URL
 ```
 
-You should see the following prompts
+#### Creating Granted Approvals Administrator Group
+
+Finally you will need to create or use an existing group in AWS IAM Identity Center as an administrator group for Granted Approvals. Members of this group will have access to the admin dashboard of the application.
+Enter the ID of the group in AWS IAM Identity Center which represents the administrators of Granted Approvals.
+
+A group ID looks like this `976708da7d-b2f2e2cf-152c-4301-923f-ed6b3b9564a3` and can be found in the AWS console.
+
+```
+[!] Don't forget to assign your users to the SAML app in aws-sso so that they can login after setup is complete.
+[i] When using SSO, administrators for Granted are managed in your identity provider.
+        Create a group called 'Granted Administrators' in your identity provider and copy the group's ID.
+        Users in this group will be able to manage Access Rules.
+
+? The ID of the Granted Administrators group in your identity provider:
+```
+
+You should see the following prompts which indicate that you have completed setup.
+
+You should follow the instructions to update you Granted Approvals deployment.
 
 ```
 [i] Updating your deployment config
 [✔] Successfully completed SSO configuration
 [!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
 
-Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
- 1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
- 2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
+    Users and will be synced every 5 minutes from your identity provider. To finish enabling SSO, follow these steps:
+    1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
+    2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
 ```
