@@ -30,8 +30,8 @@ For the trust relationship policy, you will need to run some `gdeploy` commands 
 Run the following commands in your terminal to create `granted-identity-sso-role.yml`, a CloudFormation template which will be deployed to your AWS account. We recommend saving this alongside your granted-deployment.yml file in source control.
 
 ```bash
-IDP_SYNC_ROLE_ARN=$(gdeploy output IDPSyncLambdaExecutionRoleARN)
-API_ROLE_ARN=$(gdeploy output RestAPILambdaExecutionRoleARN)
+IDP_SYNC_ROLE_ARN=$(gdeploy output IDPSyncExecutionRoleARN)
+API_ROLE_ARN=$(gdeploy output RestAPIExecutionRoleARN)
 
 cat << EOF > granted-identity-sso-role.yml
 Resources:
@@ -157,9 +157,13 @@ Keep the **RoleARN** output from the stack handy for the next step.
 
 ### Trust Relationship Policy
 
-For the trust relationship policy, you will need to rum some gdeploy commands to fetch the values for `IDPSyncLambdaExecutionRoleARN` and `RestAPILambdaExecutionRoleARN`.
+For the trust relationship policy, you will need replace `{{ IDPSyncExecutionRoleARN }}` and `{{ RestAPIExecutionRoleARN }}` with the values from your deployment.
+You can use the following gdeploy commands to fetch the values.
 
-@TODO add gedeploy commands to fetch values
+```bash
+gdeploy output IDPSyncExecutionRoleARN
+gdeploy output RestAPIExecutionRoleARN
+```
 
 ```json
 {
@@ -168,14 +172,14 @@ For the trust relationship policy, you will need to rum some gdeploy commands to
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "{{ IDPSyncLambdaExecutionRoleARN }}"
+        "AWS": "{{ IDPSyncExecutionRoleARN }}"
       },
       "Action": "sts:AssumeRole"
     },
     {
       "Effect": "Allow",
       "Principal": {
-        "AWS": "{{ RestAPILambdaExecutionRoleARN }}"
+        "AWS": "{{ RestAPIExecutionRoleARN }}"
       },
       "Action": "sts:AssumeRole"
     }
