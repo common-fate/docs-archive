@@ -188,6 +188,13 @@ gdeploy output RestAPIExecutionRoleARN
 }
 ```
 
+#### Tags
+
+Ensure that you add the following tag to the role so that the Granted Approvals lambda can assume it.
+
+- Key: `common-fate-abac-role`
+- Value: `aws-sso-identity-provider`
+
 </TabItem>
 </Tabs>
 
