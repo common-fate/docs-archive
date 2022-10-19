@@ -49,7 +49,7 @@ Resources:
             Principal:
               AWS: "${API_ROLE_ARN}"
         Version: "2012-10-17"
-      Description: This role grants management access to AWS SSO for the Granted Access Handler.
+      Description: This role grants read access to AWS SSO to Granted.
       Policies:
         - PolicyName: AccessHandlerSSOPolicy
           PolicyDocument:
