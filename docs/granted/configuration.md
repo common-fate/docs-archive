@@ -140,28 +140,28 @@ granted uninstall
 
 ## SSO Configuration
 
-- To list all SSO tokens saved in the Granted keychain use the `token` command
+- To list all SSO tokens saved in the Granted keychain use the `sso-tokens` command
 
 ```
-granted token
-```
-
-```
-granted token list
-```
-
-- To remove a token from the local store use `token remove`
-
-```
-granted token remove
+granted sso-tokens
 ```
 
 ```
-granted token remove profile_name
+granted sso-tokens list
+```
+
+- To remove a token from the local store use `sso-tokens remove`
+
+```
+granted sso-tokens remove
+```
+
+```
+granted sso-tokens remove profile_name
 ```
 
 - To remove all tokens from the store use the `--all` flag
 
 ```
-granted token remove --all
+granted sso-tokens remove --all
 ```
