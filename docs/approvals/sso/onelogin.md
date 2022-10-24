@@ -49,10 +49,11 @@ Select 'One Login' when prompted for the identity provider.
 
 Head back to your One Login admin portal where you left it open, there will be a client ID and Client secret which you will be able to copy.
 
-`gdeploy` will prompt you for IDs relating to your Azure AD tenancy.
+`gdeploy` will prompt you for IDs relating to your One Login tenancy.
 
-1. For the `Client ID` param, copy and paste the **Client ID**.
-2. For the `Client Secret` param, copy and paste the **Client Secret**.
+1. For the `Base Url` param, get your tenancies url. This can be copied from your admin portal. It will have a format like this: `https://{tenantName}.onelogin.com`
+2. For the `Client ID` param, copy and paste the **Client ID**.
+3. For the `Client Secret` param, copy and paste the **Client Secret**.
 
 
 You should see an output similar to the below.
@@ -122,11 +123,14 @@ From the same page, in the **Parameters** section we will want to add a SAML cla
 *Note: One parameter (NameID) is already listed—this is expected.*
 
 Press the plus symbol on the right of the table and a modal will pop up.
-- For the name of the field we want to call it `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`
+- For the name of the field we want to call it `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 - Click **Include in SAML assertion** checkbox.
+- Click save.
 - For value, choose **Email** from the list
 - Click save.
 ![](/img/sso/one-login/8.png)
+
+Click save in the top right again to save these details.
 
 
 We will need to get the SAML metadata URL. We can get this by heading to the **SSO** section on the same page.
