@@ -24,6 +24,8 @@
   --ifm-heading-font-weight: 500;
   --ifm-heading-font-family: "Bitter";
   --ifm-font-weight-bold: 500;
+
+  --docusaurus-highlighted-code-line-bg: rgb(227, 228, 230);
 }
 
 body {
