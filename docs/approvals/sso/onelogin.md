@@ -2,10 +2,10 @@
 sidebar_position: 3
 ---
 
-# One Login
+# OneLogin
 
 :::info
-Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses [OAuth2.0 authentication](https://developers.onelogin.com/api-docs/2/oauth20-tokens/generate-tokens-2) to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
 ## One Login setup
@@ -30,17 +30,17 @@ Save/Create the credential.
 
 A new modal will open, leave this open and move onto the next steps.
 
-### Running Gdeploy Commands
+### Running `gdeploy` Commands
 
 This is where we can start up the `gdeploy identity sso enable` command. Run the following to begin the SSO setup:
 
-```json
+```bash
 gdeploy identity sso enable
 ```
 
 Select 'One Login' when prompted for the identity provider.
 
-```json
+```bash
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
   Google
   Okta
@@ -51,7 +51,7 @@ Head back to your One Login admin portal where you left it open, there will be a
 
 `gdeploy` will prompt you for IDs relating to your One Login tenancy.
 
-1. For the `Base Url` param, get your tenancies url. This can be copied from your admin portal. It will have a format like this: `https://{tenantName}.onelogin.com`
+1. For the `Base URL` parameter, get your tenancies url. This can be copied from your admin portal. It will have a format like this: `https://{tenantName}.onelogin.com`
 2. For the `Client ID` param, copy and paste the **Client ID**.
 3. For the `Client Secret` param, copy and paste the **Client Secret**.
 
