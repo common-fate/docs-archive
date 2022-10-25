@@ -59,48 +59,48 @@ Resources:
             Effect: Allow
             Principal:
               AWS: "${ACCESS_HANDLER_ROLE}"
+        Version: "2012-10-17"
+      Description: This role grants management access to AWS SSO for the Granted Access Handler.
+      Policies:
+        - PolicyName: AccessHandlerSSOPolicy
+          PolicyDocument:
             Version: "2012-10-17"
-        Description: This role grants management access to AWS SSO for the Granted Access Handler.
-        Policies:
-          - PolicyName: AccessHandlerSSOPolicy
-            PolicyDocument:
-              Version: "2012-10-17"
-              Statement:
-                - Sid: ReadSSO
-                  Action:
-                    - iam:GetRole
-                    - iam:GetSAMLProvider
-                    - iam:ListAttachedRolePolicies
-                    - iam:ListRolePolicies
-                    - identitystore:ListUsers
-                    - organizations:DescribeAccount
-                    - organizations:DescribeOrganization
-                    - organizations:ListAccounts
-                    - organizations:ListAccountsForParent
-                    - organizations:ListOrganizationalUnitsForParent
-                    - organizations:ListRoots
-                    - organizations:ListTagsForResource
-                    - sso:DescribeAccountAssignmentCreationStatus
-                    - sso:DescribeAccountAssignmentDeletionStatus
-                    - sso:DescribePermissionSet
-                    - sso:ListAccountAssignments
-                    - sso:ListPermissionSets
-                    - sso:ListTagsForResource
-                  Effect: Allow
-                  Resource: "*"
-                - Sid: AssignSSO
-                  Action:
-                    - iam:UpdateSAMLProvider
-                    - sso:CreateAccountAssignment
-                    - sso:DeleteAccountAssignment
-                  Effect: Allow
-                  Resource: "*"
-  Outputs:
-    RoleARN:
-      Value:
-        Fn::GetAtt:
-          - GrantedAccessHandlerSSORole
-          - Arn
+            Statement:
+              - Sid: ReadSSO
+                Action:
+                  - iam:GetRole
+                  - iam:GetSAMLProvider
+                  - iam:ListAttachedRolePolicies
+                  - iam:ListRolePolicies
+                  - identitystore:ListUsers
+                  - organizations:DescribeAccount
+                  - organizations:DescribeOrganization
+                  - organizations:ListAccounts
+                  - organizations:ListAccountsForParent
+                  - organizations:ListRoots
+                  - organizations:ListTagsForResource
+                  - sso:DescribeAccountAssignmentCreationStatus
+                  - sso:DescribeAccountAssignmentDeletionStatus
+                  - sso:DescribePermissionSet
+                  - sso:ListAccountAssignments
+                  - sso:ListPermissionSets
+                  - sso:ListTagsForResource
+                  - tag:GetResources
+                Effect: Allow
+                Resource: "*"
+              - Sid: AssignSSO
+                Action:
+                  - iam:UpdateSAMLProvider
+                  - sso:CreateAccountAssignment
+                  - sso:DeleteAccountAssignment
+                Effect: Allow
+                Resource: "*"
+Outputs:
+  RoleARN:
+    Value:
+      Fn::GetAtt:
+        - GrantedAccessHandlerSSORole
+        - Arn
 EOF
 ```
 
