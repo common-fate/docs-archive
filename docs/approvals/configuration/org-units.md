@@ -35,6 +35,10 @@ You can find the Root OU ID by running the following command:
 ```
 aws organizations list-roots
 ```
+To [create an account](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-account.html) in your OU you can use the following command:
+```
+aws organizations create-account --email <email> --account-name <account-name> --role-name <role-name> --iam-user-access-to-billing ALLOW --parent-id <ou-id>
+```
 
 ## Cleaning up
 If you no longer need an OU you can delete it using the AWS CLI. You can read more about the CLI [here](https://docs.aws.amazon.com/cli/latest/reference/organizations/delete-organizational-unit.html). The following command will delete the OU named "Engineering" in the Root OU of your account.
