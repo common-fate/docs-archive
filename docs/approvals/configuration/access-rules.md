@@ -38,7 +38,7 @@ Select from the options and then press **Next**.
 
 ![](/img/access-rules/2.png)
 
-For detailed setup instructions on how to configure an AWS SSO provider, with Org Units, Accounts and Permission Sets refer to [Org Unit Access](/docs/approvals/configuration/org-units).
+For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/docs/approvals/configuration/org-units).
 
 ### Okta
 
