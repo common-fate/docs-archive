@@ -98,9 +98,9 @@ Resources:
   Outputs:
     RoleARN:
       Value:
-      Fn::GetAtt:
-        - GrantedAccessHandlerSSORole
-        - Arn
+        Fn::GetAtt:
+          - GrantedAccessHandlerSSORole
+          - Arn
 EOF
 ```
 
