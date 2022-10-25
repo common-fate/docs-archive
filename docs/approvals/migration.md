@@ -42,68 +42,68 @@ If you do not apply these changes, your end users may see a "no options" message
 
 You can view the pull request which introduced these changes [here](https://github.com/common-fate/granted-approvals/pull/332/files).
 
-To add the new IAM permissions, follow the guide below:
+To add the new IAM permissions, follow the guide below.
 
-1. Update the SSO Access Role CloudFormation file. Open a terminal in the same folder as your `granted-deployment.yml` file, and then run:
+Update the SSO Access Role CloudFormation file. Open a terminal in the same folder as your `granted-deployment.yml` file, and then run:
 
-   ```bash
-   ACCESS_HANDLER_ROLE=$(gdeploy output AccessHandlerExecutionRoleARN)
-   cat <<EOF > granted-access-handler-sso-role.yml
-   Resources:
-       GrantedAccessHandlerSSORole:
-           Type: AWS::IAM::Role
-           Properties:
-           AssumeRolePolicyDocument:
-               Statement:
-               - Action: sts:AssumeRole
-                   Effect: Allow
-                   Principal:
-                   AWS: "${ACCESS_HANDLER_ROLE}"
-               Version: "2012-10-17"
-           Description: This role grants management access to AWS SSO for the Granted Access Handler.
-           Policies:
-               - PolicyName: AccessHandlerSSOPolicy
-               PolicyDocument:
-                   Version: "2012-10-17"
-                   Statement:
-                   - Sid: ReadSSO
-                       Action:
-                       - iam:GetRole
-                       - iam:GetSAMLProvider
-                       - iam:ListAttachedRolePolicies
-                       - iam:ListRolePolicies
-                       - identitystore:ListUsers
-                       - organizations:DescribeAccount
-                       - organizations:DescribeOrganization
-                       - organizations:ListAccounts
-                       - organizations:ListAccountsForParent
-                       - organizations:ListOrganizationalUnitsForParent
-                       - organizations:ListRoots
-                       - organizations:ListTagsForResource
-                       - sso:DescribeAccountAssignmentCreationStatus
-                       - sso:DescribeAccountAssignmentDeletionStatus
-                       - sso:DescribePermissionSet
-                       - sso:ListAccountAssignments
-                       - sso:ListPermissionSets
-                       - sso:ListTagsForResource
-                       Effect: Allow
-                       Resource: "*"
-                   - Sid: AssignSSO
-                       Action:
-                       - iam:UpdateSAMLProvider
-                       - sso:CreateAccountAssignment
-                       - sso:DeleteAccountAssignment
-                       Effect: Allow
-                       Resource: "*"
-       Outputs:
-       RoleARN:
-           Value:
-           Fn::GetAtt:
-               - GrantedAccessHandlerSSORole
-               - Arn
-   EOF
-   ```
+```bash
+ACCESS_HANDLER_ROLE=$(gdeploy output AccessHandlerExecutionRoleARN)
+cat <<EOF > granted-access-handler-sso-role.yml
+Resources:
+  GrantedAccessHandlerSSORole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+          - Action: sts:AssumeRole
+            Effect: Allow
+            Principal:
+              AWS: "${ACCESS_HANDLER_ROLE}"
+            Version: "2012-10-17"
+        Description: This role grants management access to AWS SSO for the Granted Access Handler.
+        Policies:
+          - PolicyName: AccessHandlerSSOPolicy
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Sid: ReadSSO
+                  Action:
+                    - iam:GetRole
+                    - iam:GetSAMLProvider
+                    - iam:ListAttachedRolePolicies
+                    - iam:ListRolePolicies
+                    - identitystore:ListUsers
+                    - organizations:DescribeAccount
+                    - organizations:DescribeOrganization
+                    - organizations:ListAccounts
+                    - organizations:ListAccountsForParent
+                    - organizations:ListOrganizationalUnitsForParent
+                    - organizations:ListRoots
+                    - organizations:ListTagsForResource
+                    - sso:DescribeAccountAssignmentCreationStatus
+                    - sso:DescribeAccountAssignmentDeletionStatus
+                    - sso:DescribePermissionSet
+                    - sso:ListAccountAssignments
+                    - sso:ListPermissionSets
+                    - sso:ListTagsForResource
+                  Effect: Allow
+                  Resource: "*"
+                - Sid: AssignSSO
+                  Action:
+                    - iam:UpdateSAMLProvider
+                    - sso:CreateAccountAssignment
+                    - sso:DeleteAccountAssignment
+                  Effect: Allow
+                  Resource: "*"
+  Outputs:
+    RoleARN:
+      Value:
+      Fn::GetAtt:
+        - GrantedAccessHandlerSSORole
+        - Arn
+EOF
+```
 
-2. Update the existing CloudFormation stack. This guide will use the AWS Console, but you can also do this with the AWS CLI. Open a console in the account that the Granted Access Handler SSO role stack was deployed to. In most cases, this will be the root account in your AWS organization. Select the CloudFormation stack and click the "Update" button. Choose the options as shown below, opting to replace the current template and to upload a template file. Upload the template file that you created in the previous step. Navigate through the rest of the wizard and apply the update.
+Update the existing CloudFormation stack. This guide will use the AWS Console, but you can also do this with the AWS CLI. Open a console in the account that the Granted Access Handler SSO role stack was deployed to. In most cases, this will be the root account in your AWS organization. Select the CloudFormation stack and click the "Update" button. Choose the options as shown below, opting to replace the current template and to upload a template file. Upload the template file that you created in the previous step. Navigate through the rest of the wizard and apply the update.
 
-   ![Update Stack CloudFormation Console screenshot](/img/migration/update-stack.png)
+![Update Stack CloudFormation Console screenshot](/img/migration/update-stack.png)
