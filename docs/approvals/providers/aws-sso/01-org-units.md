@@ -50,12 +50,6 @@ ROOT_OU_ID=$(aws organizations list-roots --query "Roots[0].Id" --output text)
 aws organizations create-organizational-unit --parent-id $ROOT_OU_ID --name "Engineering"
 ```
 
-You can find the Root OU ID by running the following command:
-
-```
-aws organizations list-roots
-```
-
 Create an account in your OU by running the following command:
 
 ```
@@ -64,14 +58,45 @@ aws organizations create-account --account-name ApprovalsTestAccount --parent-id
 
 ## Cleaning up
 
-If you no longer need an OU you can delete it using the AWS CLI. You can read more about the CLI [here](https://docs.aws.amazon.com/cli/latest/reference/organizations/delete-organizational-unit.html). The following command will delete the OU named "Engineering" in the Root OU of your account.
+To return to the default state of your AWS account, and granted deployment you can 
+1. Archive the Access Rule in your Granted Approvals deployment
+1. Delete the AWS account(s) that you created
+1. Delete the AWS OU that you created
+
+
+Archive the Access Rule by clicking the Archive button on the Access Rule page.
+![archive rule](/img/org-units/archive_rule.png)
+
+
+You can find the OUs ID by running the following command, and looking for the OU name in the list of OUs.
+
+```
+ROOT_OU_ID=$(aws organizations list-roots --query "Roots[0].Id" --output text)
+aws organizations list-organizational-units-for-parent --parent-id $ROOT_OU_ID
+```
+
+Now you can list all the OU's child acconts
+```
+aws organizations list-accounts-for-parent --parent-id <ou-id>
+```
+
+Now you can delete the child accounts by running the following command:
+
+```
+aws organizations delete-account --account-id <account-id>
+```
+
+Finally, you can delete the OU by running the following command:
+
 
 ```
 aws organizations delete-organizational-unit --organizational-unit-id <ou-id>
 ```
 
-You can find the OU ID by running the following command:
 
-```
-aws organizations list-organizational-units-for-parent --parent-id <root-ou-id>
-```
+:::info
+This process must be repeated for all nested OUs and accounts.
+:::
+
+
+You can read more about deleting OUs using the CLI [here](https://docs.aws.amazon.com/cli/latest/reference/organizations/delete-organizational-unit.html).
