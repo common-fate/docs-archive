@@ -13,7 +13,13 @@ OUs are a way to organize your AWS accounts into groups. You can read more about
 
 ## Why use OUs?
 
-OUs allow you to group accounts by business unit, project, or any other criteria you choose. In Granted Approvals this means less work for you. You can grant access to all accounts within an OU and not have to worry about adding new accounts to your access rule.
+Granted Approvals automatically updates the available accounts when OUs are used in Access Rules.
+
+For example, if you wish to allow team members to request access to any production account, you can create a Production OU in your AWS organization. In Granted, you can set up an Access Rule specifying the Production OU.
+
+(@jordiup  - ADD EXAMPLE SCREENSHOT HERE)
+
+When new accounts are added to the Production OU, they will automatically be made available for users to request access to under the same Access Rule. Granted Approvals syncs the available accounts every 5 minutes.
 
 ## What is the Root OU?
 
