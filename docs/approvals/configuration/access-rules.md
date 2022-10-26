@@ -38,6 +38,8 @@ Select from the options and then press **Next**.
 
 ![](/img/access-rules/2.png)
 
+For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/docs/approvals/configuration/org-units).
+
 ### Okta
 
 An Okta provider requires you to select a group from Okta. Users will be temporarily assigned as a member of the group when they use this access rule.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+slug: aws-sso
 ---
 
 # AWS SSO
