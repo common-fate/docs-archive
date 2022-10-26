@@ -24,18 +24,18 @@ The Root OU is the top level of your organization. It is the parent of all other
 Navigate to the Access Rule Create page and select the Provider Input Field
 ![](/img/org-units/1.png)
 
-You will see three fields: Accounts, Organizational Units and Permission Sets. By selecting an account it will be individuall added to the list of accounts.
+You will see three fields: Accounts, Organizational Units and Permission Sets. By selecting an account it will be individually added to the list of accounts.
 
-By selecting an OU it will add all accounts within that OU. You can also add accounts and OUs at the same time.
+Granted Approvals will show you a preview of what accounts will be available for selection by Granted Approvals end users. You can also add individual accounts and OUs at the same time.
 
-Selecting a Permission Set will reduce the access scope of the accounts you have selected to that permission set. If you select multiple permission sets, the requesting user can select one of those permission sets when making their access request.
 
 ## How do I setup an OU in my AWS account?
 
 Using the AWS CLI you can create an OU in your account. You can read more about the CLI [here](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-organizational-unit.html). The following command will create an OU named "Engineering" in the Root OU of your account.
 
 ```
-aws organizations create-organizational-unit --parent-id <root-ou-id> --name "Engineering"
+ROOT_OU_ID=$(aws organizations list-roots --query "Roots[0].Id" --output text)
+aws organizations create-organizational-unit --parent-id $ROOT_OU_ID --name "Engineering"
 ```
 
 You can find the Root OU ID by running the following command:
@@ -44,10 +44,10 @@ You can find the Root OU ID by running the following command:
 aws organizations list-roots
 ```
 
-To [create an account](https://docs.aws.amazon.com/cli/latest/reference/organizations/create-account.html) in your OU you can use the following command:
+Create an account in your OU by running the following command:
 
 ```
-aws organizations create-account --email <email> --account-name <account-name> --role-name <role-name> --iam-user-access-to-billing ALLOW --parent-id <ou-id>
+aws organizations create-account --account-name ApprovalsTestAccount --parent-id <ou-id> --email <email>
 ```
 
 ## Cleaning up
