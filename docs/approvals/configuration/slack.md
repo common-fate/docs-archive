@@ -18,7 +18,7 @@ Before you can setup the Slack integration you will need to have deployed the Gr
 [✔] Your Granted deployment is online
 ```
 
-## Setup instructions
+## Setup instructions - Slack OAUth
 
 Set up the Slack connection by running the following command:
 
@@ -51,3 +51,41 @@ gdeploy notifications slack test --email <your_slack_email>
 ```
 
 This will send a test DM to this email.
+
+
+## Setup instructions - Slack Webhooks
+
+Granted Approvals also supports a webhook notifier. This requires none of the read permissions that an OAuth installation requires.
+
+Navigate to [https://api.slack.com/apps](https://api.slack.com/apps) and click "Create New App" > “From Scratch”. Give it a name and select the workspace you want to use it in.
+
+![](/img/approvals-getting-started/18-slacksetup.png)
+
+
+You'll be met with a list of functionality you can add to your app. Click "Incoming Webhooks", "Activate Incoming Webhooks" and then "Add New Webhook to Workspace".
+
+![](/img/approvals-getting-started/19-slack-incoming-webhooks.png)
+
+You'll be prompted to select a channel for the webhook to post to. Select the channel you want and click "Authorize".
+
+![](/img/approvals-getting-started/20-slack-channel-selection.png)
+
+You'll be redirected to the "Incoming Webhooks" page. Click "Copy" next to "Webhook URL" to copy the webhook URL to your clipboard.
+
+To setup webhooks with gdeploy, use the following command:
+
+```
+gdeploy notifications slack-webhook configure -c <channel alias>
+```
+
+:::info
+Pass in a channel alias with `-c` to keep track of which channel is stored in config
+:::
+
+Finally, run `gdeploy update` to push the change to your Granted Approvals deployment:
+
+```
+gdeploy update
+```
+
+
