@@ -4,38 +4,50 @@ sidebar_position: 8
 
 # Sharing of AWS Config file with the team
 
-Sharing consistent AWS profiles amongst team members can be helpful. When writing scripts and documentation it allows you to concisely refer to a particular role which a team member should be using to do something. 
+Sharing consistent AWS profiles amongst team members can be helpful. When writing scripts and documentation it allows you to concisely refer to a particular role that a team member should be using to do something. 
 For example: ”run your development deploys using the cf-dev role”.
 
-Granted CLI provides a Profile Registry feature. A profile registry is a git repository which is a central store of AWS profile configuration which is then synced to default aws config file `~/.aws/config`
+Granted CLI provides a Profile Registry feature. A profile registry is a git repository which is a central store of AWS profile configuration which is then synced to the default aws config file `~/.aws/config`
 
 ## 1. Setting up a Profile Registry
 
-### Using Granted CLI to setup  a Profile Registry 
-TODO: Add after granted registry setup command is completed.
+### Using Granted CLI to setup a Profile Registry 
+You can initialize a Profile Registry with the following command:
+
+```
+granted registry setup
+```
+
+This will initialize your current working directory with the following files
+```
+├── .git
+├── config
+└── granted.yml
+```
+
 
 ### Manually setting a Profile Registry
-You can add any git repository to Granted CLI. However, it is recommended that you create a new repository like "granted-registry". You need to add `granted.yml` file to the root of the repository. 
+You can add any git repository to Granted CLI. However, it is recommended that you create a new repository like "granted-registry". You need to add a `granted.yml` file to the root of the repository. 
 
 The `granted.yml` file points to the AWS config files in the repository which should be synced. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing from the registry. If there are any duplicate profile names in the same repository, the second one will overwrite and only single profile values will be synced.
 
-A valid `granted.yml` requires `awsConfig` key to be present. For example:
+A valid `granted.yml` requires an `awsConfig` key to be present. For example:
 ```
 awsConfig:
   - ./config
   - ./other-config
 ```
 
-In the above example, aws profiles inside `config` & `other-config` files will be merged and synced to your local `./aws/config` file.
+In the above example, AWS profiles inside `config` & `other-config` files will be merged and synced to your local `./aws/config` file.
 
 ## 2. Adding a Profile Registry
-Provide a valid git url to `granted registry add` command to add a profile registory. Both SSH and HTTPS formats are accepted.
+Provide a valid git URL to `granted registry add` command to add a profile registry. Both SSH and HTTPS formats are accepted.
 
 ```
 granted registry add <your-repo-git-url>
 ```
 
-This will clone `<your-repo-git-url>`, load all the aws config file configured in `granted.yml` file and sync. 
+This will clone `<your-repo-git-url>`, load all the AWS config files configured in the `granted.yml` file and sync. 
 
 You should be able to see a granted generated section inside your `/.aws/config` file such as:
 
@@ -66,10 +78,10 @@ However, if you want to perform instant sync then you can run:
 granted registry sync
 ```
 
-This will loop over the configured profile registries, pull the latest change from remote origin and perform the sync operation. 
+This will loop over the configured profile registries, pull the latest change from the remote origin and perform a sync operation. 
 
 ## 4. Removing a Profile Registry
 ```
 granted registry remove
 ```
-will display all the subscribed profile registries and prompt user to choose registry they want to remove.
+Will display all the subscribed profile registries and prompt you to choose a registry to remove.
