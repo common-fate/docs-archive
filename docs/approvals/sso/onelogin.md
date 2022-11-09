@@ -8,7 +8,7 @@ sidebar_position: 3
 Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses [OAuth2.0 authentication](https://developers.onelogin.com/api-docs/2/oauth20-tokens/generate-tokens-2) to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
-## One Login setup
+## Setup
 
 ### Creating Access Tokens in One Login
 
