@@ -30,7 +30,7 @@ Under **Service account details**, type a name, ID, and description for the ser
 
 Then click **Continue,** followed by **Done**. This will now have created a new service account.
 
-Next we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
+Next we will need to delegate domain-wide authority to the service account. This requires an admin user account to access the Admin console.
 
 From your Google Workspace domain's [Admin console](https://admin.google.com/) (different to your GCP admin console), go to **Main menu > Security > Access and data control > API Controls**.
 
@@ -55,7 +55,6 @@ Click on the service account you have just created and you will be redirected to
 
 ![](/img/sso/google/03-created-service-account.png)
 
-
 ### Create Keys
 
 In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the setup is complete.
@@ -66,13 +65,13 @@ This is where we can start up the `gdeploy identity sso enable` command.
 
 Run the following to begin the SSO setup
 
-```json
+```
 gdeploy identity sso enable
 ```
 
 You will be prompted to select you identity provider, select Google.
 
-```json
+```
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
 > Google
   Okta
@@ -80,19 +79,19 @@ You will be prompted to select you identity provider, select Google.
 
 1.  For the `Google Workspace Domain` set the value to the domain that your Google workspace is linked to into eg. `commonfate.io`
 
-```json
+```
 ? Google Workspace Domain: commonfate.io
 ```
 
 2. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
 
-```json
+```
 ? Google Admin Email: jack@commonfate.io
 ```
 
 3. For the `API Token` param, gdeploy will ask for the path to the previously downloaded JSON key. Enter the path to where it was downloaded or move it into the same directory as gdeploy is running and enter `./{filename}.json`
 
-```json
+```
 ? API Token: ****
 ```
 
