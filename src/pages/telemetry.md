@@ -35,37 +35,7 @@ deployment:
 
 When the `AnalyticsLogLevel` parameter is set, analytics events will be printed to your deployment’s CloudWatch log groups when data is collected.
 
-Below are two examples of telemetry events:
-
-```json
-{
-  "batch": [
-    {
-      "distinct_id": "usr_-CHh8_rdIqAotcBsP64GKQkfzW2hb1JDJ_6u7q4zom4",
-      "event": "cf:rule.created",
-      "library": "cf-analytics-go",
-      "library_version": "dev",
-      "properties": {
-        "$groups": {
-          "deployment": "dep_123"
-        },
-        "$lib": "cf-analytics-go",
-        "$lib_version": "dev",
-        "created_by": "usr_-CHh8_rdIqAotcBsP64GKQkfzW2hb1JDJ_6u7q4zom4",
-        "max_duration_seconds": 100,
-        "option_count": 5,
-        "provider": "commonfate/test-provider@v1",
-        "requires_approval": true,
-        "rule_id": "rul_LNS4E5we6G3DpSsY2DnEu8coV7azNnjuUztaQ5SW0jo",
-        "uses_dynamic_options": true,
-        "uses_selectable_options": true
-      },
-      "timestamp": "2009-11-10T23:00:00Z",
-      "type": "capture"
-    }
-  ]
-}
-```
+Below is an example of a telemetry event:
 
 ```json
 {
@@ -120,7 +90,7 @@ All telemetry data collected aligns with the [Common Fate privacy policy](/priva
 
 ## Sharing of Data
 
-Collected data is completely anonymous, and untraceable, and personally unidentifiable. The data holds meaning only in its aggregate form.
+Collected data is completely anonymous, untraceable, and personally unidentifiable. The data holds meaning only in its aggregate form.
 
 To better understand collected telemetry data, we have adopted the following third party sub-processors:
 
