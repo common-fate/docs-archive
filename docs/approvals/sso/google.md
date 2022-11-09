@@ -30,11 +30,31 @@ Under **Service account details**, type a name, ID, and description for the ser
 
 Then click **Continue,** followed by **Done**. This will now have created a new service account.
 
-You will be redirected back to the Service Accounts page where all the service accounts are listed. Find the service account you just created, use the filter search at the top if there are many service accounts in your project.
+Next we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
+
+From your Google Workspace domain's [Admin console](https://admin.google.com/) (different to your GCP admin console), go to **Main menu > Security > Access and data control > API Controls**.
+
+![](/img/sso/google/04-domain-delegation.png)
+
+In the **Domain wide delegation** pane, select **Manage Domain Wide Delegation**.Click **Add new**.
+
+In the OAuth **Client ID** field, enter the service account's OAuth **Client ID**. You can find your service account's client ID in the [Service accounts page](https://console.developers.google.com/iam-admin/serviceaccounts).
+
+In the **OAuth scopes (comma-delimited)** field, enter the list of scopes that your application should be granted access to. For us it will be:
+
+```
+https://www.googleapis.com/auth/admin.directory.user.readonly,
+https://www.googleapis.com/auth/admin.directory.group.readonly,
+```
+
+Click **Authorize**.
+
+Head back over to the Service Accounts page in GCP where all the service accounts are listed. Find the service account you just created, use the filter search at the top if there are many service accounts in your project.
 
 Click on the service account you have just created and you will be redirected to a page that looks like this
 
 ![](/img/sso/google/03-created-service-account.png)
+
 
 ### Create Keys
 
@@ -58,22 +78,22 @@ You will be prompted to select you identity provider, select Google.
   Okta
 ```
 
-1. For the `API Token` param, copy and paste in the JSON string from the downloaded key file.
-
-```json
-? API Token: ****
-```
-
-2. For the `Google Workspace Domain` set the value to the domain that your Google workspace is linked to into eg. `commonfate.io`
+1.  For the `Google Workspace Domain` set the value to the domain that your Google workspace is linked to into eg. `commonfate.io`
 
 ```json
 ? Google Workspace Domain: commonfate.io
 ```
 
-3. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
+2. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
 
 ```json
 ? Google Admin Email: jack@commonfate.io
+```
+
+3. For the `API Token` param, gdeploy will ask for the path to the previously downloaded JSON key. Enter the path to where it was downloaded or move it into the same directory as gdeploy is running and enter `./{filename}.json`
+
+```json
+? API Token: ****
 ```
 
 :::info
@@ -98,25 +118,6 @@ You should see an output similar to the below.
 | Audience URI           | urn:amazon:cognito:sp:us-west-2_abcdefghi               |
 +------------------------+---------------------------------------------------------+
 ```
-
-To finish off the service account access we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
-
-From your Google Workspace domain's [Admin console](https://admin.google.com/), go to **Main menu > Security > Access and data control > API Controls**.
-
-![](/img/sso/google/04-domain-delegation.png)
-
-In the **Domain wide delegation** pane, select **Manage Domain Wide Delegation**.Click **Add new**.
-
-In the OAuth **Client ID** field, enter the service account's OAuth **Client ID**. You can find your service account's client ID in the [Service accounts page](https://console.developers.google.com/iam-admin/serviceaccounts).
-
-In the **OAuth scopes (comma-delimited)** field, enter the list of scopes that your application should be granted access to. For us it will be:
-
-```
-https://www.googleapis.com/auth/admin.directory.user.readonly,
-https://www.googleapis.com/auth/admin.directory.group.readonly,
-```
-
-Click **Authorize**.
 
 Next you will need to setup a SAML app, you will see the below prompt, Google supplies only XML so choose String or file.
 
