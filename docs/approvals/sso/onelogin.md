@@ -10,25 +10,24 @@ Granted Approvals user and group sync requires some credentials to be configured
 
 ## Setup
 
-### Creating Access Tokens in One Login
+### Creating Access Tokens in OneLogin
 
-To set up One Login to sync users and groups with Granted Approvals we will need to create an access token to the developer API.
+To set up OneLogin to sync users and groups with Granted Approvals we will need to create an access token to the developer API.
 
-Sign in to your One Login admin portal using a user profile with admin privileges.
+Sign in to your OneLogin admin portal using a user profile with administrative privileges.
 
 From the home screen hover over the **Developers** tab in the navbar, then from the options select **API Credentials**
-![](/img/sso/one-login/1.png)
+![](/img/sso/onelogin/1.png)
 
 On the API Credentials screen there will be a button in the top right of the page to make a **New Credential**, click it to make a new credential.
 
-![](/img/sso/one-login/2.png)
+![](/img/sso/onelogin/2.png)
 
-![](/img/sso/one-login/3.png)
-- Give your credential a descriptive name
-- Make sure *Read users* is the selected permission
-Save/Create the credential.
+![](/img/sso/onelogin/3.png)
 
-A new modal will open, leave this open and move onto the next steps.
+Give your credential a descriptive name. Make sure _Read users_ is the selected permission and then click Save.
+
+A new pop-up window will open, leave this open and move onto the next steps.
 
 ### Running `gdeploy` Commands
 
@@ -38,23 +37,22 @@ This is where we can start up the `gdeploy identity sso enable` command. Run the
 gdeploy identity sso enable
 ```
 
-Select 'One Login' when prompted for the identity provider.
+Select 'OneLogin' when prompted for the identity provider.
 
 ```bash
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
   Google
   Okta
-> One Login
+> OneLogin
 ```
 
-Head back to your One Login admin portal where you left it open, there will be a client ID and Client secret which you will be able to copy.
+Head back to your OneLogin admin portal where you left it open, there will be a client ID and Client secret which you will be able to copy.
 
-`gdeploy` will prompt you for IDs relating to your One Login tenancy.
+`gdeploy` will prompt you for IDs relating to your OneLogin tenancy.
 
 1. For the `Base URL` parameter, get your tenancies url. This can be copied from your admin portal. It will have a format like this: `https://{tenantName}.onelogin.com`
 2. For the `Client ID` param, copy and paste the **Client ID**.
 3. For the `Client Secret` param, copy and paste the **Client Secret**.
-
 
 You should see an output similar to the below.
 
@@ -88,17 +86,16 @@ You will see something like this, follow the [next section](#setting-up-saml-sso
 
 To get started navigate to the **Applications** heading in the navbar, then select **Applications** from the drop down.
 
-![](/img/sso/one-login/4.png)
+![](/img/sso/onelogin/4.png)
 
-Click **Add App**, Then in the search box, search for 'saml custom connector'. Click on `SAML Custom Connector (Advanced)`.
-![](/img/sso/one-login/5.png)
-Give the SAML app a descriptive name. Then Save.
-![](/img/sso/one-login/6.png)
+Click **Add App**, Then in the search box, search for 'SAML custom connector'. Click on `SAML Custom Connector (Advanced)`.
+![](/img/sso/onelogin/5.png)
+Enter "Granted SAML SSO" as the display name for the application, then click Save.
+![](/img/sso/onelogin/6.png)
 
+Then navigate into the configuration for our newly created application. We will need some values that `gdeploy` has given us.
 
-Then head into the configuration for our newly created application. We will need some values that gdeploy has given us.
- 
-![](/img/sso/one-login/7.png)
+![](/img/sso/onelogin/7.png)
 
 The outputs will look like this:
 
@@ -112,58 +109,58 @@ The outputs will look like this:
 +------------------------+---------------------------------------------------------+
 ```
 
-- Set the **Audience (EntityID)** value in Azure AD to be the  **Audience URI (Entity ID)** from the gdeploy outputs
+- Set the **Audience (EntityID)** value in Azure AD to be the **Audience URI (Entity ID)** from the gdeploy outputs
 
 - Set the **ACS (Consumer) URL Validator** value in Azure AD to be the **SAML SSO URL (ACS URL)** from `gdeploy`
 - Set the **ACS (Consumer) URL** value in Azure AD to be the **SAML SSO URL (ACS URL)** from `gdeploy`
 
 Hit save.
 
-From the same page, in the **Parameters** section we will want to add a SAML claim. 
-*Note: One parameter (NameID) is already listed—this is expected.*
+From the same page, in the **Parameters** section we will want to add a SAML claim.
+_Note: One parameter (NameID) is already listed—this is expected._
 
 Press the plus symbol on the right of the table and a modal will pop up.
+
 - For the name of the field we want to call it `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`
 - Click **Include in SAML assertion** checkbox.
 - Click save.
 - For value, choose **Email** from the list
 - Click save.
-![](/img/sso/one-login/8.png)
+  ![](/img/sso/onelogin/8.png)
 
 Click save in the top right again to save these details.
 
-
 We will need to get the SAML metadata URL. We can get this by heading to the **SSO** section on the same page.
+
 - Copy the **Issuer URL**
-![](/img/sso/one-login/9.png)
+  ![](/img/sso/onelogin/9.png)
 
 Paste this URL into the gdeploy prompt asking for `Metadata Url`
 
 Finally you will need to create an adminitrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
 
-To get this group ID we will need to make the administrator group in One Login.
+To get this group ID we will need to make the administrator group in OneLogin.
 
-*Note: One Login's concept of groups is called 'Roles' so we will be refering to Roles from now on.*
+_Note: OneLogin's concept of groups is called 'Roles' so we will be refering to Roles from now on._
 
 ### Creating Granted Approvals Administrator Role
 
-In the One Login Admin portal, hover on **Users** in the navbar, and then select **Roles** from the list.
+In the OneLogin Admin portal, hover on **Users** in the navbar, and then select **Roles** from the list.
+
 - Click the **New Role** button from the top right.
 
-![](/img/sso/one-login/10.png)
+![](/img/sso/onelogin/10.png)
 
-Give the role a name (note: this will be the name of your group of administrators for granted). And click the green tick.
+Give the role a name (note: this will be the name of your group of administrators for granted, so we'd suggest using "granted_admins" or similar). Click the green tick and then click save to create the new role.
 
-Then click save to create the new role.
+![](/img/sso/onelogin/11.png)
 
-![](/img/sso/one-login/11.png)
-
-To add members to this group, head to the edit details page for the Role. Then go to the Users section.
+To add members to this group, visit the edit details page for the Role. Then go to the Users section.
 Search for the users and add them to the Role.
 
-![](/img/sso/one-login/12.png)
+![](/img/sso/onelogin/12.png)
 
-Gdeploy should pull the groups and give a list of ID's that it has found, find the admin group and select the ID that will be used for the admin group. Press enter.
+`gdeploy` should pull the groups and give a list of ID's that it has found, find the admin group and select the ID that will be used for the admin group. Press enter.
 
 You should see the following:
 
@@ -178,4 +175,3 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
 ```
 
 You will need to redeploy using `gdeploy update` to update the identity provider changes.
-
