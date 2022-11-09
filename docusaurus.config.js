@@ -57,17 +57,17 @@ const config = {
       },
     ],
     [
-      '@docusaurus/plugin-client-redirects',
+      "@docusaurus/plugin-client-redirects",
       {
-        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        fromExtensions: ["html", "htm"], // /myPage.html -> /myPage
         redirects: [
           {
-            from: '/granted',
-            to: '/granted/introduction',
+            from: "/granted",
+            to: "/granted/introduction",
           },
           {
-            from: '/granted-approvals',
-            to: '/granted-approvals/introduction',
+            from: "/granted-approvals",
+            to: "/granted-approvals/introduction",
           },
         ],
       },
@@ -130,6 +130,10 @@ const config = {
                 label: "Granted",
                 to: "/granted/introduction",
               },
+              {
+                label: "Granted Approvals",
+                to: "/granted-approvals/introduction",
+              },
             ],
           },
           {
@@ -155,6 +159,14 @@ const config = {
               {
                 label: "GitHub",
                 href: "https://github.com/common-fate",
+              },
+              {
+                label: "Telemetry",
+                to: "/telemetry",
+              },
+              {
+                label: "Privacy Policy",
+                to: "/privacy-policy",
               },
             ],
           },
