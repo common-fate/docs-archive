@@ -8,16 +8,22 @@ Providers are an essential part of Granted Approvals. Providers are plugins that
 
 The current list of providers integrated are:
 
-- [AWS IAM Identity Center (AWS SSO)](aws-sso.md)
-- [Okta Groups](okta.md)
-- [Azure Groups](azure-ad.md)
+- AWS IAM Identity Center (AWS SSO)
+- Okta Groups
+- Azure Groups
+- EKS (with AWS SSO)
+- ECS Exec (with AWS SSO)
 
-To configure a new provider to your Granted Approvals deployment, run
+To create your first Access Provider, visit the Providers tab in the admin portal
 
-```bash
-gdeploy provider add
-```
+Select your desired Access Provider
 
-And follow the prompts. Setup information for each provider is located in the subpages of this category.
+![Interactive Docs Home](/img/providers/interactive-docs-home.png)
 
-We highly recommend you get started with [Adding Your First Provider](/granted-approvals/providers/add-first-provider/first-provider). It'll walk you through how to add a test provider so you can understand the access workflow before you try connecting your production environments.
+Now follow the prompts in the interactive docs
+
+![Interactive Docs Setup Page](/img/providers/interactive-docs.png)
+
+The final step is testing the connection, this will validate the installation has been successful
+
+![Interactive Docs Connection Test](/img/providers/interactive-docs-setup-test.png)
