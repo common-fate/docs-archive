@@ -1,8 +1,9 @@
 ---
 slug: access-providers
+title: Access Providers (Deprecated in v0.40)
 ---
 
-# Access Providers (Deprecated)
+# Access Providers ([Deprecated in v0.40](https://github.com/common-fate/granted-approvals/releases/tag/v0.4.0))
 
 Providers are an essential part of Granted Approvals. Providers are plugins that allow the access management integration between Granted Approvals and your choice of cloud/identity service.
 
