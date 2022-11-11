@@ -105,7 +105,7 @@ If you have subfolder such as:
 │   ├── config1
 │   ├── config2
 │   ├── granted.yml
-│   └── D2 [3976 entries exceeds filelimit, not opening dir]
+│  
 ├── team_ops
 │   ├── config3
 │   ├── config4
