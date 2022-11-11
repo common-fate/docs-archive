@@ -116,13 +116,13 @@ If you have subfolder such as:
 Then you can specify only the subfolder having `granted.yml` as:
 
 ```
-granted registry add <your-repo-url>/<sub-folder>/
+granted registry add <your-repo-url.git>/<sub-folder>/
 ```
 
 Or with custom file name as:
 
 ```
-granted registry add <your-repo-url>/<sub-folder>/<filename.yml>
+granted registry add <your-repo-url.git>/<sub-folder>/<filename.yml>
 ```
 
 ## 3. Syncing a Profile Registry 
