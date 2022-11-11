@@ -141,7 +141,8 @@ When you are using AWS CLI with `granted credential-process` you won't be notifi
 :::info
 
 ## 4. Removing a Profile Registry
+To unsubscribe a Profile Registry you can run:
 ```
 granted registry remove
 ```
-Will display all the subscribed profile registries and prompt you to choose a registry to remove.
+This will display all the subscribed Profile Registries and prompt you to choose a registry to unsubscribe.
