@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Sharing AWS config file
+# Profile Registries
 
 Sharing consistent AWS profiles amongst team members can be helpful. This allows you to adopt consistent role names across your documentation and scripts. For example: ”run your development deploys using the `cf-dev` role”.
 
