@@ -2,73 +2,69 @@
 sidebar_position: 8
 ---
 
-# Sharing of AWS Config file with the team
+# Sharing AWS config file
 
-Sharing consistent AWS profiles amongst team members can be helpful. When writing scripts and documentation it allows you to concisely refer to a particular role that a team member should be using to do something. 
-For example: ”run your development deploys using the cf-dev role”.
+Sharing consistent AWS profiles amongst team members can be helpful. This allows you to adopt consistent role names across your documentation and scripts. For example: ”run your development deploys using the `cf-dev` role”.
 
-Granted CLI provides a Profile Registry feature. A profile registry is a git repository which is a central store of AWS profile configuration which is then synced to the default aws config file `~/.aws/config`
+To manage sharing profile configuration, Granted provides a Profile Registry. This feature utilizes a git repository as a central store for AWS profile configurations. Granted's Profile Registry synchronizes this to the default AWS config file located locally at `~/.aws/config`.
 
 ![](/img/profile-registry/overview.png)
 
-## 1. Setting up a Profile Registry
+## Creating a Profile Registry
 
-### Using Granted CLI to setup a Profile Registry 
+### Using Granted to configure a Profile Registry
 
-#### 1. Create a Profile Registry Folder
-You can quickly move the contents of your ~/.aws/config and setup a Profile Registry repository with the following command:
+#### Create a Profile Registry folder.
+
+You can quickly copy the contents of your local `~/.aws/config` file to a Profile Registry repository with the following command:
 
 ```
 granted registry setup
 ```
 
-**_NOTE:_**  This will copy all the profiles inside your ~/.aws/config file to the config file inside created Profile Registry. 
+:::info
+This will copy all profiles inside your `~/.aws/config` file to the Profile Registry's config file.
+:::
 
-The output of this command is a "granted-registry" folder created in your current working directory with the following files:
+This command outputs a `granted-registry` folder to your current working directory. This folder contains the following files:
+
 ```
 ├── .git
 ├── config
 └── granted.yml
 ```
-#### 2. Add a local repository to Git-based source code repository hosting service
-You need to manually add this repository to your organization's repository. For github, you can follow this [link](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
 
-### Manually setting a Profile Registry
-You can add any git repository to Granted CLI. Granted by default will look for `granted.yml` file in the root of the repository. If you want to specify a different YAML file then [follow this link](#2-specifying-a-different-yaml-file)
+#### Add the local repository to your git-based version control tool.
+
+The `granted-registry` repository will need to be manually added to your organization's version control tool. For GitHub, you can follow this [link](https://docs.github.com/en/get-started/importing-your-projects-to-github/importing-source-code-to-github/adding-locally-hosted-code-to-github#adding-a-local-repository-to-github-using-git).
+
+## Adding a Profile Registry
+
+You can add any git-based repository to Granted's Profile Registry. By default, Granted looks for a `granted.yml` file in the root of the repository. Should you wish to specify an alternative YAML file, [follow this guide](#specifying-a-different-yaml-file).
+
+You can add a repository to Granted's Profile Registry by running the following command:
 
 ```
-granted registry add git@github.com:octo/granted-registry.git
+granted registry add <your-repo-git-url>
 ```
 
-The `granted.yml` file points to the AWS config files in the repository which should be synced. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing from the registry. 
-
+The `granted.yml` file identifies AWS config files to be synced to Granted's Profile Registry. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing your local config file to the repository.
 
 A valid `granted.yml` requires an `awsConfig` key to be present. For example:
+
 ```
 awsConfig:
   - ./config
   - ./other-config
 ```
 
-In the above example, AWS profiles inside `config` & `other-config` files will be merged and synced to your local `./aws/config` file.
+In the above example, AWS profiles inside `config` and `other-config` files will be merged and synced to your local `./aws/config` file.
 
 :::info
-If there are any duplicate profile names in the same repository, the second one will overwrite and only single profile values will be synced.
+If there are any duplicate profile names in the same repository, the latter will overwrite those former causing only unique profiles to be synced.
 :::info
 
-## 2. Adding a Profile Registry
-
-### 1. 'granted.yml' file in root
-
-If the provided git URL has `granted.yml` in the root of the directory then run `granted registry add <your-repo-git-url>` command to add a profile registry. Both SSH and HTTPS formats are accepted.
-
-```
-granted registry add <your-repo-git-url>
-```
-
-This will clone `<your-repo-git-url>`, load all the AWS config files configured in the `granted.yml` file and sync. 
-
-You should be able to see a Granted generated section inside your `/.aws/config` file such as:
+Adding a registry will manipulate your local `/.aws/config` file to include Granted autogenerated sections. Here's an example:
 
 ```
 # Granted-Registry Autogenerated Section. DO NOT EDIT.
@@ -85,19 +81,22 @@ sso_role_name  = <your-sso-role-name>
 
 [granted_registry_end git@github.com:octo/granted-registry.git]
 ```
+
 :::info
-To avoid confusion, synced profiles are placed into a designated region in the file as shown above. This allows users to have a mix of both synced and regular profiles in their config file:
+To avoid confusion, synced profiles are placed into a designated region in the `/.aws/config` file as shown above. This allows users to have a mix of both synced and regular profiles in their config file:
 :::info
 
-### 2. Specifying a different YAML file.
-If you want to specify a different YAML file, then run:
+### Specifying an alternative YAML file.
+
+Granted allows you to specify an alternative YAML file for your Profile Registry's configuration. Should you wish to specify a different YAML file, run:
 
 ```
 granted registry add <your-repo-url>/<filname.yml>
 ```
 
-### 3. Specifying only a subfolder 
-If you have subfolder such as: 
+### Specifying only a subfolder
+
+If you have subfolder such as:
 
 ```
 .
@@ -105,7 +104,7 @@ If you have subfolder such as:
 │   ├── config1
 │   ├── config2
 │   ├── granted.yml
-│  
+│
 ├── team_ops
 │   ├── config3
 │   ├── config4
@@ -113,7 +112,7 @@ If you have subfolder such as:
 
 ```
 
-Then you can specify only the subfolder having `granted.yml` as:
+Then you can specify only the subfolder containing a `granted.yml` file:
 
 ```
 granted registry add <your-repo-url.git>/<sub-folder>/
@@ -125,24 +124,28 @@ Or with custom file name as:
 granted registry add <your-repo-url.git>/<sub-folder>/<filename.yml>
 ```
 
-## 3. Syncing a Profile Registry 
-Adding a Profile Registry is sufficient to sync the config file. Granted CLI will automatically sync your profile repositories once per day when you run `granted credential-process` or `asssume` command by default.
+## Syncing a Profile Registry
 
-However, if you want to perform instant sync then you can run:
+Adding a Profile Registry is sufficient to sync the `granted.yml` config file. Once per day Granted will automatically sync the repositories contained within your Profile Registry. By default, his process will be invoked when you run `granted credential-process` or `asssume` commands.
+
+Should you wish to invoke a manual sync, run:
 
 ```
 granted registry sync
 ```
 
-This will loop over the configured profile registries, pull the latest change from the remote origin and perform a sync operation. 
+This will loop over the repositories associated with your Profile Registry and will pull the latest changes from the remote origin, performing a sync operation.
 
 :::info
-When you are using AWS CLI with `granted credential-process` you won't be notified when the daily Profile Registry sync fails because AWS expects specific JSON STDOUT when configured with sourcing credentials with an external process. In that case, you can run `assume` or `granted registry sync` to see the issue. Add verbose flag like `assume --verbose` to see the Debug logs. 
+When using AWS CLI with `granted credential-process` you will not be notified of failed Profile Registry syncs. This occurs as AWS expects specific JSON STDOUT when configured with sourcing credentials with an external process. In that case, you can run `assume` or `granted registry sync` to view the issue. Add verbose flag like `assume --verbose` to view the debug logs.
 :::info
 
-## 4. Removing a Profile Registry
-To unsubscribe a Profile Registry you can run:
+## Removing a Profile Registry
+
+To unsubscribe a repository from Granted's Profile Registry run the following command:
+
 ```
 granted registry remove
 ```
-This will display all the subscribed Profile Registries and prompt you to choose a registry to unsubscribe.
+
+This will display all repositories subscribed to Granted's Profile Registry and will prompt you to choose a repository to unsubscribe.
