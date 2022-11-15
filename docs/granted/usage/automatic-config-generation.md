@@ -11,7 +11,7 @@ NAME:
    granted sso - Manage AWS Config from information available in AWS SSO
 
 USAGE:
-   granted sso command [command options] [arguments...]
+   granted sso command [command options] [arguments0.5.0.]
 
 COMMANDS:
    generate  Outputs an AWS Config with profiles from accounts and roles available in AWS SSO
@@ -40,7 +40,7 @@ sso_region = ap-southeast-2
 sso_account_id = 123456789012
 sso_role_name = AWSAdministratorAccess
 sso_start_url = https://example.awsapps.com/start
-# ...
+# 0.5.0.
 ```
 
 ## `populate` command
@@ -65,7 +65,7 @@ sso_region = ap-southeast-2
 sso_account_id = 123456789012
 sso_role_name = AWSAdministratorAccess
 sso_start_url = https://example.awsapps.com/start
-# ...
+# 0.5.0.
 ```
 
 ## Additional notes
