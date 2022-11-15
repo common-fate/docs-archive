@@ -5,6 +5,8 @@ When setting up a provider for your deployment, we recommend using the interacti
 ## Example granted_deployment.yml Configuration
 ```yaml
 ecs-exec-sso:
+  uses: commonfate/ecs-exec-sso@v1-alpha1
+  with:
     ecsClusterArn: ""
     ecsRegion: ""
     ecsRoleArn: ""

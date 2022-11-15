@@ -10,8 +10,10 @@ import (
 	"github.com/common-fate/granted-approvals/accesshandler/pkg/providerregistry"
 	"github.com/common-fate/granted-approvals/accesshandler/pkg/providers"
 	"github.com/common-fate/granted-approvals/accesshandler/pkg/psetup"
+	"github.com/common-fate/granted-approvals/pkg/deploy"
 	"github.com/common-fate/granted-approvals/pkg/gconfig"
-	"github.com/invopop/yaml"
+	"gopkg.in/yaml.v3"
+
 	"github.com/urfave/cli/v2"
 )
 
@@ -33,8 +35,9 @@ var GenerateCommand = cli.Command{
 					setuper, ok := registeredProvider.Provider.(providers.SetupDocer)
 					if ok {
 						providerFolder := path.Join("./docs/approvals/providers/registry", providerType)
+						uses := fmt.Sprintf("%s@%s", providerType, providerVersion)
 						registryTemplateData.Providers = append(registryTemplateData.Providers, RegistryProvider{
-							Name: fmt.Sprintf("%s@%s", providerType, providerVersion),
+							Name: uses,
 							Path: path.Join("./", providerType, providerVersion),
 						})
 						err := os.MkdirAll(providerFolder, os.ModePerm)
@@ -63,7 +66,13 @@ var GenerateCommand = cli.Command{
 						if err != nil {
 							return err
 						}
-						configYML, err := yaml.Marshal(map[string]map[string]string{registeredProvider.DefaultID: configMap})
+						configYML := new(strings.Builder)
+						enc := yaml.NewEncoder(configYML)
+						enc.SetIndent(2)
+						err = enc.Encode(map[string]deploy.Provider{registeredProvider.DefaultID: {
+							Uses: uses,
+							With: configMap,
+						}})
 						if err != nil {
 							return err
 						}
@@ -71,7 +80,7 @@ var GenerateCommand = cli.Command{
 							Steps:            []Step{},
 							Provider:         providerType,
 							Version:          providerVersion,
-							DeploymentConfig: fmt.Sprintf("```yaml\n%s\n```", configYML),
+							DeploymentConfig: fmt.Sprintf("```yaml\n%s\n```", configYML.String()),
 						}
 						for _, inst := range instructions {
 							step := Step{
