@@ -14,9 +14,9 @@ To redirect from a custom domain to Granted Approvals you will need to setup a c
 
 If you're domain is in AWS, go to [Route 53](https://console.aws.amazon.com/route53/home) and click 'Create record'
 
-If you wanted to host it on a sub-domain called `granted.mycompany.com` you would create a CNAME record with the following values:
+If you wanted to host it on a sub-domain called `testing.devcommonfate.com` you would create a CNAME record with the following values:
 
-- Name: `granted`
+- Name: `testing`
 - Type: `CNAME`
 - Value: `<randomId>.cloudfront.net` (this is the URL you received when you deployed Granted Approvals)
 
@@ -50,25 +50,6 @@ If you're using **seperate** accounts, you'll need to create a CNAME record in y
 
 Click on the certificate and copy the ARN.
 
-## Updating the CloudFront distribution
-
-Before you can use the certificate ARN, you'll need to add it to the CloudFront distribution. To do this, go to the [CloudFront console](https://console.aws.amazon.com/cloudfront/home) and click on the distribution you created when you deployed Granted Approvals.
-
-Under 'Custom SSL Certificate', enter the certificate ARN you copied earlier.
-
-You also need to add the custom domain under 'Alternate domain name (CNAME)'.
-
-![](/img/approvals-configuration/custom-domain/cloudfront-distribution-edit.png)
-
-Now click 'Save Changes'
-
-## Cognito Updates
-
-You will also need to specify the new domain in Cognito. To do this, go to the [Cognito console](https://console.aws.amazon.com/cognito/home) and click on the user pool you created when you deployed Granted Approvals.
-
-Now add in your new domain to Callback URLs and Signout URLs.
-
-![](/img/approvals-configuration/custom-domain/cognito-updates.png)
 
 ## Adding the custom domain and Certifcate ARN to Granted
 
@@ -83,7 +64,7 @@ deployment:
   release: v0.3.1
   parameters:
     CognitoDomainPrefix: granted-login-cfdemo
-+   FrontendDomain: myfrontenddomain.com
++   FrontendDomain: testing.devcommonfate.com
 +   FrontendCertificateARN: arn:aws:acm:us-east-1:123456789012:certificate/12345678-d88f-497c-b48f-b273ddaf25c0
 ```
 
