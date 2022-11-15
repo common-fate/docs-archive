@@ -1,5 +1,6 @@
 {
-  "label": "Provider Registry",
-  "position": 1,
-  "link": { "type": "doc", "id": "provider-registry" }
-}
+	"label": "Provider Registry",
+	"position": 1,
+	"link": { "type": "doc", "id": "provider-registry" }
+  }
+  

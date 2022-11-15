@@ -1,4 +1,19 @@
 # commonfate/ecs-exec-sso@v1-alpha1
+:::info
+When setting up a provider for your deployment, we recommend using the interactive setup workflow which is available from the Providers tab of your admin dashboard.
+:::
+## Example granted_deployment.yml Configuration
+```yaml
+ecs-exec-sso:
+    ecsClusterArn: ""
+    ecsRegion: ""
+    ecsRoleArn: ""
+    identityStoreId: ""
+    instanceArn: ""
+    ssoRegion: ""
+    ssoRoleArn: ""
+
+```
 ## Find the AWS SSO instance details
 ### Configuration Fields
 This step will guide you through collecting the values for these fields required to setup your provider.

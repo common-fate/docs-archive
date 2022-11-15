@@ -11,6 +11,7 @@ import (
 	"github.com/common-fate/granted-approvals/accesshandler/pkg/providers"
 	"github.com/common-fate/granted-approvals/accesshandler/pkg/psetup"
 	"github.com/common-fate/granted-approvals/pkg/gconfig"
+	"github.com/invopop/yaml"
 	"github.com/urfave/cli/v2"
 )
 
@@ -57,10 +58,20 @@ var GenerateCommand = cli.Command{
 						if err != nil {
 							return err
 						}
+
+						configMap, err := cfg.Dump(c.Context, gconfig.SafeDumper{})
+						if err != nil {
+							return err
+						}
+						configYML, err := yaml.Marshal(map[string]map[string]string{registeredProvider.DefaultID: configMap})
+						if err != nil {
+							return err
+						}
 						instructionData := InstructionTemplateData{
-							Steps:    []Step{},
-							Provider: providerType,
-							Version:  providerVersion,
+							Steps:            []Step{},
+							Provider:         providerType,
+							Version:          providerVersion,
+							DeploymentConfig: fmt.Sprintf("```yaml\n%s\n```", configYML),
 						}
 						for _, inst := range instructions {
 							step := Step{
@@ -109,6 +120,17 @@ var GenerateCommand = cli.Command{
 		if err != nil {
 			return err
 		}
+		categoryFile := "./docs/approvals/providers/registry/_category_.json"
+		f, err = os.Create(categoryFile)
+		if err != nil {
+			return err
+		}
+		defer f.Close()
+
+		_, err = f.WriteString(Registry_category_)
+		if err != nil {
+			return err
+		}
 		return nil
 	},
 }
@@ -124,12 +146,20 @@ type Step struct {
 }
 
 type InstructionTemplateData struct {
-	Steps    []Step
-	Provider string
-	Version  string
+	Steps            []Step
+	Provider         string
+	Version          string
+	DeploymentConfig string
 }
 
 const InstructionTemplate string = `# {{ .Provider }}@{{ .Version }}
+:::info
+When setting up a provider for your deployment, we recommend using the interactive setup workflow which is available from the Providers tab of your admin dashboard.
+:::
+## Example granted_deployment.yml Configuration
+{{ .DeploymentConfig }}
+
+
 {{- range $ix, $option := .Steps}}
 ## {{ $option.Title }}
 ### Configuration Fields
@@ -161,10 +191,19 @@ slug: provider-registry
 Common Fate currently develops a range of providers to manage access to different cloud resources.
 
 {{- range $ix, $provider := .Providers}}
-[{{ &provider.Name }}]({{ $provider.Path }})
+
+[{{ $provider.Name }}]({{ $provider.Path }})
+
 {{- end}}
 
 Let us know if you have a provider you want added!
 
 We are working toward supporting Community providers which will enable teams to build their own providers for anything such as internal tools.
 `
+
+const Registry_category_ string = `{
+	"label": "Provider Registry",
+	"position": 1,
+	"link": { "type": "doc", "id": "provider-registry" }
+  }
+  `
