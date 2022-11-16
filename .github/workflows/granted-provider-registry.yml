@@ -1,0 +1,21 @@
+name: Generate Provider Registry
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "The granted-approvals repository tag to release"
+        type: string
+        required: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Print params
+        run: echo "Generating docs for granted-approvals tag ${GRANTED_TAG}"
+        env:
+          GRANTED_TAG: ${{ github.event.inputs.tag }}
