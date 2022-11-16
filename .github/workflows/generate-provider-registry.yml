@@ -49,7 +49,7 @@ jobs:
           signoff: false
           branch: "update-provider-registry-${{ github.event.inputs.tag }}"
           delete-branch: true
-          title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }}")"
+          title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }})"
           body: |
             Generated Provider Registry Setup docs for granted-approvals ${{ github.event.inputs.tag }}
           labels: |
