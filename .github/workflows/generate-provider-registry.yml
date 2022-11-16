@@ -9,7 +9,7 @@ on:
         required: true
 
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -20,25 +20,25 @@ jobs:
         env:
           GRANTED_TAG: ${{ github.event.inputs.tag }}
 
-      - name: Check version tag format
-        run: |
-          (echo "$GRANTED_TAG" | grep -Eq  ^v[0-9]+.[0-9]+.[0-9]+$) && echo "version tag matches vMAJOR.MINOR.PATCH format" || (echo "${GRANTED_TAG} did not match vMAJOR.MINOR.PATCH format (did you forget the 'v'?)" && exit 1)
-        env:
-          GRANTED_TAG: ${{ github.event.inputs.tag }}
+      # - name: Check version tag format
+      #   run: |
+      #     (echo "$GRANTED_TAG" | grep -Eq  ^v[0-9]+.[0-9]+.[0-9]+$) && echo "version tag matches vMAJOR.MINOR.PATCH format" || (echo "${GRANTED_TAG} did not match vMAJOR.MINOR.PATCH format (did you forget the 'v'?)" && exit 1)
+      #   env:
+      #     GRANTED_TAG: ${{ github.event.inputs.tag }}
 
-      - uses: actions/setup-go@v2
-        with:
-          go-version: "1.19.0"
+      # - uses: actions/setup-go@v2
+      #   with:
+      #     go-version: "1.19.0"
 
-      - name: Check Out Docs
-        uses: actions/checkout@v2
-        with:
-          lfs: "true"
-      - name: Update approvals dependency
-        run: go get github.com/common-fate/granted-approvals@${{ github.event.inputs.tag }}
+      # - name: Check Out Docs
+      #   uses: actions/checkout@v2
+      #   with:
+      #     lfs: "true"
+      # - name: Update approvals dependency
+      #   run: go get github.com/common-fate/granted-approvals@${{ github.event.inputs.tag }}
 
-      - name: Generate Docs
-        run: go run cmd/docscli/main.go generate --approvals-version=${{ github.event.inputs.tag }}
+      # - name: Generate Docs
+      #   run: go run cmd/docscli/main.go generate --approvals-version=${{ github.event.inputs.tag }}
 
       # - name: Open PR
       #   uses: peter-evans/create-pull-request@v3
