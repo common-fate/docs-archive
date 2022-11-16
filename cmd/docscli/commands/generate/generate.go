@@ -18,7 +18,8 @@ import (
 )
 
 var GenerateCommand = cli.Command{
-	Name: "generate",
+	Name:  "generate",
+	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.10.0"}},
 	Action: func(c *cli.Context) error {
 		err := os.RemoveAll("./docs/approvals/providers/registry/")
 		if err != nil {
@@ -66,13 +67,30 @@ var GenerateCommand = cli.Command{
 						if err != nil {
 							return err
 						}
+
+						// example configuration added for the docs
+						deploymentConfig := deploy.Config{
+							Version: 2,
+							Deployment: deploy.Deployment{
+								Release:   c.String("approvals-version"),
+								StackName: "example",
+								Account:   "12345678912",
+								Region:    "ap-southeast-2",
+								Parameters: deploy.Parameters{
+									CognitoDomainPrefix:  "example",
+									AdministratorGroupID: "granted_administrators",
+									ProviderConfiguration: deploy.ProviderMap{registeredProvider.DefaultID: {
+										Uses: uses,
+										With: configMap,
+									}},
+								},
+							},
+						}
+
 						configYML := new(strings.Builder)
 						enc := yaml.NewEncoder(configYML)
 						enc.SetIndent(2)
-						err = enc.Encode(map[string]deploy.Provider{registeredProvider.DefaultID: {
-							Uses: uses,
-							With: configMap,
-						}})
+						err = enc.Encode(deploymentConfig)
 						if err != nil {
 							return err
 						}
@@ -165,7 +183,7 @@ const InstructionTemplate string = `# {{ .Provider }}@{{ .Version }}
 :::info
 When setting up a provider for your deployment, we recommend using the interactive setup workflow which is available from the Providers tab of your admin dashboard.
 :::
-## Example granted_deployment.yml Configuration
+## Example granted_deployment.yml
 {{ .DeploymentConfig }}
 
 

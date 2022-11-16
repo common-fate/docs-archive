@@ -6,13 +6,13 @@ slug: provider-registry
 
 Common Fate currently develops a range of providers to manage access to different cloud resources.
 
-[commonfate/okta@v1](commonfate/okta/v1)
-
-[commonfate/azure-ad@v1](commonfate/azure-ad/v1)
-
 [commonfate/aws-sso@v2](commonfate/aws-sso/v2)
 
 [commonfate/ecs-exec-sso@v1-alpha1](commonfate/ecs-exec-sso/v1-alpha1)
+
+[commonfate/okta@v1](commonfate/okta/v1)
+
+[commonfate/azure-ad@v1](commonfate/azure-ad/v1)
 
 Let us know if you have a provider you want added!
 

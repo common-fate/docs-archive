@@ -2,18 +2,28 @@
 :::info
 When setting up a provider for your deployment, we recommend using the interactive setup workflow which is available from the Providers tab of your admin dashboard.
 :::
-## Example granted_deployment.yml Configuration
+## Example granted_deployment.yml
 ```yaml
-ecs-exec-sso:
-  uses: commonfate/ecs-exec-sso@v1-alpha1
-  with:
-    ecsClusterArn: ""
-    ecsRegion: ""
-    ecsRoleArn: ""
-    identityStoreId: ""
-    instanceArn: ""
-    ssoRegion: ""
-    ssoRoleArn: ""
+version: 2
+deployment:
+  stackName: example
+  account: "12345678912"
+  region: ap-southeast-2
+  release: v0.10.0
+  parameters:
+    CognitoDomainPrefix: example
+    AdministratorGroupID: granted_administrators
+    ProviderConfiguration:
+      ecs-exec-sso:
+        uses: commonfate/ecs-exec-sso@v1-alpha1
+        with:
+          ecsClusterArn: ""
+          ecsRegion: ""
+          ecsRoleArn: ""
+          identityStoreId: ""
+          instanceArn: ""
+          ssoRegion: ""
+          ssoRoleArn: ""
 
 ```
 ## Find the AWS SSO instance details
