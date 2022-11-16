@@ -32,25 +32,25 @@ jobs:
 
       - name: Check Out Docs
         uses: actions/checkout@v2
-
+        with:
+          lfs: "true"
       - name: Update approvals dependency
         run: go get github.com/common-fate/granted-approvals@${{ github.event.inputs.tag }}
 
       - name: Generate Docs
         run: go run cmd/docscli/main.go generate --approvals-version=${{ github.event.inputs.tag }}
 
-      - name: Open PR
-        uses: peter-evans/create-pull-request@v3
-        with:
-          commit-message: Update Provider Registry
-          committer: GitHub <noreply@github.com>
-          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-          signoff: false
-          branch: update-provider-registry-${{ github.event.inputs.tag }}"
-          delete-branch: true
-          title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }}")"
-          body: |
-            Generated Provider Registry Setup docs for granted-approvals ${{ github.event.inputs.tag }}
-
-          labels: |
-            automated pr
+      # - name: Open PR
+      #   uses: peter-evans/create-pull-request@v3
+      #   with:
+      #     commit-message: Update Provider Registry
+      #     committer: GitHub <noreply@github.com>
+      #     author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+      #     signoff: false
+      #     branch: update-provider-registry-${{ github.event.inputs.tag }}"
+      #     delete-branch: true
+      #     title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }}")"
+      #     body: |
+      #       Generated Provider Registry Setup docs for granted-approvals ${{ github.event.inputs.tag }}
+      #     labels: |
+      #       automated pr
