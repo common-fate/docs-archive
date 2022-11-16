@@ -181,7 +181,7 @@ type InstructionTemplateData struct {
 
 const InstructionTemplate string = `# {{ .Provider }}@{{ .Version }}
 :::info
-When setting up a provider for your deployment, we recommend using the interactive setup workflow which is available from the Providers tab of your admin dashboard.
+When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
 ## Example granted_deployment.yml
 {{ .DeploymentConfig }}
@@ -230,7 +230,7 @@ We are working toward supporting Community providers which will enable teams to 
 
 const Registry_category_ string = `{
 	"label": "Provider Registry",
-	"position": 1,
+	"position": 3,
 	"link": { "type": "doc", "id": "provider-registry" }
   }
   `
