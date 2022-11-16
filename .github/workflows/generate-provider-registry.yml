@@ -1,13 +1,12 @@
 name: Generate Provider Registry
 
 on:
-  push
-  # workflow_dispatch:
-  #   inputs:
-  #     tag:
-  #       description: "The granted-approvals repository tag to release"
-  #       type: string
-  #       required: true
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "The granted-approvals repository tag to release"
+        type: string
+        required: true
 
 jobs:
   generate:
@@ -48,7 +47,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: update-provider-registry-${{ github.event.inputs.tag }}"
+          branch: "update-provider-registry-${{ github.event.inputs.tag }}"
           delete-branch: true
           title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }}")"
           body: |
