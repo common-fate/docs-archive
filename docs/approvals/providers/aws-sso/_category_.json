@@ -1,5 +1,0 @@
-{
-	"label": "AWS SSO",
-	"position": 1,
-	"link": { "type": "doc", "id": "aws-sso" }
-}

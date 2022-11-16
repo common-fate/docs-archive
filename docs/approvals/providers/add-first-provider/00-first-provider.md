@@ -10,28 +10,37 @@ Access Providers are plugins for Granted Approvals which provide access to roles
 
 To get started with Granted Approvals, we'll add the TestVault provider. TestVault is an Access Provider intended to get you started with Granted Approvals and show you how access workflows work, without requiring you to connect Granted Approvals with your production infrastructure.
 
-Add a provider by running the following command:
+:::info
+You will need to have deployed Granted Approvals and have valid AWS credentials in your terminal environment before you can get started with this guide, checkout [Deploying Granted](../../deploying-granted/00-deploying-granted.md)
+:::
+
+Add the testvault provider by running the following command:
 
 ```bash
-gdeploy provider add
+gdeploy provider add --uses commonfate/testvault@v1
 ```
 
 You should see an output similar to below.
 
 ```bash
-? What are you trying to grant access to?  [Use arrows to move, type to filter]
-  AWS SSO PermissionSets (commonfate/aws-sso@v1)
-> TestVault - a provider for testing out Granted Approvals (commonfate/testvault@v1)
-  Okta groups (commonfate/okta@v1)
+? The TestVault API URL (apiUrl) (https://prod.testvault.granted.run)
 ```
 
-Select the `TestVault` provider and press Enter. Enter `testvault` as the ID for the provider.
+Press **Enter**
+
+You should see an output similar to below.
+
+```bash
+? A unique ID used as a prefix for vault IDs (uniqueId) (2HZh1BPHaJMsywtNunV9o7Y9c8f)
+```
+
+Press **Enter**
 
 You should see an output similar to below:
 
 ```
-[✔] wrote config to granted-deployment.yml.
-[!] Your changes won't be applied until you redeploy. Run 'gdeploy deploy' to apply the changes to your deployment.
+[✔] wrote config to granted-deployment.yml
+[!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
 ```
 
 Finally, run `gdeploy update` to update the deployment:
