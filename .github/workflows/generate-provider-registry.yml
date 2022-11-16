@@ -1,12 +1,13 @@
 name: Generate Provider Registry
 
 on:
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: "The granted-approvals repository tag to release"
-        type: string
-        required: true
+  push
+  # workflow_dispatch:
+  #   inputs:
+  #     tag:
+  #       description: "The granted-approvals repository tag to release"
+  #       type: string
+  #       required: true
 
 jobs:
   generate:
