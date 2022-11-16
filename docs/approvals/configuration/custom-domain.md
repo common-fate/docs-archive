@@ -8,9 +8,9 @@ To add a custom domain, you'll need to have a domain which you control and are a
 
 You can [follow this guide to create an AWS ACM certificate](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html).
 
-## Setting up a DNS record 
+## Setting up a DNS record
 
-To redirect from a custom domain to Granted Approvals you will need to setup a custom DNS Record in your domain registrar. 
+To redirect from a custom domain to Granted Approvals you will need to setup a custom DNS Record in your domain registrar.
 
 If you're domain is in AWS, go to [Route 53](https://console.aws.amazon.com/route53/home) and click 'Create record'
 
@@ -24,32 +24,27 @@ If you're using a domain registrar other than AWS, you'll need to follow the ins
 
 ## Setting up an SSL certificate
 
-If you haven't already setup an SSL certificatie, you can create a SSL certificate ARN by going to the [AWS Certificate Manager console](https://console.aws.amazon.com/acm/home) and clicking 'Request a certificate'. This mus be done in the same accoutn as your Granted Approvals deployment.
-
+If you haven't already setup an SSL certificate, you can create a SSL certificate ARN by going to the [AWS Certificate Manager console](https://console.aws.amazon.com/acm/home) and clicking 'Request a certificate'. This mus be done in the same accoutn as your Granted Approvals deployment.
 
 Note: if your Route 53 domains have been provisioned into a different AWS account, you will need to swap accounts to request the certificate from the same account as your Granted Approvals deployment.
 
-
 :::info
-The ACM certificate must be provisioned in the `us-east-1` region. 
+The ACM certificate must be provisioned in the `us-east-1` region.
 :::
 
 Now click 'Request a public certificate'. We recommend setting the validation method to 'DNS validation', and the domain name should be the same as the one you entered in the previous step. Click 'Request'.
 
 ![](/img/approvals-configuration/custom-domain/request-certificate.png)
 
-Now click 'List certificates' and find the certificate you just created. 
+Now click 'List certificates' and find the certificate you just created.
 
 If you're using the **same** account for both Route 53 and Granted Approvals, you can click 'Actions' and 'Create record in Route 53' to create the DNS record.
-
-
 
 If you're using **seperate** accounts, you'll need to create a CNAME record in your Route 53 domain. The name should be the same as the domain name you entered in the previous step, and the value should be the validation record name from the certificate details.
 
 ![](/img/approvals-configuration/custom-domain/certificate-success.png)
 
 Click on the certificate and copy the ARN.
-
 
 ## Adding the custom domain and Certifcate ARN to Granted
 
@@ -69,7 +64,6 @@ deployment:
 ```
 
 Ensure that you replace the placeholder values above with your actual custom domain and certificate ARN. You should enter the domain **without** a `https://` prefix as shown above.
-
 
 ## Deploying the changes
 
