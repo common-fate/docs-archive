@@ -155,3 +155,17 @@ You should see an output similar to the below:
 ```
 [✔] Your Granted deployment has been updated
 ```
+
+## Notes
+
+### Resetting Your Browser Cache
+
+In our testing, we found that in some cases you may need to reset your browser cache when changing WAF rules as your browser may cache a denied response and you will see a blank page.
+
+### WAF Rules With Known Issues
+
+In our testing we found that the following AWS mangaged ACLs from AWS break the Granted Approvals application so they should be avoided when setting up WAF for your deployment.
+
+| Vendor | Ruleset                               | Rule                    | Reason                                                                              |
+| ------ | ------------------------------------- | ----------------------- | ----------------------------------------------------------------------------------- |
+| AWS    | AWSManagedRulesAdminProtectionRuleSet | AdminProtection_URIPATH | This ruleset breaks Granted Approvals entirely as it blocks our /api/v1/admin calls |
