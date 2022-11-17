@@ -9,7 +9,7 @@ deployment:
   stackName: example
   account: "12345678912"
   region: ap-southeast-2
-  release: v0.10.0
+  release: v0.10.2
   parameters:
     CognitoDomainPrefix: example
     AdministratorGroupID: granted_administrators
