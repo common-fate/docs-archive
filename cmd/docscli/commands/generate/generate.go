@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"sort"
 	"strings"
 	"text/template"
 
@@ -138,6 +139,9 @@ var GenerateCommand = cli.Command{
 		if err != nil {
 			return err
 		}
+		sort.Slice(registryTemplateData.Providers, func(i, j int) bool {
+			return registryTemplateData.Providers[i].Name < registryTemplateData.Providers[j].Name
+		})
 		registryPageOutput := new(strings.Builder)
 		err = tmpl.ExecuteTemplate(registryPageOutput, "registry", registryTemplateData)
 		if err != nil {
