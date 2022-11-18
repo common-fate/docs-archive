@@ -55,6 +55,7 @@ Click on the service account you have just created and you will be redirected to
 
 ![](/img/sso/google/03-created-service-account.png)
 
+
 ### Create Keys
 
 In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the setup is complete.
@@ -85,7 +86,10 @@ You will be prompted to select you identity provider, select Google.
 
 2. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
 
-```
+:::info
+This user will need to be an admin in the [Admin console](https://admin.google.com/)
+:::
+```json
 ? Google Admin Email: jack@commonfate.io
 ```
 
@@ -174,16 +178,54 @@ Click **Next**, where we will set up an attribute mapping for emails.
 
 Under **Attributes** add a mapping with the following information
 
-- For Google directory attributes, enter: `user.email`
+- For Google directory attributes, find `Primary email`
 - For App attributes, enter: **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**
 
-Under **Group membership (optional)** Create an admin group in Google Workspace with the following settings
+![](/img/sso/google/attribute-mapping.png)
 
-1. Marked as private group
-2. Set to restricted
-3. Only invited users
+
+Leave **Group membership (optional)** empty.
 
 Click **Finish** to create the application.
+
+### Assign the SAML App to All Users
+
+Before users can sign in using Google, they need to have access to the SAML app.
+
+
+From the `Web and mobile apps` page, click on the app we just created.
+
+There should be a panel with the heading 'User access', Click on this panel and you will be taken to an detailed screen.
+
+![](/img/sso/google/enable-user-access1.png)
+
+Click on service status and change this to `ON for everyone`
+
+![](/img/sso/google/enable-user-access2.png)
+
+Click save.
+
+### Creating Granted Approvals Administrator Group
+
+In the Google admin portal, to to _Directory>Groups_
+
+![](/img/sso/google/07.png)
+
+Click the **Create Group** button
+
+![](/img/sso/google/08.png)
+
+- Name the group something descriptive like `granted_administrators`
+
+Add yourself and any others you want to make granted admins to the group in Google.
+
+For the group settings make sure:
+
+- Set the **Access type** to Custom
+- Set the join policy of the group to Invite only.
+  ![](/img/sso/google/09.png)
+
+Then click **Create Group**
 
 Finally, back in the terminal, select either String or File then use the metadata that you downloaded.
 
@@ -191,9 +233,8 @@ Finally, back in the terminal, select either String or File then use the metadat
 ? Metadata XML file: google-metatdata.xml
 ```
 
-Finally you will need to create an administrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
-
-- By default granted will set this to `granted_administrators`, press enter to continue this or enter a admin group name of your choice. We will use the name of this newly created group at the next step.
+You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+- Enter the name of the admin group you made at the previous step.
 
 You should see the following prompts
 
@@ -207,40 +248,6 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
 ```
 
-### Creating Granted Approvals Administrator Group
-
-Once you have set your administrators group name, we will need to create that corresponding group in Google.
-In the Google admin portal, to to _Directory>Groups_
-
-![](/img/sso/google/07.png)
-
-Click the **Create Group** button
-
-![](/img/sso/google/08.png)
-
-- Name the group the same name as you set in the `gdeploy` config setup.
-
-Add yourself and any others you want to make granted admins to the group in Google.
-
-For the group settings make sure:
-
-- Set the **Access type** to Custom
-- Set the join policy of the group to Invite only.
-  ![](/img/sso/google/09.png)
-
-Then click **Create Group**
-
-You will need to redeploy using `gdeploy update` to update the identity provider changes.
-
-If all goes well, you will see the following confirmation.
-
-```
-[i] Updating your deployment config
-[✔] Successfully completed SSO configuration
-[!] Your changes won't be applied until you redeploy. Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
-```
-
-You will need to redeploy using `gdeploy update` to update the identity provider changes.
 
 ## Common Issues
 
