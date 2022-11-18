@@ -42,3 +42,23 @@ $ yarn build
 ```
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
+
+### Generate Provider Registry Docs
+
+We use some templating to generate provider registry docs from the definitions in github.com/common-fate/granted-approvals/accesshandler/providerregistry
+
+#### Run an update of provider docs
+
+Update Approvals repo dependency
+
+```
+go get github.com/common-fate/granted-approvals@<tag>
+```
+
+Generate the docs
+
+```
+go run cmd/docscli/main.go generate --approvals-version=<latest approvals version>
+```
+
+Make a PR with the generate files

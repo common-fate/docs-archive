@@ -30,10 +30,9 @@ Under **Service account details**, type a name, ID, and description for the ser
 
 Then click **Continue,** followed by **Done**. This will now have created a new service account.
 
-Next we will need to delegate domain-wide authority to the service account. This requires a admin user account to access the Admin console.
+Next we will need to delegate domain-wide authority to the service account. This requires an admin user account to access the Admin console.
 
-
-From your Google Workspace domain's (different to your GCP admin console), go to **Main menu > Security > Access and data control > API Controls**.
+From your Google Workspace domain's [Admin console](https://admin.google.com/) (different to your GCP admin console), go to **Main menu > Security > Access and data control > API Controls**.
 
 ![](/img/sso/google/04-domain-delegation.png)
 
@@ -67,13 +66,13 @@ This is where we can start up the `gdeploy identity sso enable` command.
 
 Run the following to begin the SSO setup
 
-```json
+```
 gdeploy identity sso enable
 ```
 
 You will be prompted to select you identity provider, select Google.
 
-```json
+```
 ? The SSO provider to deploy with  [Use arrows to move, type to filter]
 > Google
   Okta
@@ -81,7 +80,7 @@ You will be prompted to select you identity provider, select Google.
 
 1.  For the `Google Workspace Domain` set the value to the domain that your Google workspace is linked to into eg. `commonfate.io`
 
-```json
+```
 ? Google Workspace Domain: commonfate.io
 ```
 
@@ -96,7 +95,7 @@ This admin user will need to be an admin in the [Admin console](https://admin.go
 
 3. For the `API Token` param, gdeploy will ask for the path to the previously downloaded JSON key. Enter the path to where it was downloaded or move it into the same directory as gdeploy is running and enter `./{filename}.json`
 
-```json
+```
 ? API Token: ****
 ```
 
