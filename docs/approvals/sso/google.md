@@ -188,7 +188,10 @@ Leave **Group membership (optional)** empty.
 
 Click **Finish** to create the application.
 
-We will need to make sure that the Google workspace users can access the App.
+### Assign the SAML App to All Users
+
+Before users can sign in using Google, they need to have access to the SAML app.
+
 
 From the `Web and mobile apps` page, click on the app we just created.
 
