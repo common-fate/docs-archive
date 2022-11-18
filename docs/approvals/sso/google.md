@@ -87,7 +87,7 @@ You will be prompted to select you identity provider, select Google.
 2. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
 
 :::info
-This admin user will need to be an admin in the [Admin console](https://admin.google.com/)
+This user will need to be an admin in the [Admin console](https://admin.google.com/)
 :::
 ```json
 ? Google Admin Email: jack@commonfate.io
@@ -212,7 +212,7 @@ Click the **Create Group** button
 
 ![](/img/sso/google/08.png)
 
-- Name the group something descriptive like `granted_admins`
+- Name the group something descriptive like `granted_administrators`
 
 Add yourself and any others you want to make granted admins to the group in Google.
 
