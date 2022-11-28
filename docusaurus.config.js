@@ -84,19 +84,20 @@ const config = {
           src: "img/logo.svg",
           href: "/granted/introduction",
         },
+        style: "dark",
         items: [
           {
             type: "doc",
             docId: "introduction",
             position: "left",
-            label: "Granted CLI",
+            label: "Granted",
           },
           {
             docsPluginId: "granted-approvals",
             type: "doc",
             docId: "introduction",
             position: "left",
-            label: "Granted Approvals",
+            label: "Common Fate",
           },
           {
             href: "https://granted.dev/cfcloud?ref=docs",
@@ -131,7 +132,7 @@ const config = {
                 to: "/granted/introduction",
               },
               {
-                label: "Granted Approvals",
+                label: "Common Fate",
                 to: "/granted-approvals/introduction",
               },
             ],

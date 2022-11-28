@@ -9,7 +9,7 @@ import TabItem from "@theme/TabItem";
 
 This guide will get you started using Granted to assume roles in AWS. It will take around 5 minutes to complete.
 
-![A screenshot of Granted CLI showing a selection menu for AWS profiles](/img/cli-screenshot.png)
+![A screenshot of Granted showing a selection menu for AWS profiles](/img/cli-screenshot.png)
 
 ## Install the AWS CLI
 
@@ -21,7 +21,7 @@ You will also need to set up at least one role in your [AWS config file](https:/
 
 If you use AWS SSO but you haven't yet configured any profiles, you can run `aws configure sso` which will walk you through the process of setting up your profile file.
 
-**If you're already set up roles for the AWS CLI to access AWS you probably don't need to configure anything: Granted uses the same configuration files as the AWS CLI.**
+**If you've already set up roles for the AWS CLI to access AWS you probably don't need to configure anything: Granted uses the same configuration files as the AWS CLI.**
 
 <details open>
 <summary>Example configuration for AWS SSO (recommended)</summary>
@@ -155,7 +155,7 @@ First, download the zip archive of Granted which matches your system's architect
 
 After downloading Granted, unzip the package. Granted runs as two binaries, `assume` and `granted`. Any other files in the package can be removed and Granted will still function.
 
-You'll need to move Granted to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+You'll need to move Granted to a folder that is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
 
 If you are using Granted with the [Git Bash shell on Windows](https://gitforwindows.org), we recommend enabling experimental support for pseudo consoles. You may need to reinstall Git For Windows to enable this. You can read more about this [here](https://github.com/cli/cli/issues/404).
 

@@ -6,9 +6,9 @@ Common Fate collects anonymous telemetry data to help improve our product. Parti
 
 As developers of Common Fate we have very little insight into how the product is used beyond our own team. Typically we find out about product deployments because a community member joins our community Slack (usually when they have challenges getting started). Community members with successful deployments tend to be quieter because everything is working well. In the latter use case we have no visibility over product usage. Visibility into such usage is helps us to prioritize new product features in accordance with the purposes listed below.
 
-We collect anonymous product analytics for [Granted Approvals](https://github.com/common-fate/granted-approvals).
+We collect anonymous product analytics for [Common Fate](https://github.com/common-fate/granted-approvals).
 
-# Granted Approvals
+# Common Fate
 
 ## What is Collected?
 

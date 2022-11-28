@@ -10,7 +10,7 @@ Run the `assume` command to assume a role with Granted.
 
 The first time you run `assume`, you'll be prompted to select a web browser for Granted to use when opening web consoles for your roles. You should see a prompt similar to the one below.
 
-- Granted searches your PATH and checks common install locations to determine your current default browser. If thats not the browser you want to use ou can still specify another at a later stage in the first time setup.
+- Granted searches your PATH and checks common install locations to determine your current default browser. If that's not the browser you want to use you can still specify another at a later stage in the first time setup.
 
 ```
 ➜ assume
@@ -60,7 +60,7 @@ After completing the first-time setup, run `assume` again. You should see a list
 If you don't see any roles listed when running the command above, ensure that you have configured your AWS roles as described in the [requirements section on the Deployment page](/granted/deploying-granted#requirements).
 :::
 
-You can search for a role by name by typing on your keyboard. Select a role using the arrow keys and press Enter to assume it. If the role uses AWS SSO, you will be prompted to log in through your browser.
+You can search for a role by name by typing on your keyboard. Select a role using the arrow keys and press `Enter` to assume it. If the role uses AWS SSO, you will be prompted to log in through your browser.
 
 You should then see an output similar to below:
 
@@ -115,11 +115,11 @@ Here is the current list of providers that work with Granted:
 - [aws-google-auth](https://github.com/cevoaustralia/aws-google-auth)
 - Specifying a credential-process in your config
 
-We are looking to add more to this list in the future. Contributions for additional credential providers are most welcome. [assumer_aws_azure_login.go](https://github.com/common-fate/granted/blob/eb7221d4e69472bf1c8a7171d930ff0cab37290d/pkg/cfaws/assumer_aws_azure_login.go) in our source code is a good example to use as a starting point.
+We are looking to add more to this list in the future. Contributions for additional credential providers are most welcome. If you're looking for a model example in our source code, [assumer_aws_azure_login.go](https://github.com/common-fate/granted/blob/eb7221d4e69472bf1c8a7171d930ff0cab37290d/pkg/cfaws/assumer_aws_azure_login.go) is a good starting point.
 
 ## Pass-through flags
 
-If you are using a custom SSO credential provider like aws-azure-login or aws-google-auth, Granted allows you to pass through flags to run custom procedures using those providers.
+If you're using a custom SSO credential provider like [aws-azure-login](https://github.com/sportradar/aws-azure-login) or [aws-google-auth](https://github.com/cevoaustralia/aws-google-auth), Granted allows you to pass through flags to run custom procedures using those providers.
 
 Using the `-pt` or `--pass-through` flag will allow you to pipe commands into that internal command.
 
@@ -137,7 +137,7 @@ aws-azure-login —profile role-a —no-prompt
 
 ## Keychain prompt
 
-When using Granted on MacOS you will receive a keychain access prompt similar to the one below when Granted uses cached AWS SSO credentials to assume roles.
+When using Granted on MacOS you will receive a keychain access prompt similar to the one below. This occurs when Granted uses cached AWS SSO credentials to assume roles.
 
 ![A MacOS keychain prompt which states 'assumego would like to use confidential information stored in your keychain'](/img/keychain-prompt.png)
 

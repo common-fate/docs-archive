@@ -5,7 +5,7 @@ sidebar_position: 2
 # Google Workspace
 
 :::info
-Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Common Fate user and group sync requires some credentials to be configured in your identity provider account. Common Fate uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
 ## Google Setup
@@ -55,10 +55,9 @@ Click on the service account you have just created and you will be redirected to
 
 ![](/img/sso/google/03-created-service-account.png)
 
-
 ### Create Keys
 
-In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the setup is complete.
+In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the set up is complete.
 
 This is where we can start up the `gdeploy identity sso enable` command.
 
@@ -89,6 +88,7 @@ You will be prompted to select you identity provider, select Google.
 :::info
 This user will need to be an admin in the [Admin console](https://admin.google.com/)
 :::
+
 ```json
 ? Google Admin Email: jack@commonfate.io
 ```
@@ -113,7 +113,7 @@ You should see an output similar to the below.
 
 ```
 [✔] SSM Parameters set successfully
-[i] The following parameters are required to setup a SAML app in your identity provider
+[i] The following parameters are required to set up a SAML app in your identity provider
 +------------------------+---------------------------------------------------------+
 |    OUTPUT PARAMETER    |                          VALUE                          |
 +------------------------+---------------------------------------------------------+
@@ -122,7 +122,7 @@ You should see an output similar to the below.
 +------------------------+---------------------------------------------------------+
 ```
 
-Next you will need to setup a SAML app, you will see the below prompt, Google supplies only XML so choose String or file.
+Next you will need to set up a SAML app, you will see the below prompt, Google supplies only XML so choose String or file.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -158,7 +158,7 @@ On the **Service provider details** page you will need some of the outputs from 
 Look back in your terminal for an output that looks like the below.
 
 ```
-[i] The following parameters are required to setup a SAML app in your identity provider
+[i] The following parameters are required to set up a SAML app in your identity provider
 +------------------------+---------------------------------------------------------+
 |    OUTPUT PARAMETER    |                          VALUE                          |
 +------------------------+---------------------------------------------------------+
@@ -183,7 +183,6 @@ Under **Attributes** add a mapping with the following information
 
 ![](/img/sso/google/attribute-mapping.png)
 
-
 Leave **Group membership (optional)** empty.
 
 Click **Finish** to create the application.
@@ -191,7 +190,6 @@ Click **Finish** to create the application.
 ### Assign the SAML App to All Users
 
 Before users can sign in using Google, they need to have access to the SAML app.
-
 
 From the `Web and mobile apps` page, click on the app we just created.
 
@@ -205,7 +203,7 @@ Click on service status and change this to `ON for everyone`
 
 Click save.
 
-### Creating Granted Approvals Administrator Group
+### Creating Common Fate Administrator Group
 
 In the Google admin portal, to to _Directory>Groups_
 
@@ -234,6 +232,7 @@ Finally, back in the terminal, select either String or File then use the metadat
 ```
 
 You will be asked for `The ID of the Granted Administrators group in your identity provider:`
+
 - Enter the name of the admin group you made at the previous step.
 
 You should see the following prompts
@@ -247,7 +246,6 @@ Users and will be synced every 5 minutes from your identity provider. To finish 
  1) Run 'gdeploy update' to apply the changes to your CloudFormation deployment.
  2) Run 'gdeploy identity sync' to trigger an immediate sync of your user directory.
 ```
-
 
 ## Common Issues
 

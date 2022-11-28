@@ -2,7 +2,7 @@
 
 ## Backing up
 
-Granted Approvals stores data in [Amazon DynamoDB](https://aws.amazon.com/dynamodb/). You can trigger a manual backup of the DynamoDB table using the `gdeploy` CLI. This can be useful in situations such as migrating Granted Approvals to a new AWS account, or taking a snapshot before updating the deployment to a new version.
+Common Fate stores data in [Amazon DynamoDB](https://aws.amazon.com/dynamodb/). You can trigger a manual backup of the DynamoDB table using the `gdeploy` CLI. This can be useful in situations such as migrating Common Fate to a new AWS account, or taking a snapshot before updating the deployment to a new version.
 
 To make a backup of the DynamoDB table, run:
 
@@ -13,7 +13,7 @@ gdeploy backup
 and follow the prompts. You should see an output similar to the below:
 
 ```
-[✔] successfully started a backup of Granted Approvals dynamoDB table: Granted
+[✔] successfully started a backup of Common Fate dynamoDB table: Granted
 [i] backup details
 Backup: mytestbackup
 ARN: arn:aws:dynamodb:ap-southeast-2:123456789012:table/Granted/backup/123456789-5d199eb1

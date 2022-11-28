@@ -5,14 +5,14 @@ sidebar_position: 3
 # OneLogin
 
 :::info
-Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses [OAuth2.0 authentication](https://developers.onelogin.com/api-docs/2/oauth20-tokens/generate-tokens-2) to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Common Fate user and group sync requires some credentials to be configured in your identity provider account. Common Fate uses [OAuth2.0 authentication](https://developers.onelogin.com/api-docs/2/oauth20-tokens/generate-tokens-2) to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
 ## Setup
 
 ### Creating Access Tokens in OneLogin
 
-To set up OneLogin to sync users and groups with Granted Approvals we will need to create an access token to the developer API.
+To set up OneLogin to sync users and groups with Common Fate we will need to create an access token to the developer API.
 
 Sign in to your OneLogin admin portal using a user profile with administrative privileges.
 
@@ -58,7 +58,7 @@ You should see an output similar to the below.
 
 ```
 [✔] SSM Parameters set successfully
-[i] The following parameters are required to setup a SAML app in your identity provider
+[i] The following parameters are required to set up a SAML app in your identity provider
 +------------------------+---------------------------------------------------------+
 |    OUTPUT PARAMETER    |                          VALUE                          |
 +------------------------+---------------------------------------------------------+
@@ -67,7 +67,7 @@ You should see an output similar to the below.
 +------------------------+---------------------------------------------------------+
 ```
 
-Next you will need to setup a SAML app. When `gdeploy` prompts you for SAML metadata, select the "URL" option.
+Next you will need to set up a SAML app. When `gdeploy` prompts you for SAML metadata, select the "URL" option.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -143,7 +143,7 @@ To get this group ID we will need to make the administrator group in OneLogin.
 
 _Note: OneLogin's concept of groups is called 'Roles' so we will be refering to Roles from now on._
 
-### Creating Granted Approvals Administrator Role
+### Creating Common Fate Administrator Role
 
 In the OneLogin Admin portal, hover on **Users** in the navbar, and then select **Roles** from the list.
 

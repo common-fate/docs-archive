@@ -8,7 +8,7 @@ sidebar_position: 3
 
 ### Creating Access Token
 
-To set up Okta to sync users and groups with Granted Approvals we will need to create an access token to communicate with Okta's API.
+To set up Okta to sync users and groups with Common Fate we will need to create an access token to communicate with Okta's API.
 
 Sign in to your Okta organization as a user with [administrator privileges (opens new window)](https://help.okta.com/okta_help.htm?id=ext_Security_Administrators).
 
@@ -26,7 +26,7 @@ Click **Create Token**.
 
 Name your token and click **Create Token**.
 
-A pop up will appear showing your access token, leave this open and continue with the configure setup below.
+A pop up will appear showing your access token, leave this open and continue with the configuration setup below.
 
 ### Running Gdeploy Commands
 
@@ -60,7 +60,7 @@ You should see an output similar to the below.
 
 ```
 [✔] SSM Parameters set successfully
-[i] The following parameters are required to setup a SAML app in your identity provider
+[i] The following parameters are required to set up a SAML app in your identity provider
 +------------------------+---------------------------------------------------------+
 |    OUTPUT PARAMETER    |                          VALUE                          |
 +------------------------+---------------------------------------------------------+
@@ -69,7 +69,7 @@ You should see an output similar to the below.
 +------------------------+---------------------------------------------------------+
 ```
 
-Next you will need to setup a SAML app, you will see the below prompt, Okta supports both a URL and XML so choose what suits you.
+Next you will need to set up a SAML app, you will see the below prompt, Okta supports both a URL and XML so choose what suits you.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -101,7 +101,7 @@ On the **Configure SAML** page you will need some of the outputs from the previo
 Look back in your terminal for an output that looks like the below.
 
 ```
-[i] The following parameters are required to setup a SAML app in your identity provider
+[i] The following parameters are required to set up a SAML app in your identity provider
 +------------------------+---------------------------------------------------------+
 |    OUTPUT PARAMETER    |                          VALUE                          |
 +------------------------+---------------------------------------------------------+
@@ -155,7 +155,7 @@ Copy the URL. eg. `https://demo.okta.com/app/abcd1234/sso/saml/metadata` and pas
 ? Metadata URL: https://demo.okta.com/app/abcd1234/sso/saml/metadata
 ```
 
-### Creating Granted Approvals Administrator Group
+### Creating Common Fate Administrator Group
 
 Finally you will need to create an administrator group with granted. You will be asked for `The ID of the Granted Administrators group in your identity provider:`
 
@@ -188,14 +188,13 @@ Add yourself and any others you want to make granted admins to the group in Okta
 
 You will need to redeploy using `gdeploy update` to update the identity provider changes.
 
-
 ## Limitations
 
 Amazon Cognito has a limitation where IDP-initiated SAML flows don’t work.
 
-In the meantime, there is a workaround available to get a shortcut to Granted Approvals on team members’ Okta dashboards.
+In the meantime, there is a workaround available to get a shortcut to Common Fate on team members’ Okta dashboards.
 
-1. Enable the “Do not display application icon to users” setting in the Granted Approvals SAML application. 
+1. Enable the “Do not display application icon to users” setting in the Common Fate SAML application.
 
 ![](/img/sso/okta/10.png)
 
@@ -203,7 +202,7 @@ In the meantime, there is a workaround available to get a shortcut to Granted Ap
 
 ![](/img/sso/okta/11.png)
 
-3. Assign the Bookmark App to the same groups that the Granted Approvals SAML app is assigned to.
+3. Assign the Bookmark App to the same groups that the Common Fate SAML app is assigned to.
 
 ![](/img/sso/okta/12.png)
 

@@ -4,11 +4,11 @@ slug: sso-setup
 
 # Single Sign On
 
-In this guide, you'll use the `gdeploy` CLI to enable Single Sign On (SSO) for your Granted Approvals deployment. SSO with Granted Approvals consists of two components:
+In this guide, you'll use the `gdeploy` CLI to enable Single Sign On (SSO) for your Common Fate deployment. SSO with Common Fate consists of two components:
 
-1. Team members use their corporate credentials to authenticate to Granted Approvals. This is achieved using the [SAML2.0](https://en.wikipedia.org/wiki/SAML_2.0) protocol.
+1. Team members use their corporate credentials to authenticate to Common Fate. This is achieved using the [SAML2.0](https://en.wikipedia.org/wiki/SAML_2.0) protocol.
 
-2. Users and groups from your corporate identity provider are synchronised with Granted Approvals. This allows you to define access rules which reference your corporate groups, and use your corporate identity provider as the single source of truth for user and group membership.
+2. Users and groups from your corporate identity provider are synchronised with Common Fate. This allows you to define access rules which reference your corporate groups, and use your corporate identity provider as the single source of truth for user and group membership.
 
 ## Before you start
 
@@ -20,7 +20,7 @@ Wait for the `gdeploy update` command to be completed and your stack has been pr
 [✔] Your Granted deployment is online
 ```
 
-By default Granted Approvals will set the identity provider to an AWS Cognito user pool, so that you can test it out without connecting it to your corporate identity provider. Granted Approvals supports the following corporate identity providers:
+By default Common Fate will set the identity provider to an AWS Cognito user pool, so that you can test it out without connecting it to your corporate identity provider. Common Fate supports the following corporate identity providers:
 
 - Google Workspaces
 - Okta
@@ -29,7 +29,7 @@ By default Granted Approvals will set the identity provider to an AWS Cognito us
 
 ## Setting up SSO
 
-To start setup for our SSO provider we will use `gdeploy` to configure all the parameters for us. Using `gdeploy` run the `gdeploy identity sso enable` command to get started and follow the steps below for your identity provider
+To start set up for our SSO provider we will use `gdeploy` to configure all the parameters for us. Using `gdeploy` run the `gdeploy identity sso enable` command to get started and follow the steps below for your identity provider
 
 ```json
 ❯ gdeploy identity sso enable

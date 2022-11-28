@@ -15,7 +15,8 @@
   --ifm-color-primary-lighter: #7fb1ff;
   --ifm-color-primary-lightest: #b0d0ff;
   --ifm-code-font-size: 95%;
-  --ifm-footer-background-color: #2d2f30;
+  /* --ifm-footer-background-color: #619eff; */
+  --ifm-footer-background-color: #26223a;
   --ifm-footer-title-color: #eeedf4;
   --ifm-footer-link-color: #9691b4;
   --ifm-footer-color: #787492;
@@ -23,59 +24,23 @@
   --ifm-heading-font-weight: 500;
   --ifm-heading-font-family: "Bitter";
   --ifm-font-weight-bold: 500;
-  --ifm-background-color-dark: #2d2f30;
+  --ifm-navbar-background-color: #5e5e5e;
 
+  --ifm-font-color-base: #ffffff;
   --docusaurus-highlighted-code-line-bg: rgb(227, 228, 230);
 }
 
 body {
-  font-family: "Rubik";
-  font-size: 16px;
   font-weight: 300;
-  line-height: 22px;
-  letter-spacing: 0px;
-  text-align: left;
 }
 
-h1 {
-  font-family: "Rubik";
-  font-size: 40px;
-  font-weight: 300;
-  line-height: 48px;
-  letter-spacing: 0px;
-  text-align: left;
-}
-
-h2 {
-  font-family: "Rubik";
-  font-size: 34px;
-  font-weight: 300;
-  line-height: 41px;
-  letter-spacing: 0px;
-  text-align: left;
-}
-
-h3 {
-  font-family: "Rubik";
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0px;
-  text-align: left;
-}
-
-h4 {
-  font-family: "Rubik";
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0px;
-  text-align: left;
-}
-
+h1,
+h2,
+h3,
+h4,
 h5,
 h6 {
-  font-family: "Rubik";
+  font-family: "Bitter";
 }
 
 .docusaurus-highlight-code-line {
@@ -93,9 +58,6 @@ h6 {
 nav.navbar {
   box-shadow: none;
   border-bottom: 1px solid rgb(218 221 225);
-  background-color: #2d2f30;
-  --ifm-color-primary: #98bcfc;
-  font-weight: 100;
 }
 
 .navbar__logo {

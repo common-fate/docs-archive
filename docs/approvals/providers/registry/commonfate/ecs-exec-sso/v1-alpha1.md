@@ -1,8 +1,11 @@
 # commonfate/ecs-exec-sso@v1-alpha1
+
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
+
 ## Example granted_deployment.yml
+
 ```yaml
 version: 2
 deployment:
@@ -24,17 +27,20 @@ deployment:
           instanceArn: ""
           ssoRegion: ""
           ssoRoleArn: ""
-
 ```
-## Find the AWS SSO instance details
-### Configuration Fields
-This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field | Description |
-| ----------- | ----------- |
-| identityStoreId | The AWS SSO Identity Store ID |
-| instanceArn | The AWS SSO Instance ARN |
-| ssoRegion | The region the AWS SSO instance is deployed to |
+## Find the AWS SSO instance details
+
+### Configuration Fields
+
+This step will guide you through collecting the values for these fields required to set up your provider.
+
+| Field           | Description                                    |
+| --------------- | ---------------------------------------------- |
+| identityStoreId | The AWS SSO Identity Store ID                  |
+| instanceArn     | The AWS SSO Instance ARN                       |
+| ssoRegion       | The region the AWS SSO instance is deployed to |
+
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can access the account that your AWS SSO instance is deployed to, run the following command to retrieve details about the instance:
@@ -55,7 +61,7 @@ The **InstanceArn** value in the CLI output should be provided as the **instance
 
 The **IdentityStoreId** field in the CLI output should be provided as the **identityStoreId** parameter when configuring the provider.
 
-If your AWS SSO instance is deployed in a separate region to the region that Granted Approvals is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
+If your AWS SSO instance is deployed in a separate region to the region that Common Fate is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
 
 ### Using the AWS Console
 
@@ -64,14 +70,18 @@ Open the AWS console in the account that your AWS SSO instance is deployed to. I
 Visit the **Settings** tab. The information about your SSO instance will be shown here, including the Instance ARN (as the “ARN” field) and the Identity Store ID.
 
 ![](https://static.commonfate.io/providers/aws/sso/console-instance-arn-setup.png)
-## Locating your ECS Resources
-### Configuration Fields
-This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field | Description |
-| ----------- | ----------- |
-| ecsClusterArn | The ARN of the ECS Cluster to provision access to |
-| ecsRegion | The region the ecs cluster instance is deployed to |
+## Locating your ECS Resources
+
+### Configuration Fields
+
+This step will guide you through collecting the values for these fields required to set up your provider.
+
+| Field         | Description                                        |
+| ------------- | -------------------------------------------------- |
+| ecsClusterArn | The ARN of the ECS Cluster to provision access to  |
+| ecsRegion     | The region the ecs cluster instance is deployed to |
+
 # Locating your ECS Cluster
 
 Locate your chosen `ecsClusterArn` by running the following command:
@@ -90,16 +100,20 @@ Locate your chosen `ecsClusterArn` by running the following command:
 Copy in the ARN of the ECS cluster you want to set up the Access Provider for.
 
 Enter the region where your cluster is deployed.
-## Create a SSO IAM role
-### Configuration Fields
-This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field | Description |
-| ----------- | ----------- |
+## Create a SSO IAM role
+
+### Configuration Fields
+
+This step will guide you through collecting the values for these fields required to set up your provider.
+
+| Field      | Description                                                   |
+| ---------- | ------------------------------------------------------------- |
 | ssoRoleArn | The ARN of the AWS IAM Role with permission to administer SSO |
+
 This Access Provider requires permissions to manage your SSO instance.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to set up the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the root account of your AWS organization. _This is the account where AWS SSO is configured and your AWS Organization is managed_.
 
@@ -165,7 +179,7 @@ Outputs:
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
-Ensure you have credentials for the same account that Granted Approvals is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Granted Approvals stack.
+Ensure you have credentials for the same account that Common Fate is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Common Fate stack.
 
 ```bash
 aws cloudformation deploy --template-file granted-access-handler-ecs-exec-sso-role.yml --stack-name Granted-Access-Handler-ECS-Exec-SSO-Role --capabilities CAPABILITY_IAM
@@ -202,16 +216,20 @@ Acknowledge the IAM role creation check box and click **Create Stack**
 Copy the **RoleARN** output from the stack and paste it in the **ssoRoleArn** config value on the right.
 
 ![](https://static.commonfate.io/providers/aws/sso/role-output.png)
-## Create an ECS IAM role
-### Configuration Fields
-This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field | Description |
-| ----------- | ----------- |
+## Create an ECS IAM role
+
+### Configuration Fields
+
+This step will guide you through collecting the values for these fields required to set up your provider.
+
+| Field      | Description                                             |
+| ---------- | ------------------------------------------------------- |
 | ecsRoleArn | The ARN of the AWS IAM Role with permission to read ECS |
+
 This Access Provider requires permissions to read ECS properties.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to set up the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the _same account where your cluster is deployed_.
 
@@ -257,7 +275,7 @@ Outputs:
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
-Ensure you have credentials for the same account that Granted Approvals is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Granted Approvals stack.
+Ensure you have credentials for the same account that Common Fate is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Common Fate stack.
 
 ```bash
 aws cloudformation deploy --template-file granted-access-handler-ecs-exec-ecs-role.yml --stack-name Granted-Access-Handler-ECS-Exec-ECS-Role --capabilities CAPABILITY_IAM
@@ -294,12 +312,16 @@ Acknowledge the IAM role creation check box and click **Create Stack**
 Copy the **RoleARN** output from the stack and paste it in the **ssoRoleArn** config value on the right.
 
 ![](https://static.commonfate.io/providers/aws/sso/role-output.png)
+
 ## Finalizing Your Deployment
+
 ### Configuration Fields
-This step will guide you through collecting the values for these fields required to setup your provider.
+
+This step will guide you through collecting the values for these fields required to set up your provider.
 
 | Field | Description |
-| ----------- | ----------- |
+| ----- | ----------- |
+
 # Setting up Python shell access
 
 If you aren't using interactive Python shells on your ECS tasks, skip this step.
@@ -317,7 +339,7 @@ pip freeze > requirements.txt
 
 ### Set the GRANTED_WEBHOOK_URL environment variable
 
-A `GRANTED_WEBHOOK_URL` environment variable must be provided to the ECS task pointing to your Granted Approvals deployment URL.
+A `GRANTED_WEBHOOK_URL` environment variable must be provided to the ECS task pointing to your Common Fate deployment URL.
 
 To find your webhook URL open a terminal at the directory containing your `granted-deployment.yml` file. Then run:
 

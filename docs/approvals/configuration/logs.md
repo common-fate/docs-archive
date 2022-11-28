@@ -1,6 +1,6 @@
 # Logging
 
-Granted Approvals sends all logs to [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html). Granted Approvals uses a JSON structured log format. An example of a log message is shown below.
+Common Fate sends all logs to [Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html). Common Fate uses a JSON structured log format. An example of a log message is shown below.
 
 ```json
 {
@@ -20,7 +20,8 @@ Granted Approvals sends all logs to [Amazon CloudWatch](https://docs.aws.amazon.
 }
 ```
 
-The `userId` field corresponds to an authenticated user in Granted Approvals. The `reqId` field is populated from the AWS Lambda request ID.
+The `userId` field corresponds to an authenticated user in
+ate. The `reqId` field is populated from the AWS Lambda request ID.
 
 You can use `gdeploy` to query for logs. Under the hood, `gdeploy` calls CloudWatch APIs and prints the messages to your terminal.
 
