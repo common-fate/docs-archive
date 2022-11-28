@@ -61,7 +61,7 @@ The **InstanceArn** value in the CLI output should be provided as the **instance
 
 The **IdentityStoreId** field in the CLI output should be provided as the **identityStoreId** parameter when configuring the provider.
 
-If your AWS SSO instance is deployed in a separate region to the region that Granted Approvals is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
+If your AWS SSO instance is deployed in a separate region to the region that Common Fate is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
 
 ### Using the AWS Console
 
@@ -113,7 +113,7 @@ This step will guide you through collecting the values for these fields required
 
 This Access Provider requires permissions to manage your SSO instance.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the root account of your AWS organization. _This is the account where AWS SSO is configured and your AWS Organization is managed_.
 
@@ -179,7 +179,7 @@ Outputs:
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
-Ensure you have credentials for the same account that Granted Approvals is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Granted Approvals stack.
+Ensure you have credentials for the same account that Common Fate is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Common Fate stack.
 
 ```bash
 aws cloudformation deploy --template-file common-fate-access-handler-ecs-exec-sso-role.yml --stack-name Common-Fate-Access-Handler-ECS-Exec-SSO-Role --capabilities CAPABILITY_IAM
@@ -229,7 +229,7 @@ This step will guide you through collecting the values for these fields required
 
 This Access Provider requires permissions to read ECS properties.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the _same account where your cluster is deployed_.
 
