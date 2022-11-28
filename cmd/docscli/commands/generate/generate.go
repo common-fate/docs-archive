@@ -8,11 +8,11 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/common-fate/granted-approvals/accesshandler/pkg/providerregistry"
-	"github.com/common-fate/granted-approvals/accesshandler/pkg/providers"
-	"github.com/common-fate/granted-approvals/accesshandler/pkg/psetup"
-	"github.com/common-fate/granted-approvals/pkg/deploy"
-	"github.com/common-fate/granted-approvals/pkg/gconfig"
+	"github.com/common-fate/common-fate/accesshandler/pkg/providerregistry"
+	"github.com/common-fate/common-fate/accesshandler/pkg/providers"
+	"github.com/common-fate/common-fate/accesshandler/pkg/psetup"
+	"github.com/common-fate/common-fate/pkg/deploy"
+	"github.com/common-fate/common-fate/pkg/gconfig"
 	"gopkg.in/yaml.v3"
 
 	"github.com/urfave/cli/v2"
@@ -20,9 +20,9 @@ import (
 
 var GenerateCommand = cli.Command{
 	Name:  "generate",
-	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.10.0"}},
+	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.11.0"}},
 	Action: func(c *cli.Context) error {
-		err := os.RemoveAll("./docs/approvals/providers/registry/")
+		err := os.RemoveAll("./docs/common-fate/providers/registry/")
 		if err != nil {
 			return err
 		}
@@ -36,7 +36,7 @@ var GenerateCommand = cli.Command{
 					cfg := configer.Config()
 					setuper, ok := registeredProvider.Provider.(providers.SetupDocer)
 					if ok {
-						providerFolder := path.Join("./docs/approvals/providers/registry", providerType)
+						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType)
 						uses := fmt.Sprintf("%s@%s", providerType, providerVersion)
 						registryTemplateData.Providers = append(registryTemplateData.Providers, RegistryProvider{
 							Name: uses,
@@ -129,7 +129,7 @@ var GenerateCommand = cli.Command{
 				}
 			}
 		}
-		registryFile := "./docs/approvals/providers/registry/00-provider-registry.md"
+		registryFile := "./docs/common-fate/providers/registry/00-provider-registry.md"
 		f, err := os.Create(registryFile)
 		if err != nil {
 			return err
@@ -151,7 +151,7 @@ var GenerateCommand = cli.Command{
 		if err != nil {
 			return err
 		}
-		categoryFile := "./docs/approvals/providers/registry/_category_.json"
+		categoryFile := "./docs/common-fate/providers/registry/_category_.json"
 		f, err = os.Create(categoryFile)
 		if err != nil {
 			return err
