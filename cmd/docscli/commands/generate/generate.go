@@ -20,7 +20,7 @@ import (
 
 var GenerateCommand = cli.Command{
 	Name:  "generate",
-	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.10.0"}},
+	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.11.0"}},
 	Action: func(c *cli.Context) error {
 		err := os.RemoveAll("./docs/common-fate/providers/registry/")
 		if err != nil {
