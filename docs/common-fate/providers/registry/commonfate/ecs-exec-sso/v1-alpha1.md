@@ -9,7 +9,7 @@ deployment:
   stackName: example
   account: "12345678912"
   region: ap-southeast-2
-  release: v0.10.3
+  release: v0.11.0
   parameters:
     CognitoDomainPrefix: example
     AdministratorGroupID: granted_administrators
@@ -55,7 +55,7 @@ The **InstanceArn** value in the CLI output should be provided as the **instance
 
 The **IdentityStoreId** field in the CLI output should be provided as the **identityStoreId** parameter when configuring the provider.
 
-If your AWS SSO instance is deployed in a separate region to the region that Granted Approvals is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
+If your AWS SSO instance is deployed in a separate region to the region that Common Fate is running in, set the **region** parameter to be the region of your AWS SSO instance (e.g. 'us-east-1').
 
 ### Using the AWS Console
 
@@ -99,17 +99,17 @@ This step will guide you through collecting the values for these fields required
 | ssoRoleArn | The ARN of the AWS IAM Role with permission to administer SSO |
 This Access Provider requires permissions to manage your SSO instance.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the root account of your AWS organization. _This is the account where AWS SSO is configured and your AWS Organization is managed_.
 
-Copy the following YAML and save it as 'granted-access-handler-ecs-exec-sso-role.yml'.
+Copy the following YAML and save it as 'common-fate-access-handler-ecs-exec-sso-role.yml'.
 
-We recommend saving this alongside your granted-deployment.yml file in source control.
+We recommend saving this alongside your deployment.yml file in source control.
 
 ```yaml
 Resources:
-  GrantedAccessHandlerSSORole:
+  CommonFateAccessHandlerSSORole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -119,7 +119,7 @@ Resources:
             Principal:
               AWS: "{{ Access Handler Execution Role ARN }}"
         Version: "2012-10-17"
-      Description: This role grants management access to AWS SSO for the Granted Access Handler.
+      Description: This role grants management access to AWS SSO for the Common Fate Access Handler.
       Policies:
         - PolicyDocument:
             Statement:
@@ -158,23 +158,23 @@ Outputs:
   RoleARN:
     Value:
       Fn::GetAtt:
-        - GrantedAccessHandlerSSORole
+        - CommonFateAccessHandlerSSORole
         - Arn
 ```
 
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
-Ensure you have credentials for the same account that Granted Approvals is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Granted Approvals stack.
+Ensure you have credentials for the same account that Common Fate is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Common Fate stack.
 
 ```bash
-aws cloudformation deploy --template-file granted-access-handler-ecs-exec-sso-role.yml --stack-name Granted-Access-Handler-ECS-Exec-SSO-Role --capabilities CAPABILITY_IAM
+aws cloudformation deploy --template-file common-fate-access-handler-ecs-exec-sso-role.yml --stack-name Common-Fate-Access-Handler-ECS-Exec-SSO-Role --capabilities CAPABILITY_IAM
 ```
 
 Once the stack is deployed, you can retrieve the role ARN by running the following command.
 
 ```bash
-aws cloudformation describe-stacks --stack-name Granted-Access-Handler-ECS-Exec-SSO-Role --query "Stacks[0].Outputs[0].OutputValue"
+aws cloudformation describe-stacks --stack-name Common-Fate-Access-Handler-ECS-Exec-SSO-Role --query "Stacks[0].Outputs[0].OutputValue"
 ```
 
 ### Using the AWS Console
@@ -187,7 +187,7 @@ Upload the template file
 
 ![](https://static.commonfate.io/providers/aws/sso/create-stack-with-template.png)
 
-Name the stack 'Granted-Access-Handler-ECS-Exec-SSO-Role'
+Name the stack 'Common-Fate-Access-Handler-ECS-Exec-SSO-Role'
 
 ![](https://static.commonfate.io/providers/aws/sso/specify-stack-details.png)
 
@@ -211,17 +211,17 @@ This step will guide you through collecting the values for these fields required
 | ecsRoleArn | The ARN of the AWS IAM Role with permission to read ECS |
 This Access Provider requires permissions to read ECS properties.
 
-The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Granted Approvals Access Handler to assume the role.
+The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
 
 This role should be created in the _same account where your cluster is deployed_.
 
-Copy the following YAML and save it as 'granted-access-handler-ecs-exec-ecs-role.yml'.
+Copy the following YAML and save it as 'common-fate-access-handler-ecs-exec-ecs-role.yml'.
 
-We recommend saving this alongside your granted-deployment.yml file in source control.
+We recommend saving this alongside your deployment.yml file in source control.
 
 ```yaml
 Resources:
-  GrantedAccessHandlerECSRole:
+  CommonFateAccessHandlerECSRole:
     Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
@@ -231,7 +231,7 @@ Resources:
             Principal:
               AWS: "{{ Access Handler Execution Role ARN }}"
         Version: "2012-10-17"
-      Description: This role grants read access to ECS for the Granted Access Handler.
+      Description: This role grants read access to ECS for the Common Fate Access Handler.
       Policies:
         - PolicyName: AccessHandlerECSPolicy
           PolicyDocument:
@@ -250,23 +250,23 @@ Outputs:
   RoleARN:
     Value:
       Fn::GetAtt:
-        - GrantedAccessHandlerECSRole
+        - CommonFateAccessHandlerECSRole
         - Arn
 ```
 
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can deploy cloudformation you can run the following commands to deploy this stack.
-Ensure you have credentials for the same account that Granted Approvals is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Granted Approvals stack.
+Ensure you have credentials for the same account that Common Fate is deployed to and that AWS_REGION environment variable is set correctly, we recommend deploying this role to the same region as your Common Fate stack.
 
 ```bash
-aws cloudformation deploy --template-file granted-access-handler-ecs-exec-ecs-role.yml --stack-name Granted-Access-Handler-ECS-Exec-ECS-Role --capabilities CAPABILITY_IAM
+aws cloudformation deploy --template-file common-fate-access-handler-ecs-exec-ecs-role.yml --stack-name Common-Fate-Access-Handler-ECS-Exec-ECS-Role --capabilities CAPABILITY_IAM
 ```
 
 Once the stack is deployed, you can retrieve the role ARN by running the following command.
 
 ```bash
-aws cloudformation describe-stacks --stack-name Granted-Access-Handler-ECS-Exec-ECS-Role --query "Stacks[0].Outputs[0].OutputValue"
+aws cloudformation describe-stacks --stack-name Common-Fate-Access-Handler-ECS-Exec-ECS-Role --query "Stacks[0].Outputs[0].OutputValue"
 ```
 
 ### Using the AWS Console
@@ -279,7 +279,7 @@ Upload the template file
 
 ![](https://static.commonfate.io/providers/aws/sso/create-stack-with-template.png)
 
-Name the stack 'Granted-Access-Handler-ECS-Exec-ECS-Role'
+Name the stack 'Common-Fate-Access-Handler-ECS-Exec-ECS-Role'
 
 ![](https://static.commonfate.io/providers/aws/sso/specify-stack-details.png)
 
@@ -317,9 +317,9 @@ pip freeze > requirements.txt
 
 ### Set the GRANTED_WEBHOOK_URL environment variable
 
-A `GRANTED_WEBHOOK_URL` environment variable must be provided to the ECS task pointing to your Granted Approvals deployment URL.
+A `GRANTED_WEBHOOK_URL` environment variable must be provided to the ECS task pointing to your Common Fate deployment URL.
 
-To find your webhook URL open a terminal at the directory containing your `granted-deployment.yml` file. Then run:
+To find your webhook URL open a terminal at the directory containing your `deployment.yml` file. Then run:
 
 ```
 gconfig output WebhookUrl
