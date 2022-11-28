@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "The granted-approvals repository tag to release"
+        description: "The common-fate repository tag to release"
         type: string
         required: true
 
@@ -17,7 +17,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Print params
-        run: echo "Generating docs for granted-approvals tag ${GRANTED_TAG}"
+        run: echo "Generating docs for common-fate tag ${GRANTED_TAG}"
         env:
           GRANTED_TAG: ${{ github.event.inputs.tag }}
 
@@ -36,7 +36,7 @@ jobs:
         with:
           lfs: "true"
       - name: Update approvals dependency
-        run: go get github.com/common-fate/granted-approvals@${{ github.event.inputs.tag }}
+        run: go get github.com/common-fate/common-fate@${{ github.event.inputs.tag }}
 
       - name: Generate Docs
         run: go run cmd/docscli/main.go generate --approvals-version=${{ github.event.inputs.tag }}
@@ -52,6 +52,6 @@ jobs:
           delete-branch: true
           title: "[New Release] Generate Provider Registry for (${{ github.event.inputs.tag }})"
           body: |
-            Generated Provider Registry Setup docs for granted-approvals ${{ github.event.inputs.tag }}
+            Generated Provider Registry Setup docs for common-fate ${{ github.event.inputs.tag }}
           labels: |
             automated pr

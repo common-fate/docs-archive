@@ -6,6 +6,17 @@ sidebar_position: 8
 
 This page will detail migration steps to upgrade your deployment of Common Fate to new versions.
 
+## v0.11.0
+
+### Rebranding From Granted Approvals to Common Fate
+
+In v0.11.0 the platform has been rebranded to be called Common Fate, this includes renaming the repository from common-fate/granted-approvals to commonfate/common-fate.
+There are non breaking changes to the appearance of some colors and logos in the frontend, and non breaking changes to naming conventions in the backend code.
+
+### Deployment Configuration File Changes
+
+This change affects you if you are using the default filename `granted-deployment.yml` for your deployment configuration. This release introduces a breaking change here and you will be required to rename the file to `deployment.yml` before you can use gdeploy to manage your deployment.
+
 ## v0.9.0
 
 ### AWS SSO Access Provider IAM changes
