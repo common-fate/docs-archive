@@ -6,12 +6,12 @@ slug: first-provider
 
 ## Access Provider setup
 
-Access Providers are plugins for Granted Approvals which provide access to roles and resources. Examples of Access Providers are AWS SSO Permission Sets and Okta groups. Access Providers contain specific integration logic to assign users to the resource.
+Access Providers are plugins for Common Fate which provide access to roles and resources. Examples of Access Providers are AWS SSO Permission Sets and Okta groups. Access Providers contain specific integration logic to assign users to the resource.
 
-To get started with Granted Approvals, we'll add the TestVault provider. TestVault is an Access Provider intended to get you started with Granted Approvals and show you how access workflows work, without requiring you to connect Granted Approvals with your production infrastructure.
+To get started with Common Fate, we'll add the TestVault provider. TestVault is an Access Provider intended to get you started with Common Fate and show you how access workflows work, without requiring you to connect Common Fate with your production infrastructure.
 
 :::info
-You will need to have deployed Granted Approvals and have valid AWS credentials in your terminal environment before you can get started with this guide, checkout [Deploying Granted](../../deploying-granted/00-deploying-granted.md)
+You will need to have deployed Common Fate and have valid AWS credentials in your terminal environment before you can get started with this guide, checkout [Deploying Granted](../../deploying-granted/00-deploying-granted.md)
 :::
 
 Add the testvault provider by running the following command:
@@ -50,12 +50,12 @@ gdeploy update
 ```
 
 :::info
-All configuration changes in Granted Approvals follow a similar workflow: first, edit the configuration file, then run `gdeploy update` to apply your changes to the deployment.
+All configuration changes in Common Fate follow a similar workflow: first, edit the configuration file, then run `gdeploy update` to apply your changes to the deployment.
 :::
 
 ## Adding an Access Rule
 
-Access Rules are a core component of Granted Approvals. They define what roles and resources particular groups can request access to, and define policies such as requiring a second person to approve the access.
+Access Rules are a core component of Common Fate. They define what roles and resources particular groups can request access to, and define policies such as requiring a second person to approve the access.
 
 Let's create our first access rule now. Open the web dashboard with `gdeploy dashboard open`. Press the **Switch to Admin** button to swap to the admin dashboard, and then press the **New Access Rule** button. You should see a screen similar to the below.
 
@@ -86,7 +86,7 @@ Leave the Approvers section empty and click **Create**.
 ![](/img/approvals-getting-started/09-approvalrequired.png)
 
 :::info
-Granted Approvals won't let you approve your own access requests, so if you'd like to test out approval policies you'll need to invite a second user to your Granted Approvals team!
+Common Fate won't let you approve your own access requests, so if you'd like to test out approval policies you'll need to invite a second user to your Common Fate team!
 :::
 
 You'll be taken back to the Access Rule table, where you should see your newly created rule.

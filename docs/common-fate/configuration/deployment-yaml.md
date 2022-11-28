@@ -1,6 +1,6 @@
 # Deployment YAML reference
 
-When `gdeploy init` is run, a `granted-deployment.yml` file is created in the folder that the command was executed in. This YAML file contains the parameters for your Granted Approvals deployment. It includes information about where the deployment is running, such as the AWS account ID and region, as well as the configured identity provider and Access Providers.
+When `gdeploy init` is run, a `granted-deployment.yml` file is created in the folder that the command was executed in. This YAML file contains the parameters for your Common Fate deployment. It includes information about where the deployment is running, such as the AWS account ID and region, as well as the configured identity provider and Access Providers.
 
 You can edit the YAML file manually using a text editor of choice. Some `gdeploy` commands will make changes to the YAML file automatically, such as `gdeploy release set <release version>`. When `gdeploy` makes automatic changes to the YAML file, any comments in the YAML (like `# example comment`) are removed.
 

@@ -5,14 +5,14 @@ sidebar_position: 3
 # Azure AD
 
 :::info
-Granted Approvals user and group sync requires some credentials to be configured in your identity provider account. Granted Approvals uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
+Common Fate user and group sync requires some credentials to be configured in your identity provider account. Common Fate uses 2LO authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
 ## Azure AD setup
 
 ### Creating Access Tokens in Azure
 
-To set up Azure to sync users and groups with Granted Approvals we will need to create an access token to communicate with Azure's Graph API.
+To set up Azure to sync users and groups with Common Fate we will need to create an access token to communicate with Azure's Graph API.
 
 Sign in to your Azure portal as a user with [administrator privileges (opens new window)](https://portal.azure.com).
 
@@ -64,8 +64,8 @@ Head back to the **Overview** tab in the Azure portal, and get the first two IDs
 1. For the `Tenant ID` param, copy and paste the **Directory (tenant) ID**.
 2. For the `Client ID` param, copy and paste the **Application (client) ID**.
 
-`Email Identifier` is an optional configuration. Used to specify which field on an Azure user object corresponds to the user's email address, this changes occasionally in deployments. 
-For more infomation about this see the Azure documentation [here](https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties) 
+`Email Identifier` is an optional configuration. Used to specify which field on an Azure user object corresponds to the user's email address, this changes occasionally in deployments.
+For more infomation about this see the Azure documentation [here](https://docs.microsoft.com/en-us/graph/api/resources/user?view=graph-rest-1.0#properties)
 
 ** - If you don't know which field for your tenancy you can leave this blank. **
 
@@ -88,7 +88,7 @@ You should see an output similar to the below.
 +------------------------+---------------------------------------------------------+
 ```
 
-Next you will need to setup a SAML app. When`gdeploy` prompts you for SAML metadata, select the "URL" option.
+Next you will need to set up a SAML app. When`gdeploy` prompts you for SAML metadata, select the "URL" option.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -154,7 +154,7 @@ Finally you will need to create an adminitrator group with granted. You will be 
 
 To get this group ID we will need to make the administrator group in Azure.
 
-### Creating Granted Approvals Administrator Group
+### Creating Common Fate Administrator Group
 
 In the Azure portal, to to _Groups_.
 
@@ -174,7 +174,7 @@ Click on the newly created Group once it has been created and you will be taken 
 ![](/img/sso/azure/created-group.png)
 
 Copy the **Object Id**. Use this for the group Id prompt in gdeploy.
-Press enter and this should conclude the gdeploy setup for SSO/SAMl sign on in azure.
+Press enter and this should conclude the gdeploy set up for SSO/SAMl sign on in azure.
 
 You should see the following:
 
@@ -192,7 +192,7 @@ You will need to redeploy using `gdeploy update` to update the identity provider
 
 ## Customising the Azure AD email attribute
 
-By default, Granted Approvals uses an Azure user's [UserPrincipalName (UPN)](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/plan-connect-userprincipalname) as the email attribute when syncing an Azure AD directory. This can be overridden to another attribute, such as mail, by setting the azure entry in your `granted-deployment.yml` file as follows:
+By default, Common Fate uses an Azure user's [UserPrincipalName (UPN)](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/plan-connect-userprincipalname) as the email attribute when syncing an Azure AD directory. This can be overridden to another attribute, such as mail, by setting the azure entry in your `granted-deployment.yml` file as follows:
 
 ```diff
 deployment:

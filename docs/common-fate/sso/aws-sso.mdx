@@ -9,7 +9,7 @@ import TabItem from "@theme/TabItem";
 
 ## AWS IAM Identity Center setup
 
-To set up AWS IAM Identity Center as your identity provider for Granted Approvals you will need to create an IAM role in the management account of your AWS organization that has a trust relationship with the Granted Approvals deployment.
+To set up AWS IAM Identity Center as your identity provider for Common Fate you will need to create an IAM role in the management account of your AWS organization that has a trust relationship with the Common Fate deployment.
 
 This role required has a minimal set of IAM permissions which only allow it to read information about your users and groups.
 
@@ -190,7 +190,7 @@ gdeploy output RestAPIExecutionRoleARN
 
 #### Tags
 
-Ensure that you add the following tag to the role so that the Granted Approvals lambda can assume it.
+Ensure that you add the following tag to the role so that the Common Fate lambda can assume it.
 
 - Key: `common-fate-abac-role`
 - Value: `aws-sso-identity-provider`
@@ -232,13 +232,13 @@ The output should look like this.
 
 Scroll down to the **Application properties** section.
 
-Add the Granted Approvals **Dashboard URL** from the command output to the **Application start URL** field.
+Add the Common Fate **Dashboard URL** from the command output to the **Application start URL** field.
 
 Scroll down to the **Application metadata** section.
 
-Add the Granted Approvals **SAML SSO URL (ACS URL)** from the command output to the **Application ACS URL** field.
+Add the Common Fate **SAML SSO URL (ACS URL)** from the command output to the **Application ACS URL** field.
 
-Add the Granted Approvals **Audience URI** from the command output to the **Application SAML audience** field.
+Add the Common Fate **Audience URI** from the command output to the **Application SAML audience** field.
 
 ![](/img/sso/aws-sso/application-metadata.png)
 
@@ -272,7 +272,7 @@ Use the assign user wizard to assign users or groups to the application.
 
 ### Setup the SAML SSO provider in your deployment
 
-Now that you have configured the SAML application, you can use gdeploy to setup the SSO provider for your deployment.
+Now that you have configured the SAML application, you can use gdeploy to set up the SSO provider for your deployment.
 
 ```
 gdeploy identity sso enable
@@ -363,10 +363,10 @@ Scroll down to the **IAM Identity Center metadata** section.
 ? Metadata URL
 ```
 
-#### Creating Granted Approvals Administrator Group
+#### Creating Common Fate Administrator Group
 
-Finally you will need to create or use an existing group in AWS IAM Identity Center as an administrator group for Granted Approvals. Members of this group will have access to the admin dashboard of the application.
-Enter the ID of the group in AWS IAM Identity Center which represents the administrators of Granted Approvals.
+Finally you will need to create or use an existing group in AWS IAM Identity Center as an administrator group for Common Fate. Members of this group will have access to the admin dashboard of the application.
+Enter the ID of the group in AWS IAM Identity Center which represents the administrators of Common Fate.
 
 A group ID looks like this `976708da7d-b2f2e2cf-152c-4301-923f-ed6b3b9564a3` and can be found in the AWS console.
 
@@ -381,7 +381,7 @@ A group ID looks like this `976708da7d-b2f2e2cf-152c-4301-923f-ed6b3b9564a3` and
 
 You should see the following prompts which indicate that you have completed setup.
 
-You should follow the instructions to update you Granted Approvals deployment.
+You should follow the instructions to update you Common Fate deployment.
 
 ```
 [i] Updating your deployment config

@@ -1,10 +1,10 @@
-# Using Granted Approvals for requesting access
+# Using Common Fate for requesting access
 
 ## Prerequisites
 
-For this recipe, you'll need [Granted Approvals Configured](/granted-approvals/introduction).
+For this recipe, you'll need [Common Fate Configured](/granted-approvals/introduction).
 
-You can use Granted to request access to roles through Granted Approvals. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted CLI.
+You can use Granted to request access to roles through Common Fate. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted.
 
 You will need to update each role you want to request access to with the following configuration:
 
@@ -23,7 +23,7 @@ You will need to update each role you want to request access to with the followi
 + credential_process = granted credential-process --profile updated-profile --url https://granted.example.com
 ```
 
-Note: If you do not provide `--url` flag in `credential_process` key, you will need to set granted approvals URL by running
+Note: If you do not provide `--url` flag in `credential_process` key, you will need to set Common Fate URL by running
 
 ```bash
 granted settings request-url set <GRANTED_APPROVALS_URL>

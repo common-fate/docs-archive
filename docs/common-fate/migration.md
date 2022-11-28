@@ -4,7 +4,7 @@ sidebar_position: 8
 
 # Migration Guide
 
-This page will detail migration steps to upgrade your deployment of Granted Approvals to new versions.
+This page will detail migration steps to upgrade your deployment of Common Fate to new versions.
 
 ## v0.11.0
 
@@ -43,7 +43,7 @@ deployment:
     // highlight-end
 ```
 
-This release adds support for [Organizational Unit](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html) access rules to the AWS SSO Access Provider. This feature uses a new Granted Approvals framework feature we have introduced called Dynamic Fields. Dynamic Fields automatically filter the available permissions that a user can select - such as selecting an account which belongs in a particular Organizational Unit.
+This release adds support for [Organizational Unit](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html) access rules to the AWS SSO Access Provider. This feature uses a new Common Fate framework feature we have introduced called Dynamic Fields. Dynamic Fields automatically filter the available permissions that a user can select - such as selecting an account which belongs in a particular Organizational Unit.
 
 In order to support this feature, the AWS SSO Access Provider requires some additional read-only IAM permissions. The new permissions are: `organizations:ListAccountsForParent`, `organizations:ListOrganizationalUnitsForParent`, `organizations:ListRoots`, `organizations:ListTagsForResource`. To prevent disruption to your deployment, these new permissions should be added prior to updating your deployment to v0.9.0.
 

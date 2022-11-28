@@ -4,7 +4,7 @@ slug: deploying
 
 # Running the deployment
 
-Now that you've set up `granted-deployment.yml`, it's time to deploy Granted Approvals! From the same folder as the previous step, run the following command:
+Now that you've set up `granted-deployment.yml`, it's time to deploy Common Fate! From the same folder as the previous step, run the following command:
 
 ```bash
 gdeploy create
@@ -41,7 +41,7 @@ You can check the status of your Granted deployment at any time by running `gdep
 
 ## Creating an admin user
 
-Before you can use Granted Approvals, you'll need to create a user account for yourself. By default, Granted Approvals uses AWS Cognito to store user account information. You can add a user to the Cognito user pool by running the following command:
+Before you can use Common Fate, you'll need to create a user account for yourself. By default, Common Fate uses AWS Cognito to store user account information. You can add a user to the Cognito user pool by running the following command:
 
 ```bash
 gdeploy identity users create --admin -u YOUR_EMAIL_ADDRESS
@@ -58,7 +58,7 @@ Now, check the inbox of your email address. You should have an email from `no-re
 
 > Your username is `chris@commonfate.io` and temporary password is n0IT371:.
 
-You'll use this password the first time you log in to Granted Approvals.
+You'll use this password the first time you log in to Common Fate.
 
 :::info
 💡 The email contains a trailing period (.) which is _not_ part of your password. Be careful when you copy/paste the password from this email!
@@ -66,7 +66,7 @@ You'll use this password the first time you log in to Granted Approvals.
 
 ## Logging in to the web dashboard
 
-Now that you've created a user account, you can log in to Granted Approvals! Retrieve your web dashboard URL by running `gdeploy dashboard url`:
+Now that you've created a user account, you can log in to Common Fate! Retrieve your web dashboard URL by running `gdeploy dashboard url`:
 
 ```bash
 gdeploy dashboard url
@@ -79,7 +79,7 @@ You will be redirected to a login screen which looks similar to the below.
 
 ![A screenshot of the login screen](/img/approvals-getting-started/01-login.png)
 
-Enter your email address and temporary password from the previous step. You'll be prompted to set a permanent password. After setting your password, you'll be redirected to the Granted Approvals end user dashboard!
+Enter your email address and temporary password from the previous step. You'll be prompted to set a permanent password. After setting your password, you'll be redirected to the Common Fate end user dashboard!
 
 ![](/img/approvals-getting-started/02-home.png)
 

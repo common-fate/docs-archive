@@ -1,8 +1,8 @@
 # Updating your deployment
 
-You can use the `gdeploy` CLI to update your Granted Approvals deployment when Common Fate releases new versions. Keeping your deployment up to date ensures that you take advantage of new features and security fixes.
+You can use the `gdeploy` CLI to update your Common Fate deployment when Common Fate releases new versions. Keeping your deployment up to date ensures that you take advantage of new features and security fixes.
 
-Release information, including the latest version number and the changelog, can be found in the [Granted Approvals GitHub repository](https://github.com/common-fate/granted-approvals/releases).
+Release information, including the latest version number and the changelog, can be found in the [Common Fate GitHub repository](https://github.com/common-fate/granted-approvals/releases).
 
 ## Process
 
