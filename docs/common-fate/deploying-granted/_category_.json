@@ -1,5 +1,8 @@
 {
-  "label": "Deploying Granted",
+  "label": "Deploying Common Fate",
   "position": 2,
-  "link": {"type": "doc", "id": "deploying-granted"}
+  "link": {
+    "type": "doc",
+    "id": "deploying-granted"
+  }
 }

@@ -11,7 +11,7 @@ Access Providers are plugins for Common Fate which provide access to roles and r
 To get started with Common Fate, we'll add the TestVault provider. TestVault is an Access Provider intended to get you started with Common Fate and show you how access workflows work, without requiring you to connect Common Fate with your production infrastructure.
 
 :::info
-You will need to have deployed Common Fate and have valid AWS credentials in your terminal environment before you can get started with this guide, checkout [Deploying Granted](../../deploying-granted/00-deploying-granted.md)
+You will need to have deployed Common Fate and have valid AWS credentials in your terminal environment before you can get started with this guide, checkout [Deploying Common Fate](../../deploying-granted/00-deploying-granted.md)
 :::
 
 Add the testvault provider by running the following command:

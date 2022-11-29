@@ -46,6 +46,6 @@ Once that's done, you should see this:
 
 ![](/img/approvals-getting-started/02-home.png)
 
-Congrats! You've now 10x'd deploying Granted. If you want more details on what just happened, check out the subpages of this _Deploying Granted_ section.
+Congrats! You've now 10x'd deploying Common Fate. If you want more details on what just happened, check out the subpages of this _Deploying Common Fate_ section.
 
 To start using Granted, check out adding [Access Providers](/granted-approvals/providers/access-providers).

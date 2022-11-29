@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 	"text/template"
@@ -36,13 +37,20 @@ var GenerateCommand = cli.Command{
 					cfg := configer.Config()
 					setuper, ok := registeredProvider.Provider.(providers.SetupDocer)
 					if ok {
+
+						//update folder structure to be as follows:
+						// providers -> registry -> commonfate -> aws-sso -> v2 -> setup
+						//												  		-> usage
+
 						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType)
 						uses := fmt.Sprintf("%s@%s", providerType, providerVersion)
 						registryTemplateData.Providers = append(registryTemplateData.Providers, RegistryProvider{
 							Name: uses,
 							Path: path.Join("./", providerType, providerVersion),
 						})
-						err := os.MkdirAll(providerFolder, os.ModePerm)
+
+						providerSetupFolder := path.Join(providerFolder, "setup")
+						err := os.MkdirAll(providerSetupFolder, os.ModePerm)
 						if err != nil {
 							return err
 						}
@@ -52,12 +60,19 @@ var GenerateCommand = cli.Command{
 						if err != nil {
 							return err
 						}
-						providerVersionFile := path.Join(providerFolder, providerVersion+".md")
+						providerVersionFile := path.Join(providerSetupFolder, providerVersion+".md")
 						f, err := os.Create(providerVersionFile)
 						if err != nil {
 							return err
 						}
 						defer f.Close()
+
+						//create usage folder + files
+						providerUsageFolder := path.Join(providerFolder, "usage")
+						err = os.MkdirAll(providerUsageFolder, os.ModePerm)
+						if err != nil {
+							return err
+						}
 
 						tmpl, err := template.New("instruction").Parse(InstructionTemplate)
 						if err != nil {
@@ -125,6 +140,55 @@ var GenerateCommand = cli.Command{
 						if err != nil {
 							return err
 						}
+
+						//todo: add this functionality for all providers
+						if providerType == "commonfate/aws-sso" {
+							usageData := UsageTemplateData{
+								Provider: providerType,
+								Version:  providerVersion,
+							}
+							//create the usage file
+							providerVersionFileUsage := path.Join(providerUsageFolder, providerVersion+".md")
+							f2, err := os.Create(providerVersionFileUsage)
+							if err != nil {
+								return err
+							}
+							defer f2.Close()
+
+							//read the usage doc
+							//TODO:Update this with a file system read from the common fate repo
+							filePath, err := filepath.Abs("./aws-sso-usage/org-units.md")
+							if err != nil {
+								return err
+							}
+							data, err := os.ReadFile(filePath)
+							if err != nil {
+								return err
+							}
+							usageData.Step = Step{
+
+								Instructions: string(data),
+							}
+
+							if err != nil {
+								return err
+							}
+
+							tmpl, err := template.New("usage").Parse(UsageTemplate)
+							if err != nil {
+								return err
+							}
+
+							usageOutput := new(strings.Builder)
+							err = tmpl.ExecuteTemplate(usageOutput, "usage", usageData)
+							if err != nil {
+								return err
+							}
+							_, err = f2.WriteString(usageOutput.String())
+							if err != nil {
+								return err
+							}
+						}
 					}
 				}
 			}
@@ -183,7 +247,7 @@ type InstructionTemplateData struct {
 	DeploymentConfig string
 }
 
-const InstructionTemplate string = `# {{ .Provider }}@{{ .Version }}
+const InstructionTemplate string = `# {{ .Provider }}/setup@{{ .Version }}
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
@@ -203,6 +267,17 @@ This step will guide you through collecting the values for these fields required
 {{- end}}
 {{ $option.Instructions }}
 {{- end}}
+`
+
+type UsageTemplateData struct {
+	Provider string
+	Version  string
+	Step     Step
+}
+
+const UsageTemplate string = `# {{ .Provider }}/usage@{{ .Version }}
+{{ $.Step.Instructions }}
+
 `
 
 type RegistryProvider struct {

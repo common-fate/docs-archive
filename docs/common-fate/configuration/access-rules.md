@@ -4,7 +4,7 @@
 
 Access rules control who can request access to what, and the requirements surrounding their requests.
 
-To create an access rule, you must be an administrator. See, creating an admin user.
+To create an access rule, you must be an administrator. See, [creating an admin user](/common-fate/configuration/users-and-groups#create-new-user).
 
 Open the admin console to the **Access Rules** tab.
 
@@ -38,7 +38,7 @@ Select from the options and then press **Next**.
 
 ![](/img/access-rules/2.png)
 
-For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/docs/approvals/configuration/org-units).
+For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/docs/common-fate/configuration/org-units).
 
 ### Okta
 
