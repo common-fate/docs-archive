@@ -11,4 +11,4 @@ This will guide you through the steps for setting up and collect all the require
 
 If you are just getting started with Common Fate and don't have a deployment yet, you can check out the [Provider Registry](./registry/00-provider-registry.md) which lists all the available providers with the instructions for setting them up so you can get an idea of what a Common Fate deployment will look like for you!
 
-We highly recommend you get started with [Adding Your First Provider](/granted-approvals/providers/add-first-provider/first-provider). It'll walk you through how to add a test provider so you can understand the access workflow before you try connecting your production environments.
+We highly recommend you get started with [Adding Your First Provider](/common-fate/providers/add-first-provider/first-provider). It'll walk you through how to add a test provider so you can understand the access workflow before you try connecting your production environments.

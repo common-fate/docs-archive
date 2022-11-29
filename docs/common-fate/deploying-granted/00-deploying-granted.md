@@ -6,11 +6,11 @@ slug: deploying-granted
 
 ## Quickstart
 
-This page is a quickstart guide for setting up a basic Common Fate deployment in 5 minutes. If you've got more than 5 minutes, head over to the [Prerequisites](/granted-approvals/deploying-granted/prerequisites) page to read the full guide.
+This page is a quickstart guide for setting up a basic Common Fate deployment in 5 minutes. If you've got more than 5 minutes, head over to the [Prerequisites](/common-fate/deploying-granted/prerequisites) page to read the full guide.
 
 All you need is an AWS account, an AWS profile that has the ability to create resources and IAM roles, and an internet connection. You'll only need to run a few commands. Note that while Common Fate requires AWS to host your deployment, your actual Access Providers can also be Azure or Okta based.
 
-First you'll install `gdeploy`, our command-line interface tool for managing Common Fate deployments. (not on Mac? [here's](/granted-approvals/deploying-granted/setup#installing-gdeploy) how you install `gdeploy` on other systems)
+First you'll install `gdeploy`, our command-line interface tool for managing Common Fate deployments. (not on Mac? [here's](/common-fate/deploying-granted/setup#installing-gdeploy) how you install `gdeploy` on other systems)
 
 ```
 brew install common-fate/granted/gdeploy
@@ -48,4 +48,4 @@ Once that's done, you should see this:
 
 Congrats! You've now 10x'd deploying Common Fate. If you want more details on what just happened, check out the subpages of this _Deploying Common Fate_ section.
 
-To start using Granted, check out adding [Access Providers](/granted-approvals/providers/access-providers).
+To start using Granted, check out adding [Access Providers](/common-fate/providers/access-providers).

@@ -42,6 +42,6 @@ To start set up for our SSO provider we will use `gdeploy` to configure all the 
 
 As part of setting up SSO and user directory sync, you'll be prompted for parameters to connect to your identity provider. Follow the guides below based on the corporate identity provider that you use:
 
-- [Google Workspace](/granted-approvals/sso/google)
-- [Okta](/granted-approvals/sso/okta)
-- [Azure](/granted-approvals/sso/azure)
+- [Google Workspace](/common-fate/sso/google)
+- [Okta](/common-fate/sso/okta)
+- [Azure](/common-fate/sso/azure)

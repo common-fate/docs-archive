@@ -20,4 +20,4 @@ Common Fate key benefits are:
 
 ## Get started
 
-Follow the [Deployment guide](/granted-approvals/deploying-granted/deploying-granted/) to get your own instance of Common Fate up and running.
+Follow the [Deployment guide](/common-fate/deploying-granted/deploying-granted/) to get your own instance of Common Fate up and running.

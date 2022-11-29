@@ -15,7 +15,7 @@ Enter 'y' and press enter.
 
 ```
 [i] Updating configuration for <your_identity_provider>
-[i] You can follow our <your_identity_provider> setup guide at: https://docs.commonfate.io/granted-approvals/sso/<your_identity_provider> for detailed instruction on setting up SSO
+[i] You can follow our <your_identity_provider> setup guide at: https://docs.commonfate.io/common-fate/sso/<your_identity_provider> for detailed instruction on setting up SSO
 ```
 
 Next you can update or use the existing values for your provider. You will be prompted to enter each one.
@@ -50,6 +50,6 @@ This will prompt you to confirm your intent to disable current identity provider
 
 You should see a message like above. 
 
-2. Next, run `gdeploy identity sso enable` to add new sets of configuration. Follow [this link](/granted-approvals/sso/sso-setup/#setting-up-sso) for more instruction on setting up SSO. 
+2. Next, run `gdeploy identity sso enable` to add new sets of configuration. Follow [this link](/common-fate/sso/sso-setup/#setting-up-sso) for more instruction on setting up SSO. 
 
 3. Finally, run `gdeploy update` to apply the changes to your CloudFormation deployment. 
