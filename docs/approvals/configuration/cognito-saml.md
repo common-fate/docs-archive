@@ -1,20 +1,12 @@
 
-# Using a third-party IdP with Cognito
+# Set up a log in link for your SAML App
 
-This guide will walk you through configuring Cognito to use SAML authentication with a third-party IdP.
-
-1. Change into your deployment directory
-
-    Change into the directory where you've deployed Common Fate, this is where your `deployment.yml` file is located.
-
-1. Export AWS Credentials
-
-    Export valid AWS credentials for your deployment account and region i.e. `granted --env`
+This guide will walk you through setting up a log in link for your SAML App. This can be added to your organisations app directory/portal.
 
 1. Run the following command
 
     ```bash
-    echo "https://$(gdeploy output UserPoolDomain)/authorize?response_type=code&identity_provider=$(gdeploy output SAMLIdentityProviderName)&client_id=$(gdeploy output CognitoClientID)&redirect_uri=https://$(gdeploy output FrontendDomainOutput)"
+    gdeploy identity cognito-saml
     ```
 1. Copy the URL 
 
