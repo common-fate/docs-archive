@@ -1,12 +1,12 @@
 
-# Set up a log in link for your SAML App
+# Get a sign in link when using SAML SSO
 
-This guide will walk you through setting up a log in link for your SAML App. This can be added to your organisations app directory/portal.
+In some cases your SAML users won't be able to login from their dashboard like Azure AD or Okta. Use this command to generate the correct sign in URL and/or add it to your documentation.
 
 1. Run the following command
 
     ```bash
-    gdeploy identity cognito-saml
+    gdeploy identity saml-login-url
     ```
 1. Copy the URL 
 
