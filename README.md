@@ -45,11 +45,11 @@ This command generates static content into the `build` directory and can be serv
 
 ### Generate Provider Registry Docs
 
-We use some templating to generate provider registry docs from the definitions in github.com/common-fate/granted-approvals/accesshandler/providerregistry
+We use some templating to generate provider registry docs from the definitions in github.com/common-fate/tree/main/accesshandler/pkg/providerregistry
 
 #### Run an update of provider docs
 
-Update Approvals repo dependency
+Update Common Fate repo dependency
 
 ```
 go get github.com/common-fate/granted-approvals@<tag>

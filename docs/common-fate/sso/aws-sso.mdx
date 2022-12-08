@@ -27,7 +27,7 @@ Follow either the Cloudformation process to deploy this role, or you can use the
 >
 <TabItem value="cfn">
 <h4>Setup the Cloudformation Template</h4>
-Run the following commands in your terminal to create `granted-identity-sso-role.yml`, a CloudFormation template which will be deployed to your AWS account. We recommend saving this alongside your granted-deployment.yml file in source control.
+Run the following commands in your terminal to create `granted-identity-sso-role.yml`, a CloudFormation template which will be deployed to your AWS account. We recommend saving this alongside your `deployment.yml` file in source control.
 
 ```bash
 IDP_SYNC_ROLE_ARN=$(gdeploy output IDPSyncExecutionRoleARN)
@@ -212,7 +212,7 @@ Click **Add application**, then select the **Add custom SAML 2.0 application** o
 
 ### Configure the SAML Application
 
-In a terminal where your granted-deployment.yml file is, run the following command.
+In a terminal where your `deployment.yml` file is, run the following command.
 
 ```bash
 gdeploy identity sso saml-parameters

@@ -51,7 +51,7 @@ If you do not apply these changes, your end users may see a "no options" message
 
 !["No options" message screenshot on the Account field when requesting a role](/img/migration/no-accounts.png)
 
-You can view the pull request which introduced these changes [here](https://github.com/common-fate/granted-approvals/pull/332/files).
+You can view the pull request which introduced these changes [here](https://github.com/common-fate/common-fate/pull/332/files).
 
 To add the new IAM permissions, follow the guide below.
 

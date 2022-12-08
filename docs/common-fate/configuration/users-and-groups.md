@@ -1,29 +1,55 @@
 # Users and Groups
 
-**_Adding or removing users and user-groups are only available when you are using the default Cognito user pool as Identity Provider_**. If you have connected an SSO provider, like Okta, Google or AzureAD, use those tools to manage your users and groups instead.
+**_Adding or removing users and user-groups is only available when you are using the default Cognito user pool as Identity Provider_**. If you have connected an SSO provider, like Okta, Google or AzureAD, use those tools to manage your users and groups instead.
 
 ## Create New User
 
-Run `gdeploy identity users create -u YOUR_EMAIL_ADDRESS` to create new user in current cognito user pool id. 
+To create new user in current cognito user pool id, run the following command:
 
-To instead create an admin user, pass `--admin` or `-a` arg like `gdeploy identity users create --admin --u YOUR_EMAIL_ADDRESS` 
+```
+gdeploy identity users create -u USER_EMAIL_ADDRESS
+```
 
-## Remove User 
+To instead create an admin user, pass `--admin` or `-a` flag. Here's a sample:
 
-Run `gdeploy identity users delete -u YOUR_EMAIL_ADDRESS` to delete existing user.
+```
+gdeploy identity users create --admin --u USER_EMAIL_ADDRESS
+```
+
+## Remove User
+
+To delete existing user, run:
+
+```
+gdeploy identity users delete -u USER_EMAIL_ADDRESS
+```
 
 ## Add New User Group
 
-Run `gdeploy identity groups create --group-name GROUP_NAME` to create new user group in current cognito user pool id. 
+o create new user group in current cognito user pool id, run:
 
-Additionally, pass `--desc` arg to add description to your user group. 
+```
+gdeploy identity groups create --group-name GROUP_NAME
+```
 
-`gdeploy identity groups create --group-name GROUP_NAME -desc "YOUR_DESCRIPTION"` 
+To add a description to your user group pass the `--desc` flag. Here's a sample:
 
-## Remove User Group 
+```
+gdeploy identity groups create --group-name GROUP_NAME -desc GROUP_DESCRIPTION
+```
 
-Run `gdeploy identity groups delete --group-name GROUP_NAME` to delete existing user group.
+## Remove User Group
 
-## Add Members to Existing User Group 
+To delete existing user group, run:
 
-Run `gdeploy identity groups members add --group GROUPNAME -u USERNAME` to add user to provided user group.  
+```
+gdeploy identity groups delete --group-name GROUP_NAME
+```
+
+## Add Members to Existing User Group
+
+To add user to provided user group, run:
+
+```
+gdeploy identity groups members add --group GROUP_NAME -u USER_EMAIL_ADDRESS
+```

@@ -8,7 +8,7 @@ sidebar_position: 2
 Common Fate user and group sync requires some credentials to be configured in your identity provider account. Common Fate uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
-## Google Setup
+## Setup
 
 Set up a [Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) in Google Cloud. Enable use of the Admin SDK by visiting [this link](https://console.cloud.google.com/apis/library/admin.googleapis.com) and clicking **Enable**.
 

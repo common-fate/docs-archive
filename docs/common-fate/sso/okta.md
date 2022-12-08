@@ -10,7 +10,7 @@ sidebar_position: 3
 
 To set up Okta to sync users and groups with Common Fate we will need to create an access token to communicate with Okta's API.
 
-Sign in to your Okta organization as a user with [administrator privileges (opens new window)](https://help.okta.com/okta_help.htm?id=ext_Security_Administrators).
+Sign in to your Okta organization as a user with [administrator privileges](https://help.okta.com/okta_help.htm?id=ext_Security_Administrators).
 
 :::info
 API tokens have the same permissions as the user who creates them, and if the user permissions change, the API token permissions also change.
