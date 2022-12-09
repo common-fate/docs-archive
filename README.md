@@ -52,7 +52,7 @@ We use some templating to generate provider registry docs from the definitions i
 Update Common Fate repo dependency
 
 ```
-go get github.com/common-fate/granted-approvals@<tag>
+go get github.com/common-fate/common-fate@<tag>
 ```
 
 Generate the docs
