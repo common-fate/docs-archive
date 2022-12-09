@@ -11,7 +11,7 @@ This page will detail migration steps to upgrade your deployment of Common Fate 
 ### Rebranding From Granted Approvals to Common Fate
 
 In v0.11.0 the platform has been rebranded to be called Common Fate, this includes renaming the repository from common-fate/granted-approvals to commonfate/common-fate.
-There are non breaking changes to the appearance of some colors and logos in the frontend, and non breaking changes to naming conventions in the backend code.
+There are non breaking changes to the appearance of some colors and logos in the frontend, as well as non breaking changes to naming conventions in the backend code.
 
 ### Deployment Configuration File Changes
 

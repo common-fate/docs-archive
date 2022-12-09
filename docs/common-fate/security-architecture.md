@@ -29,7 +29,7 @@ There are two authorization levels within Common Fate:
 - End User
 - Administrator
 
-End Users can make and approve Access Requests. The resources which they can request and approve access for are governed by Access Rules. Access Rules define which groups can request access, and which groups approve requests. Users can belong to multiple groups. When Common Fate is connected to your corporate identity provider, groups and group memberships are synchronised from your identity provider’s directory.
+End Users can make and approve Access Requests. The resources that they can request and approve access for are governed by Access Rules. Access Rules define which groups can request access, and which groups approve requests. Users can belong to multiple groups. When Common Fate is connected to your corporate identity provider, groups and group memberships are synchronised from your identity provider’s directory.
 
 Administrators can create and modify Access Rules. A user is an Administrator if they belong to the Administrative Group. This group is specified when deploying Common Fate. When Common Fate is connected to your identity provider, the Administrative Group is a group ID of a group in your identity provider. This allows you to use your identity provider (such as Okta or Azure AD) to manage Common Fate administrators.
 
@@ -52,7 +52,7 @@ Common Fate stores data in Amazon DynamoDB and supports data backup and restore 
 `gdeploy` is a command-line interface (CLI) tool for creating and managing Common Fate deployments. Common Fate signs `gdeploy` binaries with our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key). You can verify the integrity and authenticity of a `gdeploy` binary by following the process below.
 
 :::note
-The process below will use `v0.7.0` as the version of `gdeploy`. Ensure that you change references to `v0.7.0` to the version of Common Fate you wish to verify when following this process.
+The process below will use `v0.7.0` as the version of `gdeploy`. Ensure you change version references to `v0.7.0` to the version of Common Fate you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](https://docs.commonfate.io/granted/security#pgp-public-key):
