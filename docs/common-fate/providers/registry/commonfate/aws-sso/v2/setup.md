@@ -1,4 +1,5 @@
-# commonfate/aws-sso/setup@v2
+# Setup
+## commonfate/aws-sso@v2
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::

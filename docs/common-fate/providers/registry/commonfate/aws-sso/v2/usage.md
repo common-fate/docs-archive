@@ -1,4 +1,5 @@
-# commonfate/aws-sso/usage@v2
+# Usage
+## commonfate/aws-sso/usage@v2
 
 # AWS Organizational Unit Access
 

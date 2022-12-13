@@ -42,37 +42,29 @@ var GenerateCommand = cli.Command{
 						// providers -> registry -> commonfate -> aws-sso -> v2 -> setup
 						//												  		-> usage
 
-						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType)
+						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType, providerVersion)
+						err := os.MkdirAll(providerFolder, 0700)
+						if err != nil {
+							return err
+						}
 						uses := fmt.Sprintf("%s@%s", providerType, providerVersion)
 						registryTemplateData.Providers = append(registryTemplateData.Providers, RegistryProvider{
 							Name: uses,
 							Path: path.Join("./", providerType, providerVersion),
 						})
 
-						providerSetupFolder := path.Join(providerFolder, "setup")
-						err := os.MkdirAll(providerSetupFolder, os.ModePerm)
-						if err != nil {
-							return err
-						}
 						instructions, err := psetup.ParseDocsFS(setuper.SetupDocs(), cfg, psetup.TemplateData{
 							AccessHandlerExecutionRoleARN: "{{ Access Handler Execution Role ARN }}",
 						})
 						if err != nil {
 							return err
 						}
-						providerVersionFile := path.Join(providerSetupFolder, providerVersion+".md")
+						providerVersionFile := path.Join(providerFolder, "setup.md")
 						f, err := os.Create(providerVersionFile)
 						if err != nil {
 							return err
 						}
 						defer f.Close()
-
-						//create usage folder + files
-						providerUsageFolder := path.Join(providerFolder, "usage")
-						err = os.MkdirAll(providerUsageFolder, os.ModePerm)
-						if err != nil {
-							return err
-						}
 
 						tmpl, err := template.New("instruction").Parse(InstructionTemplate)
 						if err != nil {
@@ -148,7 +140,7 @@ var GenerateCommand = cli.Command{
 								Version:  providerVersion,
 							}
 							//create the usage file
-							providerVersionFileUsage := path.Join(providerUsageFolder, providerVersion+".md")
+							providerVersionFileUsage := path.Join(providerFolder, "usage.md")
 							f2, err := os.Create(providerVersionFileUsage)
 							if err != nil {
 								return err
@@ -247,7 +239,8 @@ type InstructionTemplateData struct {
 	DeploymentConfig string
 }
 
-const InstructionTemplate string = `# {{ .Provider }}/setup@{{ .Version }}
+const InstructionTemplate string = `# Setup
+## {{ .Provider }}@{{ .Version }}
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
@@ -275,7 +268,8 @@ type UsageTemplateData struct {
 	Step     Step
 }
 
-const UsageTemplate string = `# {{ .Provider }}/usage@{{ .Version }}
+const UsageTemplate string = `# Usage
+## {{ .Provider }}/usage@{{ .Version }}
 {{ $.Step.Instructions }}
 
 `

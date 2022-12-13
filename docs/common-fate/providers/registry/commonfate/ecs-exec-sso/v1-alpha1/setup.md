@@ -1,4 +1,5 @@
-# commonfate/ecs-exec-sso/setup@v1-alpha1
+# Setup
+## commonfate/ecs-exec-sso@v1-alpha1
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::

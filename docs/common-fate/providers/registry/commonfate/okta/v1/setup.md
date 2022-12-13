@@ -1,4 +1,5 @@
-# commonfate/okta/setup@v1
+# Setup
+## commonfate/okta@v1
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
