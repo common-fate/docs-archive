@@ -22,5 +22,5 @@ If you have any questions about Common Fate's architecture, feel free to get in 
 - You'll need an AWS profile set up on your computer with the ability to create resources and IAM roles in the account you'll deploy Common Fate to.
 
 :::info
-If you don't have an AWS account and would like to use Common Fate, or would prefer to deploy to Google Cloud or Microsoft Azure, [join our early access program for Common Fate Cloud](https://granted.dev/cfcloud?ref=docs-approvals-prereq).
+If you don't have an AWS account and would like to use Common Fate, or would prefer to deploy to Google Cloud or Microsoft Azure, [join our early access program for Common Fate Cloud](https://commonfate.io/early-access).
 :::
