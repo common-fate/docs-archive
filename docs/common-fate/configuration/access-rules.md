@@ -39,12 +39,7 @@ Select from the options and then press **Next**.
 
 ![](/img/access-rules/02-provider.png)
 
-<<<<<<< HEAD
 For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/common-fate/providers/registry/commonfate/aws-sso/usage/v2).
-=======
-For detailed setup instructions on how to configure an AWS SSO provider with Organizational Units, Accounts and Permission Sets refer to [Organizational Unit Access](/common-fate/configuration/org-units).
-
-> > > > > > > main
 
   </TabItem>
   <TabItem value="okta" label="Okta">
