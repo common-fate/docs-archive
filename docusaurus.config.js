@@ -96,7 +96,7 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "granted-approvals",
+        id: "common-fate",
         path: "docs/common-fate",
         routeBasePath: "common-fate",
         sidebarPath: "./sidebars.approvals.js",
@@ -112,7 +112,7 @@ const config = {
             to: "/granted/introduction",
           },
           {
-            from: "/granted-approvals",
+            from: "/common-fate",
             to: "/common-fate/introduction",
           },
           {
@@ -144,7 +144,7 @@ const config = {
             label: "Granted",
           },
           {
-            docsPluginId: "granted-approvals",
+            docsPluginId: "common-fate",
             type: "doc",
             docId: "introduction",
             position: "left",
@@ -184,7 +184,7 @@ const config = {
               },
               {
                 label: "Common Fate",
-                to: "/granted-approvals/introduction",
+                to: "/common-fate/introduction",
               },
             ],
           },

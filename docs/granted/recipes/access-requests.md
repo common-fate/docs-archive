@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-For this recipe, you'll need [Common Fate Configured](/granted-approvals/introduction).
+For this recipe, you'll need [Common Fate Configured](/common-fate/introduction).
 
 You can use Granted to request access to roles through Common Fate. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted.
 

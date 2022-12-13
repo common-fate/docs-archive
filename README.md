@@ -45,7 +45,7 @@ This command generates static content into the `build` directory and can be serv
 
 ### Generate Provider Registry Docs
 
-We use some templating to generate provider registry docs from the definitions in github.com/common-fate/tree/main/accesshandler/pkg/providerregistry
+We use some templating to generate provider registry docs from the definitions in github.com/common-fate/common-fate/accesshandler/providerregistry
 
 #### Run an update of provider docs
 
@@ -58,7 +58,7 @@ go get github.com/common-fate/common-fate@<tag>
 Generate the docs
 
 ```
-go run cmd/docscli/main.go generate --approvals-version=<latest approvals version>
+go run cmd/docscli/main.go generate --version=<latest approvals version>
 ```
 
 Make a PR with the generate files

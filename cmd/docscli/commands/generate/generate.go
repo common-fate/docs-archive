@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 	"text/template"
@@ -20,7 +21,7 @@ import (
 
 var GenerateCommand = cli.Command{
 	Name:  "generate",
-	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.11.0"}},
+	Flags: []cli.Flag{&cli.StringFlag{Name: "version", Value: "v0.11.0"}},
 	Action: func(c *cli.Context) error {
 		err := os.RemoveAll("./docs/common-fate/providers/registry/")
 		if err != nil {
@@ -36,23 +37,29 @@ var GenerateCommand = cli.Command{
 					cfg := configer.Config()
 					setuper, ok := registeredProvider.Provider.(providers.SetupDocer)
 					if ok {
-						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType)
+
+						//update folder structure to be as follows:
+						// providers -> registry -> commonfate -> aws-sso -> v2 -> setup
+						//												  		-> usage
+
+						providerFolder := path.Join("./docs/common-fate/providers/registry", providerType, providerVersion)
+						err := os.MkdirAll(providerFolder, 0700)
+						if err != nil {
+							return err
+						}
 						uses := fmt.Sprintf("%s@%s", providerType, providerVersion)
 						registryTemplateData.Providers = append(registryTemplateData.Providers, RegistryProvider{
 							Name: uses,
 							Path: path.Join("./", providerType, providerVersion),
 						})
-						err := os.MkdirAll(providerFolder, os.ModePerm)
-						if err != nil {
-							return err
-						}
+
 						instructions, err := psetup.ParseDocsFS(setuper.SetupDocs(), cfg, psetup.TemplateData{
 							AccessHandlerExecutionRoleARN: "{{ Access Handler Execution Role ARN }}",
 						})
 						if err != nil {
 							return err
 						}
-						providerVersionFile := path.Join(providerFolder, providerVersion+".md")
+						providerVersionFile := path.Join(providerFolder, "setup.md")
 						f, err := os.Create(providerVersionFile)
 						if err != nil {
 							return err
@@ -73,7 +80,7 @@ var GenerateCommand = cli.Command{
 						deploymentConfig := deploy.Config{
 							Version: 2,
 							Deployment: deploy.Deployment{
-								Release:   c.String("approvals-version"),
+								Release:   c.String("version"),
 								StackName: "example",
 								Account:   "12345678912",
 								Region:    "ap-southeast-2",
@@ -124,6 +131,55 @@ var GenerateCommand = cli.Command{
 						_, err = f.WriteString(instructionsOutput.String())
 						if err != nil {
 							return err
+						}
+
+						//todo: add this functionality for all providers
+						if providerType == "commonfate/aws-sso" {
+							usageData := UsageTemplateData{
+								Provider: providerType,
+								Version:  providerVersion,
+							}
+							//create the usage file
+							providerVersionFileUsage := path.Join(providerFolder, "usage.md")
+							f2, err := os.Create(providerVersionFileUsage)
+							if err != nil {
+								return err
+							}
+							defer f2.Close()
+
+							//read the usage doc
+							//TODO:Update this with a file system read from the common fate repo
+							filePath, err := filepath.Abs("./aws-sso-usage/org-units.md")
+							if err != nil {
+								return err
+							}
+							data, err := os.ReadFile(filePath)
+							if err != nil {
+								return err
+							}
+							usageData.Step = Step{
+
+								Instructions: string(data),
+							}
+
+							if err != nil {
+								return err
+							}
+
+							tmpl, err := template.New("usage").Parse(UsageTemplate)
+							if err != nil {
+								return err
+							}
+
+							usageOutput := new(strings.Builder)
+							err = tmpl.ExecuteTemplate(usageOutput, "usage", usageData)
+							if err != nil {
+								return err
+							}
+							_, err = f2.WriteString(usageOutput.String())
+							if err != nil {
+								return err
+							}
 						}
 					}
 				}
@@ -183,7 +239,8 @@ type InstructionTemplateData struct {
 	DeploymentConfig string
 }
 
-const InstructionTemplate string = `# {{ .Provider }}@{{ .Version }}
+const InstructionTemplate string = `# Setup
+## {{ .Provider }}@{{ .Version }}
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
@@ -203,6 +260,18 @@ This step will guide you through collecting the values for these fields required
 {{- end}}
 {{ $option.Instructions }}
 {{- end}}
+`
+
+type UsageTemplateData struct {
+	Provider string
+	Version  string
+	Step     Step
+}
+
+const UsageTemplate string = `# Usage
+## {{ .Provider }}/usage@{{ .Version }}
+{{ $.Step.Instructions }}
+
 `
 
 type RegistryProvider struct {
