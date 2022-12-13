@@ -90,6 +90,7 @@ Resources:
                   - organizations:ListAccountsForParent
                   - organizations:ListRoots
                   - organizations:ListTagsForResource
+                  - organizations:ListOrganizationalUnitsForParent
                   - sso:DescribeAccountAssignmentCreationStatus
                   - sso:DescribeAccountAssignmentDeletionStatus
                   - sso:DescribePermissionSet
