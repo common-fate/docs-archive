@@ -1,11 +1,8 @@
 # commonfate/ecs-exec-sso/setup@v1-alpha1
-
 :::info
 When setting up a provider for your deployment, we recommend using the [interactive setup workflow](../../../interactive-setup.md) which is available from the Providers tab of your admin dashboard.
 :::
-
 ## Example granted_deployment.yml
-
 ```yaml
 version: 2
 deployment:
@@ -27,20 +24,17 @@ deployment:
           instanceArn: ""
           ssoRegion: ""
           ssoRoleArn: ""
+
 ```
-
 ## Find the AWS SSO instance details
-
 ### Configuration Fields
-
 This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field           | Description                                    |
-| --------------- | ---------------------------------------------- |
-| identityStoreId | The AWS SSO Identity Store ID                  |
-| instanceArn     | The AWS SSO Instance ARN                       |
-| ssoRegion       | The region the AWS SSO instance is deployed to |
-
+| Field | Description |
+| ----------- | ----------- |
+| identityStoreId | The AWS SSO Identity Store ID |
+| instanceArn | The AWS SSO Instance ARN |
+| ssoRegion | The region the AWS SSO instance is deployed to |
 ### Using the AWS CLI
 
 If you have the AWS CLI installed and can access the account that your AWS SSO instance is deployed to, run the following command to retrieve details about the instance:
@@ -70,18 +64,14 @@ Open the AWS console in the account that your AWS SSO instance is deployed to. I
 Visit the **Settings** tab. The information about your SSO instance will be shown here, including the Instance ARN (as the “ARN” field) and the Identity Store ID.
 
 ![](https://static.commonfate.io/providers/aws/sso/console-instance-arn-setup.png)
-
 ## Locating your ECS Resources
-
 ### Configuration Fields
-
 This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field         | Description                                        |
-| ------------- | -------------------------------------------------- |
-| ecsClusterArn | The ARN of the ECS Cluster to provision access to  |
-| ecsRegion     | The region the ecs cluster instance is deployed to |
-
+| Field | Description |
+| ----------- | ----------- |
+| ecsClusterArn | The ARN of the ECS Cluster to provision access to |
+| ecsRegion | The region the ecs cluster instance is deployed to |
 # Locating your ECS Cluster
 
 Locate your chosen `ecsClusterArn` by running the following command:
@@ -100,17 +90,13 @@ Locate your chosen `ecsClusterArn` by running the following command:
 Copy in the ARN of the ECS cluster you want to set up the Access Provider for.
 
 Enter the region where your cluster is deployed.
-
 ## Create a SSO IAM role
-
 ### Configuration Fields
-
 This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field      | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
+| Field | Description |
+| ----------- | ----------- |
 | ssoRoleArn | The ARN of the AWS IAM Role with permission to administer SSO |
-
 This Access Provider requires permissions to manage your SSO instance.
 
 The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
@@ -216,17 +202,13 @@ Acknowledge the IAM role creation check box and click **Create Stack**
 Copy the **RoleARN** output from the stack and paste it in the **ssoRoleArn** config value on the right.
 
 ![](https://static.commonfate.io/providers/aws/sso/role-output.png)
-
 ## Create an ECS IAM role
-
 ### Configuration Fields
-
 This step will guide you through collecting the values for these fields required to setup your provider.
 
-| Field      | Description                                             |
-| ---------- | ------------------------------------------------------- |
+| Field | Description |
+| ----------- | ----------- |
 | ecsRoleArn | The ARN of the AWS IAM Role with permission to read ECS |
-
 This Access Provider requires permissions to read ECS properties.
 
 The following instructions will help you to setup the required IAM Role with a trust relationship that allows only the Common Fate Access Handler to assume the role.
@@ -312,16 +294,12 @@ Acknowledge the IAM role creation check box and click **Create Stack**
 Copy the **RoleARN** output from the stack and paste it in the **ssoRoleArn** config value on the right.
 
 ![](https://static.commonfate.io/providers/aws/sso/role-output.png)
-
 ## Finalizing Your Deployment
-
 ### Configuration Fields
-
 This step will guide you through collecting the values for these fields required to setup your provider.
 
 | Field | Description |
-| ----- | ----------- |
-
+| ----------- | ----------- |
 # Setting up Python shell access
 
 If you aren't using interactive Python shells on your ECS tasks, skip this step.

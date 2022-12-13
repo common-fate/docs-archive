@@ -21,7 +21,7 @@ import (
 
 var GenerateCommand = cli.Command{
 	Name:  "generate",
-	Flags: []cli.Flag{&cli.StringFlag{Name: "approvals-version", Value: "v0.11.0"}},
+	Flags: []cli.Flag{&cli.StringFlag{Name: "version", Value: "v0.11.0"}},
 	Action: func(c *cli.Context) error {
 		err := os.RemoveAll("./docs/common-fate/providers/registry/")
 		if err != nil {
@@ -88,7 +88,7 @@ var GenerateCommand = cli.Command{
 						deploymentConfig := deploy.Config{
 							Version: 2,
 							Deployment: deploy.Deployment{
-								Release:   c.String("approvals-version"),
+								Release:   c.String("version"),
 								StackName: "example",
 								Account:   "12345678912",
 								Region:    "ap-southeast-2",

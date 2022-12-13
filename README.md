@@ -58,7 +58,7 @@ go get github.com/common-fate/common-fate@<tag>
 Generate the docs
 
 ```
-go run cmd/docscli/main.go generate --approvals-version=<latest approvals version>
+go run cmd/docscli/main.go generate --version=<latest approvals version>
 ```
 
 Make a PR with the generate files
