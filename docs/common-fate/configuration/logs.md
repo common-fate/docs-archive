@@ -27,7 +27,7 @@ You can use `gdeploy` to query for logs. Under the hood, `gdeploy` calls CloudWa
 
 ## Getting logs for all services
 
-To retrieve logs for all services, run
+To retrieve logs for all services, run:
 
 ```
 gdeploy logs get

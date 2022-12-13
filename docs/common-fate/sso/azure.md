@@ -14,7 +14,7 @@ Common Fate user and group sync requires some credentials to be configured in yo
 
 To set up Azure to sync users and groups with Common Fate we will need to create an access token to communicate with Azure's Graph API.
 
-Sign in to your Azure portal as a user with [administrator privileges (opens new window)](https://portal.azure.com).
+Sign in to your Azure portal as a user with [administrator privileges](https://portal.azure.com).
 
 In the Console, search or select **App Registrations** from the list of resources on Azure and then select the **New registration** to make a new App.
 ![](/img/sso/azure/app-registrations.png)
@@ -192,7 +192,7 @@ You will need to redeploy using `gdeploy update` to update the identity provider
 
 ## Customising the Azure AD email attribute
 
-By default, Common Fate uses an Azure user's [UserPrincipalName (UPN)](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/plan-connect-userprincipalname) as the email attribute when syncing an Azure AD directory. This can be overridden to another attribute, such as mail, by setting the azure entry in your `granted-deployment.yml` file as follows:
+By default, Common Fate uses an Azure user's [UserPrincipalName (UPN)](https://learn.microsoft.com/en-us/azure/active-directory/hybrid/plan-connect-userprincipalname) as the email attribute when syncing an Azure AD directory. This can be overridden to another attribute, such as mail, by setting the azure entry in your `deployment.yml` file as follows:
 
 ```diff
 deployment:

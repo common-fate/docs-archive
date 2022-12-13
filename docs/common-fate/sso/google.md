@@ -8,11 +8,11 @@ sidebar_position: 2
 Common Fate user and group sync requires some credentials to be configured in your identity provider account. Common Fate uses [2LO](https://developers.google.com/identity/protocols/oauth2/service-account) authentication to read users and groups from your directory and sync them to an internal database every 5 minutes.
 :::
 
-## Google Setup
+## Setup
 
 Set up a [Project](https://cloud.google.com/resource-manager/docs/creating-managing-projects) in Google Cloud. Enable use of the Admin SDK by visiting [this link](https://console.cloud.google.com/apis/library/admin.googleapis.com) and clicking **Enable**.
 
-![](/img/sso/google/01-enable-sdk.png)
+![](/img/sso/google/01-enablesdk.png)
 
 ### Create Service Account
 
@@ -22,7 +22,7 @@ Start by opening the [Service accounts page](https://console.developers.google
 
 Click  **Create service account,** you will be taken to a page that looks like this.
 
-![](/img/sso/google/02-create-service-account.png)
+![](/img/sso/google/02-createserviceaccount.png)
 
 Under **Service account details**, type a name, ID, and description for the service account, then click **Create and continue**.
 
@@ -30,7 +30,11 @@ Under **Service account details**, type a name, ID, and description for the ser
 
 Then click **Continue,** followed by **Done**. This will now have created a new service account.
 
-Next we will need to delegate domain-wide authority to the service account. This requires an admin user account to access the Admin console.
+Next, you will need to delegate domain-wide authority to the service account.
+
+:::note
+To complete this step you require an admin user account, enabling you to access the admin console.
+:::
 
 From your Google Workspace domain's [Admin console](https://admin.google.com/) (different to your GCP admin console), go to **Main menu > Security > Access and data control > API Controls**.
 
@@ -50,20 +54,24 @@ https://www.googleapis.com/auth/admin.directory.group.readonly,
 Click **Authorize**.
 
 Head back over to the Service Accounts page in GCP where all the service accounts are listed. Find the service account you just created, use the filter search at the top if there are many service accounts in your project.
-
+s
 Click on the service account you have just created and you will be redirected to a page that looks like this
 
-![](/img/sso/google/03-created-service-account.png)
+![](/img/sso/google/03-createdserviceaccount.png)
 
 ### Create Keys
 
-In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**, then click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the set up is complete.
+In the nav bar navigate to **Keys**. Click **ADD KEY**, followed by **Create new key**.
 
-This is where we can start up the `gdeploy identity sso enable` command.
+![](/img/sso/google/04-createkey.png)
+
+Click **Create**. This will download the JSON key to your machine, make sure to remove this from your machine once the set up is complete.
+
+![](/img/sso/google/05-createjsonkey.png)
 
 ### Running Gdeploy Commands
 
-Run the following to begin the SSO setup
+Open a terminal in the same folder as your `deployment.yml` file, and then run:
 
 ```
 gdeploy identity sso enable
@@ -83,17 +91,17 @@ You will be prompted to select you identity provider, select Google.
 ? Google Workspace Domain: commonfate.io
 ```
 
-2. For the `Google Admin Email` use an admin users email address to the eg. `jack@commonfate.io` We suggest making a new user account that is only linked to this deployment and using that email.
+2. For the `Google Admin Email` use an admin users email address to the eg. `admin@acmecorp.io` We suggest making a new user account that is only linked to this deployment and using that email.
 
 :::info
 This user will need to be an admin in the [Admin console](https://admin.google.com/)
 :::
 
 ```json
-? Google Admin Email: jack@commonfate.io
+? Google Admin Email: admin@acmecorp.io
 ```
 
-3. For the `API Token` param, gdeploy will ask for the path to the previously downloaded JSON key. Enter the path to where it was downloaded or move it into the same directory as gdeploy is running and enter `./{filename}.json`
+3. For the `API Token` parameter, gdeploy will ask for the path to the previously downloaded JSON key. Enter the path to where it was downloaded or move it into the same directory as gdeploy is running and enter `./{filename}.json`
 
 ```
 ? API Token: ****
@@ -122,7 +130,7 @@ You should see an output similar to the below.
 +------------------------+---------------------------------------------------------+
 ```
 
-Next you will need to set up a SAML app, you will see the below prompt, Google supplies only XML so choose String or file.
+Next, you will need to set up a SAML app, you will see the below prompt. Google supplies only XML, select **String** or **File**.
 
 ```
 ? Would you like to use a metadata URL, an XML string, or load XML from a file?  [Use arrows to move, type to filter]
@@ -131,7 +139,7 @@ Next you will need to set up a SAML app, you will see the below prompt, Google s
   File
 ```
 
-You will see something like this, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
+You will a similar output, follow the [next section](#setting-up-saml-sso) to get the XML Metadata required for this step.
 
 ```
 ? Metadata URL

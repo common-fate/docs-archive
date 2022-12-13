@@ -48,7 +48,7 @@ Click on the certificate and copy the ARN.
 
 ## Adding the custom domain and Certifcate ARN to Granted
 
-Edit your `granted-deployment.yml` file as follows to specify the custom domain details:
+Edit your `deployment.yml` file as follows to specify the custom domain details:
 
 ```diff
 version: 1
