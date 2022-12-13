@@ -8,9 +8,9 @@ Release information, including the latest version number and the changelog, can 
 
 The below process will use an example version upgrade from `v0.2.0` to `v0.2.1`.
 
-First, ensure that your `gdeploy` CLI is up to date. You can update the CLI by following the installation instructions [here](/common-fate/deploying-granted/setup).
+First, ensure that your `gdeploy` CLI is up to date. You can update the CLI by following the installation instructions [here](/common-fate/deploying-common-fate/setup).
 
-Edit your `granted-deployment.yml` file as follows to specify the latest version:
+Edit your `deployment.yml` file as follows to specify the latest version:
 
 ```diff
 version: 1

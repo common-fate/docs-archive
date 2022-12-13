@@ -25,7 +25,7 @@ General usage information is tracked, such as product versioning and plugins in 
 The above list undergoes frequent audit to ensure accuracy.
 :::
 
-To view exactly what telemetry data is being collected, add the following parameter to your `granted-deployment.yml` file:
+To view exactly what telemetry data is being collected, add the following parameter to your `deployment.yml` file:
 
 ```yaml
 deployment:
@@ -72,7 +72,7 @@ The full list of events, along with example data for each, can be found at the o
 
 ## Opting Out
 
-To opt out of product analytics, add the following entry to your `granted-deployment.yml` file and update your deployment:
+To opt out of product analytics, add the following entry to your `deployment.yml` file and update your deployment:
 
 ```yaml
 deployment:

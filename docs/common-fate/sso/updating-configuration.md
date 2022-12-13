@@ -28,14 +28,14 @@ Finally, you can either change or use the existing value when prompted for an ad
 
 You will need to redeploy using `gdeploy update` to update the indentity provider changes.
 
-## Changing Identity Provider 
+## Changing Identity Provider
 
 If you instead wish to change your identity provider altogether then run the following commands:
 
 1. First, run `gdeploy identity sso disable`
 
 ```
-Are you sure you want to disable SSO? (y/N) 
+Are you sure you want to disable SSO? (y/N)
 ```
 
 This will prompt you to confirm your intent to disable current identity provider. Enter 'y' and press enter.
@@ -48,8 +48,8 @@ This will prompt you to confirm your intent to disable current identity provider
                 2) Run 'gdeploy identity sync' to trigger an immediate sync of your cognito user pool.
 ```
 
-You should see a message like above. 
+You should see a message like above.
 
-2. Next, run `gdeploy identity sso enable` to add new sets of configuration. Follow [this link](/common-fate/sso/sso-setup/#setting-up-sso) for more instruction on setting up SSO. 
+2. Next, run `gdeploy identity sso enable` to add new sets of configuration. Follow [this link](/common-fate/sso/sso-setup/#setting-up-sso) for more instruction on setting up SSO.
 
-3. Finally, run `gdeploy update` to apply the changes to your CloudFormation deployment. 
+3. Finally, run `gdeploy update` to apply the changes to your CloudFormation deployment.

@@ -49,7 +49,7 @@ We use some templating to generate provider registry docs from the definitions i
 
 #### Run an update of provider docs
 
-Update Approvals repo dependency
+Update Common Fate repo dependency
 
 ```
 go get github.com/common-fate/common-fate@<tag>

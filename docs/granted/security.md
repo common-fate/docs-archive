@@ -15,7 +15,7 @@ Granted utilises the [AWS Go SDK v2](https://github.com/aws/aws-sdk-go-v2) for a
 Common Fate signs Granted binaries with our [GPG key](#pgp-public-key). You can verify the integrity and authenticity of a Granted binary by following the process below.
 
 :::note
-The process below will use `v0.5.1` as the version of Granted. Ensure that you change references to `v0.5.1` to the version of Granted you wish to verify when following this process.
+The process below will use `v0.5.1` as the version of Granted. Ensure you change version references to `v0.5.1` to the version of Granted you wish to verify when following this process.
 :::
 
 Prior to verifying a release you must import our [GPG key](#pgp-public-key)
