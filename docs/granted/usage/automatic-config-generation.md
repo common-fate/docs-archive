@@ -35,7 +35,7 @@ granted sso generate --region ap-southeast-2 https://example.awsapps.com/start
 You should see an output like the following:
 
 ```
-[profile CFDemoCompany-AWSAdministratorAccess]
+[profile CFDemoCompany/AWSAdministratorAccess]
 sso_region = ap-southeast-2
 sso_account_id = 123456789012
 sso_role_name = AWSAdministratorAccess
@@ -60,7 +60,7 @@ granted sso populate --prefix test_ --region ap-southeast-2 https://example.awsa
 This command will write an output similar to the following to `~/.aws/config`:
 
 ```
-[profile test_CFDemoCompany-AWSAdministratorAccess]
+[profile test_CFDemoCompany/AWSAdministratorAccess]
 sso_region = ap-southeast-2
 sso_account_id = 123456789012
 sso_role_name = AWSAdministratorAccess
