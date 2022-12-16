@@ -12,7 +12,7 @@ NAME:
    granted credentials - Manage secure IAM credentials
 
 USAGE:
-   granted credentials command [command options] [arguments...]
+   granted credentials command [command options] [arguments0.5.2.]
 
 COMMANDS:
    add               Add IAM credentials to secure storage
