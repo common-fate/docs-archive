@@ -236,8 +236,10 @@ granted registry sync
 This will loop over the repositories associated with your Profile Registry and will pull the latest changes from the remote origin, performing a sync operation.
 
 :::info
-When using AWS CLI with `granted credential-process` you will not be notified of failed Profile Registry syncs. This occurs as AWS expects specific JSON STDOUT when configured with sourcing credentials with an external process. In that case, you can run `assume` or `granted registry sync` to view the issue. Add verbose flag like `assume --verbose` to view the debug logs.
+When using AWS CLI with `granted credential-process` you will not be able to add user specific keys through STDIO.
+Instead the syncing will fail. This occurs as AWS expects only specific JSON STDOUT when configured with sourcing credentials with an external process. You cannot ask user to enter required keys. You should run `granted registry sync` to enter the required keys.
 :::info
+
 
 ## Removing a Profile Registry
 
@@ -249,10 +251,10 @@ granted registry remove
 
 This will display all repositories subscribed to Granted's Profile Registry and will prompt you to choose a repository to unsubscribe.
 
-## Updating Profile Registry Configuration
+## Migrating Profile Registry Configuration
 
-Previously, Profile Registry didn't require passing `-n` or `-u` flag. However, the current version has some breaking changes so if you are already using Granted Profile Registry then run the following command to update your registry configuration.
+Previously, Profile Registry didn't require passing `-n` or `-u` flag. However, the current version has some breaking changes so if you are already using Granted Profile Registry then run the following command to migrate your registry configuration.
 
 ```
-> granted registry update 
+> granted registry migrate
 ```
