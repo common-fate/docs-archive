@@ -14,7 +14,7 @@ With Granted, you can use the `--exec` flag to have granted assume a profile, th
 
 The effect of the below command is that the get caller identity command is called without exporting any new credentials after it completes. This can also be useful if you wanted to run a quick command for a second account without opening a new terminal.
 
-`assume my-profile --exec 'aws sts get-caller-idenity'`
+`assume my-profile --exec 'aws sts get-caller-identity'`
 
 In a bash script, the following example would run a program for each profile in a file.
 
