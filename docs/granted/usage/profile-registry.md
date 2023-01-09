@@ -266,7 +266,7 @@ granted registry remove
 This will display all repositories subscribed to Granted's Profile Registry and will prompt you to choose a repository to unsubscribe.
 
 ## Migrating Profile Registry configuration
-As part of [Granted v0.5.0](https://github.com/common-fate/granted/releases/tag/v0.5.0), the Profile Registry didn't require the `-n` or `-u` flags. [Granted v0.5.3](https://github.com/common-fate/granted/releases/tag/v0.5.3) includes breaking changes to this. If you are using a version of Profile Registries prior to Granted v0.5.3, run the following command to migrate your registry configuration:
+As part of [Granted v0.5.0](https://github.com/common-fate/granted/releases/tag/v0.5.0), the Profile Registry didn't require the `-n` or `-u` flags. [Granted v0.6.0](https://github.com/common-fate/granted/releases/tag/v0.6.0) includes breaking changes to this. If you are using a version of Profile Registries prior to Granted v0.6.0, run the following command to migrate your registry configuration:
 
 ```
 granted registry migrate
