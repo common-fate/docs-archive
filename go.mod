@@ -135,7 +135,7 @@ require (
 )
 
 require (
-	github.com/common-fate/common-fate v0.11.1
+	github.com/common-fate/common-fate v0.12.0
 	github.com/cpuguy83/go-md2man/v2 v2.0.2 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
