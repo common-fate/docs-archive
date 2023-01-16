@@ -88,7 +88,7 @@ The default template used to generate profile names is:
 {{ .AccountName }}/{{ .RoleName }}
 ```
 
-Here populate command example that generates profiles using a . as the separator between the AWS account name and the role name:
+Here is a granted populate command example that generates profiles using a period as the separator between the AWS account name and the role name:
 
 ```bash
 granted sso populate --profile-template="{{ .AccountName }}.{{ .RoleName }}" --region ap-southeast-2 https://example.awsapps.com/start
