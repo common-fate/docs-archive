@@ -8,7 +8,7 @@ Granted allows you to access multiple cloud accounts in your web browser simulta
 
 ![A screenshot of the AWS Console on Firefox with two tabs: the first tab is blue and is the 'role-a' profile, and the second tab is orange and is the 'role-b' profile](/img/tab-containers.png)
 
-If you have credentials already assumed locally you can run `assume role-a -c ` to open up a console window using that role.
+If you have credentials already assumed locally you can run `assume -c role-a` to open up a console window using that role.
 
 ## For a specific profile
 

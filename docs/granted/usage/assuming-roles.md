@@ -8,18 +8,17 @@ Run the `assume` command to assume a role with Granted.
 
 ## First time setup
 
-The first time you run `assume`, you'll be prompted to select a web browser for Granted to use when opening web consoles for your roles. You should see a prompt similar to the one below.
+The first time you run `assume`, you'll be prompted to choose Firefox or your default browser for Granted to use when opening web consoles for your roles. You should see a prompt similar to the one below.
 
 - Granted searches your PATH and checks common install locations to determine your current default browser. If that's not the browser you want to use you can still specify another at a later stage in the first time setup.
 
 ```
 ➜ assume
-Granted works best with Firefox but also supports Chrome, Brave, and Edge (https://granted.dev/browsers).
+[i] Thanks for using Granted!
+[i] By default, Granted will open the AWS console with this browser: Chrome
+[!] Granted works best with Firefox but also supports Chrome, Brave, and Edge (https://docs.commonfate.io/granted/introduction#supported-browsers). You can change this setting later by running 'granted browser set'
 
-ℹ️  Granted has detected that your default browser is Brave.
-? Use this browser with Granted?
-> Yes
-  No
+? Use Firefox as default Granted browser? (y/N)
 ```
 
 If you select Firefox, you'll be prompted to install the [Granted Firefox addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/). Follow the steps in the wizard and then rerun `assume`.
@@ -33,7 +32,7 @@ The second time you run `assume`, you will be prompted to set up a shell alias. 
 ```
 ➜ assume
 
-ℹ️ To assume roles with Granted, we need to add an alias to your shell profile (https://granted.dev/shell-alias).
+ℹ️ To assume roles with Granted, we need to add an alias to your shell profile (https://docs.commonfate.io/granted/internals/shell-alias).
 ? Install zsh alias at /Users/<username>/.zshenv Yes
 
 Added the Granted alias to /Users/<username>/.zshenv
