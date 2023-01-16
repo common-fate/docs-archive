@@ -12,7 +12,7 @@ deployment:
   stackName: common-fate
   account: "123456789012"
   region: ap-southeast-2
-  release: v0.11.0
+  release: v0.12.0
   parameters:
     CognitoDomainPrefix: common-fate-login-cfdemo
     AdministratorGroupID: common_fate_administrators
