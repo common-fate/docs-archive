@@ -128,7 +128,7 @@ AWS_ACCESS_KEY_ID=example AWS_SECRET_ACCESS_KEY=example AWS_SESSION_TOKEN=exampl
 
 ```
 
-To return the URL to stdout instead of launching a browser, use the `--url` flag
+To return the URL to stdout instead of launching a browser, use the `--url` flag. Here's an example:
 
 ```bash
 
