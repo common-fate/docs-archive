@@ -116,6 +116,36 @@ or
 assume role-a -u
 ```
 
+## Launching the console with existing credentials
+
+In some cases, you may want to launch a console using existing credentials. An example is to programatically invoke `granted` from another application where that application manages the credentials.
+
+The `granted console` command will read the credentials from the environment as below:
+
+```bash
+
+AWS_ACCESS_KEY_ID=example AWS_SECRET_ACCESS_KEY=example AWS_SESSION_TOKEN=example granted console --service cfn --region us-east-1
+
+```
+
+To return the URL to stdout instead of launching a browser, use the `--url` flag. Here's an example:
+
+```bash
+
+AWS_ACCESS_KEY_ID=example AWS_SECRET_ACCESS_KEY=example AWS_SESSION_TOKEN=example granted console --url
+
+```
+
+To generate the firefox container URL, use the `--firefox` flag. Here's an example:
+
+```bash
+
+AWS_ACCESS_KEY_ID=example AWS_SECRET_ACCESS_KEY=example AWS_SESSION_TOKEN=example granted console --url --firefox
+
+```
+
+Use `granted console --help` for more information.
+
 ## Firefox: cleaning up containers
 
 The Granted Firefox extension includes a menu where you can view and clear your tab containers. The menu should appear next to the settings icon as shown below.
