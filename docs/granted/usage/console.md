@@ -136,7 +136,7 @@ AWS_ACCESS_KEY_ID=example AWS_SECRET_ACCESS_KEY=example AWS_SESSION_TOKEN=exampl
 
 ```
 
-To generate the firefox container URL, use the `--firefox` flag
+To generate the firefox container URL, use the `--firefox` flag. Here's an example:
 
 ```bash
 
