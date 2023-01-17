@@ -68,6 +68,32 @@ sso_start_url = https://example.awsapps.com/start
 # ...
 ```
 
+The profile name can be customized using the `--profile-template` flag. The template uses the [gotemplate format](https://pkg.go.dev/text/template). The available fields are those of this struct:
+
+```go
+type SSOProfile struct {
+	// SSO details
+	StartUrl  string
+	SSORegion string
+	// Account and role details
+	AccountId   string
+	AccountName string
+	RoleName    string
+}
+```
+
+The default template used to generate profile names is:
+
+```
+{{ .AccountName }}/{{ .RoleName }}
+```
+
+Here is a granted populate command example that generates profiles using a period as the separator between the AWS account name and the role name:
+
+```bash
+granted sso populate --profile-template="{{ .AccountName }}.{{ .RoleName }}" --region ap-southeast-2 https://example.awsapps.com/start
+```
+
 ## Additional notes
 
 If you have access to multiple AWS SSO instances, you'll need to run this command once for each instance.
