@@ -118,8 +118,7 @@ assume role-a -u
 
 ## Launching the console with existing credentials
 
-In some cases, you may want to launch a console using existing credentials.
-An example is to programatically invoke `granted` from another application where that application manages the credentials.
+In some cases, you may want to launch a console using existing credentials. An example is to programatically invoke `granted` from another application where that application manages the credentials.
 
 The `granted console` command will read the credentials from the environment as below.
 
