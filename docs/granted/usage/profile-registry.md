@@ -8,7 +8,7 @@ Sharing consistent AWS profiles amongst team members can be helpful. This allows
 
 To manage sharing profile configuration, Granted provides a Profile Registry. This feature utilizes a git repository as a central store for AWS profile configurations. Granted's Profile Registry synchronizes this to the default AWS config file located locally at `~/.aws/config`.
 
-![](/img/profile-registry/overview.png)
+![](/img/profile-registry/registry-overview.png)
 
 ## Creating a Profile Registry
 
@@ -48,7 +48,7 @@ You can add a repository to Granted's Profile Registry by running the following 
 granted registry add -name <registry_name> -url <repository_url>
 ```
 
-Here, flag `-name` or it's alias `-n` is required to identify the registry. 
+Here, flag `-name` or it's alias `-n` is required to identify the registry.
 
 The `granted.yml` file identifies AWS config files to be synced to Granted's Profile Registry. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing your local config file to the repository.
 
@@ -88,19 +88,19 @@ sso_role_name  = <your-sso-role-name>
 To avoid confusion, synced profiles are placed into a designated region in the `/.aws/config` file as shown above. This allows users to have a mix of both synced and regular profiles in their config file:
 :::info
 
-
 ## Optional flags when adding a Profile Registry
 
 | Optional Flag             | Alias | Description                                                                 |
-|---------------------------|-------|-----------------------------------------------------------------------------|
+| ------------------------- | ----- | --------------------------------------------------------------------------- |
 | path                      | p     | provide path if only the subfolder needs to be synced                       |
-| file-name                  | f     | provide filename if yml file is not granted.yml                             |
+| file-name                 | f     | provide filename if yml file is not granted.yml                             |
 | priority                  |       | profile registry will be sorted by priority descending                      |
 | prefix-all-profiles       | pap   | provide this flag if you want to append registry name to all profiles       |
 | prefix-duplicate-profiles | pdp   | provide this flag if you want to append registry name to duplicate profiles |
-| required-key             | r     | used to bypass the prompt or override user specific values                  |
+| required-key              | r     | used to bypass the prompt or override user specific values                  |
 
-## Usage: 
+## Usage:
+
 ### Specifying an alternative YAML file.
 
 Granted allows you to specify an alternative YAML file for your Profile Registry's configuration. Should you wish to specify a different YAML file, run:
@@ -139,13 +139,14 @@ Or with custom file name as:
 granted registry add -n <name> -u <your-repo-url.git> -p <relative_path_to_subfolder> -f <filename>
 ```
 
-### Handling duplicate profile names 
+### Handling duplicate profile names
 
 When multiple registries are in use, registries are synced in descending priority where the default priority is zero. This allows you to consistently define which registry config should be prefixed upon duplication.
 
 For example, you have Profile Registries `core` with priority one and `devOps` with priority zero that both include a profile named `dev`. In this case, the `dev` profile from `devOps` Profile Registry will be prefixed with the registry name to `devops.dev`.
 
 ## Variable substitution for profile configurations
+
 To enable templated profiles, profile values can include Go Templates. This is achieved through adding `templateValues` to your config.yml file. Below in an example.
 
 ```
@@ -153,24 +154,25 @@ awsConfig:
   - ./dev/config1
 templateValues:
   - <YourKeyName>
-    - ... 
-  - BaseProfile: 
+    - ...
+  - BaseProfile:
     - value: "my-profile"
-  - SessionName: 
-      - isRequired: true 
+  - SessionName:
+      - isRequired: true
       - prompt: "Enter your user name (e.g john.doe)"
 ```
 
-Templated values should be defined with `{{ .Required.KeyName}}` or `{{ .Variables.KeyName}}` to differentiate if they are user specific values or arbitary variables. 
+Templated values should be defined with `{{ .Required.KeyName}}` or `{{ .Variables.KeyName}}` to differentiate if they are user specific values or arbitary variables.
 
 Your corresponsing profiles might look like:
+
 ```
 [profile dev]
 sso_start_url  = <https://example.awsapps.com/start>
 sso_region     = <your-sso-region>
 sso_account_id = <your-sso-account-id>
 sso_role_name  = <your-sso-role-name>
-credential_process = granted credential-process --profile {{ .Profile }} 
+credential_process = granted credential-process --profile {{ .Profile }}
 
 [profile prod]
 session_name = {{ .Required.SessionName }}
@@ -185,15 +187,16 @@ role_arn = arn:aws:iam::0123456789012:role/example
 You can also use `{{ .Profile}}` when templating which will accurately interpolate the correct prefixed profile name in case of profile duplication.
 :::
 
+### User specific values
 
-### User specific values 
 Should your Profile Registry require user specific values, you can set these values as required fields by adding `isRequired:true` to the key name of the field. Below is an example `granted.yml` file.
+
 ```
 awsConfig:
   - ...
 templateValues:
-  - SessionName: 
-      - isRequired: true 
+  - SessionName:
+      - isRequired: true
       - prompt: "Enter your user name (e.g john.doe)"
 ```
 
@@ -209,23 +212,26 @@ The inclusion of `isRequired:true` will prompt the user to add the value for `Se
 
 :::info
 You can bypass the prompt by providing the `-r` flag to the Granted CLI command:
+
 ```
 granted registry add -n <name> -u <url> -r "SessionName=<your_session_name>"
 ```
+
 :::info
 
-### Arbitrary variables 
+### Arbitrary variables
+
 For cases where you want to reuse a variable within a config file, you can add `value` to any key name in `templateValues`. Below is an example `granted.yml` file:
 
 1. Add your template variable to granted.yml file like:
+
 ```
 awsConfig:
   - ...
 templateValues:
-  - BaseProfile: 
+  - BaseProfile:
       - value: "my-profile"
 ```
- 
 
 Your config file might look like:
 
@@ -250,9 +256,11 @@ This will loop over the repositories associated with your Profile Registry and w
 :::info
 When using AWS CLI with `granted credential-process` you will not be able to add user specific keys through STDIO.
 Doing so will cause the sync to fail. This occurs as AWS expects only specific JSON STDOUT when sourcing credentials with an external process. Instead, you should first run the follwoing command to enter the required keys:
+
 ```bash
 granted registry sync
 ```
+
 :::
 
 ## Removing a Profile Registry
@@ -266,6 +274,7 @@ granted registry remove
 This will display all repositories subscribed to Granted's Profile Registry and will prompt you to choose a repository to unsubscribe.
 
 ## Migrating Profile Registry configuration
+
 As part of [Granted v0.5.0](https://github.com/common-fate/granted/releases/tag/v0.5.0), the Profile Registry didn't require the `-n` or `-u` flags. [Granted v0.6.0](https://github.com/common-fate/granted/releases/tag/v0.6.0) includes breaking changes to this. If you are using a version of Profile Registries prior to Granted v0.6.0, run the following command to migrate your registry configuration:
 
 ```
