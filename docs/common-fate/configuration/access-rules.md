@@ -3,7 +3,35 @@ import TabItem from "@theme/TabItem";
 
 # Access Rules
 
-## Creating an Access Rule
+Access Rules are a core component of Common Fate. They define what roles and resources particular groups can request access to, and define policies such as requiring a second person to approve the access. Access Rules can be configured within your Terraform code or via click-ops in the web UI.
+
+## Creating an Access Rule in Terraform
+
+To get started with Access Rules in Terraform, follow [Common Fate's guide](https://registry.terraform.io/providers/common-fate/commonfate/latest/docs#resource-access-rule) on Terraform's Provider Registry.
+
+Below is a snippet of what a Common Fate Access Rule might look like in Terraform:
+
+```terraform
+resource "commonfate_access_rule" "s3-example" {
+  name ="s3ListBuckets"
+  description="Allows users to view buckets in AWS"
+  groups=["common_fate_administrators"]
+  target=[
+    {
+      field="accountId"
+      value=["123456789012"]
+    },
+    {
+      field="permissionSetArn"
+      value=[aws_ssoadmin_permission_set.example.arn]
+    }
+  ]
+  target_provider_id="aws-sso-v2"
+  duration="3600"
+}
+```
+
+## Creating an Access Rule in the web UI
 
 Access rules control who can request access to what, and the requirements surrounding their requests.
 
@@ -17,7 +45,7 @@ Press **+ New Access Rule** at the top left of the table.
 
 You will be presented with a form with 5 sections.
 
-## General
+### General
 
 Start by giving your access rule a name and description. This name is what users will see when they look at what they can request access to. Make this something that has meaning in your context, such as Dev Admin or Prod Admin.
 
@@ -25,7 +53,7 @@ Both Name and Description are required fields.
 
 ![](/img/access-rules/01-general.png)
 
-## Provider
+### Provider
 
 Next you will be able to select from one of your configured Access Providers. If you have not yet configured an Access Provider, follow the steps on the [Access Providers page](../providers/00-access-providers.md)
 
@@ -50,11 +78,11 @@ For detailed setup instructions on how to configure an AWS SSO provider with Org
   </TabItem>
 </Tabs>
 
-## Time
+### Time
 
 The time section allows you to configure constraints around how long your users may request access for.
 
-### Maximum duration
+#### Maximum duration
 
 Set a maximum duration for access per request.
 
@@ -62,7 +90,7 @@ Set a maximum duration for access per request.
 
 This duration controls how long a user will be able to access the target of the access rule. For example, in AWS SSO, a user may be able to request credentials for an account and permission set any time during the their approved window. However their maximum SSO session duration may be less than that, as configured for the permission set.
 
-## Request
+### Request
 
 The request section configures who can request this access rule. Access is governed by identity provider groups. For example, you have a group for your “web app developers” and you are creating a rule that grants temporary access to “production web app account”.
 
@@ -70,7 +98,7 @@ The request section configures who can request this access rule. Access is gover
 
 **Select** one or more groups and press **Next**.
 
-## Approvers
+### Approvers
 
 The final section allows you to configure whether an approval is required when a user requests this rule.
 
