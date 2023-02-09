@@ -50,7 +50,7 @@ granted registry add -name <registry_name> -url <repository_url>
 
 Here, flag `-name` or it's alias `-n` is required to identify the registry.
 
-The `granted.yml` file identifies AWS config files to be synced to Granted's Profile Registry. These config files must exist in the repository; paths pointing outside the repository such as `0.8.0/config` are not permitted. Multiple config files are allowed and are merged together when syncing your local config file to the repository.
+The `granted.yml` file identifies AWS config files to be synced to Granted's Profile Registry. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing your local config file to the repository.
 
 A valid `granted.yml` requires an `awsConfig` key to be present. For example:
 
@@ -154,7 +154,7 @@ awsConfig:
   - ./dev/config1
 templateValues:
   - <YourKeyName>
-    - 0.8.0.
+    - ...
   - BaseProfile:
     - value: "my-profile"
   - SessionName:
@@ -193,7 +193,7 @@ Should your Profile Registry require user specific values, you can set these val
 
 ```
 awsConfig:
-  - 0.8.0.
+  - ...
 templateValues:
   - SessionName:
       - isRequired: true
@@ -227,7 +227,7 @@ For cases where you want to reuse a variable within a config file, you can add `
 
 ```
 awsConfig:
-  - 0.8.0.
+  - ...
 templateValues:
   - BaseProfile:
       - value: "my-profile"
@@ -275,7 +275,7 @@ This will display all repositories subscribed to Granted's Profile Registry and 
 
 ## Migrating Profile Registry configuration
 
-As part of [Granted v0.8.0](https://github.com/common-fate/granted/releases/tag/v0.8.0), the Profile Registry didn't require the `-n` or `-u` flags. [Granted v0.8.0](https://github.com/common-fate/granted/releases/tag/v0.8.0) includes breaking changes to this. If you are using a version of Profile Registries prior to Granted v0.8.0, run the following command to migrate your registry configuration:
+As part of [Granted v0.5.0](https://github.com/common-fate/granted/releases/tag/v0.5.0), the Profile Registry didn't require the `-n` or `-u` flags. [Granted v0.6.0](https://github.com/common-fate/granted/releases/tag/v0.6.0) includes breaking changes to this. If you are using a version of Profile Registries prior to Granted v0.6.0, run the following command to migrate your registry configuration:
 
 ```
 granted registry migrate
