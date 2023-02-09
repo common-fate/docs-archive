@@ -40,8 +40,8 @@ granted credentials add example
 You should see an output like the following:
 
 ```
-? Access key id: abcd1234
-? Secret access key:  ********
+? Access Key ID: abcd1234
+? Secret Access Key:  ********
 Saved example to secure storage
 ```
 
