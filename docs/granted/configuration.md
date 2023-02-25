@@ -95,6 +95,27 @@ You will get a response like this:
 
 Select which browser you would like to use and press Enter.
 
+## Setting color and icon preferences for profiles
+
+If you use Firefox with the [Granted Firefox Addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/), you can set the color and icon preference for each profile.  This is useful for distinguishing between profiles at a glance.
+
+To customize the color and icon add `granted_color` and `granted_icon` to the profile in your `~/.aws/config` file.
+
+This configuration:
+
+```
+granted_color = green
+granted_icon = dollar
+```
+
+Will result in this:
+
+![A screenshot of the Firefox address bar, showing a custom color and icon for a profile](/img/granted-firefox-custom-color-icon.png)
+
+Valid colors are: `blue`, `turquoise`, `green`, `yellow`, `orange`, `red`, `pink` and `purple`
+
+Valid icons are: `fingerprint`, `briefcase`, `dollar`, `cart`, `circle`, `gift`, `vacation`, `food`, `fruit`, `pet`, `tree` and `chill`
+
 ## Custom browser for running SSO flows
 
 You can specify a custom browser path for your SSO login flows with Granted.
