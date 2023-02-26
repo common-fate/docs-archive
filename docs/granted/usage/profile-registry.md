@@ -243,7 +243,7 @@ role_arn = arn:aws:iam::0123456789012:role/readonly
 
 ## Syncing a Profile Registry
 
-Adding a Profile Registry is sufficient to sync the `granted.yml` config file. Once per day Granted will automatically sync the repositories contained within your Profile Registry. By default, this process will be invoked when you run `granted credential-process` or `asssume` commands.
+Adding a Profile Registry is sufficient to sync the `granted.yml` config file. Once per day Granted will automatically sync the repositories contained within your Profile Registry. By default, this process will be invoked when you run `granted credential-process` or `assume` commands.
 
 Should you wish to invoke a manual sync, run:
 
