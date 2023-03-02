@@ -13,6 +13,9 @@ deployment:
   account: "123456789012"
   region: us-west-2
   release: 0.4.3
+  tags:
+    some-tag: some-value
+    other-tag: other-value
   parameters:
     CognitoDomainPrefix: granted-login-mycompany
     AdministratorGroupID: 00g6cyy2ha8VTk3mK5d7
