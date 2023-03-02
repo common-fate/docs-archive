@@ -1,6 +1,6 @@
 # Identity Provider Sync Configuration
 
-Common Fate uses a scheduled lambda to sync users and groups with your identity provider. By default the sync configuration values are as follows:
+Common Fate uses a scheduled Lambda function to sync users and groups with your identity provider. By default the sync configuration values are as follows:
 - Lambda Memory = 128 MB
 - Lambda Timeout = 20 seconds
 - EventBridge Cron Schedule = Every 5 minutes `rate(5 minutes)`
