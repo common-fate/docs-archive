@@ -8,6 +8,7 @@ const SLACK_URL =
   "https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg";
 
 const previousRoutes = [
+  "/granted-approvals/introduction",
   "/granted-approvals/configuration/access-rules",
   "/granted-approvals/configuration/backup",
   "/granted-approvals/configuration/custom-domain",
