@@ -31,7 +31,7 @@ Even if you have limited who can access Common Fate in your SAML settings, Commo
 
 **What happens if I use an IdentityGroupFilter**
 
-Users are sync'd based on whether they are a part of the selection of groups that meet the filter criteria. Users not in a group will not be imported. Only groups that meet the criteria will be imported.
+Users are synced based on whether they are a part of the selection of groups that meet the filter criteria. Users not in a group will not be imported. Only groups that meet the criteria will be imported.
 
 
 **What happens if I don't use an IdentityGroupFilter**
