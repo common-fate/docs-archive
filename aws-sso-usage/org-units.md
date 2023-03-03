@@ -1,7 +1,7 @@
 
 # AWS Organizational Unit Access
 
-Granted Approvals has support for AWS Organzational Unit (OU) access control. This allows you to grant access to a set of accounts based on the OU structure of your AWS organization.
+Common Fate has support for AWS Organzational Unit (OU) access control. This allows you to grant access to a set of accounts based on the OU structure of your AWS organization.
 
 :::info
 To use this feature you must have a `commonfate/aws-sso` provider configured. See [AWS SSO Provider](/common-fate/providers/aws-sso/aws-sso) for more information.
@@ -14,17 +14,17 @@ OUs are a way to organize your AWS accounts into groups. You can read more about
 
 ## Why use OUs?
 
-Granted Approvals automatically updates the available accounts when OUs are used in Access Rules.
+Common Fate automatically updates the available accounts when OUs are used in Access Rules.
 
 For example, if you want to allow team members to request access to any production account, you can create a Production OU in your AWS organization. Then in Granted, you can set up an Access Rule specifying that Production OU.
 
 ![screenshot of ou sync UI](/img/org-units/ou_sync.png)
 
-When new accounts are added to the Production OU, they will automatically be made available for users to request access to under the same Access Rule. Granted Approvals syncs the available accounts every 5 minutes.
+When new accounts are added to the Production OU, they will automatically be made available for users to request access to under the same Access Rule. Common Fate syncs the available accounts every 5 minutes.
 
 ## The Root OU
 
-The Root OU is the top level of your organization. In Granted Approvals the Root OU is shown as 'Root' when selecting an OU for an Access Rule. It's the parent of all other OUs, and is the only OU that can have accounts directly attached to it. All other OUs must be a child of another OU. Selecting the Root OU in Granted Approvals will grant access to every account in your organization: this should be reserved for sandbox accounts, privileged users or for break-glass access.
+The Root OU is the top level of your organization. In Common Fate the Root OU is shown as 'Root' when selecting an OU for an Access Rule. It's the parent of all other OUs, and is the only OU that can have accounts directly attached to it. All other OUs must be a child of another OU. Selecting the Root OU in Common Fate will grant access to every account in your organization: this should be reserved for sandbox accounts, privileged users or for break-glass access.
 
 ![root OU in UI](/img/org-units/root_ou.png)
 
@@ -33,7 +33,7 @@ The Root OU is the top level of your organization. In Granted Approvals the Root
 Navigate to the Access Rule Create page and select the Provider Input Field:
 ![](/img/org-units/1.png)
 
-You'll see three fields: Accounts, Organizational Units and Permission Sets. Granted Approvals will show you a preview of which accounts will be available for selection by Granted Approvals end users. You can also add individual accounts and OUs at the same time.
+You'll see three fields: Accounts, Organizational Units and Permission Sets. Common Fate will show you a preview of which accounts will be available for selection by Common Fate end users. You can also add individual accounts and OUs at the same time.
 
 ## Setting up an OU in your AWS account
 
@@ -53,7 +53,7 @@ aws organizations create-account --account-name ApprovalsTestAccount --parent-id
 ## Cleaning up
 
 To return to the default state of your AWS account and Granted deployment:
-1. Archive the Access Rule in your Granted Approvals deployment
+1. Archive the Access Rule in your Common Fate deployment
 1. Delete the AWS account(s) that you created
 1. Delete the AWS OU that you created
 
