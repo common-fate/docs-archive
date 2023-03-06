@@ -1,5 +1,5 @@
 ---
-slug: Target Groups and Deployment Handlers
+slug: target-groups
 ---
 
 # Target Groups and Deployments

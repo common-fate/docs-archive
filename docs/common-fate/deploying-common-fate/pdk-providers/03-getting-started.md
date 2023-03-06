@@ -1,9 +1,9 @@
 ---
-slug: Launching-an-access-provider 
+slug: getting-started
 ---
 
 
-# Prerequisities 
+# Getting Started 
 
 To get started with PDK Providers, you will need to install the following command line tool. 
 
