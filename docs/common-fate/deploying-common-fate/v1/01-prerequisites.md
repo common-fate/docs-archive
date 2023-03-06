@@ -6,8 +6,6 @@ slug: prerequisites
 
 This guide will walk you through through deploying Common Fate. It will take around 15 minutes to complete.
 
-## Deployment
-
 Common Fate is self-hosted in your own AWS account. The application is deployed and updated using CloudFormation. Common Fate has been developed using serverless services such as Cognito, AWS Lambda, and DynamoDB. Hosting costs for Common Fate should fall fully into the AWS free tier, or if not should be a few dollars per month.
 
 An architecture diagram of Common Fate is shown below:
