@@ -17,6 +17,9 @@ We used [The AWS Load Balancer](https://aws.amazon.com/elasticloadbalancing/) as
 Concerns are separated with Target Groups and Handlers. Whereby Target Groups hold all the configuration of the provider and the handlers manage all the deployment information.
 - Currently providers are hosted as lambda functions.
 
+Here is how each part of a provider deployment works together.
+![](/img/targetgroups/diagram.png)
+
 #### What is a target group
 A Target Group can be thought of as an encapsulation of configuration schema for a provider for a given version. 
 
