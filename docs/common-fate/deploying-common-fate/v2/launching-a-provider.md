@@ -1,12 +1,13 @@
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+---
+slug: Launching-an-access-provider 
+---
+
 
 # Prerequisities 
 
-To get started with PDK Providers, you will need to install the following command line tools. 
+To get started with PDK Providers, you will need to install the following command line tool. 
 
 1. [cf](https://github.com/common-fate/cli) 
-2. pdk 
 
 # Launching a pre-existing Provider 
 

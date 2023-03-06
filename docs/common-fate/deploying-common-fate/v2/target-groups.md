@@ -2,9 +2,7 @@
 slug: Target Groups and Deployment Handlers
 ---
 
-## Concepts
-
-### Target Groups and Deployments
+# Target Groups and Deployments
 An important concept introduced in Common Fate providers v2 is Target Groups and Deployments. These are what make up our provider framework and enable the user to have highly configurable, reliant and organised provider infrastructure. 
 We used [The AWS Load Balancer](https://aws.amazon.com/elasticloadbalancing/) as inspiration behind our provider framework deployments we have found this beneficial in a number of ways. 
 

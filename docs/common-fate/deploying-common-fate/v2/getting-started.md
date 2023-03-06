@@ -9,7 +9,7 @@ With the Provider framework, you have access to a standardized API for granting 
 
 There are also Common Fate built Providers such as AWS SSO, Okta, Google Groups which you can instantly setup in your environment and create workflows with fine-grained permissions.
 
-![diagram of Provider framework](../../../static/img/pdk/pdk-overview.png)
+![diagram of Provider framework](../../../../static/img/pdk/pdk-overview.png)
 
 
 # Provider Registry 
@@ -24,12 +24,6 @@ Provider Registry is hosted at https://api.registry.commonfate.io
 :::note
 Provider Registry is still in alpha version and will continue to improve.
 :::
-
-
-# Handler
-
-To achieve High Availability, you can have multiple deployments for a single provider at the same time. Each handler is a unique cloudformation stack. Each provider can be configured with more than one handler for deployments running in multiple regions or Blue/Green deployment for zero down time upgrades. 
-
 
 
 # Provider Development Kit (PDK)
