@@ -1,4 +1,8 @@
 {
   "label": "Deploying Common Fate",
-  "position": 3
+  "position": 2,
+  "link": {
+    "type": "doc",
+    "id": "deploying-common-fate"
+  }
 }

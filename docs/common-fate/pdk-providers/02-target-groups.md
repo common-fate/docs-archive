@@ -12,7 +12,7 @@ Concerns are separated with Target Groups and Handlers. Whereby Target Groups ho
 Here is how each part of a provider deployment works together.
 ![](/img/targetgroups/diagram.png)
 
-#### What is a target group
+#### What is a Target Group
 A Target Group can be thought of as an encapsulation of configuration schema for a provider for a given version. 
 
 
@@ -20,21 +20,21 @@ A Target Group can be thought of as an encapsulation of configuration schema for
 
 Theres a number of reasons why Target Groups can make the process of managing providers easier.
 
-- Different versions for the same provider may include breaking changes to the configuration schema, which requires a new target group to be made. This means that for multiple providers the same Target Group can be used. This is the case for a number of AWS services.
-- This means that you can use a single target group for multiple provider deployments. This can be used for multi region providers and redundancy!
+- Different versions for the same provider may include breaking changes to the configuration schema, which requires a new Target Group to be made. This means that for multiple providers the same Target Group can be used. This is the case for a number of AWS services.
+- This means that you can use a single Target Group for multiple provider deployments. This can be used for multi region providers and redundancy!
 
-#### How to create a target group
-Currently the only way to make target groups for your Common Fate deployment is via the [cf cli](https://github.com/common-fate/cli).
+#### How to create a Target Group
+Currently the only way to make Target Groups for your Common Fate deployment is via the [cf cli](https://github.com/common-fate/cli).
 The Target Group command has the following subcommand that can be used to create, update, list and delete Target Groups
 
 ```
 COMMANDS:
    COMMANDS:
-   create    Create a target group
-   link      Link a Handler to a target group
-   unlink    Unlink a deployment from a target group
-   list, ls  List target groups
-   delete    Delete a target group
+   create    Create a Target Group
+   link      Link a Handler to a Target Group
+   unlink    Unlink a deployment from a Target Group
+   list, ls  List Target Groups
+   delete    Delete a Target Group
    help, h   Shows a list of commands or help for one comman
 ```
 
@@ -45,18 +45,8 @@ cf targetgroup create --id={name_of_tg} --schema-from={publisher/provider@versio
 - This requires a provider to exist in our [Provider Registry](https://github.com/common-fate/provider-registry)
 
 
-#### What is a Handler
-The second component to creating and using a provider is creating a **Handler**. The Handler is an instance of a lambda deployment which is then linked to a Target Group to complete the deployment process. 
-Handlers can be made independant of Target Groups, but must have compatible schema when attempting to link a Handler to a target group.
-
-When creating a Handler, it will have a health reading of heathly or unhealthy. This is the health check for the lambda to see if it is running for a given provider and configuration.
-If the lambda failed to deploy you will also get an unhealthy reading. 
-:::info
-If a if a deployed Handler has an incompatible schema with it's linked Target Group it will fail and return an unhealthy reading, along with diagnostic logs describing what went wrong. 
-:::
-
 #### Linking a Target Group to a Handler
-A Handler must be linked with a target group to make it usable, as the Target Group holds all of the configuration needed to run the provider. The linking process will fail if an incompatible schema version is used.
+A Handler must be linked with a Target Group to make it usable, as the Target Group holds all of the configuration needed to run the provider. The linking process will fail if an incompatible schema version is used.
 To link a Handler to a Target Group 
 
 The cf cli is how we can link the two together. with the `cf targetgroup link` command.
@@ -73,7 +63,7 @@ OPTIONS:
    --help, -h            show help
 ```
 You will need to specify:
-- The target group ID
+- The Target Group ID
 - The Handler ID
 - The kind of Handler
 - The priority for the Handler
