@@ -20,8 +20,7 @@ Common Fate sends all logs to [Amazon CloudWatch](https://docs.aws.amazon.com/Am
 }
 ```
 
-The `userId` field corresponds to an authenticated user in
-ate. The `reqId` field is populated from the AWS Lambda request ID.
+The `userId` field corresponds to an authenticated user in Common Fate. The `reqId` field is populated from the AWS Lambda request ID.
 
 You can use `gdeploy` to query for logs. Under the hood, `gdeploy` calls CloudWatch APIs and prints the messages to your terminal.
 

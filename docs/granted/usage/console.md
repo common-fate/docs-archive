@@ -104,7 +104,7 @@ assume -ar
 ## Assuming a role and returning the console URL
 
 If you don't want the browser to automatically open the browser or are using Granted from a headless node Granted has the option to only return the console URL with all the session credentials included.
-This can be acheived by running:
+This can be achieved by running:
 
 ```
 assume -u
