@@ -14,20 +14,20 @@ To get started with PDK Providers, you will need to install the following comman
 1. List all the existing providers in Provider Registry by running: 
 
 ```
-> cf provider list 
+cf provider list 
 ```
 
 
 2. Run the following command to create a bootstrap bucket for your provider and get the S3 bucket name. Bootstrap bucket is a S3 bucket where the provider assets are stored.
 
 ```
-> cf bootstrap aws 
+cf bootstrap aws 
 ```
 
 3. Run the following command to copy the provider assets to your bootstrap bucket 
 
 ```
-> cf provider bootstrap --id <provider-id> --bootstrap-bucket <your-bootstrap-bucket>
+cf provider bootstrap --id <provider-id> --bootstrap-bucket <your-bootstrap-bucket>
 ```
 
 The `provider-id` here is the complete provider information including the publisher and version information. Here, `common-fate/aws@v.0.2.0` means publisher is `common-fate`, name is `aws` & version is `v.0.2.0` 
@@ -35,19 +35,19 @@ The `provider-id` here is the complete provider information including the publis
 4. Create a new targetgroup for your provider by running:
 
 ```
-> cf targetgroup create --id <add_target_group_id> --schema-from <provider-id>
+cf targetgroup create --id <add_target_group_id> --schema-from <provider-id>
 ```
 
 5. Create a new handler for your targetgroup by running:
 
 ```
-> cf handler register --id <enter_handler_id> --aws-region <your_aws_region> --aws-account <your_aws_accound_id>
+cf handler register --id <enter_handler_id> --aws-region <your_aws_region> --aws-account <your_aws_accound_id>
 ```
 
 6. You need to link your targetgroup with a handler by running:
 
 ```
-> cf targetgroup link --target-group <target_group_id> --handler <handler_id> --kind <kind_name>
+cf targetgroup link --target-group <target_group_id> --handler <handler_id> --kind <kind_name>
 ```
 
 7. Deploy cloudformation stack for your handler by running:
