@@ -50,8 +50,6 @@ We suggest that you assign the output of the this command to environment variabl
 DEPLOYMENT_BUCKET=$(cf bootstrap aws)
 ```
 
-
-
 # Deploying an existing Provider 
 
 1. Run the following command to copy the Provider Assets to your bootstrap bucket 
@@ -80,11 +78,22 @@ cf handler register --id <enter_a_unique_handler_identifier> --aws-region <your_
 cf targetgroup link --target-group <target_group_id> --handler <handler_id> --kind <kind_name>
 ```
 
-5. Deploy cloudformation stack for your Handler by running:
+5. Deploy cloudformation stack for your Handler:
+
+You can use `cf generate-cf-output` command to interactively enter all the required cloudformation parameters and generate the `aws cloudformation create-stack` command. 
 
 ``` 
-aws cloudformation create-stack --stack-name <your_stack_name> --region <region> --template-url <pre_signed_cloudformation.json> --parameters 
+cf generate-cf-output --provider-id <provider_id> --handler-id <handler_id> --region <aws_region>
+--bootstrap-bucket=$DEPLOYMENT_BUCKET
 ```
 
-You can use `cf generate-cf-output` command to interactively enter all the required cloudformation parameters and generate the `aws cloudformation create-stack` command
+If no `--stackname` flag is provided, then `--handler-id` will be used as stackname for the cloudformation stack.
 
+
+## Validating a Deployed Provider 
+
+Run the following command to check the status of your Handler
+
+```
+cf handler validate --id <handler_id> --aws-region <region> --runtime aws-lambda
+```
