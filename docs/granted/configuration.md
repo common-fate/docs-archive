@@ -171,18 +171,18 @@ granted sso-tokens
 granted sso-tokens list
 ```
 
-- To remove a token from the local store use `sso-tokens remove`
+- To remove a token from the local store use `sso-tokens clear`
 
 ```
-granted sso-tokens remove
+granted sso-tokens clear
 ```
 
 ```
-granted sso-tokens remove profile_name
+granted sso-tokens clear profile_name
 ```
 
 - To remove all tokens from the store use the `--all` flag
 
 ```
-granted sso-tokens remove --all
+granted sso-tokens clear --all
 ```
