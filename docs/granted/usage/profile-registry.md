@@ -48,7 +48,7 @@ You can add a repository to Granted's Profile Registry by running the following 
 granted registry add -name <registry_name> -url <repository_url>
 ```
 
-Here, flag `-name` or it's alias `-n` is required to identify the registry.
+Here, flag `-name` or its alias `-n` is required to identify the registry.
 
 The `granted.yml` file identifies AWS config files to be synced to Granted's Profile Registry. These config files must exist in the repository; paths pointing outside the repository such as `../config` are not permitted. Multiple config files are allowed and are merged together when syncing your local config file to the repository.
 
