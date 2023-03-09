@@ -5,11 +5,13 @@ slug: setup
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-# Deploying a Provider
+# PDK Provider Setup
+
+In Common Fate v0.15+, Providers built with the [Provider Development Kit (PDK)](https://github.com/common-fate/commonfate-provider-core) are deployed separately to a Common Fate deployment.
 
 ## Installing `cf`
 
-To deploy a Community Provider, start by installing `cf`.
+To deploy a PDK Provider, start by installing `cf`.
 
 `cf` is a command-line interface (CLI) tool for performing authenticated actions against a Common Fate deployment. It provides commands for creating and updating Target Groups, Handlers, Routes and also for operational tasks like viewing Handler logs.
 
@@ -142,12 +144,4 @@ You should see a version output similar to the below:
 
 ```bash
 cf version 0.1.0
-```
-
-## Quickstart
-
-You can use the `install` command to run through a deployment of a Provider. This command will take you through step by step to deploying a provider from the registry.
-
-```bash
-cf install
 ```
