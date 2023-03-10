@@ -7,31 +7,33 @@ import CodeBlock from "@theme/CodeBlock";
 # Deploying PDK Providers
 
 :::info
-To deploy a PDK Provider, you'll need to have [installed the `cf` CLI](./setup) and have valid AWS credentials in your terminal environment.
+To deploy a PDK Provider, you'll need to have [installed the `cf` CLI](./setup), and have valid AWS credentials in your terminal environment.
 :::
 
 PDK Providers are packaged and deployed as AWS CloudFormation templates. These templates contain:
 
-1. A AWS Lambda function which contains the code to run the Provider. This is called the [**Handler**](./concepts#handler).
+1. An AWS Lambda function which contains the code to run the Provider. This is called the [**Handler**](./concepts#handler).
 2. An AWS IAM role for the Handler, called the **Handler Role**.
 3. An AWS IAM role which allows Common Fate to invoke the Lambda, called the **Invoke Role**.
 
 ## Quickstart
 
-To deploy a new PDK Provider, use the following command:
+To view the full process on deploying a PDK provider, see the [section below](#step-by-step).
+
+To quickly and interactively deploy a new PDK Provider, run the following command:
 
 ```
 cf provider deploy
 ```
 
-This command will walk you through the deployment and configuration process for the Handler, and will provision a CloudFormation template which will create AWS resources. The command will prompt you to [bootstrap your AWS environment](./concepts#bootstrapping) if it has not been bootstrapped yet.
+This command will walk you through the deployment and configuration process for the Handler, and will provision a CloudFormation template which will create AWS resources. The command will prompt you to [bootstrap your AWS environment](./concepts#bootstrapping) if it has not been bootstrapped already.
 
 The command performs the following actions:
 
-1. Ensures your AWS environment is [bootstrapped](./concepts#bootstrapping).
+1. Ensures your AWS environment is bootstrapped.
 2. Copies the Provider CloudFormation template and Lambda files from the Provider Registry to the bootstrap S3 bucket.
-3. Deploys the CloudFormation template for the [Handler](./concepts#handler).
-4. Registers the [Handler](./concepts#handler) with Common Fate.
+3. Deploys the CloudFormation template for the Handler.
+4. Registers the Handler with Common Fate.
 5. Creates a [Target Group](./concepts#target-group) to to use with [Access Rules](../configuration/access-rules)
 6. Links the Handler to the Target Group.
 
@@ -80,7 +82,7 @@ When running this command, you should see an output similar to the below:
 
 ## Removing a Handler
 
-To uninstall the provider and its associated items you can use the following command:
+To uninstall the provider and its associated items, run the following command:
 
 ```
 cf provider destroy --handler-id <handler-id> --target-group-id <target-group-id> --delete-cloudformation-stack
@@ -94,7 +96,7 @@ List all the existing providers in Provider Registry by running:
 cf provider list
 ```
 
-You can quickly view a Provider's [Schema](./concepts#schema) by running:
+You can quickly view a Provider's [schema](./concepts#schema) by running:
 
 ```
 curl https://api.registry.commonfate.io/v1alpha1/providers/common-fate/aws/v0.2.0
@@ -104,43 +106,65 @@ curl https://api.registry.commonfate.io/v1alpha1/providers/common-fate/aws/v0.2.
 
 Running `cf provider deploy` walks through the deployment process interactively. If you prefer, you can run commands individually to deploy a Provider.
 
-1. Run the following command to copy the Provider assets to your bootstrap bucket:
+### 1. Copying assets
+
+To copy the Provider assets to your bootstrap bucket, run the following command:
 
 ```
-> cf provider bootstrap --id <provider-id> --bootstrap-bucket=DEPLOYMENT_BUCKET
+cf provider bootstrap --id <provider-id> --bootstrap-bucket=DEPLOYMENT_BUCKET
 ```
 
-The `provider-id` here is the complete provider information including the publisher and version information. For example, `common-fate/aws@v.0.2.0` means publisher is `common-fate`, name is `aws` & version is `v.0.2.0`.
+Here, the `provider-id` is the complete provider information including the publisher and version information. The format should take the following shape:
 
-2. Create a new Target Group for your Provider by running:
+```bash
+publisher/name@version
+```
+
+For example, `common-fate/aws@v.0.2.0` means publisher is `common-fate`, name is `aws`, and version is `v.0.2.0`.
+
+### 2. Creating target groups
+
+Create a new Target Group for your Provider by running:
 
 ```
 cf targetgroup create --id <enter_a_unique_targetgroup_identifier> --schema-from <provider-id>
 ```
 
-3. Create a new Handler for your Provider by running:
+### 3. Creating the Handler
+
+Create a new Handler for your Provider by running:
 
 ```
 cf handler register --id <enter_a_unique_handler_identifier> --aws-region <your_aws_region> --aws-account <your_aws_accound_id>
 ```
 
-4. You need to now link your Target Group with a Handler by running:
+### 4. Target group linking
+
+Link your Target Group with a Handler by running:
 
 ```
 cf targetgroup link --target-group <target_group_id> --handler <handler_id> --kind <kind_name>
 ```
 
-5. Deploy the CloudFormation stack for your Handler:
+### 5. Deployment
 
-You can use `cf cloudformation generate create` command to interactively enter all the required cloudformation parameters and generate the `aws cloudformation create-stack` command.
+You are now ready to deploy the CloudFormation stack for your Handler. To interactively enter all the required CloudFormation parameters, run the following command:
+
+```
+cf cloudformation generate create
+```
+
+Alternatively, you can prefill these fields in the following command:
 
 ```
 cf cloudformation generate create --provider-id <provider_id> --handler-id <handler_id> --region <aws_region>
 ```
 
+Both will generate the `aws cloudformation create-stack` command.
+
 ## Validating a Deployed Provider
 
-Run the following command to check the status of your Handler:
+To check the status of your Handler, run the following command:
 
 ```
 cf handler validate --id <handler_id> --aws-region <region> --runtime aws-lambda

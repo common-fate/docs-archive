@@ -82,7 +82,7 @@ https://d3s0441cha6x1h.cloudfront.net
 
 Open the dashboard by running:
 
-```bash
+```
 gdeploy dashboard open
 ```
 
