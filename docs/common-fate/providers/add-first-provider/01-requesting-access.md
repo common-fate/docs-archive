@@ -6,7 +6,7 @@ slug: requesting-access
 
 Navigate back to the end user dashboard by running:
 
-```bash
+```
 gdeploy dashboard open
 ```
 

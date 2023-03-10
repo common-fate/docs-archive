@@ -231,38 +231,35 @@ Kinds allow one provider codebase to implement multiple functions. One of the be
 
 ### Example
 
-With AWS we grant access to an Account (kind=Account), with EKS we might grant access to a Namespace (kind=Namespace) or to a Role (kind=Role).
+With AWS we grant access to an Account (kind = Account), with EKS we might grant access to a Namespace (kind = Namespace) or to a Role (kind = Role).
 
 ## Handlers
 
 A Handler represents an instance of Provider, it stores information about the deployment and runtime.
 
-Handlers have a health status which is checked every 30 seconds. When a Handler is healthy it means that it could be invoked, and all config validations are successful.
+Handlers have a health status which is checked every 30 seconds. When a Handler is healthy it means that it can be invoked, and all config validations are successful.
 
 ## Target Groups
 
-A Target Group represents the Kind of access grant, such as AWS Account access. When creating an Access Rule, you select for your available Target Groups, then configure the request options for users to make an access request.
+A Target Group represents the Kind of access grant, such as AWS Account access. When creating an Access Rule, you select your available Target Groups, then configure the request options for users to make an access request.
 Target Groups can be created and deleted as needed and can be linked with Handlers.
 
 ## Routes
 
-A Route links a Target Group to a Handler, and specifies the priority of the link as well as the Kind of target implemented by the Handler which shoudl be used to satisfy the Target Group requirements.
+A Route links a Target Group to a Handler, and specifies the priority of the link as well as the Kind of target implemented by the Handler to be used to satisfy the Target Group requirements.
 
 ### Linking a Target Group to a Handler
 
-A Target Group must be linked with at least 1 healthy Handler to be able to serve requests.
-If a Handler becomes unhealthy, all the routes for that handler become invalid.
-When the handler becomes healthy again, the routes validity will be checked again.
-When testing the validity of a route, the schema of the Handler and the Schema of the target group are compared to ensure they are compatible.
+A Target Group must be linked with at least one healthy Handler to be able to serve requests. If a Handler becomes unhealthy, all the routes for that handler become invalid. When the handler becomes healthy again, the route's validity will be checked again. When testing the validity of a route, the schema of the Handler and the Schema of the Target Group are compared to ensure they are compatible.
 
-Routes are assigned a priority, ranging from 0 - 999, to disable a route, set its priority to 0.
+Routes are assigned a priority, ranging from 0 - 999. To disable a route, set its priority to 0.
 
 :::info
-If a Handler is incompatible with its Target Group it will be marked invalid.
+If a Handler is incompatible with its Target Group it will be marked _invalid_.
 :::
 
 ## Bootstrapping
 
-In order to deploy PDK Providers into a particular AWS account and region, you will first need to **bootstrap** the region. Bootstrapping is the process of deploying a CloudFormation template which provisions an Amazon S3 bucket to store PDK Provider files. Once deployed, this CloudFormation template will appear in the AWS CloudFormation console, like any other CloudFormation stack.
+In order to deploy PDK Providers into a particular AWS account and region, you will first need to bootstrap the region. Bootstrapping is the process of deploying a CloudFormation template, which provisions an Amazon S3 bucket to store PDK Provider files. Once deployed, this CloudFormation template will appear in the AWS CloudFormation console, like any other CloudFormation stack.
 
 When a PDK Provider is deployed, the CloudFormation template and Lambda function for the Provider are first copied into this bucket by the `cf` CLI, prior to resources being provisioned.
