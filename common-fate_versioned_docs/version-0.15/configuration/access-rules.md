@@ -55,7 +55,7 @@ Both Name and Description are required fields.
 
 ### Provider
 
-Next you will be able to select from one of your configured Access Providers. If you have not yet configured an Access Provider, follow the steps on the [Access Providers page](../providers/00-access-providers.md)
+Next you will be able to select from one of your configured Access Providers. If you have not yet configured an Access Provider, follow the steps on the [Access Providers page](../providers/00-providers.md)
 
 **Click** on the provider and wait while the form updates with options specific to your provider type.
 

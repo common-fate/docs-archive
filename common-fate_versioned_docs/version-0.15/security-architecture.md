@@ -45,7 +45,7 @@ Common Fate emits detailed audit trail events for all actions to Amazon EventBri
 
 ## Disaster recovery
 
-Common Fate stores data in Amazon DynamoDB and supports data backup and restore for disaster recovery. Documentation on this is available [here](../common-fate/configuration/backup.md).
+Common Fate stores data in Amazon DynamoDB and supports data backup and restore for disaster recovery. Documentation on this is available [here](../configuration/backup.md).
 
 ## Deployment tooling release verification
 
