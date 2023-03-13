@@ -43,7 +43,7 @@ When running this command, you should see an output similar to the below:
   <summary>Example output for the `cf provider deploy` commnad</summary>
   <div>
     <CodeBlock className="language-bash">
-    {`❯ cf provider install --common-fate-aws-account 123456789012
+    {`❯ cf provider deploy --common-fate-aws-account 123456789012
 ? The Provider to deploy common-fate/cloudwatch-log-groups
 ? The version of the Provider to deploy v0.2.1
 [i] This Provider will grant access to LogGroup targets
@@ -151,13 +151,13 @@ cf targetgroup link --target-group <target_group_id> --handler <handler_id> --ki
 You are now ready to deploy the CloudFormation stack for your Handler. To interactively enter all the required CloudFormation parameters, run the following command:
 
 ```
-cf cloudformation generate create
+cf provider generate cloudformation-create
 ```
 
 Alternatively, you can prefill these fields in the following command:
 
 ```
-cf cloudformation generate create --provider-id <provider_id> --handler-id <handler_id> --region <aws_region>
+cf cloudformation generate cloudformation-create --provider-id <provider_id> --handler-id <handler_id> --region <aws_region>
 ```
 
 Both will generate the `aws cloudformation create-stack` command.
