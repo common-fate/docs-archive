@@ -59,7 +59,7 @@ All configuration changes in Common Fate follow a similar workflow:
 
 Access Rules are a core component of Common Fate. They define what roles and resources particular groups can request access to, and define policies such as requiring a second person to approve the access.
 
-To create your first access rule, open the web dashboard with the following command:
+Firstly, ensure you are logged into Common Fate as an administrator. To create your first access rule, open the web dashboard with the following command:
 
 ```
 gdeploy dashboard open
