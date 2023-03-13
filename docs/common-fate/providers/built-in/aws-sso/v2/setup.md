@@ -46,8 +46,13 @@ This step will guide you through collecting the values for these fields required
 
 If you have the AWS CLI installed and can access the account that your AWS SSO instance is deployed to, run the following command to retrieve details about the instance:
 
+```
+aws sso-admin list-instances
+```
+
+You will see an output similar to the following:
+
 ```bash
-❯ aws sso-admin list-instances
 {
     "Instances": [
         {
