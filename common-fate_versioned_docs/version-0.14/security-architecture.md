@@ -41,7 +41,7 @@ In case of a suspected security incident, Common Fate allows administrators to i
 
 ## Audit trail events
 
-Common Fate emits detailed audit trail events for all actions to Amazon EventBridge. These events can be aggregated in your SIEM in order to develop alerting rules. Documentation on audit trail events can be found [here](https://www.notion.so/Team-Home-09dc640a01d149b09edfd12ca83a3926).
+Common Fate emits detailed audit trail events for all actions to Amazon EventBridge. These events can be aggregated in your SIEM in order to develop alerting rules. Documentation on audit trail events can be found [here](../configuration/events.md).
 
 ## Disaster recovery
 
