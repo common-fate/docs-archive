@@ -41,11 +41,11 @@ In case of a suspected security incident, Common Fate allows administrators to i
 
 ## Audit trail events
 
-Common Fate emits detailed audit trail events for all actions to Amazon EventBridge. These events can be aggregated in your SIEM in order to develop alerting rules. Documentation on audit trail events can be found [here](../configuration/events.md).
+Common Fate emits detailed audit trail events for all actions to Amazon EventBridge. These events can be aggregated in your SIEM in order to develop alerting rules. Documentation on audit trail events can be found [here](../configuration/common-fate/events.md).
 
 ## Disaster recovery
 
-Common Fate stores data in Amazon DynamoDB and supports data backup and restore for disaster recovery. Documentation on this is available [here](../common-fate/configuration/backup.md).
+Common Fate stores data in Amazon DynamoDB and supports data backup and restore for disaster recovery. Documentation on this is available [here](../common-fate/configuration/common-fate/backup.md).
 
 ## Deployment tooling release verification
 
