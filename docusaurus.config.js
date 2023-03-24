@@ -228,8 +228,7 @@ const config = {
         appId: "0RGL2ZP3VH",
 
         // Public API key: it is safe to commit it
-        apiKey: "35c3678f4bf22213a8349da5e537f603",
-
+        apiKey: "161b3e084a01bde79bcd2a59332fc2ea",
         indexName: "commonfate",
 
         // Optional: see doc section below
