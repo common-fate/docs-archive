@@ -16,4 +16,4 @@ Fortunately, there is a simple solution to fix this issue. You can update the VS
 
 After making this update, start a new terminal and remove the old one. Assuming roles works in the VSCode WSL-environment as well.
 
-(Credits to [Jakob Heinisch](https://github.com/jakheipcg) and [https://superuser.com/questions](https://superuser.com/questions/1209366/win10-vs-code-integrated-bash-not-loading-bash-profile) for providing the solution.)
+(Credits to [Jakob Heinisch](https://github.com/jakheipcg) and [this superuser thread](https://superuser.com/questions/1209366/win10-vs-code-integrated-bash-not-loading-bash-profile) for providing the solution.)
