@@ -1,0 +1,135 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Getting Started
+
+:::info
+Our Provider Development documentation is still a work-in-progress. If you're building an Access Provider, [join our Community Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
+:::
+
+Common Fate Providers are built using the Provider Development Kit, or PDK for short. The PDK consists of:
+
+- A [`pdk` CLI](https://github.com/common-fate/pdk) to help create, test, and publish Providers
+- A Python `commonfate_provider` library which all Access Providers import
+
+You'll use the `pdk` CLI from the command line, and use `commonfate_provider` inside your Provider Python code.
+
+## Install the PDK CLI
+
+In order to use the `pdk` CLI you'll need to install it on your system. Common Fate provides binaries for `pdk`.
+
+<Tabs
+  groupId="operating-systems"
+  defaultValue="macos"
+  values={[
+	  { label: "Homebrew on MacOS", value: "macos" },
+	  { label: "Linux", value: "linux" },
+	  { label: "Windows", value: "windows" },
+	  ]}
+>
+<TabItem value="macos">
+
+[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for Granted. To install Granted with Homebrew, run the commands below in your terminal.
+
+```
+brew install common-fate/tap/pdk
+```
+
+</TabItem>
+<TabItem value="linux">
+
+Select the steps which match your system architecture. You can find your architecture by running `uname -m` from a terminal window.
+
+<Tabs
+groupId="linux-arch"
+defaultValue="x86_64"
+values={[
+{ label: "x86_64", value: "x86_64" },
+{ label: "arm64", value: "arm64" },
+{ label: "i386", value: "i386" },
+]}
+>
+
+<TabItem value="x86_64">
+
+```
+curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_x86_64.tar.gz
+sudo tar -zxvf ./pdk_0.1.1_linux_x86_64.tar.gz -C /usr/local/bin/
+
+```
+
+</TabItem>
+<TabItem value="arm64">
+
+```
+
+curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_arm64.tar.gz
+sudo tar -zxvf ./pdk_0.1.1_linux_arm64.tar.gz -C /usr/local/bin/
+
+```
+
+</TabItem>
+<TabItem value="i386">
+
+```
+curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_i386.tar.gz
+sudo tar -zxvf ./pdk_0.1.1_linux_i386.tar.gz -C /usr/local/bin/
+
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
+<TabItem value="windows">
+
+First, download the zip archive of `pdk` which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
+
+[PDK for Windows x86_64](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_x86_64.zip)
+
+[PDK for Windows arm64](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_arm64.zip)
+
+[PDK for Windows i386](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_i386.zip)
+
+After downloading `pdk`, unzip the package.
+
+You'll need to move `pdk` to a folder that is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+
+</TabItem>
+
+</Tabs>
+
+## Verify the installation
+
+You can verify the integrity and authenticity of the `pdk` binary you have downloaded by running through the [verification process here](/granted/security#release-verification) (replacing references to `granted` in URLs with `pdk`).
+
+To verify that the installation has succeeded, print the version of `pdk` by running `pdk -v`. You should see an output similar to below.
+
+```
+➜ pdk -v
+
+
+pdk v0.1.1
+
+```
+
+If you have any issues installing don't hesitate to [ask for help on our Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
+
+## Testing the provider
+
+## Adding dependencies
+
+To add a Python dependency, run the following commands:
+
+```bash
+source .venv/bin/activate # ensure that you are in the Python virtual environment for the Provider
+pip install DEPENDENCY_NAME
+pip freeze > requirements.txt # IMPORTANT: update the requirements.txt to include the new dependency
+```
+
+## Publishing the provider
