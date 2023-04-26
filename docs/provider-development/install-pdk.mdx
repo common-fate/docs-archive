@@ -5,20 +5,11 @@ sidebar_position: 2
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-# Getting Started
+# Installing the PDK CLI
 
 :::info
 Our Provider Development documentation is still a work-in-progress. If you're building an Access Provider, [join our Community Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
 :::
-
-Common Fate Providers are built using the Provider Development Kit, or PDK for short. The PDK consists of:
-
-- A [`pdk` CLI](https://github.com/common-fate/pdk) to help create, test, and publish Providers
-- A Python `commonfate_provider` library which is imported by all Access Providers to enable integration with the Common Fate platform
-
-You'll use the `pdk` CLI from the command line, and the `commonfate_provider` library inside your Provider Python code.
-
-## Install the PDK CLI
 
 In order to use the `pdk` CLI you'll need to install it on your system. Common Fate provides binaries for `pdk` that you can download and install.
 
@@ -33,7 +24,7 @@ In order to use the `pdk` CLI you'll need to install it on your system. Common F
 >
 <TabItem value="macos">
 
-[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for the `pdk`. To install the `pdk` with Homebrew, run the commands below in your terminal.
+[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for `pdk`. To install `pdk` with Homebrew, run the commands below in your terminal.
 
 ```
 brew install common-fate/tap/pdk
@@ -57,8 +48,8 @@ values={[
 <TabItem value="x86_64">
 
 ```
-curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_x86_64.tar.gz
-sudo tar -zxvf ./pdk_0.1.1_linux_x86_64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_linux_x86_64.tar.gz
+sudo tar -zxvf ./pdk_0.3.0_linux_x86_64.tar.gz -C /usr/local/bin/
 
 ```
 
@@ -67,8 +58,8 @@ sudo tar -zxvf ./pdk_0.1.1_linux_x86_64.tar.gz -C /usr/local/bin/
 
 ```
 
-curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_arm64.tar.gz
-sudo tar -zxvf ./pdk_0.1.1_linux_arm64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_linux_arm64.tar.gz
+sudo tar -zxvf ./pdk_0.3.0_linux_arm64.tar.gz -C /usr/local/bin/
 
 ```
 
@@ -76,8 +67,8 @@ sudo tar -zxvf ./pdk_0.1.1_linux_arm64.tar.gz -C /usr/local/bin/
 <TabItem value="i386">
 
 ```
-curl -OL releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_linux_i386.tar.gz
-sudo tar -zxvf ./pdk_0.1.1_linux_i386.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_linux_i386.tar.gz
+sudo tar -zxvf ./pdk_0.3.0_linux_i386.tar.gz -C /usr/local/bin/
 
 ```
 
@@ -90,11 +81,11 @@ sudo tar -zxvf ./pdk_0.1.1_linux_i386.tar.gz -C /usr/local/bin/
 
 First, download the zip archive of `pdk` which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
 
-[PDK for Windows x86_64](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_x86_64.zip)
+[PDK for Windows x86_64](https://releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_windows_x86_64.zip)
 
-[PDK for Windows arm64](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_arm64.zip)
+[PDK for Windows arm64](https://releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_windows_arm64.zip)
 
-[PDK for Windows i386](https://releases.commonfate.io/pdk/v0.1.1/pdk_0.1.1_windows_i386.zip)
+[PDK for Windows i386](https://releases.commonfate.io/pdk/v0.3.0/pdk_0.3.0_windows_i386.zip)
 
 After downloading `pdk`, unzip the package.
 
@@ -114,7 +105,7 @@ To verify that the installation has succeeded, print the version of `pdk` by run
 ➜ pdk -v
 
 
-pdk v0.1.1
+pdk v0.3.0
 
 ```
 

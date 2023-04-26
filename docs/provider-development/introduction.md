@@ -12,6 +12,15 @@ Access Providers are plugins that enable Common Fate users to connect their acco
 
 To develop your own Access Provider for Common Fate, you will need to have a basic understanding of Python programming and experience with the Common Fate framework. Our Access Providers are written in Python and this documentation will guide you through the process of developing your own Access Provider and publishing it to the [Provider Registry](https://registry.commonfate.io)
 
+## The Provider Development Kit
+
+Common Fate Providers are built using the Provider Development Kit, or PDK for short. The PDK consists of:
+
+- A [`pdk` CLI](https://github.com/common-fate/pdk) to help create, test, and publish Providers
+- A [Python `provider` library](https://github.com/common-fate/provider) which is imported by all Access Providers to enable integration with the Common Fate platform
+
+You'll use the `pdk` CLI from the command line, and the `provider` library inside your Provider Python code.
+
 ## Get started
 
 Follow the [Getting Started guide](/provider-development/getting-started) to start building an Access Provider.
