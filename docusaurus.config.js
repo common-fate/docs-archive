@@ -97,6 +97,15 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "provider-development",
+        path: "docs/provider-development",
+        routeBasePath: "provider-development",
+        sidebarPath: "./sidebars.provider-development.js",
+      },
+    ],
+    [
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "htm"], // /myPage.html -> /myPage
@@ -145,6 +154,13 @@ const config = {
             label: "Common Fate",
           },
           {
+            docsPluginId: "provider-development",
+            type: "doc",
+            docId: "introduction",
+            position: "left",
+            label: "Provider Development",
+          },
+          {
             href: "https://commonfate.io/early-access",
             label: "Common Fate Cloud",
             position: "left",
@@ -179,6 +195,10 @@ const config = {
               {
                 label: "Common Fate",
                 to: "/common-fate/introduction",
+              },
+              {
+                label: "Provider Development",
+                to: "/provider-development/introduction",
               },
             ],
           },

@@ -4,7 +4,7 @@ slug: prerequisites
 
 # Prerequisites
 
-This guide will walk you through through deploying Common Fate. It will take around 15 minutes to complete.
+This guide will walk you through deploying Common Fate. It will take around 15 minutes to complete.
 
 ## Deployment
 
