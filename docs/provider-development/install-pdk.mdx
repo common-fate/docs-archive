@@ -108,29 +108,3 @@ To verify that the installation has succeeded, print the version of `pdk` by run
 pdk v0.3.0
 
 ```
-
-If you have any issues installing don't hesitate to [ask for help on our Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
-
-## Testing the provider
-
-As the `pdk` is still under development, we would like to share with you our current testing process:
-
-To begin, please open three separate terminal tabs. In the first tab, run the command `gdeploy logs watch`. In the second tab, run the command `cf handler logs watch`. And finally, in the third tab, run the command `gdeploy cache sync`.
-
-Once these commands are running, you can switch back to the first and second tabs where you will be able to see if any errors have occurred during testing. This will give you a better understanding of the current status of your provider.
-
-As our development progresses, we will continue to update and improve our testing process.
-
-## Adding dependencies
-
-To add a Python dependency, run the following commands:
-
-```bash
-source .venv/bin/activate # ensure that you are in the Python virtual environment for the Provider
-pip install DEPENDENCY_NAME
-pip freeze > requirements.txt # IMPORTANT: update the requirements.txt to include the new dependency
-```
-
-## Publishing the provider
-
-We are currently working on formalizing the process for publishing to the Provider Registry. Please check back soon for updates on how to publish your Access Provider to the registry.
