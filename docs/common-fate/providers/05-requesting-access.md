@@ -9,34 +9,27 @@ Navigate back to the end user dashboard by running:
 ```
 gdeploy dashboard open
 ```
+If you were successful in creating an Access Rule in the previous step, a background process would have run and configured all possible access patterns availiable to you. 
+These access **Entitlements** will be listed in a table, all searchable via the search bar above.
 
-You should see your new Access Rule available for requests. Click **Demo** to begin an access request.
+@TODO: add photo of home page with entitlements
 
-![](/img/common-fate-getting-started/12-homewithrule.png)
+@TODO: add photo of entitlements being filtered with search bar
 
-Fill in the following details on the page:
+Click on as many Entitlements as you need. Once you have selected all the resources you want access to, click the next button or hit `⌘ + Enter`
 
-**When do you need access?** “ASAP”
+@TODO: add photo of the preflight review screen.
+After hitting next, you will be taken to a request review page. Here your Entitlements would have been grouped into their respective Access Rules, meaning a group of Entitlements will share the same duration and approval settings.
+Here you can adjust your the duration of each of the Access Groups and add a reason for your request.
 
-**How long in hours do you need access for?** “0hrs, 1mins”
+@TODO: add photo of updating duration and inputting a reason.
 
-**Why do you need access?** “Testing Common Fate"
+Click the next button or hit `⌘ + Enter` to finalise your request.
 
-![](/img/common-fate-getting-started/13-newrequest.png)
 
-Click **Submit**.
+## Request Details
 
-You'll be taken back to the dashboard homepage, with a new request in the Upcoming section. Click the request in the Upcoming section to view details about it.
-
-![](/img/common-fate-getting-started/14-requestactive.png)
-
-The Request details page shows more information about the Access Request, including some instructions on how to access the resource. Click the **vault membership URL** in the access instructions to open the TestVault membership page.
-
-![](/img/common-fate-getting-started/15-requestdetails.png)
-
-You should see a screen similar to below:
-
-![](/img/common-fate-getting-started/16-testvaultactive.png)
+The request details page will show all the information about your request. Broken down into the different Access Groups and their respective targets.
 
 In Common Fate, all Access Requests have a duration. Common Fate is especially designed for “just-in-time” access, where your team can request elevated permissions for periods of time when they need them. After an Access Request has expired, **Common Fate removes the permissions automatically**. We can see this happen with the TestVault provider. Wait 30 seconds for the Access Request to expire, and then refresh the TestVault page in your browser. You should see an output similar to the below:
 
@@ -49,3 +42,5 @@ Navigate back to the end user dashboard, you'll see there that your access has e
 ![](/img/common-fate-getting-started/18-requestexpired.png)
 
 Congratulations - you've now set up Common Fate and used it to request privileged access! Continue on to the next section for what to do next.
+
+

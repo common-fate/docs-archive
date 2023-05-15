@@ -16,9 +16,34 @@ PDK Providers are packaged and deployed as AWS CloudFormation templates. These t
 2. An AWS IAM role for the Handler, called the **Handler Role**.
 3. An AWS IAM role which allows Common Fate to invoke the Lambda, called the **Invoke Role**.
 
-## Quickstart
+## Listing existing Providers
+To have a look at what providers you can deploy in your Common Fate instance take a look at [https://registry.commonfate.io/](https://registry.commonfate.io/) to see all the available providers. 
 
-To view the full process on deploying a PDK provider, see the [section below](#step-by-step).
+Or run the following command in your terminal to see a list.
+List all the existing providers in Provider Registry by running:
+
+```
+cf provider list
+```
+
+You can quickly view a Provider's [schema](./concepts#schema) by running:
+
+```
+curl https://api.registry.commonfate.io/v1alpha1/providers/common-fate/aws/v0.2.0
+```
+
+# Deploying
+There are two ways you can deploy a PDK provider. First is using the [all-in-one method](#quickstart) or can set up each part manually using the [step-by-step guide](#step-by-step)
+
+## Quickstart
+:::info
+When deploying PDK providers you will want to deploy into the **same account** that your Common Fate is deployed into. 
+:::
+
+To get started login to cf using the login command:
+```
+cf login
+```
 
 To quickly and interactively deploy a new PDK Provider, run the following command:
 
@@ -88,19 +113,6 @@ To uninstall the provider and its associated items, run the following command:
 cf provider destroy --handler-id <handler-id> --target-group-id <target-group-id> --delete-cloudformation-stack
 ```
 
-## Listing existing Providers
-
-List all the existing providers in Provider Registry by running:
-
-```
-cf provider list
-```
-
-You can quickly view a Provider's [schema](./concepts#schema) by running:
-
-```
-curl https://api.registry.commonfate.io/v1alpha1/providers/common-fate/aws/v0.2.0
-```
 
 ## Step-by-step
 
