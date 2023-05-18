@@ -23,4 +23,4 @@ You'll use the `pdk` CLI from the command line, and the `provider` library insid
 
 ## Get started
 
-Follow the [Getting Started guide](/provider-development/getting-started) to start building an Access Provider.
+Follow the [Getting Started guide](/provider-development/tutorial/overview) to start building an Access Provider.

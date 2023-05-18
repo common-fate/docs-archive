@@ -7,7 +7,10 @@ Access Rules are a core component of Common Fate. They define what roles and res
 
 ## Creating an Access Rule in Terraform
 
-To get started with Access Rules in Terraform, follow [Common Fate's guide](https://registry.terraform.io/providers/common-fate/commonfate/latest/docs#resource-access-rule) on Terraform's Provider Registry.
+Support for Terraform is not availiable yet for Common Fate v1.0.0, we are working on bringing this feature soon so let us know if this is something you want to see!
+- Creating Access Rules with Terraform is supported in all versions <v1.0.0.
+
+<!-- To get started with Access Rules in Terraform, follow [Common Fate's guide](https://registry.terraform.io/providers/common-fate/commonfate/latest/docs#resource-access-rule) on Terraform's Provider Registry.
 
 Below is a snippet of what a Common Fate Access Rule might look like in Terraform:
 
@@ -29,7 +32,7 @@ resource "commonfate_access_rule" "s3-example" {
   target_provider_id="aws-sso-v2"
   duration="3600"
 }
-```
+``` -->
 
 ## Creating an Access Rule in the web UI
 

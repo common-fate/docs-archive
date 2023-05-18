@@ -105,13 +105,6 @@ When running this command, you should see an output similar to the below:
   </div>
 </details>
 
-## Removing a Handler
-
-To uninstall the provider and its associated items, run the following command:
-
-```
-cf provider destroy --handler-id <handler-id> --target-group-id <target-group-id> --delete-cloudformation-stack
-```
 
 
 ## Step-by-step
@@ -180,4 +173,33 @@ To check the status of your Handler, run the following command:
 
 ```
 cf handler validate --id <handler_id> --aws-region <region> --runtime aws-lambda
+```
+
+
+## Removing a deployed Provider
+- The following command will delete the Target Group and Handler
+To uninstall the provider and its associated items, run the following command:
+- The `--delete-cloudformation-stack` tag will also delete the cloud formation stack of the handler you had deployed.
+
+```
+cf provider destroy --handler-id <handler-id> --target-group-id <target-group-id> --delete-cloudformation-stack
+```
+
+## Removing a Target Group
+To delete a Target Group run the following command:
+```
+cf targetgroup delete
+```
+
+## Removing a Handler
+To delete a handler run the following command:
+- Note this will not destroy the cloud formation stack.
+```
+cf handler delete
+```
+
+## Un-Linking a Target Group and Handler
+To Un-Link a handler and target group run the following command:
+```
+cf targetgroup unlink --kind={Kind}
 ```
