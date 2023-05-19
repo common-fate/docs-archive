@@ -31,6 +31,12 @@ Click the next button or hit `⌘ + Enter` to finalise your request.
 
 The request details page will show all the information about your request. Broken down into the different Access Groups and their respective targets.
 
+### Access Instructions
+Each Access Group and Target you have requested access to will include some Access Instructions. This is to assist in in the process of actually using what we have just been granted access to. 
+To view the access instructions, click the "View" button on the right of the target. A popup modal should appear with the steps to take to gain access.
+
+@TODO: add photo of showing the access instructions.
+
 In Common Fate, all Access Requests have a duration. Common Fate is especially designed for “just-in-time” access, where your team can request elevated permissions for periods of time when they need them. After an Access Request has expired, **Common Fate removes the permissions automatically**. We can see this happen with the TestVault provider. Wait 30 seconds for the Access Request to expire, and then refresh the TestVault page in your browser. You should see an output similar to the below:
 
 ![](/img/common-fate-getting-started/17-testvaultinactive.png)
