@@ -58,6 +58,16 @@ You can verify that the Provider has been scaffolded correctly by running:
 ```
 pdk run describe
 ```
+To run `pdk run describe` successfully, you'll need to create a `.env` file with the necessary [config schema variables](https://registry.commonfate.io/provider/common-fate/cloudwatch-log-groups/latest). For example, for the CloudWatch logs, the `.env` file will look like this:
+
+```
+PROVIDER_CONFIG_CLOUDWATCH_READ_ROLE_ARN=arn:aws:iam::XXXXXXXXXXXX:role
+PROVIDER_CONFIG_CLOUDWATCH_REGIONS=us-west-2
+PROVIDER_CONFIG_SSO_IDENTITY_STORE_ID=d-XXXXXXXXXXXX
+PROVIDER_CONFIG_SSO_INSTANCE_ARN=arn:aws:sso:::instance/ssoins-XXXXXXXXXXXX
+PROVIDER_CONFIG_SSO_REGION=ap-southeast-2
+PROVIDER_CONFIG_SSO_ROLE_ARN=arn:aws:iam::XXXXXXXXXXXX:role
+```
 
 You should see an output similar to the below.
 
