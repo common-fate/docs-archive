@@ -142,7 +142,7 @@ The Granted binary will periodically check to see if new versions are available 
 
 To disable update checking you can set the environment variable `GRANTED_DISABLE_UPDATE_CHECK=true`.
 
-## Granted Configuation Editing
+## Granted Configuration Editing
 
 Granted gives you tools to be able to interact with the config that is set under the hood.
 

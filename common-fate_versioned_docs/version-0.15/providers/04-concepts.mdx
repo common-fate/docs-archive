@@ -1,0 +1,265 @@
+---
+slug: concepts
+---
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Concepts
+
+## Providers
+
+Providers are developed in Python using the [Provider Development Kit (PDK)](https://github.com/common-fate/commonfate-provider-core). Providers are packaged and published to the Provider Registry. In this process, the Python code is prepared into a format suitable for running on AWS Lambda.
+
+## Schema
+
+Each Provider has a Schema. The Schema of the Provider is a [JSON Schema](https://json-schema.org/) document which describes the resources that the Provider grants access to, and the Provider's required configuration variables.
+
+<details>
+  <summary>An example Provider Schema</summary>
+  <div>
+    <CodeBlock className="language-json">{`{
+  "$id": "https://registry.commonfate.io/schema/common-fate/aws/v1",
+  "$schema": "https://schema.commonfate.io/provider/v1alpha1",
+  "config": {
+    "identity_store_id": {
+      "description": "the AWS SSO identity store ID",
+      "secret": false,
+      "type": "string"
+    },
+    "instance_arn": {
+      "description": "the AWS SSO instance ARN",
+      "secret": false,
+      "type": "string"
+    },
+    "region": {
+      "description": "the AWS SSO instance region",
+      "secret": false,
+      "type": "string"
+    },
+    "sso_role_arn": {
+      "description": "The ARN of the AWS IAM Role with permission to administer SSO",
+      "secret": false,
+      "type": "string"
+    }
+  },
+  "meta": { "framework": "0.9.1" },
+  "resources": {
+    "loaders": {
+      "fetch_groups": { "title": "fetch_groups" },
+      "fetch_org_structure": { "title": "fetch_org_structure" },
+      "fetch_permission_sets": { "title": "fetch_permission_sets" },
+      "fetch_users": { "title": "fetch_users" }
+    },
+    "types": {
+      "Account": {
+        "properties": {
+          "data": {
+            "org_unit_path": { "title": "Org Unit Path", "type": "string" },
+            "parent_org_unit": {
+              "description": "A parent organizational unit for the account",
+              "relation": "OrgUnit",
+              "title": "AWS Organizational Unit",
+              "type": "string"
+            },
+            "tags": { "default": {}, "title": "Tags", "type": "object" }
+          },
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name", "parent_org_unit", "org_unit_path"],
+        "title": "Account",
+        "type": "object"
+      },
+      "AccountAssignment": {
+        "properties": {
+          "data": {
+            "account": {
+              "relation": "Account",
+              "title": "Account",
+              "type": "string"
+            },
+            "group": {
+              "relation": "Group",
+              "title": "Group",
+              "type": "string"
+            },
+            "permission_set": {
+              "relation": "PermissionSet",
+              "title": "Permission Set",
+              "type": "string"
+            },
+            "user": { "relation": "User", "title": "User", "type": "string" }
+          },
+          "id": { "title": "ID", "type": "string" }
+        },
+        "required": ["id", "permission_set", "account"],
+        "title": "AccountAssignment",
+        "type": "object"
+      },
+      "Group": {
+        "properties": {
+          "data": {
+            "description": { "title": "Description", "type": "string" }
+          },
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name"],
+        "title": "Group",
+        "type": "object"
+      },
+      "GroupMembership": {
+        "properties": {
+          "data": {
+            "group": {
+              "relation": "Group",
+              "title": "Group",
+              "type": "string"
+            },
+            "user": { "relation": "User", "title": "User", "type": "string" }
+          },
+          "id": { "title": "ID", "type": "string" }
+        },
+        "required": ["id", "user", "group"],
+        "title": "GroupMembership",
+        "type": "object"
+      },
+      "ManagedPolicy": {
+        "properties": {
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name"],
+        "title": "ManagedPolicy",
+        "type": "object"
+      },
+      "ManagedPolicyAttachment": {
+        "properties": {
+          "data": {
+            "managed_policy": {
+              "relation": "ManagedPolicy",
+              "title": "Managed Policy",
+              "type": "string"
+            },
+            "permission_set": {
+              "relation": "PermissionSet",
+              "title": "Permission Set",
+              "type": "string"
+            }
+          },
+          "id": { "title": "ID", "type": "string" }
+        },
+        "required": ["id", "permission_set", "managed_policy"],
+        "title": "ManagedPolicyAttachment",
+        "type": "object"
+      },
+      "OrgUnit": {
+        "properties": {
+          "data": {
+            "parent": {
+              "relation": "OrgUnit",
+              "title": "Parent",
+              "type": "string"
+            }
+          },
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name"],
+        "title": "OrgUnit",
+        "type": "object"
+      },
+      "PermissionSet": {
+        "properties": {
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name"],
+        "title": "PermissionSet",
+        "type": "object"
+      },
+      "Resource": {
+        "properties": {
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name"],
+        "title": "Resource",
+        "type": "object"
+      },
+      "User": {
+        "properties": {
+          "data": { "email": { "title": "Email", "type": "string" } },
+          "id": { "title": "ID", "type": "string" },
+          "name": { "title": "Name", "type": "string" }
+        },
+        "required": ["id", "name", "email"],
+        "title": "User",
+        "type": "object"
+      }
+    }
+  },
+  "targets": {
+    "Account": {
+      "properties": {
+        "account": {
+          "description": "the AWS account to grant access to",
+          "resource": "Account",
+          "title": "Account",
+          "type": "string"
+        },
+        "permission_set": {
+          "description": "the AWS permission set to grant access to",
+          "resource": "PermissionSet",
+          "title": "Permission Set",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    }
+  }
+}
+`}</CodeBlock>
+  </div>
+</details>
+
+## Target Kinds
+
+Each Provider will have one or more Kinds of target, the Kind of the target is the thing that Common Fate can grant access to.
+
+Kinds allow one provider codebase to implement multiple functions. One of the benefits is that you may deploy one instance of a provider and have it serve may different Kinds of access requests.
+
+### Example
+
+With AWS we grant access to an Account (kind = Account), with EKS we might grant access to a Namespace (kind = Namespace) or to a Role (kind = Role).
+
+## Handlers
+
+A Handler represents an instance of Provider, it stores information about the deployment and runtime.
+
+Handlers have a health status which is checked every 30 seconds. When a Handler is healthy it means that it can be invoked, and all config validations are successful.
+
+## Target Groups
+
+A Target Group represents the Kind of access grant, such as AWS Account access. When creating an Access Rule, you select your available Target Groups, then configure the request options for users to make an access request.
+Target Groups can be created and deleted as needed and can be linked with Handlers.
+
+## Routes
+
+A Route links a Target Group to a Handler, and specifies the priority of the link as well as the Kind of target implemented by the Handler to be used to satisfy the Target Group requirements.
+
+### Linking a Target Group to a Handler
+
+A Target Group must be linked with at least one healthy Handler to be able to serve requests. If a Handler becomes unhealthy, all the routes for that handler become invalid. When the handler becomes healthy again, the route's validity will be checked again. When testing the validity of a route, the schema of the Handler and the Schema of the Target Group are compared to ensure they are compatible.
+
+Routes are assigned a priority, ranging from 0 - 999. To disable a route, set its priority to 0.
+
+:::info
+If a Handler is incompatible with its Target Group it will be marked _invalid_.
+:::
+
+## Bootstrapping
+
+In order to deploy PDK Providers into a particular AWS account and region, you will first need to bootstrap the region. Bootstrapping is the process of deploying a CloudFormation template, which provisions an Amazon S3 bucket to store PDK Provider files. Once deployed, this CloudFormation template will appear in the AWS CloudFormation console, like any other CloudFormation stack.
+
+When a PDK Provider is deployed, the CloudFormation template and Lambda function for the Provider are first copied into this bucket by the `cf` CLI, prior to resources being provisioned.

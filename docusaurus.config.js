@@ -25,15 +25,8 @@ const previousRoutes = [
   "/granted-approvals/deploying-common-fate/deploying",
   "/granted-approvals/deploying-common-fate/next-steps",
   "/granted-approvals/end-users/end-users",
-  "/granted-approvals/providers/access-providers",
   "/granted-approvals/providers/add-first-provider/requesting-access",
   "/granted-approvals/providers/add-first-provider/clean-up",
-  "/granted-approvals/providers/interactive-setup",
-  "/granted-approvals/providers/registry/provider-registry",
-  "/granted-approvals/providers/registry/commonfate/aws-sso/v2/setup",
-  "/granted-approvals/providers/registry/commonfate/azure-ad/v1/setup",
-  "/granted-approvals/providers/registry/commonfate/ecs-exec-sso/v1-alpha1/setup",
-  "/granted-approvals/providers/registry/commonfate/okta/v1/setup",
   "/granted-approvals/security-architecture",
   "/granted-approvals/sso/sso-setup",
   "/granted-approvals/sso/aws-sso",
@@ -104,6 +97,15 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "provider-development",
+        path: "docs/provider-development",
+        routeBasePath: "provider-development",
+        sidebarPath: "./sidebars.provider-development.js",
+      },
+    ],
+    [
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "htm"], // /myPage.html -> /myPage
@@ -152,6 +154,13 @@ const config = {
             label: "Common Fate",
           },
           {
+            docsPluginId: "provider-development",
+            type: "doc",
+            docId: "introduction",
+            position: "left",
+            label: "Provider Development",
+          },
+          {
             href: "https://commonfate.io/early-access",
             label: "Common Fate Cloud",
             position: "left",
@@ -186,6 +195,10 @@ const config = {
               {
                 label: "Common Fate",
                 to: "/common-fate/introduction",
+              },
+              {
+                label: "Provider Development",
+                to: "/provider-development/introduction",
               },
             ],
           },
@@ -229,6 +242,20 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: "0RGL2ZP3VH",
+
+        // Public API key: it is safe to commit it
+        apiKey: "161b3e084a01bde79bcd2a59332fc2ea",
+        indexName: "commonfate",
+
+        // Optional: see doc section below
+        contextualSearch: false,
+
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: "search",
       },
     }),
 };

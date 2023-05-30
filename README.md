@@ -62,3 +62,17 @@ go run cmd/docscli/main.go generate --version=<latest approvals version>
 ```
 
 Make a PR with the generate files
+
+## Docs versioning
+
+Read the guide here: https://docusaurus.io/docs/versioning. We implement versioning on the Common Fate documentation only (not Granted).
+
+By default, changes made to the main docs directory are considered to be 'unreleased' and are available at https://docs.commonfate.io/common-fate/next/introduction.
+
+Version snapshots of our documentation should be created during a new release of Common Fate. To create a version snapshot:
+
+```
+yarn docusaurus docs:version:common-fate 0.14
+```
+
+Replace `0.14` with the version number you're releasing. We don't need to release new docs versions for patch releases, unless there is a major documentation change.

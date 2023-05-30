@@ -40,3 +40,11 @@ For example:
 You should see something like
 
 ![A screenshot of the resonse from terminal with role that needs access](/img/recipes/cli-approval/forbidden_exception_output.png)
+
+Additionally you can run:
+
+```
+granted exp request aws
+```
+
+to request access to roles through Common Fate.
