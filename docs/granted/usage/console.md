@@ -89,6 +89,16 @@ assume -s iam
 
 Will open a console and take you directly to the IAM service (https://console.aws.amazon.com/iamv2). Granted supports using shortcuts such as `l` for the Lambda service. You can see the full list of shortcuts [here](https://github.com/common-fate/granted/blob/main/pkg/console/service_map.go). PRs which add additional shortcuts or services are very welcome.
 
+## Opening the console with a specific destination
+
+You can open a console for a profile at a specific destination by adding the `--console-destination` or `-cd` flag. For example:
+
+```
+assume -cd "https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards:name=ServiceDashboard" role-a
+```
+
+Will open the _us-west-2_ console for the CloudWatch Dashboard called _ServiceDashboard_.  This provides the ability to bookmark or create shell aliases for specific console destinations you use frequently.
+
 ## Opening the console with an active role
 
 If you have already assumed a role using `assume`, you can open the console using this assumed role by adding the `--active-role` or `-ar` flags. For example:
