@@ -29,6 +29,11 @@ Note: If you do not provide `--url` flag in `credential_process` key, you will n
 granted settings request-url set <GRANTED_APPROVALS_URL>
 ```
 
+Make sure you login to your Common Fate instance first by running:
+```
+granted login
+```
+
 :tada: Now try running an AWS CLI command with a profile that doesn't have required access.
 
 For example:
