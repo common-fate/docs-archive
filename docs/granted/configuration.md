@@ -186,3 +186,12 @@ granted sso-tokens clear profile_name
 ```
 granted sso-tokens clear --all
 ```
+
+## Enable Quiet Mode
+
+To enable quiet mode in Granted, set the `GRANTED_QUIET` environment variable to `true` by running: 
+```
+ export GRANTED_QUIET=true
+ ```
+ 
+This suppresses most of the command output, providing a quieter experience.
