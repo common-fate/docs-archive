@@ -214,7 +214,7 @@ type SSOProfile struct {
 	StartUrl  string
 	SSORegion string
 	// Account and role details
-	AccountId   string
+	AccountID   string
 	AccountName string
 	RoleName    string
 }
