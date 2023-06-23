@@ -52,4 +52,8 @@ Additionally you can run:
 granted exp request aws
 ```
 
-to request access to roles through Common Fate.
+to request access to roles through Common Fate. If you would like to set the duration for the request, you can add the `--duration` flag to the command:
+
+```
+granted exp request aws --duration 2h
+```
