@@ -179,6 +179,7 @@ On the **Service provider details** page
 
 - For the **ACS URL** copy the `SAML SSO URL (ACS URL)` from the output.
 - For the **Entity ID** copy the `Audience URI ` from the output.
+- For Name ID Format change the value from `UNSPECIFIED` to `EMAIL`.
 
 ![](/img/sso/google/06.png)
 
