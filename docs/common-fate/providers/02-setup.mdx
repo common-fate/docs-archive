@@ -16,7 +16,7 @@ To deploy a PDK Provider, start by installing `cf`.
 `cf` is a command-line interface (CLI) tool for performing authenticated actions against a Common Fate deployment. It provides commands for creating and updating Target Groups, Handlers, Routes and also for operational tasks like viewing Handler logs.
 
 :::info
-`cf` version above 0.5.2 has all PDK related commands inside the `cf oss` subcommand.
+`cf` version above 0.6.4 has all PDK related commands inside the `cf oss` subcommand.
 :::
 
 To install `cf`, follow the instructions below based on your computer's operating system:
@@ -57,16 +57,16 @@ Select the steps which match your system architecture. You can find your archite
 <TabItem value="x86_64">
 
 ```
-curl -OL releases.commonfate.io/cf/v0.5.2/cf_0.5.2_darwin_x86_64.tar.gz
-sudo tar -zxvf ./cf_0.5.2_darwin_x86_64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/cf/v0.6.4/cf_0.6.4_darwin_x86_64.tar.gz
+sudo tar -zxvf ./cf_0.6.4_darwin_x86_64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
 <TabItem value="arm64">
 
 ```
-curl -OL releases.commonfate.io/cf/v0.5.2/cf_0.5.2_darwin_arm64.tar.gz
-sudo tar -zxvf ./cf_0.5.2_darwin_arm64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/cf/v0.6.4/cf_0.6.4_darwin_arm64.tar.gz
+sudo tar -zxvf ./cf_0.6.4_darwin_arm64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
@@ -90,24 +90,24 @@ Select the steps which match your system architecture. You can find your archite
 <TabItem value="x86_64">
 
 ```
-curl -OL releases.commonfate.io/cf/v0.5.2/cf_0.5.2_linux_x86_64.tar.gz
-sudo tar -zxvf ./cf_0.5.2_linux_x86_64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/cf/v0.6.4/cf_0.6.4_linux_x86_64.tar.gz
+sudo tar -zxvf ./cf_0.6.4_linux_x86_64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
 <TabItem value="arm64">
 
 ```
-curl -OL releases.commonfate.io/cf/v0.5.2/cf_0.5.2_linux_arm64.tar.gz
-sudo tar -zxvf ./cf_0.5.2_linux_arm64.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/cf/v0.6.4/cf_0.6.4_linux_arm64.tar.gz
+sudo tar -zxvf ./cf_0.6.4_linux_arm64.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
 <TabItem value="i386">
 
 ```
-curl -OL releases.commonfate.io/cf/v0.5.2/cf_0.5.2_linux_i386.tar.gz
-sudo tar -zxvf ./cf_0.5.2_linux_i386.tar.gz -C /usr/local/bin/
+curl -OL releases.commonfate.io/cf/v0.6.4/cf_0.6.4_linux_i386.tar.gz
+sudo tar -zxvf ./cf_0.6.4_linux_i386.tar.gz -C /usr/local/bin/
 ```
 
 </TabItem>
@@ -119,11 +119,11 @@ sudo tar -zxvf ./cf_0.5.2_linux_i386.tar.gz -C /usr/local/bin/
 
 First, download the zip archive of `cf` which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
 
-[cf for Windows x86_64](https://releases.commonfate.io/cf/v0.5.2/cf_0.5.2_windows_x86_64.zip)
+[cf for Windows x86_64](https://releases.commonfate.io/cf/v0.6.4/cf_0.6.4_windows_x86_64.zip)
 
-[cf for Windows arm64](https://releases.commonfate.io/cf/v0.5.2/cf_0.5.2_windows_arm64.zip)
+[cf for Windows arm64](https://releases.commonfate.io/cf/v0.6.4/cf_0.6.4_windows_arm64.zip)
 
-[cf for Windows i386](https://releases.commonfate.io/cf/v0.5.2/cf_0.5.2_windows_i386.zip)
+[cf for Windows i386](https://releases.commonfate.io/cf/v0.6.4/cf_0.6.4_windows_i386.zip)
 
 After downloading cf, unzip the package.
 
@@ -146,5 +146,5 @@ cf -v
 You should see a version output similar to the below:
 
 ```
-cf version 0.5.2
+cf version 0.6.4
 ```
