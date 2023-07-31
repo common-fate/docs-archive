@@ -34,6 +34,11 @@ Make sure you login to your Common Fate instance first by running:
 granted login
 ```
 
+Alternatively you can pass in your dashboard url as the first parameter 
+```
+granted login <DASHBOARD_URL>
+```
+
 :tada: Now try running an AWS CLI command with a profile that doesn't have required access.
 
 For example:
