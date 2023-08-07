@@ -30,8 +30,14 @@ granted settings request-url set <GRANTED_APPROVALS_URL>
 ```
 
 Make sure you login to your Common Fate instance first by running:
+    ```
+    granted login
+    ```
+
+- You can pass the `--lazy` flag with the `login` command which will skip opening the browser for a login flow, if your current token is still active and not close to expiring. eg.
 ```
-granted login
+> granted login --lazy
+> [i] Auth token still valid, skipping login flow.
 ```
 
 Alternatively you can pass in your dashboard url as the first parameter 
