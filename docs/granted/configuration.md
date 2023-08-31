@@ -4,17 +4,31 @@ sidebar_position: 4
 
 # Configuration
 
-## Granted configuration folder
+## Granted Configuration Folder
 
-Granted stores configuration in the `$HOME/.granted` folder on Unix systems, and in `%USERPROFILE%/.granted` on Windows. Configuration which is stored in this folder includes:
+The configuration settings for Granted are stored within the `$HOME/.granted` folder on Unix systems, and `%USERPROFILE%/.granted` on Windows. This designated folder serves as a repository for configuration data, encompassing:
 
-- The web browser which Granted uses
-- Profiles for Chromium-based browsers
-- [Frecency](#frecency) data
+- **Default Browser Configuration**: The `DefaultBrowser` option allows you to [establish the default browser](#changing-the-web-browser).
 
-## Frecency
+- **Custom Browser Paths**: The `CustomBrowserPath` option lets you override default installation paths for browsers with custom locations.
 
-Granted uses a [Frecency](https://en.wikipedia.org/wiki/Frecency) algorithm to show the most frequent and recent profiles at the top of the list when running `assume`. The algorithm can be found [here](https://github.com/common-fate/granted/blob/main/pkg/frecency/frecency.go). The algorithm caches frecency data locally in the `aws_profiles_frecency` file in the Granted configuration folder.
+- **Custom Single Sign-On (SSO) Browser Paths**: The `CustomSSOBrowserPath` option provides the ability to [set custom browser](#custom-browser-for-running-sso-flows) for running Single Sign-On (SSO) flows.
+
+- **Profile Ordering**: The `Ordering` option allows you to change the [order of profiles](#changing-the-profile-ordering) when they are displayed.
+
+- **Export Credential Suffix**: The `ExportCredentialSuffix` option enables appending a suffix when exporting credentials.
+
+- **Access Request URL**: The `AccessRequestURL` option lets you set a Common Fate URL that can be used to request access.
+
+- **CommonFate SSO Default Start URL and Region**: The `CommonFateDefaultSSOStartURL` and `CommonFateDefaultSSORegion` options respectively set the default start URL and region for CommonFate Single Sign-On.
+
+- **Usage Tips and Credential Caching**: The `DisableUsageTips` option, when set to true, suppresses usage tips. The `DisableCredentialProcessCache` option, when set to true, prevents credential caching via credential processes.
+
+To configure any of these options, you can use the following command:
+
+```
+granted settings set
+```
 
 ## Changing the profile ordering
 
@@ -31,6 +45,10 @@ From here you will be able to select your preferred method of choice
 > Frecency
   Alphabetical
 ```
+
+### Frecency
+
+Granted uses a [Frecency](https://en.wikipedia.org/wiki/Frecency) algorithm to show the most frequent and recent profiles at the top of the list when running `assume`. The algorithm can be found [here](https://github.com/common-fate/granted/blob/main/pkg/frecency/frecency.go). The algorithm caches frecency data locally in the `aws_profiles_frecency` file in the Granted configuration folder.
 
 ## Autocompletion
 
@@ -97,7 +115,7 @@ Select which browser you would like to use and press Enter.
 
 ## Setting color and icon preferences for profiles
 
-If you use Firefox with the [Granted Firefox Addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/), you can set the color and icon preference for each profile.  This is useful for distinguishing between profiles at a glance.
+If you use Firefox with the [Granted Firefox Addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/), you can set the color and icon preference for each profile. This is useful for distinguishing between profiles at a glance.
 
 To customize the color and icon add `granted_color` and `granted_icon` to the profile in your `~/.aws/config` file.
 
@@ -189,9 +207,10 @@ granted sso-tokens clear --all
 
 ## Enable Quiet Mode
 
-To enable quiet mode in Granted, set the `GRANTED_QUIET` environment variable to `true` by running: 
+To enable quiet mode in Granted, set the `GRANTED_QUIET` environment variable to `true` by running:
+
 ```
  export GRANTED_QUIET=true
- ```
- 
+```
+
 This suppresses most of the command output, providing a quieter experience.
