@@ -19,5 +19,5 @@ The effect of the below command is that the get caller identity command is calle
 In a bash script, the following example would run a program for each profile in a file.
 
 ```
-for PROFILE in $(cat profile_list.txt); do FORCE_NO_ALIAS=true dassume $PROFILE --exec 'aws sts get-caller-identity'; done
+for PROFILE in $(cat profile_list.txt); do FORCE_NO_ALIAS=true assume $PROFILE --exec 'aws sts get-caller-identity'; done
 ```
