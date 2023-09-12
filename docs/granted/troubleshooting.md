@@ -32,6 +32,12 @@ Add the following to `~/.config/fish/config.fish`:
 alias assume="source /usr/local/bin/assume.fish"
 ```
 
+:::note
+
+After adding the alias to your shell profile manually, if Granted does not detect that the alias is configured, please run `export GRANTED_ALIAS_CONFIGURED="true"` before running `assume` to bypass the setup process.
+
+:::
+
 ## AWS SSO issues
 
 ### Regions
@@ -44,6 +50,6 @@ If you don't know which SSO region your AWS organization is in, you'll need to c
 
 ## Other issues
 
-If you have any other issues with Granted please [send us a message on Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg) and we'll help you out. Alternatively, you can also shoot us a [Twitter message](https://twitter.com/CommonFateTech). 
+If you have any other issues with Granted please [send us a message on Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg) and we'll help you out. Alternatively, you can also shoot us a [Twitter message](https://twitter.com/CommonFateTech).
 
 Please don't hesitate to reach out! We want to make Granted work for everyone and we're keen to help you with any problems you might encounter.
