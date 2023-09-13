@@ -109,9 +109,16 @@ You will get a response like this:
   Edge
   Firefox
   Chromium
+  Safari
+  Firefox Developer Edition
+  Arc
 ```
 
 Select which browser you would like to use and press Enter.
+
+## Using specific browser profiles
+
+Launching a specific browser profile is possible with `--browser-profile` flag for supported browsers such as Chrome, Edge, and Chromium Variants. Example useage: `assume profile-name -c --browser-profile "<your_browser_profile>"`
 
 ## Setting color and icon preferences for profiles
 
