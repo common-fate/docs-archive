@@ -31,6 +31,6 @@ alias assume="source /usr/local/bin/assume"
 
 Granted will walk you through installing the shell alias the first time that it is run.
 
-We'd like to acknowledge Trek10's [awsume](https://github.com/trek10inc/awsume) project which has inspired the approach we have taken to exporting environment variables.
+If you keep your shell profile in a non-standard location, Granted may fail to install the alias. If this happens, you can [manually configure your shell alias](/granted/troubleshooting#manually-configuring-your-shell-profile). If you have already installed the shell alias manually, you can run `export GRANTED_ALIAS_CONFIGURED="true"` to bypass the setup process.
 
-If you keep your shell profile in a non-standard location, Granted may fail to install the alias. If this happens, you can [manually configure your shell alias](/granted/troubleshooting#manually-configuring-your-shell-profile).
+We'd like to acknowledge Trek10's [awsume](https://github.com/trek10inc/awsume) project which has inspired the approach we have taken to exporting environment variables.
