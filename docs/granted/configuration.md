@@ -90,6 +90,32 @@ assume -
 --console                          --exec                             --pass-through                     --un                               --verbose                          -e                                 -u
 ```
 
+Type `assume -s ` and press **tab** to see service names.
+
+```
+ct              gd              s3              sso
+appsync         cw              grafana         sagemaker       states
+athena          ddb             iam             scrh            stepfn
+c9              dms             l               scrm            tra
+ce              dx              lambda          secretsmanager  trustedadvisor
+cf              eb              mwaa            securityhub     vpc
+cfn             ebs             param           ses             waf
+cloudformation  ec2             r53             sfn
+cloudmap        ecr             rds             sm
+cloudwatch      ecs             redshift        sns
+config          eks             route53         ssm
+```
+
+Type `assume -r ` and press **tab** to see regions.
+
+```
+af-south-1      ap-south-1      eu-north-1      me-south-1      us-west-2
+ap-east-1       ap-southeast-1  eu-south-1      sa-east-1
+ap-northeast-1  ap-southeast-2  eu-west-1       us-east-1
+ap-northeast-2  ca-central-1    eu-west-2       us-east-2
+ap-northeast-3  eu-central-1    eu-west-3       us-west-1
+```
+
 ## Changing the web browser
 
 To see which browser Granted will use to open cloud consoles with, run `granted browser`.
@@ -214,3 +240,7 @@ To enable quiet mode in Granted, set the `GRANTED_QUIET` environment variable to
 ```
 
 This suppresses most of the command output, providing a quieter experience.
+
+## Customize AWS Configuration and Credentials File Locations
+
+Specify the location of your AWS configuration file and credentials file through environment variables. Set the `$AWS_CONFIG_FILE` and `$AWS_SHARED_CREDENTIALS_FILE` environment variables to configure these file locations according to your preferences.

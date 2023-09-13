@@ -16,6 +16,12 @@ The effect of the below command is that the get caller identity command is calle
 
 `assume my-profile --exec 'aws sts get-caller-identity'`
 
+You can also leverage the `--exec` flag with a double dash (--) prefix to execute more complex commands that involve quotations. Use the following syntax:
+
+```
+assume <profile_name> --exec -- cmd arg...
+```
+
 In a bash script, the following example would run a program for each profile in a file.
 
 ```
