@@ -18,7 +18,7 @@ To open the web console for a role, add the `--console` or `-c` flag to your `as
 assume -c role-a
 ```
 
-This will open a session in the AWS console for the specified profile. On Firefox, the session will open in a [Container Tab](https://support.mozilla.org/en-US/kb/containers). On Chrome, Brave, and Edge, the session will open in a new profile.
+This will open a session in the AWS console for the specified profile. On Firefox, the session will open in a [Container Tab](https://support.mozilla.org/en-US/kb/containers). On Chrome, Brave, Edge, Safari and Arc the session will open in a new profile.
 
 :::info
 If the console does not open on Firefox, ensure that you have installed the [Granted addon](https://addons.mozilla.org/en-GB/firefox/addon/granted/).
@@ -97,7 +97,7 @@ You can open a console for a profile at a specific destination by adding the `--
 assume -cd "https://us-west-2.console.aws.amazon.com/cloudwatch/home?region=us-west-2#dashboards:name=ServiceDashboard" role-a
 ```
 
-Will open the _us-west-2_ console for the CloudWatch Dashboard called _ServiceDashboard_.  This provides the ability to bookmark or create shell aliases for specific console destinations you use frequently.
+Will open the _us-west-2_ console for the CloudWatch Dashboard called _ServiceDashboard_. This provides the ability to bookmark or create shell aliases for specific console destinations you use frequently.
 
 ## Opening the console with an active role
 

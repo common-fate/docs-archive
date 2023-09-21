@@ -77,6 +77,21 @@ If you already have a profile in your AWS config file, the credential_process en
 
 You can now assume the profile by running `assume example`
 
+## `import-from-env` command
+
+The `import-from-env` command enables you to create a new AWS config profile with IAM credentials imported from environment.
+
+**Example Usage**
+
+```bash
+granted credentials import-from-env --profile my-profile
+```
+
+Upon execution, this command will generate an AWS configuration profile named my-profile. The credentials for this profile will be sourced from the following environment variables:
+
+- `$AWS_ACCESS_KEY_ID`: Your AWS access key ID.
+- `$AWS_SECRET_ACCESS_KEY`: Your AWS secret access key.
+
 ## `update` command
 
 Update credentials stored in secure storage.
@@ -172,3 +187,9 @@ aws_secret_access_key = secret
 ```
 
 It will also remove the `credential_process` entry from the profile in the AWS config file.
+
+## Using IAM Credentials with Multi-Factor Authentication (MFA)
+
+For those using an AWS profile that requires an MFA prompt, Granted will cache your credentials, eliminating the need to repeatedly enter the MFA token code as long as the cached credentials remain valid.
+
+Moreover, if you can obtain an MFA token through a script, you can now utilize the `mfa-token` flag with `assume` to bypass the MFA prompt like `assume dev --mfa-token 123456`
