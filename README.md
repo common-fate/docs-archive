@@ -49,7 +49,7 @@ We use some templating to generate provider registry docs from the definitions i
 
 #### Run an update of provider docs
 
-Update Common Fate repo dependency
+Update Glide repo dependency
 
 ```
 go get github.com/common-fate/common-fate@<tag>
@@ -65,11 +65,11 @@ Make a PR with the generate files
 
 ## Docs versioning
 
-Read the guide here: https://docusaurus.io/docs/versioning. We implement versioning on the Common Fate documentation only (not Granted).
+Read the guide here: https://docusaurus.io/docs/versioning. We implement versioning on the Glide documentation only (not Granted).
 
 By default, changes made to the main docs directory are considered to be 'unreleased' and are available at https://docs.commonfate.io/common-fate/next/introduction.
 
-Version snapshots of our documentation should be created during a new release of Common Fate. To create a version snapshot:
+Version snapshots of our documentation should be created during a new release of Glide. To create a version snapshot:
 
 ```
 yarn docusaurus docs:version:common-fate 0.14

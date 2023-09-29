@@ -8,7 +8,7 @@ slug: install-sdk
 Our Provider Development documentation is still a work-in-progress. If you're building an Access Provider, [join our Community Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
 :::
 
-Common Fate provides a [Python SDK](https://github.com/common-fate/testvault-python-sdk) for the TestVault service. To install the SDK, run:
+Glide provides a [Python SDK](https://github.com/common-fate/testvault-python-sdk) for the TestVault service. To install the SDK, run:
 
 ```bash
 source .venv/bin/activate # activate the Python virtual environment for the Provider

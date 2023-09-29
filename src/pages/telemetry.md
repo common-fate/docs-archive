@@ -4,22 +4,22 @@ Common Fate collects anonymous telemetry data to help improve our product. Parti
 
 ## Why Collect Telemetry?
 
-As developers of Common Fate we have very little insight into how the product is used beyond our own team. Typically we find out about product deployments because a community member joins our community Slack (usually when they have challenges getting started). Community members with successful deployments tend to be quieter because everything is working well. In the latter use case we have no visibility over product usage. Visibility into such usage is helps us to prioritize new product features in accordance with the purposes listed below.
+As developers of Glide we have very little insight into how the product is used beyond our own team. Typically we find out about product deployments because a community member joins our community Slack (usually when they have challenges getting started). Community members with successful deployments tend to be quieter because everything is working well. In the latter use case we have no visibility over product usage. Visibility into such usage is helps us to prioritize new product features in accordance with the purposes listed below.
 
-We collect anonymous product analytics for [Common Fate](https://github.com/common-fate/common-fate).
+We collect anonymous product analytics for [Glide](https://github.com/common-fate/common-fate).
 
-# Common Fate
+# Glide
 
 ## What is Collected?
 
 General usage information is tracked, such as product versioning and plugins in use.
 
-| Metric                                                | Purpose                                                                                                                                                                                                                                                                                                                                  |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Access Providers in use.                              | Helps us to understand the impact of changes to providers; for widely-used alpha-version providers we will provide scripts to automatically update Access Rules when changes are made to Access Providers. Helps inform the direction of the project with the kinds of new Access Providers that are developed.                          |
-| Percentage of Access Rules requiring manual approval. | Helps us prioritize manual approval policy improvements (such as 2-person approval for access) versus automated approval policy improvements (such as associating Linear/Jira tickets with access requests, or integrating with PagerDuty and other on-call platforms)                                                                   |
-| Access Request time to approval.                      | One of the core values of Common Fate is that the access request workflow must be extremely fast. This includes the approval aspect. Our goal is that the median approval time is less than 10 minutes but we have no way to measure this. Helps drive improvements around the request workflow, such as our notifications to approvers. |
-| Common Fate version number.                           | Helps us prioritise backporting patches to previous versions.                                                                                                                                                                                                                                                                            |
+| Metric                                                | Purpose                                                                                                                                                                                                                                                                                                                            |
+| ----------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Access Providers in use.                              | Helps us to understand the impact of changes to providers; for widely-used alpha-version providers we will provide scripts to automatically update Access Rules when changes are made to Access Providers. Helps inform the direction of the project with the kinds of new Access Providers that are developed.                    |
+| Percentage of Access Rules requiring manual approval. | Helps us prioritize manual approval policy improvements (such as 2-person approval for access) versus automated approval policy improvements (such as associating Linear/Jira tickets with access requests, or integrating with PagerDuty and other on-call platforms)                                                             |
+| Access Request time to approval.                      | One of the core values of Glide is that the access request workflow must be extremely fast. This includes the approval aspect. Our goal is that the median approval time is less than 10 minutes but we have no way to measure this. Helps drive improvements around the request workflow, such as our notifications to approvers. |
+| Glide version number.                                 | Helps us prioritise backporting patches to previous versions.                                                                                                                                                                                                                                                                      |
 
 :::note
 The above list undergoes frequent audit to ensure accuracy.

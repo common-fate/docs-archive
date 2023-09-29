@@ -45,7 +45,7 @@ credential_process = granted credential-process --profile AccountName/RoleName
 # ...
 ```
 
-### All available Common Fate Access Rules
+### All available Glide Access Rules
 
 ```
 granted sso generate --sso-region ap-southeast-2 --source cf https://example.awsapps.com/start
@@ -153,10 +153,10 @@ commonfate_generated_by = aws-sso
 
 Granted supports the below profile sources, using the `--source` flag. We'd love to hear from you if you have any suggestions for additional profile sources for us to add - you can [raise an issue here](https://github.com/common-fate/granted/issues/new). Multiple sources can be provided by specifying `--source` more than once when running a command.
 
-| Source                            | CLI flag           | Description                                                                                          |
-| --------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
-| AWS IAM Identity Center (default) | `--source aws-sso` | Creates a profile for each account and permission set available to you in AWS IAM Identity Center    |
-| Common Fate                       | `--source cf`      | Creates a profile for each account and permission set available as an Access Rule within Common Fate |
+| Source                            | CLI flag           | Description                                                                                       |
+| --------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------- |
+| AWS IAM Identity Center (default) | `--source aws-sso` | Creates a profile for each account and permission set available to you in AWS IAM Identity Center |
+| Glide                             | `--source cf`      | Creates a profile for each account and permission set available as an Access Rule within Glide    |
 
 ## `generate` command
 

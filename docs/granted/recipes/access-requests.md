@@ -1,10 +1,10 @@
-# Using Common Fate for requesting access
+# Using Glide for requesting access
 
 ## Prerequisites
 
-For this recipe, you'll need [Common Fate Configured](/common-fate/introduction).
+For this recipe, you'll need [Glide Configured](/common-fate/introduction).
 
-You can use Granted to request access to roles through Common Fate. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted.
+You can use Granted to request access to roles through Glide. Internally, we use AWS [credential_process](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sourcing-external.html) to source credentials through Granted.
 
 You will need to update each role you want to request access to with the following configuration:
 
@@ -23,24 +23,25 @@ You will need to update each role you want to request access to with the followi
 + credential_process = granted credential-process --profile updated-profile --url https://granted.example.com
 ```
 
-Note: If you do not provide `--url` flag in `credential_process` key, you will need to set Common Fate URL by running
+Note: If you do not provide `--url` flag in `credential_process` key, you will need to set Glide URL by running
 
 ```bash
 granted settings request-url set <GRANTED_APPROVALS_URL>
 ```
 
-Make sure you login to your Common Fate instance first by running:
-    ```
-    granted login
-    ```
+Make sure you login to your Glide instance first by running:
+`    granted login
+   `
 
 - You can pass the `--lazy` flag with the `login` command which will skip opening the browser for a login flow, if your current token is still active and not close to expiring. eg.
+
 ```
 > granted login --lazy
 > [i] Auth token still valid, skipping login flow.
 ```
 
-Alternatively you can pass in your dashboard url as the first parameter 
+Alternatively you can pass in your dashboard url as the first parameter
+
 ```
 granted login <DASHBOARD_URL>
 ```
@@ -63,7 +64,7 @@ Additionally you can run:
 granted exp request aws
 ```
 
-to request access to roles through Common Fate. If you would like to set the duration for the request, you can add the `--duration` flag to the command:
+to request access to roles through Glide. If you would like to set the duration for the request, you can add the `--duration` flag to the command:
 
 ```
 granted exp request aws --duration 2h

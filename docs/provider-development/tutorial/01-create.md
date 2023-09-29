@@ -16,7 +16,7 @@ cd cf-provider-testvault
 ```
 
 :::info
-By convention, we use `cf-provider-<provider name>` as a folder name for Common Fate providers. For example, if you are building a provider for AWS CloudWatch Log Groups, you could use the name `cf-provider-cloudwatch-log-groups`.
+By convention, we use `cf-provider-<provider name>` as a folder name for Glide providers. For example, if you are building a provider for AWS CloudWatch Log Groups, you could use the name `cf-provider-cloudwatch-log-groups`.
 :::
 
 Scaffold the provider by running:
@@ -58,6 +58,7 @@ You can verify that the Provider has been scaffolded correctly by running:
 ```
 pdk run describe
 ```
+
 To run `pdk run describe` successfully, you'll need to create a `.env` file with the necessary [config schema variables](https://registry.commonfate.io/provider/common-fate/cloudwatch-log-groups/latest). For example, for the CloudWatch logs, the `.env` file will look like this:
 
 ```
@@ -76,5 +77,5 @@ You should see an output similar to the below.
 ```
 
 :::info
-The output that you're seeing above is the **schema** of the Provider. The schema helps Common Fate understand what the provider grants access to, and what configuration variables are required.
+The output that you're seeing above is the **schema** of the Provider. The schema helps Glide understand what the provider grants access to, and what configuration variables are required.
 :::

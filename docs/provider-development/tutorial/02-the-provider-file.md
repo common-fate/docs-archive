@@ -24,7 +24,7 @@ import structlog
 log = structlog.get_logger()
 ```
 
-`provider` is the Common Fate provider framework library. [`structlog`](https://www.structlog.org/) is a logging library. You don't have to use `structlog`, but we recommend it and it comes pre-installed when you run `pdk init`.
+`provider` is the Glide provider framework library. [`structlog`](https://www.structlog.org/) is a logging library. You don't have to use `structlog`, but we recommend it and it comes pre-installed when you run `pdk init`.
 
 Next up, we have the Provider class:
 
@@ -67,7 +67,7 @@ class EnvironmentTarget:
     )
 ```
 
-The `@access.target` decorator defines a class as a Target, which is something that Common Fate can grant access to.
+The `@access.target` decorator defines a class as a Target, which is something that Glide can grant access to.
 
 Finally, we have the Grant and Revoke methods. These methods automate permissions to the target:
 

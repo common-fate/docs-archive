@@ -1,0 +1,150 @@
+---
+slug: setup
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# PDK Provider Setup
+
+In Common Fate v0.15+, Providers built with the [Provider Development Kit (PDK)](https://github.com/common-fate/commonfate-provider-core) are deployed separately to a Common Fate deployment.
+
+## Installing `cf`
+
+To deploy a PDK Provider, start by installing `cf`.
+
+`cf` is a command-line interface (CLI) tool for performing authenticated actions against a Glide deployment. It provides commands for creating and updating Target Groups, Handlers, Routes and also for operational tasks like viewing Handler logs.
+
+:::info
+`cf` version above 0.11.0 has all PDK related commands inside the `cf oss` subcommand.
+:::
+
+To install `cf`, follow the instructions below based on your computer's operating system:
+
+<Tabs
+groupId="operating-systems"
+defaultValue="macos"
+values={[
+  { label: "Homebrew on MacOS", value: "macos" },
+  { label: "MacOS manual install", value: "macos-manual" },
+  { label: "Linux", value: "linux" },
+  { label: "Windows", value: "windows" },
+  ]}
+>
+<TabItem value="macos">
+
+[Homebrew](https://brew.sh/) is an open source package manager for MacOS. We publish a Homebrew formula for `cf`. To install `cf` with Homebrew, run the commands below in your terminal.
+
+```
+brew install common-fate/tap/cf
+```
+
+</TabItem>
+
+<TabItem value="macos-manual">
+
+Select the steps which match your system architecture. You can find your architecture by running `uname -m` from a terminal window.
+
+<Tabs
+  groupId="macos-arch"
+  defaultValue="x86_64"
+  values={[
+    { label: "x86_64", value: "x86_64" },
+    { label: "arm64", value: "arm64" },
+    ]}
+>
+
+<TabItem value="x86_64">
+
+```
+curl -OL releases.commonfate.io/cf/v0.11.0/cf_0.11.0_darwin_x86_64.tar.gz
+sudo tar -zxvf ./cf_0.11.0_darwin_x86_64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="arm64">
+
+```
+curl -OL releases.commonfate.io/cf/v0.11.0/cf_0.11.0_darwin_arm64.tar.gz
+sudo tar -zxvf ./cf_0.11.0_darwin_arm64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+</Tabs>
+</TabItem>
+
+<TabItem value="linux">
+
+Select the steps which match your system architecture. You can find your architecture by running `uname -m` from a terminal window.
+
+<Tabs
+  groupId="linux-arch"
+  defaultValue="x86_64"
+  values={[
+    { label: "x86_64", value: "x86_64" },
+    { label: "arm64", value: "arm64" },
+    { label: "i386", value: "i386" },
+    ]}
+>
+
+<TabItem value="x86_64">
+
+```
+curl -OL releases.commonfate.io/cf/v0.11.0/cf_0.11.0_linux_x86_64.tar.gz
+sudo tar -zxvf ./cf_0.11.0_linux_x86_64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="arm64">
+
+```
+curl -OL releases.commonfate.io/cf/v0.11.0/cf_0.11.0_linux_arm64.tar.gz
+sudo tar -zxvf ./cf_0.11.0_linux_arm64.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+<TabItem value="i386">
+
+```
+curl -OL releases.commonfate.io/cf/v0.11.0/cf_0.11.0_linux_i386.tar.gz
+sudo tar -zxvf ./cf_0.11.0_linux_i386.tar.gz -C /usr/local/bin/
+```
+
+</TabItem>
+</Tabs>
+
+</TabItem>
+
+<TabItem value="windows">
+
+First, download the zip archive of `cf` which matches your system's architecture. You can find your architecture by viewing your system properties in the Control Panel.
+
+[cf for Windows x86_64](https://releases.commonfate.io/cf/v0.11.0/cf_0.11.0_windows_x86_64.zip)
+
+[cf for Windows arm64](https://releases.commonfate.io/cf/v0.11.0/cf_0.11.0_windows_arm64.zip)
+
+[cf for Windows i386](https://releases.commonfate.io/cf/v0.11.0/cf_0.11.0_windows_i386.zip)
+
+After downloading cf, unzip the package.
+
+You'll need to move the binary to a folder which is accessible on your `PATH`. [This StackOverflow link](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) has instructions on how to do this.
+
+</TabItem>
+
+</Tabs>
+
+## Verify the installation
+
+You can verify the integrity and authenticity of the `cf` binary you have downloaded by running through the [verification process here](/granted/security#release-verification). You will need to replace references to `granted` in URLs with `cf`.
+
+Check that `cf` has been installed correctly by running the following command:
+
+```
+cf -v
+```
+
+You should see a version output similar to the below:
+
+```
+cf version 0.11.0
+```

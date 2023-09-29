@@ -39,13 +39,17 @@ You should see something like
     "Arn": "<Arn>",
 }
 ```
+
 ## Auto-login with Credential Process
+
 You can enable auto login with `credential_process` by using the `--auto-login` flag:
+
 ```
 credential_process = granted credential-process --auto-login --profile my-profile
 ```
+
 (Credits to [Eric Miller](https://github.com/sosheskaz) for implementing the auto login flag)
 
 :::info
-Additionally, if you would like to use Common Fate for turn-key access requests, we support a further integration in the recipe, [Connecting to Common Fate](/granted/recipes/access-requests).
+Additionally, if you would like to use Glide for turn-key access requests, we support a further integration in the recipe, [Connecting to Glide](/granted/recipes/access-requests).
 :::

@@ -18,7 +18,7 @@ The configuration settings for Granted are stored within the `$HOME/.granted` fo
 
 - **Export Credential Suffix**: The `ExportCredentialSuffix` option enables appending a suffix when exporting credentials.
 
-- **Access Request URL**: The `AccessRequestURL` option lets you set a Common Fate URL that can be used to request access.
+- **Access Request URL**: The `AccessRequestURL` option lets you set a Glide URL that can be used to request access.
 
 - **CommonFate SSO Default Start URL and Region**: The `CommonFateDefaultSSOStartURL` and `CommonFateDefaultSSORegion` options respectively set the default start URL and region for CommonFate Single Sign-On.
 

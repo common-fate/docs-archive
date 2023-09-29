@@ -1,3 +1,7 @@
+# Usage
+
+## commonfate/aws-sso/usage@v2
+
 # AWS Organizational Unit Access
 
 Glide has support for AWS Organzational Unit (OU) access control. This allows you to grant access to a set of accounts based on the OU structure of your AWS organization.
