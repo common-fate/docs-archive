@@ -97,15 +97,6 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "provider-development",
-        path: "docs/provider-development",
-        routeBasePath: "provider-development",
-        sidebarPath: "./sidebars.provider-development.js",
-      },
-    ],
-    [
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "htm"], // /myPage.html -> /myPage
@@ -152,13 +143,6 @@ const config = {
             docId: "introduction",
             position: "left",
             label: "Glide",
-          },
-          {
-            docsPluginId: "provider-development",
-            type: "doc",
-            docId: "introduction",
-            position: "left",
-            label: "Provider Development",
           },
           {
             href: "https://commonfate.io/",

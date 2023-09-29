@@ -14,6 +14,6 @@ This tutorial will walk you through building an publishing your first Access Pro
 
 Access Providers are written in Python. In order to complete the tutorial, you'll need Python 3.9 or later. You can [install Python here](https://www.python.org/downloads/).
 
-You'll also need the `pdk` CLI installed. Install `pdk` by [following our guide here](/provider-development/install-pdk).
+You'll also need the `pdk` CLI installed. Install `pdk` by [following our guide here](/glide/provider-development/install-pdk).
 
 You'll also need a code editor like [Visual Studio Code](https://code.visualstudio.com/) to edit the Python code.

@@ -1,8 +1,8 @@
 ---
-sidebar_position: 1
+slug: provider-development
 ---
 
-# Introduction
+# Developing Providers
 
 :::info
 Our Provider Development documentation is still a work-in-progress. If you're building an Access Provider, [join our Community Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg).
