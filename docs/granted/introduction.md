@@ -20,7 +20,7 @@ On AWS, Granted works with both IAM roles and with AWS SSO. We highly recommend 
 
 ## Supported browsers
 
-Granted currently supports Firefox, Chromium-based browsers (such as Chrome, Brave, and Edge), Safari and Arc.
+Granted currently supports Firefox, Chromium-based browsers (such as Chrome, Brave, and Edge), Safari, Arc and Waterfox.
 
 :::tip
 

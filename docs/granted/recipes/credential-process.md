@@ -39,13 +39,21 @@ You should see something like
     "Arn": "<Arn>",
 }
 ```
+
 ## Auto-login with Credential Process
+
 You can enable auto login with `credential_process` by using the `--auto-login` flag:
+
 ```
 credential_process = granted credential-process --auto-login --profile my-profile
 ```
+
 (Credits to [Eric Miller](https://github.com/sosheskaz) for implementing the auto login flag)
 
 :::info
 Additionally, if you would like to use Common Fate for turn-key access requests, we support a further integration in the recipe, [Connecting to Common Fate](/granted/recipes/access-requests).
 :::
+
+## Assuming roles with Credential Process
+
+When assuming roles via the credential process, we have improved the process by introducing automatic credential renewal. By default, only the `AWS_PROFILE` environment variable is exported when you run `assume <credential-process-profile>`. If you wish to export all variables, you can do so by using the `--export-all-env-vars` flag when executing the assume command.
