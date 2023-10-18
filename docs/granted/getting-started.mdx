@@ -96,6 +96,28 @@ brew tap common-fate/granted
 brew install granted
 ```
 
+## Reverting to an older version of Granted
+
+If you need to revert to an older version of Granted, you can manually downgrade using the following steps. Replace "0.18.0" with the specific version you want to install.
+
+#### For Intel (x86_64 architecture):
+
+```bash
+curl -OL https://releases.commonfate.io/granted/v0.18.0/granted_0.18.0_darwin_x86_64.tar.gz
+sudo tar -zxvf ./granted_0.18.0_darwin_x86_64.tar.gz -C /usr/local/bin/
+ln -s /usr/local/bin/granted /usr/local/bin/assumego
+```
+
+#### For ARM (arm64 architecture):
+
+```bash
+curl -OL https://releases.commonfate.io/granted/v0.18.0/granted_0.18.0_darwin_arm64.tar.gz
+sudo tar -zxvf ./granted_0.18.0_darwin_arm64.tar.gz -C /usr/local/bin/
+ln -s /usr/local/bin/granted /usr/local/bin/assumego
+```
+
+The assumego path is symlinked to granted so that they can both share keychain items without additional prompts. The homebrew install does this automatically but for a manual install on MacOS you’ll need to do it yourself.
+
 </TabItem>
 <TabItem value="linux">
 
