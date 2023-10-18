@@ -105,6 +105,7 @@ If you need to revert to an older version of Granted, you can manually downgrade
 ```bash
 curl -OL https://releases.commonfate.io/granted/v0.18.0/granted_0.18.0_darwin_x86_64.tar.gz
 sudo tar -zxvf ./granted_0.18.0_darwin_x86_64.tar.gz -C /usr/local/bin/
+ln -s /usr/local/bin/granted /usr/local/bin/assumego
 ```
 
 #### For ARM (arm64 architecture):
@@ -112,13 +113,6 @@ sudo tar -zxvf ./granted_0.18.0_darwin_x86_64.tar.gz -C /usr/local/bin/
 ```bash
 curl -OL https://releases.commonfate.io/granted/v0.18.0/granted_0.18.0_darwin_arm64.tar.gz
 sudo tar -zxvf ./granted_0.18.0_darwin_arm64.tar.gz -C /usr/local/bin/
-```
-
-#### Completing the Installation
-
-To complete the installation, create a symbolic link:
-
-```bash
 ln -s /usr/local/bin/granted /usr/local/bin/assumego
 ```
 
