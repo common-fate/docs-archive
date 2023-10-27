@@ -19,11 +19,11 @@ const previousRoutes = [
   "/granted-approvals/configuration/updating",
   "/granted-approvals/configuration/users-and-groups",
   "/granted-approvals/configuration/waf",
-  "/granted-approvals/deploying-common-fate/deploying-common-fate",
-  "/granted-approvals/deploying-common-fate/prerequisites",
-  "/granted-approvals/deploying-common-fate/setup",
-  "/granted-approvals/deploying-common-fate/deploying",
-  "/granted-approvals/deploying-common-fate/next-steps",
+  "/granted-approvals/deploying-glide/deploying-common-fate",
+  "/granted-approvals/deploying-glide/prerequisites",
+  "/granted-approvals/deploying-glide/setup",
+  "/granted-approvals/deploying-glide/deploying",
+  "/granted-approvals/deploying-glide/next-steps",
   "/granted-approvals/end-users/end-users",
   "/granted-approvals/providers/add-first-provider/requesting-access",
   "/granted-approvals/providers/add-first-provider/clean-up",
@@ -39,7 +39,7 @@ const previousRoutes = [
 ];
 
 const newRoutes = previousRoutes.map((a) =>
-  a.replace("/granted-approvals/", "/common-fate/")
+  a.replace("/granted-approvals/", "/glide/")
 );
 
 const rebrandRedirects = previousRoutes.map((r, i) => ({
@@ -90,19 +90,10 @@ const config = {
     [
       "@docusaurus/plugin-content-docs",
       {
-        id: "common-fate",
-        path: "docs/common-fate",
-        routeBasePath: "common-fate",
+        id: "glide",
+        path: "docs/glide",
+        routeBasePath: "glide",
         sidebarPath: "./sidebars.approvals.js",
-      },
-    ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "provider-development",
-        path: "docs/provider-development",
-        routeBasePath: "provider-development",
-        sidebarPath: "./sidebars.provider-development.js",
       },
     ],
     [
@@ -115,12 +106,12 @@ const config = {
             to: "/granted/introduction",
           },
           {
-            from: "/common-fate",
-            to: "/common-fate/introduction",
+            from: "/glide",
+            to: "/glide/introduction",
           },
           {
-            from: "/common-fate",
-            to: "/common-fate/introduction",
+            from: "/glide",
+            to: "/glide/introduction",
           },
           ...rebrandRedirects,
         ],
@@ -147,22 +138,15 @@ const config = {
             label: "Granted",
           },
           {
-            docsPluginId: "common-fate",
+            docsPluginId: "glide",
             type: "doc",
             docId: "introduction",
             position: "left",
+            label: "Glide",
+          },
+          {
+            href: "https://commonfate.io/",
             label: "Common Fate",
-          },
-          {
-            docsPluginId: "provider-development",
-            type: "doc",
-            docId: "introduction",
-            position: "left",
-            label: "Provider Development",
-          },
-          {
-            href: "https://commonfate.io/early-access",
-            label: "Common Fate Cloud",
             position: "left",
           },
           {
@@ -194,7 +178,7 @@ const config = {
               },
               {
                 label: "Common Fate",
-                to: "/common-fate/introduction",
+                to: "/glide/introduction",
               },
               {
                 label: "Provider Development",

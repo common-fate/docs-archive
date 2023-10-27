@@ -51,7 +51,7 @@ credential_process = granted credential-process --auto-login --profile my-profil
 (Credits to [Eric Miller](https://github.com/sosheskaz) for implementing the auto login flag)
 
 :::info
-Additionally, if you would like to use Common Fate for turn-key access requests, we support a further integration in the recipe, [Connecting to Common Fate](/granted/recipes/access-requests).
+Additionally, if you would like to use Glide for turn-key access requests, we support a further integration in the recipe, [Connecting to Glide](/granted/recipes/access-requests).
 :::
 
 ## Assuming roles with Credential Process
