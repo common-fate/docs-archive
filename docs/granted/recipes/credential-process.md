@@ -56,4 +56,4 @@ Additionally, if you would like to use Glide for turn-key access requests, we su
 
 ## Assuming roles with Credential Process
 
-When assuming roles via the credential process, we have improved the process by introducing automatic credential renewal. By default, only the `AWS_PROFILE` environment variable is exported when you run `assume <credential-process-profile>`. If you wish to export all variables, you can do so by using the `--export-all-env-vars` flag when executing the assume command.
+When assuming roles via the credential process, we have improved the process by introducing automatic credential renewal. By default, only the `AWS_PROFILE` environment variable is exported when you run `assume <credential-process-profile>`. If you wish to export all variables, you can do so by using the `--export-all-env-vars` or `-x` flag when executing the assume command. You can also include the `DefaultExportAllEnvVar=true` configuration in your `~/.granted/config` to export all environment variables by default.
