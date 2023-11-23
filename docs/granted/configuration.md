@@ -24,6 +24,10 @@ The configuration settings for Granted are stored within the `$HOME/.granted` fo
 
 - **Usage Tips and Credential Caching**: The `DisableUsageTips` option, when set to true, suppresses usage tips. The `DisableCredentialProcessCache` option, when set to true, prevents credential caching via credential processes.
 
+- **Export All Environment Variables**: The `DefaultExportAllEnvVar=true` configuration exports all environment variables by default when the `credential_process` is used.
+
+- **Export Credentials To AWS**: The `ExportCredsToAWS=true` configuration will enable credentials to be exported to `~/.aws/credentials` by default.
+
 To configure any of these options, you can use the following command:
 
 ```
