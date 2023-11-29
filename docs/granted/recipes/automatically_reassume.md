@@ -8,8 +8,6 @@ If you would like to **automatically reassume** roles, with ZSH you can you can 
 export GRANTED_ENABLE_AUTO_REASSUME=true
 ```
 
-
 :::info
-For supporting other shells (such as fish), please open a feature request on [GitHub](https://github.com/common-fate/granted/issues).
+If you're using `credential_process`, you shouldn't need to export `GRANTED_ENABLE_AUTO_REASSUME` because AWS will automatically call the granted credential process as needed to refresh your session credentials. As we have updated our code from [v0.19.0](https://github.com/common-fate/granted/releases/tag/v0.19.0) to export only the `AWS_PROFILE` environment variable when using credential process.
 :::
-

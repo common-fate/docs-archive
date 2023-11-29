@@ -42,11 +42,20 @@ You should see something like
 
 ## Auto-login with Credential Process
 
-You can enable auto login with `credential_process` by using the `--auto-login` flag:
+The `--auto-login` flag will automatically open a browser window to start an AWS SSO authentication process if your AWS SSO token has expired. For example, if you have
 
 ```
+[profile example]
 credential_process = granted credential-process --auto-login --profile my-profile
 ```
+
+and then run
+
+```
+aws s3 ls --profile example
+```
+
+but you don’t have an AWS SSO token, a browser window will open automatically and the aws command will hang until you’ve finished logging in.
 
 (Credits to [Eric Miller](https://github.com/sosheskaz) for implementing the auto login flag)
 
