@@ -48,7 +48,7 @@ credential_process = granted credential-process --profile AccountName/RoleName
 ### All available Glide Access Rules
 
 ```
-granted sso generate --sso-region ap-southeast-2 --source cf https://example.awsapps.com/start
+granted sso generate --sso-region ap-southeast-2 --source gdeploy https://example.awsapps.com/start
 ```
 
 Output:
@@ -67,7 +67,7 @@ credential_process = granted credential-process --profile AccountName/RoleName
 ### Multiple profile sources
 
 ```
-granted sso generate --sso-region ap-southeast-2 --source cf --source aws-sso https://example.awsapps.com/start
+granted sso generate --sso-region ap-southeast-2 --source gdeploy --source aws-sso https://example.awsapps.com/start
 ```
 
 Output:

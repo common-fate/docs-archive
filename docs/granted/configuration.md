@@ -102,7 +102,7 @@ appsync         cw              grafana         sagemaker       states
 athena          ddb             iam             scrh            stepfn
 c9              dms             l               scrm            tra
 ce              dx              lambda          secretsmanager  trustedadvisor
-cf              eb              mwaa            securityhub     vpc
+gdeploy              eb              mwaa            securityhub     vpc
 cfn             ebs             param           ses             waf
 cloudformation  ec2             r53             sfn
 cloudmap        ecr             rds             sm

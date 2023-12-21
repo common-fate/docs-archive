@@ -262,4 +262,4 @@ If a Handler is incompatible with its Target Group it will be marked _invalid_.
 
 In order to deploy PDK Providers into a particular AWS account and region, you will first need to bootstrap the region. Bootstrapping is the process of deploying a CloudFormation template, which provisions an Amazon S3 bucket to store PDK Provider files. Once deployed, this CloudFormation template will appear in the AWS CloudFormation console, like any other CloudFormation stack.
 
-When a PDK Provider is deployed, the CloudFormation template and Lambda function for the Provider are first copied into this bucket by the `cf` CLI, prior to resources being provisioned.
+When a PDK Provider is deployed, the CloudFormation template and Lambda function for the Provider are first copied into this bucket by the `gdeploy` CLI, prior to resources being provisioned.
