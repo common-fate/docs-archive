@@ -57,6 +57,10 @@ Now, modify the `exec` field of this entry to be the following:
 
 Where `<PROFILE_NAME>` is the name of the AWS profile to use, `<CLUSTER_REGION>` is the region the EKS cluster is deployed to, and `<CLUSTER_NAME>` is the name of the EKS cluster.
 
+:::note
+If you are utilizing version v0.20.3 or an earlier release, the `command` should be `assumego` instead of `assume` due to the [changes](https://github.com/common-fate/granted/pull/549) introduced in v0.20.4 which modifies the behavior of assumego.
+:::
+
 Now, run a `kubectl` command against the cluster to verify the connection:
 
 ```bash
