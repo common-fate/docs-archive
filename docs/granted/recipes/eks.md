@@ -45,7 +45,7 @@ Now, modify the `exec` field of this entry to be the following:
           "--exec",
           "aws --region <CLUSTER_REGION> eks get-token --cluster-name <CLUSTER_NAME>",
         ]
-      command: assumego
+      command: assume
       env:
         - name: GRANTED_QUIET
           value: "true"
@@ -58,7 +58,7 @@ Now, modify the `exec` field of this entry to be the following:
 Where `<PROFILE_NAME>` is the name of the AWS profile to use, `<CLUSTER_REGION>` is the region the EKS cluster is deployed to, and `<CLUSTER_NAME>` is the name of the EKS cluster.
 
 :::note
-The above configuration will call `assumego`, rather than `assume`. `assumego` is the underlying Go binary file, and `assume` is the shell wrapper script [used to export environment variables into the calling shell](/granted/internals/shell-alias). For EKS authentication we don't need to export environment variables, so we bypass the `assume` script and call `assumego` directly.
+If you are utilizing version v0.20.3 or an earlier release, the `command` should be `assumego` instead of `assume` due to the [changes](https://github.com/common-fate/granted/pull/549) introduced in v0.20.4 which modifies the behavior of assumego.
 :::
 
 Now, run a `kubectl` command against the cluster to verify the connection:
