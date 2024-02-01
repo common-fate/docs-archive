@@ -20,4 +20,4 @@ Glide key benefits are:
 
 ## Get started
 
-Follow the [Deployment guide](/common-fate/deploying-glide/deploying-common-fate/) to get your own instance of Glide up and running.
+Follow the [Deployment guide](/glide/deploying-glide/deploying-common-fate/) to get your own instance of Glide up and running.
