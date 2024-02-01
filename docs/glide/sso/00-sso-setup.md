@@ -51,6 +51,6 @@ The SSO provider to deploy with  [Use arrows to move, type to filter]
 
 As part of setting up SSO and user directory sync, you'll be prompted for parameters to connect to your identity provider. Follow the guides below based on your corporate identity provider:
 
-- [Google Workspace](/common-fate/sso/google)
-- [Okta](/common-fate/sso/okta)
-- [Azure](/common-fate/sso/azure)
+- [Google Workspace](/glide/sso/google)
+- [Okta](/glide/sso/okta)
+- [Azure](/glide/sso/azure)
