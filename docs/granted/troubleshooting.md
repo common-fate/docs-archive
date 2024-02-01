@@ -61,6 +61,10 @@ Granted settings are in `~/.granted`. If your trying to find where a setting is 
 
 If you are tyring to use `pass`, [make sure you followed the instructions](./recipes/pass.md). Note that `export GPG_TTY=$(tty)` must have been executed in the current shell so that you can be asked for your password.
 
+## Granted stopped working (Windows)
+
+On Windows in WSL2, Granted can sometimes stop working completely. The solution is to reboot.
+
 ## Other issues
 
 If you have any other issues with Granted please [send us a message on Slack](https://join.slack.com/t/commonfatecommunity/shared_invite/zt-q4m96ypu-_gYlRWD3k5rIsaSsqP7QMg) and we'll help you out. Alternatively, you can also shoot us a [Twitter message](https://twitter.com/CommonFateTech).
